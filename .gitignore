@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# next
+.next/
+out/
+
+# vercel
+.vercel/
+
+# tests and coverage
+coverage/
+playwright-report/
+test-results/
+
+# local environment
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+pnpm-debug.log*
+
+# editors / os
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# local evidence exports
+.tmp/
