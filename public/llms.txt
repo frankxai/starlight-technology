@@ -1,0 +1,18 @@
+# Starlight Technology
+
+> Buying intelligence and complete-system design for AI-native creators and small teams.
+
+Canonical: https://starlight.technology
+Methodology: https://starlight.technology/methodology
+Disclosure: https://starlight.technology/disclosure
+Sitemap: https://starlight.technology/sitemap.xml
+
+## Editorial boundary
+
+Every analysis declares whether evidence is owned-and-tested, hands-on, source-backed research, or decision-model inference. Research-only pages must not be represented as hands-on testing. Prices require a merchant/source, region, currency and verification timestamp.
+
+## Main collections
+
+- /builds — complete systems by objective and planning budget
+- /compare — constraint-led comparisons
+- /guides — decision frameworks

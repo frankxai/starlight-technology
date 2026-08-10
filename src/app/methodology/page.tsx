@@ -1,0 +1,10 @@
+import type { Metadata } from "next";
+import { SourceList } from "@/components/evidence";
+import { getSources } from "@/lib/sources";
+
+export const metadata: Metadata = { title: "Evidence methodology", description: "How Starlight Technology separates testing, research, inference, prices and commercial relationships." };
+const states = [["Owned & tested", "Repeated use in a named real workflow. We publish setup, duration, limitations and relevant evidence."], ["Hands-on", "Direct testing with limited time or scope. We never imply long-term ownership."], ["Source-backed research", "A conclusion grounded in cited primary or credible independent evidence, with source dates."], ["Decision-model inference", "A disclosed framework derived from constraints. It does not claim hands-on product proof."]];
+
+export default function MethodologyPage() {
+  return <article className="article shell"><header className="article-header"><p className="eyebrow">Evidence before verdict</p><h1>Our methodology makes uncertainty visible.</h1><p className="article-summary">See what was tested, researched or inferred—and when each source was checked.</p></header><section className="method-states">{states.map(([name, copy], index) => <div key={name}><span>0{index + 1}</span><h2>{name}</h2><p>{copy}</p></div>)}</section><section className="article-section"><h2>Every decision page must answer</h2><ul><li>Who is this for?</li><li>Where does it become the wrong purchase?</li><li>Which specifications change the decision?</li><li>What is the complete-system cost?</li><li>What was tested, sourced or inferred?</li><li>When was each source verified?</li></ul></section><section className="article-section"><h2>Price and offer policy</h2><p>A manufacturer price is not a merchant offer. Future offers must identify merchant, region, currency, source, verification time and commercial relationship. We will not invent availability.</p></section><section className="article-sources"><p className="eyebrow">Governing references</p><h2>Search and review standards</h2><SourceList sources={getSources(["google-review-guidance", "google-spam-policies"])} /></section></article>;
+}
