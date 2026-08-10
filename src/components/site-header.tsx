@@ -3,8 +3,8 @@ import Link from "next/link";
 const links = [
   ["Builds", "/builds"],
   ["Compare", "/compare"],
+  ["Pricing", "/pricing"],
   ["Guides", "/guides"],
-  ["Offers", "/offers"],
   ["Method", "/methodology"]
 ] as const;
 
@@ -19,14 +19,10 @@ export function SiteHeader() {
       </Link>
       <nav aria-label="Primary navigation">
         {links.map(([label, href]) => (
-          <Link key={href} href={href}>
-            {label}
-          </Link>
+          <Link key={href} href={href}>{label}</Link>
         ))}
       </nav>
-      <Link className="header-cta" href="/blueprint">
-        Build my system
-      </Link>
+      <Link className="header-cta" href="/pricing">Get Studio</Link>
     </header>
   );
 }
