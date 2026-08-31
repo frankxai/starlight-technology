@@ -4,7 +4,13 @@ import { ReferenceWorkspace } from "@/components/infrastructure/reference-worksp
 
 export const metadata: Metadata = {
   title: "Reference Control Room · Infrastructure Partnership OS",
-  description: "Reference workspace for deals, assets, workloads, agents, contracts, finance, energy and evidence."
+  description: "Reference workspace for deals, assets, workloads, agents, contracts, finance, energy and evidence.",
+  alternates: { canonical: "/infrastructure/workspace" },
+  openGraph: {
+    title: "Infrastructure Partnership Control Room",
+    description: "A reference operating workspace for decisions, assets, agents, contracts, finance, energy and evidence.",
+    url: "/infrastructure/workspace"
+  }
 };
 
 export default function WorkspacePage() {
