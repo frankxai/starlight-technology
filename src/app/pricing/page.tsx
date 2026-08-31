@@ -4,7 +4,13 @@ import { checkoutHref, digitalProducts, saasTiers, serviceProducts } from "@/lib
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "SaaS membership, digital blueprints and fixed-scope infrastructure architecture for AI-native systems."
+  description: "SaaS membership, digital blueprints and fixed-scope infrastructure architecture for AI-native systems.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Pricing · Starlight Technology",
+    description: "Membership, decision products and fixed-scope infrastructure architecture for AI-native systems.",
+    url: "/pricing"
+  }
 };
 
 export default function PricingPage() {
