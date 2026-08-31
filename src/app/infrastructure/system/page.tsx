@@ -8,7 +8,13 @@ import { infrastructureSkills } from "@/lib/infrastructure";
 
 export const metadata: Metadata = {
   title: "Agentic System · Infrastructure Partnership OS",
-  description: "A provider-neutral agent, workflow, integration and evidence architecture for operating joint AI infrastructure."
+  description: "A provider-neutral agent, workflow, integration and evidence architecture for operating joint AI infrastructure.",
+  alternates: { canonical: "/infrastructure/system" },
+  openGraph: {
+    title: "Agentic Infrastructure Operating System",
+    description: "Provider-neutral skills, read-first integration, controlled write-back and evidence-led infrastructure operations.",
+    url: "/infrastructure/system"
+  }
 };
 
 const layers = [
