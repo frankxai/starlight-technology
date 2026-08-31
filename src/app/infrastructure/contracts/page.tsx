@@ -83,7 +83,7 @@ export default function ContractsPage() {
             <Link className={styles.primaryAction} href="/checkout/infrastructure-blueprint">Commission the contract issue map <ArrowIcon /></Link>
             <Link className={styles.secondaryAction} href="/infrastructure/compose">Return to deal composer</Link>
           </div>
-          <SourceNote>Electronic signatures and validation should use the parties' accepted qualified providers and jurisdiction-specific counsel. EU trust-service context: <a href="https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation">European Commission eIDAS policy</a>.</SourceNote>
+          <SourceNote>Electronic signatures and validation should use the parties&apos; accepted qualified providers and jurisdiction-specific counsel. EU trust-service context: <a href="https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation">European Commission eIDAS policy</a>.</SourceNote>
         </div>
       </section>
     </InfrastructureFrame>
