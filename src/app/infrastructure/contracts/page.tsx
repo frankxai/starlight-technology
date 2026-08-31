@@ -8,7 +8,13 @@ import { contractStack } from "@/lib/infrastructure";
 
 export const metadata: Metadata = {
   title: "Contract Architecture · Infrastructure Partnership OS",
-  description: "The contract, authority, ownership and exit architecture for joint AI infrastructure between operating companies, operators, banks and energy partners."
+  description: "The contract, authority, ownership and exit architecture for joint AI infrastructure between operating companies, operators, banks and energy partners.",
+  alternates: { canonical: "/infrastructure/contracts" },
+  openGraph: {
+    title: "AI Infrastructure Contract Architecture",
+    description: "Stage ownership, authority, data, assets, service, finance and exit before exposure compounds.",
+    url: "/infrastructure/contracts"
+  }
 };
 
 const authority = [
