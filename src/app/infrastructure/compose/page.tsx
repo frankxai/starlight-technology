@@ -6,7 +6,13 @@ import styles from "@/components/infrastructure/infrastructure.module.css";
 
 export const metadata: Metadata = {
   title: "Deal Composer · Infrastructure Partnership OS",
-  description: "Compile a starting transaction model from contribution, demand, capital, control and data sensitivity."
+  description: "Compile a starting transaction model from contribution, demand, capital, control and data sensitivity.",
+  alternates: { canonical: "/infrastructure/compose" },
+  openGraph: {
+    title: "Infrastructure Deal Composer",
+    description: "Compile a viable starting structure before buying hardware, granting control or raising debt.",
+    url: "/infrastructure/compose"
+  }
 };
 
 const underwriting = [
