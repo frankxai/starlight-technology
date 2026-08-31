@@ -89,7 +89,7 @@ export default function OperatorPage() {
             <Link className={styles.primaryAction} href="/checkout/infrastructure-blueprint">Start with a paid Blueprint <ArrowIcon /></Link>
             <Link className={styles.secondaryAction} href="/infrastructure/workspace">Inspect the post-sale control room</Link>
           </div>
-          <SourceNote>German digitalisation and renewable-energy financing may be relevant to qualifying client-side investments, subject to the client's bank and advisers. Official starting points: <a href="https://www.kfw.de/inlandsfoerderung/Unternehmen/Innovation-und-Digitalisierung/F%C3%B6rderprodukte/ERP-F%C3%B6rderkredit-Digitalisierung-%28511-512%29/">KfW 511/512</a> and <a href="https://www.kfw.de/inlandsfoerderung/%C3%96ffentliche-Einrichtungen/Energie-Versorgung-und-Netze/F%C3%B6rderprodukte/Erneuerbare-Energien-%E2%80%93-Standard-%28270%29/">KfW 270</a>.</SourceNote>
+          <SourceNote>German digitalisation and renewable-energy financing may be relevant to qualifying client-side investments, subject to the client&apos;s bank and advisers. Official starting points: <a href="https://www.kfw.de/inlandsfoerderung/Unternehmen/Innovation-und-Digitalisierung/F%C3%B6rderprodukte/ERP-F%C3%B6rderkredit-Digitalisierung-%28511-512%29/">KfW 511/512</a> and <a href="https://www.kfw.de/inlandsfoerderung/%C3%96ffentliche-Einrichtungen/Energie-Versorgung-und-Netze/F%C3%B6rderprodukte/Erneuerbare-Energien-%E2%80%93-Standard-%28270%29/">KfW 270</a>.</SourceNote>
         </div>
       </section>
     </InfrastructureFrame>
