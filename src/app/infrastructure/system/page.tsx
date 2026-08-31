@@ -59,7 +59,7 @@ export default function SystemPage() {
       <section className={styles.darkSection}>
         <div className={styles.sectionInner}>
           <SectionHeading index="02" eyebrow="Existing IT estate" title="Integrate by earned authority, not replacement theatre.">
-            <p>Initial access is read-only. The system learns the company's actual object model and exceptions before any agent can change prices, inventory, contracts, finance or customer commitments.</p>
+            <p>Initial access is read-only. The system learns the company&apos;s actual object model and exceptions before any agent can change prices, inventory, contracts, finance or customer commitments.</p>
           </SectionHeading>
           <div className={styles.integrationFlow}>
             {integration.map(([code, name, description]) => <article key={code}><span>{code}</span><h3>{name}</h3><p>{description}</p></article>)}
