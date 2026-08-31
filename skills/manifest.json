@@ -1,0 +1,86 @@
+{
+  "name": "Starlight Infrastructure Operator Skills",
+  "version": "2026.08.31",
+  "skills": [
+    {
+      "slug": "partner-underwriter",
+      "name": "Partner Underwriter",
+      "path": "skills/partner-underwriter/SKILL.md",
+      "mission": "Determine whether the proposed counterparties, assets and mandate justify entering Phase 0.",
+      "authority": "Recommend a stop, proceed or conditional proceed. Never approve credit, investment, legal risk or a binding relationship.",
+      "artifacts": ["partner-score.json", "counterparty-map.md", "data-room-request.md", "underwriting-memo.md"]
+    },
+    {
+      "slug": "workload-underwriter",
+      "name": "Workload Underwriter",
+      "path": "skills/workload-underwriter/SKILL.md",
+      "mission": "Translate business workflows into demand, data, quality, latency, resilience and utilization requirements.",
+      "authority": "Classify and model workloads. Never purchase infrastructure or promise savings, throughput or model quality.",
+      "artifacts": ["workloads.json", "demand-model.xlsx", "routing-policy.md", "offtake-memo.md"]
+    },
+    {
+      "slug": "deal-architect",
+      "name": "Deal Architect",
+      "path": "skills/deal-architect/SKILL.md",
+      "mission": "Select the commercial structure that separates value, ownership, control, liability and exit with minimum unnecessary complexity.",
+      "authority": "Produce and rank options. Principals approve economics; counsel approves legal implementation.",
+      "artifacts": ["deal-memo.md", "party-graph.json", "reserved-rights.csv", "term-sheet-issues.md"]
+    },
+    {
+      "slug": "contract-pack-composer",
+      "name": "Contract Pack Composer",
+      "path": "skills/contract-pack-composer/SKILL.md",
+      "mission": "Compile the agreement and schedule matrix required to turn the selected bargain into reviewable legal instructions.",
+      "authority": "Prepare issues and drafts for licensed counsel. Never represent output as legal advice or executable law.",
+      "artifacts": ["contract-stack.json", "counsel-brief.md", "conditions-precedent.md", "signature-register.csv"]
+    },
+    {
+      "slug": "it-integration-mapper",
+      "name": "IT Integration Mapper",
+      "path": "skills/it-integration-mapper/SKILL.md",
+      "mission": "Attach the agentic system to the existing IT estate with read-first discovery, canonical records and earned write authority.",
+      "authority": "Inventory and design. Read-only access is default; production writes require separate named approval.",
+      "artifacts": ["system-context.mmd", "connectors.json", "data-map.csv", "writeback-gates.md"]
+    },
+    {
+      "slug": "capital-stack-planner",
+      "name": "Capital Stack Planner",
+      "path": "skills/capital-stack-planner/SKILL.md",
+      "mission": "Match operating cash, lease, debt, promotional-finance review and equity to the life, ownership and risk of each cost.",
+      "authority": "Planning support only. Never offer regulated credit advice, approve borrowing or claim eligibility.",
+      "artifacts": ["sources-and-uses.xlsx", "finance-memo.md", "lender-index.md", "exposure-register.json"]
+    },
+    {
+      "slug": "procurement-conductor",
+      "name": "Procurement Conductor",
+      "path": "skills/procurement-conductor/SKILL.md",
+      "mission": "Convert approved architecture into a controlled purchase, acceptance, warranty and asset-register process.",
+      "authority": "May prepare orders and verify acceptance. Cannot bind a company without delegated purchasing authority.",
+      "artifacts": ["bom.csv", "quote-comparison.md", "acceptance-tests.json", "asset-register.json"]
+    },
+    {
+      "slug": "node-operations",
+      "name": "Node Operations",
+      "path": "skills/node-operations/SKILL.md",
+      "mission": "Operate the physical and digital node within service, security, energy, cost and authority boundaries.",
+      "authority": "Execute accepted reversible runbook actions. Consequential, destructive, financial or customer-binding actions escalate.",
+      "artifacts": ["node-state.json", "capacity-ledger.csv", "incident-record.md", "maintenance-queue.json"]
+    },
+    {
+      "slug": "revenue-operator",
+      "name": "Revenue Operator",
+      "path": "skills/revenue-operator/SKILL.md",
+      "mission": "Convert verified internal capability into contribution-margin improvement, managed services or external offers without double-counting value.",
+      "authority": "Research, model and draft. Prices, customer commitments, claims and contracts require human approval.",
+      "artifacts": ["offer-spec.md", "pricing-model.xlsx", "pipeline.json", "value-ledger.csv"]
+    },
+    {
+      "slug": "provenance-auditor",
+      "name": "Provenance Auditor",
+      "path": "skills/provenance-auditor/SKILL.md",
+      "mission": "Make every material claim, action, contract, asset and payment reconstructable from source to decision.",
+      "authority": "Append, verify and flag. Never overwrite source records or approve the underlying business decision.",
+      "artifacts": ["evidence-ledger.ndjson", "exceptions.json", "audit-timeline.md", "decision-receipts.zip"]
+    }
+  ]
+}
