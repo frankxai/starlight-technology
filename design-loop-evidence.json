@@ -1,0 +1,48 @@
+{
+  "feature": "Starlight Infrastructure Partnership OS",
+  "branch": "feat/infrastructure-exchange-20260831",
+  "verifiedCodeCommit": "40893bb41fa6841740b4d3211e9aca6c75a7afbb",
+  "previewDeployment": "dpl_EzEgQkHPGkzjubteYaDy2KdiPuus",
+  "previewUrl": "https://starlight-technology-juo1zh9hd-starlight-intelligence.vercel.app",
+  "verifiedAt": "2026-08-31T01:30:00Z",
+  "routes": [
+    "/infrastructure",
+    "/infrastructure/compose",
+    "/infrastructure/system",
+    "/infrastructure/contracts",
+    "/infrastructure/operator",
+    "/infrastructure/workspace",
+    "/api/infrastructure/manifest",
+    "/checkout/infrastructure-blueprint",
+    "/pricing"
+  ],
+  "verification": {
+    "lint": "passed",
+    "typecheck": "passed",
+    "tests": "13 passed across 3 files",
+    "build": "38 routes generated",
+    "renderedHtml": "All listed routes returned HTTP 200 during exact-head preview validation; representative metadata and content were inspected.",
+    "canonicalMetadata": "Infrastructure routes, pricing and checkout expose route-specific canonical metadata.",
+    "responsive": "Responsive source was inspected at the declared 1180px, 860px and 560px breakpoints. No remote screenshot-capable browser was available in this release toolchain.",
+    "accessibility": "Semantic headings, skip link, form labels, aria-live output, focus-visible handling and reduced-motion handling are present.",
+    "commerceBoundary": "B2B checkout is invoice-led and contract-first until a reviewed payment URL is configured. It does not imply hardware, finance or production authority."
+  },
+  "designReview": {
+    "decisionObject": 5,
+    "hierarchy": 5,
+    "craft": 5,
+    "responsiveSource": 4,
+    "accessibility": 5,
+    "restraint": 4,
+    "total": 28,
+    "scale": 30
+  },
+  "knownLimitations": [
+    "The reference workspace uses explicitly labelled sample data, not client telemetry.",
+    "NEXT_PUBLIC_POLAR_INFRASTRUCTURE_BLUEPRINT_URL is not configured; checkout uses an invoice-led engagement intake.",
+    "No client operational database, ERP connector credentials, energy telemetry, bank facility or production agent tenant is provisioned in this public reference release.",
+    "The public contract structures are issue maps and decision frameworks, not executable legal, tax, credit, insurance or energy-market advice.",
+    "Vercel preview deployments are noindex; production-domain indexing is verified separately after merge.",
+    "No remote screenshot-capable browser was available; rendered HTML, metadata, responsive source and build output were inspected."
+  ]
+}
