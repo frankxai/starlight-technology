@@ -1,4 +1,4 @@
-export type ProductKind = "saas" | "digital";
+export type ProductKind = "saas" | "digital" | "service";
 export type Billing = "free" | "month" | "once";
 
 export interface ProductSku {
@@ -93,7 +93,29 @@ export const digitalProducts: ProductSku[] = [
   }
 ];
 
-export const allProducts = [...saasTiers, ...digitalProducts];
+export const serviceProducts: ProductSku[] = [
+  {
+    id: "infrastructure-blueprint",
+    name: "Infrastructure Partnership Blueprint",
+    kind: "service",
+    billing: "once",
+    priceLabel: "€6,500 ex VAT",
+    summary: "Fixed-scope underwriting and operating architecture for a joint AI infrastructure partnership.",
+    includes: [
+      "Party, asset, workload and IT graph",
+      "Three viable deal structures",
+      "Contract and specialist issue matrix",
+      "Sources-and-uses and downside model",
+      "Procurement and integration sequence",
+      "90-day pilot mandate and acceptance gates"
+    ],
+    cta: "Commission blueprint",
+    checkoutEnvKey: "NEXT_PUBLIC_POLAR_INFRASTRUCTURE_BLUEPRINT_URL",
+    productPath: "/infrastructure"
+  }
+];
+
+export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts];
 export function getProduct(id: string) { return allProducts.find((p) => p.id === id); }
 export function checkoutHref(sku: ProductSku): string {
   if (sku.billing === "free") return sku.productPath;
