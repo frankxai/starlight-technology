@@ -7,7 +7,13 @@ import styles from "@/components/infrastructure/infrastructure.module.css";
 
 export const metadata: Metadata = {
   title: "Operator Model · Infrastructure Partnership OS",
-  description: "A repeatable commercial and execution model for AI operators partnering with asset-rich operating companies."
+  description: "A repeatable commercial and execution model for AI operators partnering with asset-rich operating companies.",
+  alternates: { canonical: "/infrastructure/operator" },
+  openGraph: {
+    title: "AI Infrastructure Operator Business System",
+    description: "Qualify, underwrite, contract, procure, integrate, operate and prove infrastructure partnerships without becoming captive to one client.",
+    url: "/infrastructure/operator"
+  }
 };
 
 const sequence = [
