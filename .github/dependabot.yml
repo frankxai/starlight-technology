@@ -6,7 +6,30 @@ updates:
       interval: monthly
     open-pull-requests-limit: 3
     groups:
+      framework-lint-toolchain:
+        patterns:
+          - next
+          - eslint
+          - eslint-config-next
+          - typescript
+          - typescript-eslint
+          - "@typescript-eslint/*"
+        update-types:
+          - minor
+          - patch
       production-dependencies:
         dependency-type: production
+        exclude-patterns:
+          - next
       development-dependencies:
         dependency-type: development
+        exclude-patterns:
+          - eslint
+          - eslint-config-next
+          - typescript
+          - typescript-eslint
+          - "@typescript-eslint/*"
+    ignore:
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
