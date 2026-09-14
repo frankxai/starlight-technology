@@ -215,8 +215,9 @@ export async function persistRunResult(result: AgentRunResult): Promise<void> {
     body: JSON.stringify({
       status,
       tokens_used: tokensUsed,
-      result: result.status === "failed" ? null : result,
-      failure: result.status === "failed" ? { status: "failed" } : null,
+      model_cost_eur: result.totalCostEur,
+      result,
+      failure: result.status === "failed" ? { status: "failed", lastEvent: result.events.at(-1) ?? null } : null,
       completed_at: result.status === "approval-required" ? null : new Date().toISOString(),
       updated_at: new Date().toISOString()
     })
