@@ -1,5 +1,5 @@
 import { timingSafeEqual } from "node:crypto";
-import { controlStoreConfigured, recordApproval, runBelongsToPrincipal } from "@/lib/control-store";
+import { controlStoreConfigured, loadStoredRun, recordApproval } from "@/lib/control-store";
 
 export const runtime = "nodejs";
 
@@ -47,8 +47,25 @@ export async function POST(request: Request) {
     return Response.json({ error: "invalid_approval_request" }, { status: 400 });
   }
 
-  if (!(await runBelongsToPrincipal({ runId, tenantId, principalId }))) {
-    return Response.json({ error: "run_not_found_for_principal" }, { status: 404 });
+  if (typeof expiresAt === "string" && (!Number.isFinite(Date.parse(expiresAt)) || Date.parse(expiresAt) <= Date.now())) {
+    return Response.json({ error: "invalid_approval_expiry" }, { status: 400 });
+  }
+
+  const stored = await loadStoredRun({ runId, tenantId, principalId });
+  if (!stored) return Response.json({ error: "run_not_found_for_principal" }, { status: 404 });
+  if (["completed", "failed", "aborted"].includes(stored.status)) {
+    return Response.json({ error: "run_is_terminal", status: stored.status }, { status: 409 });
+  }
+
+  const plannedStep = stored.plan.steps.find((step) => step.id === stepId);
+  if (!plannedStep || !plannedStep.approvalRequired) {
+    return Response.json({ error: "step_does_not_require_approval" }, { status: 409 });
+  }
+  if (plannedStep.authority !== authority) {
+    return Response.json(
+      { error: "approval_authority_mismatch", expected: plannedStep.authority },
+      { status: 409 }
+    );
   }
 
   await recordApproval({
@@ -59,7 +76,7 @@ export async function POST(request: Request) {
     status: status as (typeof statuses)[number],
     reason: reason as string | undefined,
     expiresAt: expiresAt as string | undefined,
-    context: { source: "starlight-agent-approval-api", tenantId }
+    context: { source: "starlight-agent-approval-api", tenantId, planPattern: stored.plan.pattern }
   });
 
   return Response.json({ ok: true, runId, stepId, authority, status }, { headers: { "Cache-Control": "no-store" } });
