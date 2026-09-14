@@ -28,11 +28,7 @@ export type AgentRunResult = {
 type GatewayChatResponse = {
   model?: string;
   choices?: Array<{ message?: { content?: string | null } }>;
-  usage?: {
-    prompt_tokens?: number;
-    completion_tokens?: number;
-    total_tokens?: number;
-  };
+  usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number };
 };
 
 function gatewayToken(): string | null {
@@ -53,11 +49,7 @@ function composeSystemPrompt(step: AgentStep): string {
   ].join("\n");
 }
 
-function composeUserPrompt(
-  request: AgentRunRequest,
-  step: AgentStep,
-  dependencies: StepExecutionResult[]
-): string {
+function composeUserPrompt(request: AgentRunRequest, step: AgentStep, dependencies: StepExecutionResult[]): string {
   const dependencyBlock = dependencies.length
     ? dependencies.map((result) => `## ${result.stepId} / ${result.agentId}\n${result.text}`).join("\n\n")
     : "No prior step outputs.";
@@ -80,19 +72,12 @@ async function callGateway(request: AgentRunRequest, step: AgentStep, dependenci
 
   const agent = agentRegistry[step.agentId];
   if (!agent) throw new Error(`Unknown agent: ${step.agentId}`);
-  const route = resolveModelRoute({
-    modelClass: agent.modelClass,
-    risk: request.risk,
-    sensitive: request.risk === "critical"
-  });
-
+  const route = resolveModelRoute({ modelClass: agent.modelClass, risk: request.risk, sensitive: request.risk === "critical" });
   const maxTokens = Math.min(route.maxOutputTokens, Math.max(1_000, Math.floor(step.tokenBudget * 0.35)));
+
   const response = await fetch("https://ai-gateway.vercel.sh/v1/chat/completions", {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    },
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: route.primary,
       models: route.fallbacks,
@@ -120,15 +105,7 @@ async function callGateway(request: AgentRunRequest, step: AgentStep, dependenci
   const totalTokens = payload.usage?.total_tokens ?? inputTokens + outputTokens;
   if (totalTokens > step.tokenBudget) throw new Error(`Step ${step.id} exceeded its token budget`);
 
-  return {
-    stepId: step.id,
-    agentId: step.agentId,
-    model: payload.model ?? route.primary,
-    text,
-    inputTokens,
-    outputTokens,
-    totalTokens
-  };
+  return { stepId: step.id, agentId: step.agentId, model: payload.model ?? route.primary, text, inputTokens, outputTokens, totalTokens };
 }
 
 function event(runId: string, type: ExecutionEvent["type"], actor: string, stepId?: string, metadata?: ExecutionEvent["metadata"]): ExecutionEvent {
@@ -136,22 +113,40 @@ function event(runId: string, type: ExecutionEvent["type"], actor: string, stepI
 }
 
 function readySteps(plan: AgentRunPlan, completed: Set<string>, started: Set<string>): AgentStep[] {
-  return plan.steps.filter(
-    (step) => !completed.has(step.id) && !started.has(step.id) && step.dependsOn.every((dependency) => completed.has(dependency))
-  );
+  return plan.steps.filter((step) => !completed.has(step.id) && !started.has(step.id) && step.dependsOn.every((dependency) => completed.has(dependency)));
+}
+
+function validateResumeOutputs(plan: AgentRunPlan, outputs: StepExecutionResult[]): void {
+  const knownSteps = new Set(plan.steps.map((step) => step.id));
+  const seen = new Set<string>();
+  for (const output of outputs) {
+    if (!knownSteps.has(output.stepId)) throw new Error(`Resume output references unknown step: ${output.stepId}`);
+    if (seen.has(output.stepId)) throw new Error(`Resume output duplicates step: ${output.stepId}`);
+    seen.add(output.stepId);
+  }
+  for (const output of outputs) {
+    const step = plan.steps.find((candidate) => candidate.id === output.stepId);
+    if (!step) continue;
+    for (const dependency of step.dependsOn) {
+      if (!seen.has(dependency)) throw new Error(`Resume output ${output.stepId} is missing dependency ${dependency}`);
+    }
+  }
 }
 
 export async function executeAgentRun(
   request: AgentRunRequest,
   plan: AgentRunPlan,
-  approvedStepIds: string[] = []
+  approvedStepIds: string[] = [],
+  resumeOutputs: StepExecutionResult[] = []
 ): Promise<AgentRunResult> {
   if (process.env.STARLIGHT_AGENT_RUNTIME_ENABLED !== "1") throw new Error("Agent runtime is disabled");
   if (request.id !== plan.runId) throw new Error("Run request and plan ids do not match");
+  validateResumeOutputs(plan, resumeOutputs);
 
-  const outputs: StepExecutionResult[] = [];
-  const events: ExecutionEvent[] = [event(plan.runId, "run-planned", "starlight-engine")];
-  const completed = new Set<string>();
+  const outputs: StepExecutionResult[] = [...resumeOutputs];
+  const resumed = resumeOutputs.length > 0;
+  const events: ExecutionEvent[] = [event(plan.runId, "run-planned", "starlight-engine", undefined, { resumed })];
+  const completed = new Set(resumeOutputs.map((output) => output.stepId));
   const started = new Set<string>();
   const approved = new Set(approvedStepIds);
 
@@ -165,13 +160,7 @@ export async function executeAgentRun(
     const pendingApproval = ready.filter((step) => step.approvalRequired && !approved.has(step.id));
     if (pendingApproval.length > 0) {
       for (const step of pendingApproval) events.push(event(plan.runId, "approval-requested", "starlight-engine", step.id));
-      return {
-        runId: plan.runId,
-        status: "approval-required",
-        outputs,
-        events,
-        pendingApprovalStepIds: pendingApproval.map((step) => step.id)
-      };
+      return { runId: plan.runId, status: "approval-required", outputs, events, pendingApprovalStepIds: pendingApproval.map((step) => step.id) };
     }
 
     const batch = ready.slice(0, Math.max(1, plan.maxParallelism));
@@ -184,16 +173,16 @@ export async function executeAgentRun(
     try {
       const results = await Promise.all(
         batch.map(async (step) => {
-          const dependencies = step.dependsOn.map((id) => outputs.find((output) => output.stepId === id)).filter((value): value is StepExecutionResult => Boolean(value));
+          const dependencies = step.dependsOn
+            .map((id) => outputs.find((output) => output.stepId === id))
+            .filter((value): value is StepExecutionResult => Boolean(value));
           const result = await callGateway(request, step, dependencies);
-          events.push(
-            event(plan.runId, "model-call", step.agentId, step.id, {
-              model: result.model,
-              inputTokens: result.inputTokens,
-              outputTokens: result.outputTokens,
-              totalTokens: result.totalTokens
-            })
-          );
+          events.push(event(plan.runId, "model-call", step.agentId, step.id, {
+            model: result.model,
+            inputTokens: result.inputTokens,
+            outputTokens: result.outputTokens,
+            totalTokens: result.totalTokens
+          }));
           return result;
         })
       );
@@ -205,11 +194,9 @@ export async function executeAgentRun(
       }
     } catch (error) {
       const failed = batch.find((step) => !completed.has(step.id));
-      events.push(
-        event(plan.runId, "step-failed", failed?.agentId ?? "starlight-engine", failed?.id, {
-          message: error instanceof Error ? error.message : "Unknown runtime failure"
-        })
-      );
+      events.push(event(plan.runId, "step-failed", failed?.agentId ?? "starlight-engine", failed?.id, {
+        message: error instanceof Error ? error.message : "Unknown runtime failure"
+      }));
       events.push(event(plan.runId, "run-aborted", "starlight-engine"));
       return { runId: plan.runId, status: "failed", outputs, events, pendingApprovalStepIds: [] };
     }
