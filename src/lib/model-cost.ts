@@ -11,6 +11,8 @@ export type StepCostEnvelope = {
   route: ModelRoute;
   maxOutputTokens: number;
   maxInputTokens: number;
+  maxInputUsdPerToken: number;
+  maxOutputUsdPerToken: number;
   maxCostEur: number;
   usdPerEur: number;
   prices: Record<string, ModelPrice>;
@@ -20,10 +22,7 @@ export type StepCostEnvelope = {
 type GatewayModelList = {
   data?: Array<{
     id?: string;
-    pricing?: {
-      input?: string | number;
-      output?: string | number;
-    };
+    pricing?: { input?: string | number; output?: string | number };
   }>;
 };
 
@@ -74,15 +73,24 @@ export async function getStepCostEnvelope(request: AgentRunRequest, step: AgentS
 
   const usdPerEur = configuredUsdPerEur();
   const maxOutputTokens = Math.min(route.maxOutputTokens, Math.max(1_000, Math.floor(step.tokenBudget * 0.35)));
-  const maxInputTokens = Math.max(0, step.tokenBudget - maxOutputTokens);
-  const maxInputRate = Math.max(...routeIds.map((id) => prices[id].inputUsdPerToken));
-  const maxOutputRate = Math.max(...routeIds.map((id) => prices[id].outputUsdPerToken));
-  const maxCostUsd = maxInputTokens * maxInputRate + maxOutputTokens * maxOutputRate;
+  const maxInputTokens = step.tokenBudget;
+  const maxInputUsdPerToken = Math.max(...routeIds.map((id) => prices[id].inputUsdPerToken));
+  const maxOutputUsdPerToken = Math.max(...routeIds.map((id) => prices[id].outputUsdPerToken));
+
+  // Maximize the linear token-cost function over the allowed output interval [0, maxOutputTokens].
+  // This remains conservative even when the actual prompt is much larger than the nominal 65/35 split.
+  const allInputCostUsd = step.tokenBudget * maxInputUsdPerToken;
+  const maxOutputMixCostUsd =
+    (step.tokenBudget - maxOutputTokens) * maxInputUsdPerToken +
+    maxOutputTokens * maxOutputUsdPerToken;
+  const maxCostUsd = Math.max(allInputCostUsd, maxOutputMixCostUsd);
 
   return {
     route,
     maxOutputTokens,
     maxInputTokens,
+    maxInputUsdPerToken,
+    maxOutputUsdPerToken,
     maxCostEur: maxCostUsd / usdPerEur,
     usdPerEur,
     prices,
@@ -97,7 +105,8 @@ export function accountModelCostEur(args: {
   envelope: StepCostEnvelope;
 }): number {
   const price = args.envelope.prices[args.model];
-  if (!price) throw new Error(`Missing price for executed model: ${args.model}`);
-  const usd = args.inputTokens * price.inputUsdPerToken + args.outputTokens * price.outputUsdPerToken;
+  const inputRate = price?.inputUsdPerToken ?? args.envelope.maxInputUsdPerToken;
+  const outputRate = price?.outputUsdPerToken ?? args.envelope.maxOutputUsdPerToken;
+  const usd = args.inputTokens * inputRate + args.outputTokens * outputRate;
   return usd / args.envelope.usdPerEur;
 }
