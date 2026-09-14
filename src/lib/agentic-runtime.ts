@@ -1,8 +1,9 @@
-import type {
-  AgentRunPlan,
-  AgentRunRequest,
-  AgentStep,
-  ExecutionEvent
+import {
+  agentRegistry,
+  type AgentRunPlan,
+  type AgentRunRequest,
+  type AgentStep,
+  type ExecutionEvent
 } from "./agentic-engine";
 import { accountModelCostEur, getStepCostEnvelope, type StepCostEnvelope } from "./model-cost";
 
@@ -37,26 +38,12 @@ function gatewayToken(): string | null {
   return process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN || null;
 }
 
-function agentMission(step: AgentStep): string {
-  const missions: Record<string, string> = {
-    orchestrator: "Classify objectives, minimize the active swarm and coordinate handoffs.",
-    researcher: "Acquire current evidence and compress it into source-backed decision material.",
-    architect: "Translate workloads into robust technical systems and capability contracts.",
-    buyer: "Turn approved requirements into comparable offers, RFQs and purchase-ready decisions.",
-    builder: "Implement software and infrastructure changes inside an isolated, reviewable scope.",
-    creator: "Produce launch, media, game and educational assets from governed creative briefs.",
-    sentinel: "Challenge correctness, security, evidence, economics and authority before acceptance.",
-    synthesizer: "Resolve tensions between specialist outputs and produce one acceptance-ready decision object."
-  };
-  const mission = missions[step.agentId];
-  if (!mission) throw new Error(`Unknown agent: ${step.agentId}`);
-  return mission;
-}
-
 function composeSystemPrompt(step: AgentStep): string {
+  const agent = agentRegistry[step.agentId];
+  if (!agent) throw new Error(`Unknown agent: ${step.agentId}`);
   return [
-    `You are Starlight ${step.agentId}.`,
-    agentMission(step),
+    `You are Starlight ${agent.name}.`,
+    agent.mission,
     `Your authority for this step is exactly: ${step.authority}.`,
     "Do not claim external actions occurred unless a tool receipt proves they occurred.",
     "Do not invent evidence, prices, suppliers, benchmarks or implementation state.",
@@ -95,13 +82,20 @@ async function callGateway(
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: envelope.route.primary,
-      models: envelope.route.fallbacks,
       messages: [
         { role: "system", content: composeSystemPrompt(step) },
         { role: "user", content: composeUserPrompt(request, step, dependencies) }
       ],
       max_tokens: envelope.maxOutputTokens,
-      stream: false
+      stream: false,
+      providerOptions: {
+        gateway: {
+          models: envelope.route.fallbacks,
+          zeroDataRetention: envelope.route.zeroDataRetention,
+          user: request.tenantId,
+          tags: ["starlight-agent", request.workload, request.risk, step.agentId]
+        }
+      }
     }),
     signal: AbortSignal.timeout(120_000)
   });
@@ -246,7 +240,8 @@ export async function executeAgentRun(
             inputTokens: stepResult.inputTokens,
             outputTokens: stepResult.outputTokens,
             totalTokens: stepResult.totalTokens,
-            costBasis: stepResult.costBasis
+            costBasis: stepResult.costBasis,
+            zeroDataRetention: envelopes[index].route.zeroDataRetention
           }, stepResult.costEur));
           return stepResult;
         })
