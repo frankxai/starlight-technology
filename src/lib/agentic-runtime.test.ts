@@ -29,7 +29,9 @@ function output(stepId: string, agentId: string): StepExecutionResult {
     text: `completed ${stepId}`,
     inputTokens: 100,
     outputTokens: 50,
-    totalTokens: 150
+    totalTokens: 150,
+    costEur: 0.01,
+    costBasis: "uncached-upper-bound"
   };
 }
 
@@ -47,6 +49,7 @@ describe("agent runtime resumption", () => {
     expect(result.pendingApprovalStepIds).toEqual(["specialist"]);
     expect(result.events.some((event) => event.type === "model-call")).toBe(false);
     expect(result.events[0]?.metadata).toEqual({ resumed: true });
+    expect(result.totalCostEur).toBe(0.01);
   });
 
   it("returns completed when all planned outputs are already durable", async () => {
@@ -66,6 +69,7 @@ describe("agent runtime resumption", () => {
     expect(result.status).toBe("completed");
     expect(result.outputs).toHaveLength(plan.steps.length);
     expect(result.events.some((event) => event.type === "model-call")).toBe(false);
+    expect(result.totalCostEur).toBeCloseTo(plan.steps.length * 0.01);
   });
 
   it("rejects malformed resume state instead of trusting it", async () => {
