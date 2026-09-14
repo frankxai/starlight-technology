@@ -42,6 +42,7 @@ create table if not exists public.agent_control_runs (
   tokens_used bigint not null default 0 check (tokens_used >= 0),
   model_cost_eur numeric(12,4) not null default 0 check (model_cost_eur >= 0),
   external_spend_eur numeric(14,2) not null default 0 check (external_spend_eur >= 0),
+  request jsonb not null check (jsonb_typeof(request) = 'object'),
   plan jsonb not null check (jsonb_typeof(plan) = 'object'),
   result jsonb,
   failure jsonb,
@@ -133,7 +134,7 @@ drop policy if exists agent_memories_service_role_only on public.agent_memories;
 create policy agent_memories_service_role_only on public.agent_memories for all to service_role using (true) with check (true);
 
 comment on table public.agent_mandates is 'Server-mediated authority, tool and spend envelopes for Starlight agents.';
-comment on table public.agent_control_runs is 'Durable tenant-scoped agent run state and economic budget ledger.';
+comment on table public.agent_control_runs is 'Durable tenant-scoped agent run state, immutable request contract and economic budget ledger.';
 comment on table public.agent_run_events is 'Append-oriented execution receipts for governed agent runs.';
 comment on table public.agent_approvals is 'Human approval decisions for consequential agent steps.';
 comment on table public.agent_memories is 'Tenant-scoped working, episodic, semantic and policy memory records; vectors are secondary indexes only.';
