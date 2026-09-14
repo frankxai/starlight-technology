@@ -180,3 +180,47 @@ export async function approvalGranted(args: {
   const rows = (await response.json()) as Array<{ id: string }>;
   return rows.length > 0;
 }
+
+export async function runBelongsToPrincipal(args: {
+  runId: string;
+  tenantId: string;
+  principalId: string;
+}): Promise<boolean> {
+  const params = new URLSearchParams({
+    select: "run_id",
+    run_id: `eq.${args.runId}`,
+    tenant_id: `eq.${args.tenantId}`,
+    principal_id: `eq.${args.principalId}`,
+    limit: "1"
+  });
+  const response = await rest(`agent_control_runs?${params.toString()}`, { method: "GET" });
+  const rows = (await response.json()) as Array<{ run_id: string }>;
+  return rows.length > 0;
+}
+
+export async function recordApproval(args: {
+  runId: string;
+  stepId: string;
+  authority: "external-write" | "purchase" | "settlement" | "deploy";
+  principalId: string;
+  status: "approved" | "rejected" | "revoked";
+  reason?: string;
+  expiresAt?: string;
+  context?: Record<string, unknown>;
+}): Promise<void> {
+  await rest("agent_approvals?on_conflict=run_id,step_id,authority,principal_id", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify({
+      run_id: args.runId,
+      step_id: args.stepId,
+      authority: args.authority,
+      principal_id: args.principalId,
+      status: args.status,
+      reason: args.reason ?? null,
+      approval_context: args.context ?? {},
+      expires_at: args.expiresAt ?? null,
+      decided_at: new Date().toISOString()
+    })
+  });
+}
