@@ -1,11 +1,26 @@
 import type { AgentMandate, AgentRunPlan, AgentRunRequest, ExecutionEvent } from "./agentic-engine";
-import type { AgentRunResult } from "./agentic-runtime";
+import type { AgentRunResult, StepExecutionResult } from "./agentic-runtime";
 
 export type StoredMandate = AgentMandate & {
   id: string;
   principalId?: string | null;
   status: "draft" | "active" | "suspended" | "revoked" | "expired";
   maxTokens: number;
+};
+
+export type StoredRunState = {
+  runId: string;
+  tenantId: string;
+  principalId: string | null;
+  mandateId: string | null;
+  objective: string;
+  workload: AgentRunRequest["workload"];
+  risk: AgentRunRequest["risk"];
+  tokenBudget: number;
+  costBudgetEur: number;
+  plan: AgentRunPlan;
+  status: "planned" | "running" | "approval_required" | "completed" | "failed" | "aborted";
+  outputs: StepExecutionResult[];
 };
 
 type StoreConfig = { url: string; serviceRoleKey: string };
@@ -92,6 +107,51 @@ export async function loadActiveMandate(args: {
   };
 }
 
+export async function loadStoredRun(args: {
+  runId: string;
+  tenantId: string;
+  principalId: string;
+}): Promise<StoredRunState | null> {
+  const params = new URLSearchParams({
+    select: "run_id,tenant_id,principal_id,mandate_id,objective,workload,risk,status,token_budget,cost_budget_eur,plan,result",
+    run_id: `eq.${args.runId}`,
+    tenant_id: `eq.${args.tenantId}`,
+    principal_id: `eq.${args.principalId}`,
+    limit: "1"
+  });
+  const response = await rest(`agent_control_runs?${params.toString()}`, { method: "GET" });
+  const rows = (await response.json()) as Array<{
+    run_id: string;
+    tenant_id: string;
+    principal_id: string | null;
+    mandate_id: string | null;
+    objective: string;
+    workload: AgentRunRequest["workload"];
+    risk: AgentRunRequest["risk"];
+    status: StoredRunState["status"];
+    token_budget: string | number;
+    cost_budget_eur: string | number;
+    plan: AgentRunPlan;
+    result: AgentRunResult | null;
+  }>;
+  const row = rows[0];
+  if (!row) return null;
+  return {
+    runId: row.run_id,
+    tenantId: row.tenant_id,
+    principalId: row.principal_id,
+    mandateId: row.mandate_id,
+    objective: row.objective,
+    workload: row.workload,
+    risk: row.risk,
+    status: row.status,
+    tokenBudget: Number(row.token_budget),
+    costBudgetEur: Number(row.cost_budget_eur),
+    plan: row.plan,
+    outputs: Array.isArray(row.result?.outputs) ? row.result.outputs : []
+  };
+}
+
 export async function persistPlannedRun(args: {
   request: AgentRunRequest;
   plan: AgentRunPlan;
@@ -126,20 +186,18 @@ export async function appendExecutionEvents(events: ExecutionEvent[]): Promise<v
   await rest("agent_run_events", {
     method: "POST",
     headers: { Prefer: "return=minimal" },
-    body: JSON.stringify(
-      events.map((event) => ({
-        run_id: event.runId,
-        step_id: event.stepId ?? null,
-        event_type: event.type,
-        actor: event.actor,
-        model: event.model ?? null,
-        tool: event.tool ?? null,
-        input_tokens: event.inputTokens ?? null,
-        output_tokens: event.outputTokens ?? null,
-        cost_eur: event.costEur ?? null,
-        metadata: event.metadata ?? {}
-      }))
-    )
+    body: JSON.stringify(events.map((event) => ({
+      run_id: event.runId,
+      step_id: event.stepId ?? null,
+      event_type: event.type,
+      actor: event.actor,
+      model: event.model ?? null,
+      tool: event.tool ?? null,
+      input_tokens: event.inputTokens ?? null,
+      output_tokens: event.outputTokens ?? null,
+      cost_eur: event.costEur ?? null,
+      metadata: event.metadata ?? {}
+    })))
   });
 }
 
@@ -168,7 +226,7 @@ export async function approvalGranted(args: {
   principalId: string;
 }): Promise<boolean> {
   const params = new URLSearchParams({
-    select: "id",
+    select: "id,expires_at",
     run_id: `eq.${args.runId}`,
     step_id: `eq.${args.stepId}`,
     authority: `eq.${args.authority}`,
@@ -177,8 +235,10 @@ export async function approvalGranted(args: {
     limit: "1"
   });
   const response = await rest(`agent_approvals?${params.toString()}`, { method: "GET" });
-  const rows = (await response.json()) as Array<{ id: string }>;
-  return rows.length > 0;
+  const rows = (await response.json()) as Array<{ id: string; expires_at?: string | null }>;
+  const row = rows[0];
+  if (!row) return false;
+  return !row.expires_at || Date.parse(row.expires_at) > Date.now();
 }
 
 export async function runBelongsToPrincipal(args: {
@@ -186,16 +246,7 @@ export async function runBelongsToPrincipal(args: {
   tenantId: string;
   principalId: string;
 }): Promise<boolean> {
-  const params = new URLSearchParams({
-    select: "run_id",
-    run_id: `eq.${args.runId}`,
-    tenant_id: `eq.${args.tenantId}`,
-    principal_id: `eq.${args.principalId}`,
-    limit: "1"
-  });
-  const response = await rest(`agent_control_runs?${params.toString()}`, { method: "GET" });
-  const rows = (await response.json()) as Array<{ run_id: string }>;
-  return rows.length > 0;
+  return Boolean(await loadStoredRun(args));
 }
 
 export async function recordApproval(args: {
