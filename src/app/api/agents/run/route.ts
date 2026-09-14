@@ -6,6 +6,7 @@ import {
   approvalGranted,
   controlStoreConfigured,
   loadActiveMandate,
+  loadStoredRun,
   persistPlannedRun,
   persistRunResult
 } from "@/lib/control-store";
@@ -32,6 +33,17 @@ function authorized(request: Request): boolean {
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((entry) => typeof entry === "string");
+}
+
+function canonical(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
+  if (value && typeof value === "object") {
+    const entries = Object.entries(value as Record<string, unknown>)
+      .filter(([, entry]) => entry !== undefined)
+      .sort(([a], [b]) => a.localeCompare(b));
+    return `{${entries.map(([key, entry]) => `${JSON.stringify(key)}:${canonical(entry)}`).join(",")}}`;
+  }
+  return JSON.stringify(value);
 }
 
 function parseRunRequest(value: unknown): { run: AgentRunRequest; mandateId: string; principalId: string } | null {
@@ -96,23 +108,37 @@ export async function POST(request: Request) {
       return Response.json({ error: "mandate_rejected", failures: mandateFailures }, { status: 403, headers: { "Cache-Control": "no-store" } });
     }
 
-    const plan = createAgentRunPlan(parsed.run);
-    await persistPlannedRun({
-      request: parsed.run,
-      plan,
-      mandateId: parsed.mandateId,
-      principalId: parsed.principalId,
-      externalSpendBudgetEur: mandate.maxExternalSpendEur
-    });
+    const stored = await loadStoredRun({ runId: parsed.run.id, tenantId: parsed.run.tenantId, principalId: parsed.principalId });
+    if (stored && stored.mandateId !== parsed.mandateId) {
+      return Response.json({ error: "run_mandate_mismatch" }, { status: 409, headers: { "Cache-Control": "no-store" } });
+    }
+    if (stored && canonical(stored.request) !== canonical(parsed.run)) {
+      return Response.json({ error: "run_request_immutable", message: "Use a new run id for a changed request." }, { status: 409, headers: { "Cache-Control": "no-store" } });
+    }
+    if (stored && ["failed", "aborted"].includes(stored.status)) {
+      return Response.json({ error: "run_is_terminal", status: stored.status }, { status: 409, headers: { "Cache-Control": "no-store" } });
+    }
+
+    const effectiveRequest = stored?.request ?? parsed.run;
+    const plan = stored?.plan ?? createAgentRunPlan(effectiveRequest);
+    if (!stored) {
+      await persistPlannedRun({
+        request: effectiveRequest,
+        plan,
+        mandateId: parsed.mandateId,
+        principalId: parsed.principalId,
+        externalSpendBudgetEur: mandate.maxExternalSpendEur
+      });
+    }
 
     const approvedStepIds: string[] = [];
     for (const step of plan.steps.filter((candidate) => candidate.approvalRequired)) {
-      if (await approvalGranted({ runId: parsed.run.id, stepId: step.id, authority: step.authority, principalId: parsed.principalId })) {
+      if (await approvalGranted({ runId: effectiveRequest.id, stepId: step.id, authority: step.authority, principalId: parsed.principalId })) {
         approvedStepIds.push(step.id);
       }
     }
 
-    const result = await executeAgentRun(parsed.run, plan, approvedStepIds);
+    const result = await executeAgentRun(effectiveRequest, plan, approvedStepIds, stored?.outputs ?? []);
     await appendExecutionEvents(result.events);
     await persistRunResult(result);
 
