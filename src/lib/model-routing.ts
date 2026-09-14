@@ -16,11 +16,13 @@ export type ModelRoutingContext = {
   maxOutputTokens?: number;
 };
 
+// Provider/model ids are policy, not domain logic. Keep this file easy to revise as
+// AI Gateway availability, pricing and benchmark evidence change.
 const routes: Record<ModelClass, Omit<ModelRoute, "zeroDataRetention">> = {
   fast_text: {
     modelClass: "fast_text",
-    primary: "openai/gpt-5.6-luna",
-    fallbacks: ["anthropic/claude-sonnet-5", "google/gemini-3.1-flash"],
+    primary: "google/gemini-3.6-flash",
+    fallbacks: ["anthropic/claude-sonnet-5", "openai/gpt-5.6-sol"],
     maxOutputTokens: 8_000,
     reasoning: "low"
   },
