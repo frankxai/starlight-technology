@@ -1,6 +1,14 @@
 import { timingSafeEqual } from "node:crypto";
-import { authorityLevels, createAgentRunPlan, orchestrationPatterns, type AgentRunRequest } from "@/lib/agentic-engine";
+import { authorityLevels, createAgentRunPlan, orchestrationPatterns, validateMandate, type AgentRunRequest } from "@/lib/agentic-engine";
 import { executeAgentRun } from "@/lib/agentic-runtime";
+import {
+  appendExecutionEvents,
+  approvalGranted,
+  controlStoreConfigured,
+  loadActiveMandate,
+  persistPlannedRun,
+  persistRunResult
+} from "@/lib/control-store";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
@@ -26,12 +34,14 @@ function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((entry) => typeof entry === "string");
 }
 
-function parseRunRequest(value: unknown): { run: AgentRunRequest; approvedStepIds: string[] } | null {
+function parseRunRequest(value: unknown): { run: AgentRunRequest; mandateId: string; principalId: string } | null {
   if (!value || typeof value !== "object") return null;
   const body = value as Record<string, unknown>;
   const candidate = body.run;
   if (!candidate || typeof candidate !== "object") return null;
   const run = candidate as Record<string, unknown>;
+  if (typeof body.mandateId !== "string" || !body.mandateId.trim()) return null;
+  if (typeof body.principalId !== "string" || !body.principalId.trim()) return null;
   if (typeof run.id !== "string" || !run.id.trim()) return null;
   if (typeof run.tenantId !== "string" || !run.tenantId.trim()) return null;
   if (typeof run.objective !== "string" || !run.objective.trim()) return null;
@@ -45,9 +55,7 @@ function parseRunRequest(value: unknown): { run: AgentRunRequest; approvedStepId
   if (run.preferredPattern !== undefined && !orchestrationPatterns.includes(run.preferredPattern as (typeof orchestrationPatterns)[number])) return null;
   if (run.requiredCapabilities !== undefined && !isStringArray(run.requiredCapabilities)) return null;
   if (run.contextRefs !== undefined && !isStringArray(run.contextRefs)) return null;
-  const approvedStepIds = body.approvedStepIds === undefined ? [] : body.approvedStepIds;
-  if (!isStringArray(approvedStepIds)) return null;
-  return { run: run as unknown as AgentRunRequest, approvedStepIds };
+  return { run: run as unknown as AgentRunRequest, mandateId: body.mandateId, principalId: body.principalId };
 }
 
 export async function POST(request: Request) {
@@ -56,6 +64,9 @@ export async function POST(request: Request) {
   }
   if (!authorized(request)) {
     return Response.json({ error: "unauthorized" }, { status: 401, headers: { "Cache-Control": "no-store" } });
+  }
+  if (!controlStoreConfigured()) {
+    return Response.json({ error: "control_store_not_configured" }, { status: 503, headers: { "Cache-Control": "no-store" } });
   }
 
   const contentLength = Number(request.headers.get("content-length") ?? 0);
@@ -72,9 +83,41 @@ export async function POST(request: Request) {
   if (!parsed) return Response.json({ error: "invalid_agent_run_request" }, { status: 400 });
 
   try {
+    const mandate = await loadActiveMandate({
+      mandateId: parsed.mandateId,
+      tenantId: parsed.run.tenantId,
+      principalId: parsed.principalId
+    });
+    if (!mandate) return Response.json({ error: "active_mandate_not_found" }, { status: 403 });
+
+    const mandateFailures = validateMandate(parsed.run, mandate);
+    if (parsed.run.tokenBudget > mandate.maxTokens) mandateFailures.push("token budget exceeds mandate");
+    if (mandateFailures.length > 0) {
+      return Response.json({ error: "mandate_rejected", failures: mandateFailures }, { status: 403, headers: { "Cache-Control": "no-store" } });
+    }
+
     const plan = createAgentRunPlan(parsed.run);
-    const result = await executeAgentRun(parsed.run, plan, parsed.approvedStepIds);
-    return Response.json({ plan, result }, { headers: { "Cache-Control": "no-store" } });
+    await persistPlannedRun({
+      request: parsed.run,
+      plan,
+      mandateId: parsed.mandateId,
+      principalId: parsed.principalId,
+      externalSpendBudgetEur: mandate.maxExternalSpendEur
+    });
+
+    const approvedStepIds: string[] = [];
+    for (const step of plan.steps.filter((candidate) => candidate.approvalRequired)) {
+      if (await approvalGranted({ runId: parsed.run.id, stepId: step.id, authority: step.authority, principalId: parsed.principalId })) {
+        approvedStepIds.push(step.id);
+      }
+    }
+
+    const result = await executeAgentRun(parsed.run, plan, approvedStepIds);
+    await appendExecutionEvents(result.events);
+    await persistRunResult(result);
+
+    const status = result.status === "approval-required" ? 202 : result.status === "failed" ? 422 : 200;
+    return Response.json({ plan, result }, { status, headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     return Response.json(
       { error: "agent_run_failed", message: error instanceof Error ? error.message : "Unknown runtime failure" },
