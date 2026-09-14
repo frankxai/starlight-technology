@@ -13,6 +13,7 @@ export type StoredRunState = {
   tenantId: string;
   principalId: string | null;
   mandateId: string | null;
+  request: AgentRunRequest;
   objective: string;
   workload: AgentRunRequest["workload"];
   risk: AgentRunRequest["risk"];
@@ -113,7 +114,7 @@ export async function loadStoredRun(args: {
   principalId: string;
 }): Promise<StoredRunState | null> {
   const params = new URLSearchParams({
-    select: "run_id,tenant_id,principal_id,mandate_id,objective,workload,risk,status,token_budget,cost_budget_eur,plan,result",
+    select: "run_id,tenant_id,principal_id,mandate_id,request,objective,workload,risk,status,token_budget,cost_budget_eur,plan,result",
     run_id: `eq.${args.runId}`,
     tenant_id: `eq.${args.tenantId}`,
     principal_id: `eq.${args.principalId}`,
@@ -125,6 +126,7 @@ export async function loadStoredRun(args: {
     tenant_id: string;
     principal_id: string | null;
     mandate_id: string | null;
+    request: AgentRunRequest;
     objective: string;
     workload: AgentRunRequest["workload"];
     risk: AgentRunRequest["risk"];
@@ -141,6 +143,7 @@ export async function loadStoredRun(args: {
     tenantId: row.tenant_id,
     principalId: row.principal_id,
     mandateId: row.mandate_id,
+    request: row.request,
     objective: row.objective,
     workload: row.workload,
     risk: row.risk,
@@ -176,6 +179,7 @@ export async function persistPlannedRun(args: {
       token_budget: plan.totalTokenBudget,
       cost_budget_eur: plan.estimatedMaxCostEur,
       external_spend_budget_eur: args.externalSpendBudgetEur ?? 0,
+      request,
       plan
     })
   });
