@@ -139,9 +139,9 @@ export const guides: Guide[] = [
     evidenceStatus: "inferred",
     lastVerified: verified,
     sections: [
-      { heading: "Record the workload", body: ["Write down the model or pipeline, precision, context or resolution, batch/concurrency and other GPU applications. A recommendation without those fields is not decision-grade."] },
+      { heading: "Record the workload", visualId: "vram-workload", body: ["Write down the model or pipeline, precision, context or resolution, batch/concurrency and other GPU applications. A recommendation without those fields is not decision-grade."] },
       { heading: "Separate fits from runs well", body: ["A workload loading once is not a reliable daily workflow. Reserve headroom for the interface, additional models, larger inputs and implementation overhead."] },
-      { heading: "Buy for repeated constraints", body: ["If larger memory changes a weekly workflow, it can justify more budget. If it serves a quarterly experiment, remote capacity or a later upgrade may be more efficient."], bullets: ["16 GB and 32 GB are materially different envelopes.", "GPU memory is not system memory or storage.", "Software support can matter as much as capacity."] }
+      { heading: "Buy for repeated constraints", recommendationId: "gpu-comparison", body: ["If larger memory changes a weekly workflow, it can justify more budget. If it serves a quarterly experiment, remote capacity or a later upgrade may be more efficient."], bullets: ["16 GB and 32 GB are materially different envelopes.", "GPU memory is not system memory or storage.", "Software support can matter as much as capacity."] }
     ],
     sourceIds: ["nvidia-rtx-5080", "nvidia-rtx-5090"]
   },
@@ -152,7 +152,7 @@ export const guides: Guide[] = [
     evidenceStatus: "inferred",
     lastVerified: verified,
     sections: [
-      { heading: "Use one boundary", body: ["Define what must be present for the promised workflow to operate. Compare every candidate inside that same boundary, including equipment you already own when it constrains compatibility."] },
+      { visualId: "complete-system", recommendationId: "studio-build", heading: "Use one boundary", body: ["Define what must be present for the promised workflow to operate. Compare every candidate inside that same boundary, including equipment you already own when it constrains compatibility."] },
       { heading: "Separate reusable from locked", body: ["Displays, microphones and storage may outlive the computer. Proprietary docks, soldered memory and model-specific accessories may not. Label transferability."] },
       { heading: "Add failure and recovery", body: ["Backup, warranty, replacement time and data recovery belong in system economics. The cheapest working configuration can be the most expensive failure."], bullets: ["Acquisition", "Operation", "Continuity", "Exit and reuse"] }
     ],
