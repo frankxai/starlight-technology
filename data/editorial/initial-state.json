@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "months": {},
+  "jobs": [],
+  "note": "Bootstrap once. Every subsequent run must read nextState from the newest saved plan bundle. Never reset this file to renew a budget."
+}

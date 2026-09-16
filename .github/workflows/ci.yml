@@ -35,5 +35,7 @@ jobs:
         run: pnpm typecheck
       - name: Test
         run: pnpm test
+      - name: Verify hardware editorial planner
+        run: node --test scripts/editorial/plan.test.mjs
       - name: Build
         run: pnpm build

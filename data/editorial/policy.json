@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "owner": "starlight.technology",
+  "consumerBrands": [
+    "starlight.technology",
+    "frankx.ai"
+  ],
+  "mode": "research-and-draft-only",
+  "maxSignals": 200,
+  "maxNewBriefs": 3,
+  "maxOutstandingBriefs": 3,
+  "maxRunTokens": 24000,
+  "maxMonthTokens": 240000,
+  "briefInputTokens": 6000,
+  "briefOutputTokens": 2000,
+  "sourceFreshnessDays": 30,
+  "maxResearchRounds": 2,
+  "maxSourceOpensPerRun": 16,
+  "paidApiBudgetUsd": 0,
+  "generatedProductPhotosAllowed": false,
+  "categories": [
+    "phones",
+    "laptops",
+    "tablets",
+    "displays",
+    "audio",
+    "cameras",
+    "compute",
+    "accessories"
+  ],
+  "sources": [
+    {
+      "id": "apple",
+      "name": "Apple Newsroom",
+      "url": "https://www.apple.com/newsroom/",
+      "allowedHosts": [
+        "www.apple.com"
+      ],
+      "categories": [
+        "phones",
+        "laptops",
+        "tablets",
+        "audio"
+      ],
+      "status": "verified-directory",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "notes": "Directory opens; latest entries were not exposed in the text response. Use product pages for claims.",
+      "imageRights": "unreviewed-per-asset",
+      "automatedFetchEnabled": false
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung Global Newsroom",
+      "url": "https://news.samsung.com/global/",
+      "allowedHosts": [
+        "news.samsung.com",
+        "www.samsung.com"
+      ],
+      "categories": [
+        "phones",
+        "laptops",
+        "tablets",
+        "displays",
+        "audio"
+      ],
+      "status": "verified-directory",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "notes": "Media library discovered at https://news.samsung.com/medialibrary/global ; exact asset permission remains a separate check.",
+      "imageRights": "unreviewed-per-asset",
+      "automatedFetchEnabled": false
+    },
+    {
+      "id": "google",
+      "name": "Google Pixel",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/",
+      "allowedHosts": [
+        "blog.google",
+        "store.google.com",
+        "support.google.com"
+      ],
+      "categories": [
+        "phones",
+        "tablets",
+        "audio"
+      ],
+      "status": "verified-directory",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "notes": "Primary manufacturer announcements; support and specifications establish feature limits.",
+      "imageRights": "unreviewed-per-asset",
+      "automatedFetchEnabled": false
+    },
+    {
+      "id": "lenovo",
+      "name": "Lenovo StoryHub",
+      "url": "https://news.lenovo.com/",
+      "allowedHosts": [
+        "news.lenovo.com",
+        "www.lenovo.com",
+        "psref.lenovo.com"
+      ],
+      "categories": [
+        "laptops",
+        "tablets",
+        "displays",
+        "compute"
+      ],
+      "status": "verified-directory",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "notes": "Root directory opens. The /pressroom/ path was unavailable; do not silently retry it as a confirmed feed.",
+      "imageRights": "unreviewed-per-asset",
+      "automatedFetchEnabled": false
+    },
+    {
+      "id": "honor",
+      "name": "HONOR Global",
+      "url": "https://www.honor.com/global/news/",
+      "allowedHosts": [
+        "www.honor.com"
+      ],
+      "categories": [
+        "phones",
+        "laptops",
+        "tablets",
+        "audio"
+      ],
+      "status": "verified-directory",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "notes": "Product pages and regional variants require individual verification.",
+      "imageRights": "unreviewed-per-asset",
+      "automatedFetchEnabled": false
+    }
+  ]
+}

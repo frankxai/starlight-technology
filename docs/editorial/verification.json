@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "issue": "https://github.com/frankxai/starlight-technology/issues/19",
+  "baseCommit": "6bd41ea998a95cece354514743061a68ed479b39",
+  "branch": "agent/codex/hardware-editorial-ops-20260916",
+  "implementationState": "verified-locally-awaiting-independent-review",
+  "automation": {
+    "title": "Hardware Editorial Research",
+    "enabled": true,
+    "schedule": "Monday and Thursday mornings",
+    "timezone": "Europe/Amsterdam",
+    "receiptObservedAt": "2026-09-16T22:15:50Z",
+    "firstExecutionVerified": false
+  },
+  "verification": {
+    "plannerTests": {
+      "passed": 11
+    },
+    "existingTests": {
+      "passed": 13,
+      "files": 3
+    },
+    "lint": "passed",
+    "typecheck": "passed",
+    "productionBuild": {
+      "status": "passed",
+      "staticPages": 38
+    },
+    "diffCheck": "passed",
+    "independentReview": "pending",
+    "visualReview": "not-applicable-no-UI-changes"
+  },
+  "attempts": [
+    "pnpm command wrapper attempted dependency installation and refused noninteractive module-directory replacement; package scripts then executed through npm without changing the lockfile.",
+    "Initial build rejected a node_modules symlink outside the worktree. Copied the existing locked dependency tree locally and the normal production build passed."
+  ],
+  "cost": {
+    "plannerModelCalls": 0,
+    "plannerPaidApiCalls": 0,
+    "briefTokensReserved": 24000,
+    "commissioningMonthLimit": 240000,
+    "sessionAndRecurringModelCost": "not supplied by provider",
+    "newPaidServices": 0
+  },
+  "scope": {
+    "sites": [
+      "frankx.ai",
+      "starlight.technology"
+    ],
+    "publications": 0,
+    "imagesCopied": 0,
+    "affiliateAccountsActivated": 0,
+    "existingRssWorkflowChanged": false,
+    "paidFeedActivated": false
+  },
+  "payloadSha256": {
+    ".github/workflows/ci.yml": "24c69022019bfab52c5889a8df8dae35df2e90c5cafccc04836204f70a250ea2",
+    "scripts/editorial/plan.mjs": "eecb7b69c948a86c418a7232b9ad7937818a7619762089249c85bf196edd2d83",
+    "scripts/editorial/plan.test.mjs": "fbaa600922fb09d791204b930d62919e2ab3e80b37242c654ba69c297ec35515",
+    "data/editorial/policy.json": "e7cc06eaafe6a20bfe2895bfbfa49eeb4fbc34e39236d530214b75093d5d6308",
+    "data/editorial/initial-state.json": "aeac233d3b62915a8af24a7c919650cad4702b53e9c3d421e06c2c648bbe1bbd",
+    "data/editorial/pilot-intake.json": "718bab4ecfbea532f49a1f626cc5ce48392f93a0a5125325bc623909857bc9cb",
+    "data/editorial/runs/2026-09-16-pilot.json": "41b4fe69f2f81e9120dc33563dcc84a9ec6b84b5c55410c01429accb4bcf249f",
+    "docs/editorial/HARDWARE-PUBLISHING.md": "d3143dc91bcddefe32cf1e325906aa1f1a6fdf419b15aa7c56e1311415f21757",
+    "docs/editorial/product-packet.template.json": "60ab31d9eb7873d8906accf19e1f396cecd275ace403d4e19ff951ad1ddc38d8"
+  }
+}
