@@ -1,0 +1,10 @@
+.figure { margin: 2.5rem 0; max-width: 760px; }
+.imageLink { display: block; border: 1px solid var(--line, #303635); border-radius: 1rem; overflow: hidden; }
+.image { display: block; width: 100%; height: auto; }
+.caption { display: grid; gap: .5rem; margin-top: 1rem; color: var(--muted, #b6b9b4); font-size: .875rem; line-height: 1.6; }
+.caption a { text-decoration: underline; text-underline-offset: 4px; }
+.recommendation { border-block: 1px solid var(--line, #303635); padding: 1.5rem 0; margin: 2rem 0; }
+.recommendation p { margin: .65rem 0; }
+.link { display: inline-block; padding: .8rem 1.2rem; margin-top: .5rem; border: 1px solid var(--line, #303635); border-radius: 999px; text-decoration: none; }
+.imageLink:focus-visible, .caption a:focus-visible, .link:focus-visible { outline: 2px solid var(--accent, #d0ec8c); outline-offset: 5px; }
+@media (max-width: 600px) { .figure { margin: 1.75rem 0; } }

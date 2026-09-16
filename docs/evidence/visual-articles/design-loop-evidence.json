@@ -1,0 +1,39 @@
+{
+  "feature": "Inline article figures and contextual recommendations",
+  "issue": "https://github.com/frankxai/starlight-technology/issues/17",
+  "baseRevision": "6bd41ea998a95cece354514743061a68ed479b39",
+  "status": "DRAFT_NOT_LIVE",
+  "scope": [
+    "/guides/how-much-vram-local-ai",
+    "/guides/complete-system-cost"
+  ],
+  "checks": {
+    "lint": "passed",
+    "typecheck": "passed",
+    "tests": "15 passed across 4 files",
+    "build": "passed; 38 routes generated",
+    "figureInspection": "Original figures rendered and inspected at 390px width",
+    "browserLayout": "Pending deployment preview; local browser navigation returned ERR_BLOCKED_BY_CLIENT",
+    "independentReview": "pending"
+  },
+  "designScore": null,
+  "productionEligible": false,
+  "assetRights": "Four categories documented; both supplied assets are original diagrams. No third-party screenshots copied.",
+  "commercialState": "Internal editorial recommendations. No active hardware partner links or live merchant prices introduced.",
+  "payloadSha256": {
+    "docs/ARTICLE-VISUALS.md": "41f26271cc1026f126188299f6f13d4fce0a11a0866f588387a430e571c29209",
+    "public/images/editorial/complete-system.svg": "09e1e9740e5e6f0ed960dd51f21ba646018f145b35a0da3793ace15afd7a9eb9",
+    "public/images/editorial/vram-workload.svg": "5953155866720cd9b2a7d02e7590a8a9fe8b9addfebeea18353cdffdaef6a482",
+    "src/components/article-figure.tsx": "3c3c4a0bb341a13d1d00e1fe8b9660219b163003b6fa58518f9d6a48b13bd7e5",
+    "src/components/article-media.module.css": "535cfcfa214fa79b1ded89fa164fd81c7731c5416da54343eb6b517e417a2c0e",
+    "src/components/article-recommendation.tsx": "951b1732195fe26684455f1f24f3c799b0c26abcd2365631041ada6db047cdda",
+    "src/components/editorial.tsx": "e563a5098e80fce6163e6a7b033c46feacbea7fb711884303f11a573a240ddaa",
+    "src/lib/content.ts": "be1cf0f1ea302f3b419a128f6c680fd50fb002cedc38b330a362b703b8858791",
+    "src/lib/editorial-recommendations.ts": "0915f6612a0b280026894db94e5aaebb39e75d0d905f26e40736b0f31321df57",
+    "src/lib/editorial-visuals.json": "891111b9cee6d33d94dfb8b9ae6b9dfa733a9e2fcdaeb349785264d2793a808d",
+    "src/lib/types.ts": "1118837675af31f153a7fec2a665340bc9e1c8c02c3b1d97a34aac53ffb07908",
+    "src/lib/editorial-media.test.ts": "4f877bc22e30d7c0958b48284a8aa45da7e636a27c682911d9ef0bd6b6cf1bc1"
+  },
+  "nextAction": "Inspect desktop/mobile deployment preview, complete independent review and required release gates before merging.",
+  "rollback": "Revert this isolated PR."
+}
