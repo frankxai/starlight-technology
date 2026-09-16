@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "inventory": [],
+  "inventoryStatus": "Pilot research only. Search existing URLs and the canonical Content OS before authoring. An empty inventory is not permission to publish a new page.",
+  "signals": [
+    {
+      "sourceId": "samsung",
+      "productId": "samsung-one-ui-9",
+      "intentId": "creator-update-decision",
+      "category": "phones",
+      "kind": "update",
+      "url": "https://news.samsung.com/global/samsung-begins-official-rollout-of-one-ui-9-bringing-the-latest-galaxy-experiences-to-more-devices",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "summary": "Samsung announces a wider One UI 9 rollout. Research which creator-facing changes are available for each device and region before recommending an upgrade.",
+      "facts": [
+        "Samsung dates this announcement September 16, 2026.",
+        "The release describes video reframing and voice-recording summary features with eligibility caveats."
+      ],
+      "readerDecision": "Should a creator update an existing phone, and which workflow changes can be demonstrated on their exact device?"
+    },
+    {
+      "sourceId": "samsung",
+      "productId": "samsung-galaxy-book6-14",
+      "intentId": "portable-creator-workstation",
+      "category": "laptops",
+      "kind": "launch",
+      "url": "https://news.samsung.com/global/samsung-expands-the-galaxy-book6-lineup-making-galaxy-book-more-accessible",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "summary": "Samsung describes an additional 14-inch Galaxy Book6 configuration. Commission a decision brief around workload, ports and regional configuration, with manufacturer performance claims clearly attributed.",
+      "facts": [
+        "Samsung dates the expansion announcement September 1, 2026.",
+        "The announcement describes a 14-inch Galaxy Book6 model."
+      ],
+      "readerDecision": "Is this configuration sufficient for a portable creator workflow, and what external equipment would still be required?"
+    },
+    {
+      "sourceId": "honor",
+      "productId": "honor-magicbook-pro-14-2026",
+      "intentId": "portable-creator-workstation",
+      "category": "laptops",
+      "kind": "comparison",
+      "url": "https://www.honor.com/global/laptops/honor-magicbook-pro-14-2026/",
+      "checkedAt": "2026-09-16T22:00:00Z",
+      "summary": "HONOR has a global product page for MagicBook Pro 14 2026. Verify local configuration and independent workload evidence before comparing it with other creator laptops.",
+      "facts": [
+        "HONOR publishes a global product page named MagicBook Pro 14 2026."
+      ],
+      "readerDecision": "Which exact configuration and region should enter our creator laptop comparison, and what evidence is missing?"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "status": "DRAFT",
+  "contentId": null,
+  "productId": null,
+  "variantId": null,
+  "region": null,
+  "canonicalOwner": "starlight.technology",
+  "readerJob": null,
+  "wrongPurchaseConditions": [],
+  "evidenceLevel": "unverified",
+  "sources": [],
+  "claims": [],
+  "comparisons": [],
+  "originalContribution": null,
+  "sourceRecordFields": [
+    "id",
+    "url",
+    "publisher",
+    "publishedAt",
+    "retrievedAt",
+    "sourceType",
+    "claimIds",
+    "freshnessTrigger"
+  ],
+  "claimRecordFields": [
+    "id",
+    "text",
+    "type",
+    "sourceIds",
+    "asOf",
+    "expiresAt",
+    "allowedWording",
+    "reviewerVerdict"
+  ],
+  "media": {
+    "tier": null,
+    "packetId": null,
+    "assets": [],
+    "requiredAssetFields": [
+      "assetId",
+      "versionId",
+      "sourceUrl",
+      "rightsOwner",
+      "rightsEvidenceUrl",
+      "allowedChannels",
+      "territories",
+      "expiresAt",
+      "credit",
+      "checksum",
+      "width",
+      "height",
+      "alt",
+      "caption",
+      "status",
+      "approvalActor"
+    ],
+    "rightsStatus": "unreviewed",
+    "productionReady": false
+  },
+  "affiliate": {
+    "fitReason": null,
+    "programId": null,
+    "issuedUrl": null,
+    "status": "unverified",
+    "region": null,
+    "checkedAt": null,
+    "disclosure": null,
+    "fallback": "ordinary official or editorial link"
+  },
+  "price": {
+    "kind": null,
+    "currency": null,
+    "amount": null,
+    "merchant": null,
+    "variant": null,
+    "region": null,
+    "includesTax": null,
+    "verifiedAt": null,
+    "expiresAt": null,
+    "termsEvidence": null
+  },
+  "frankxAdaptation": {
+    "needed": false,
+    "distinctReaderJob": null,
+    "firstPartyEvidence": null,
+    "sourceContentId": null
+  },
+  "budget": {
+    "reservedInputTokens": 6000,
+    "reservedOutputTokens": 2000,
+    "model": null,
+    "actualInputTokens": null,
+    "actualOutputTokens": null,
+    "cachedInputTokens": null,
+    "paidToolUsd": null,
+    "imageUsd": null,
+    "humanMinutes": null,
+    "reworkMinutes": null
+  },
+  "reviews": {
+    "facts": null,
+    "rights": null,
+    "readerValue": null,
+    "independentReviewer": null,
+    "mobile": null,
+    "desktop": null
+  },
+  "publication": {
+    "pr": null,
+    "preview": null,
+    "liveUrl": null,
+    "authorization": null,
+    "publishedAt": null
+  },
+  "measurement": {
+    "day7": null,
+    "day28": null,
+    "day90": null,
+    "revenue": null,
+    "outboundClicks": null,
+    "corrections": null
+  }
+}
