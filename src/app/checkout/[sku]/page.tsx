@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CheckoutPage({ params }: Props) {
   const { sku } = await params;
   const product = getProduct(sku);
-  if (!product || product.billing === "free") notFound();
+  if (!product || product.billing === "free" || product.billing === "waitlist") notFound();
   const envUrl = product.checkoutEnvKey ? process.env[product.checkoutEnvKey] : undefined;
   const ready = Boolean(envUrl?.startsWith("http"));
   return (
@@ -32,8 +32,11 @@ export default async function CheckoutPage({ params }: Props) {
           <a className="button button-primary" href={envUrl}>Continue to payment</a>
         ) : (
           <>
-            <p className="checkout-note">Polar link pending (`{product.checkoutEnvKey}`). Request purchase for 1-business-day fulfillment.</p>
-            <a className="button button-primary" href={`mailto:hello@frankx.ai?subject=${encodeURIComponent(`Purchase ${product.name}`)}`}>Request purchase · {product.priceLabel}</a>
+            <p className="checkout-note">
+              This is not on sale. There is no payment link configured, and a promise to invoice you by email is not a
+              product — so we are not offering one. The configurator is free and needs no account.
+            </p>
+            <Link className="button button-primary" href="/studio">Open the configurator</Link>
             <Link className="button button-secondary" href="/pricing">Back to pricing</Link>
           </>
         )}

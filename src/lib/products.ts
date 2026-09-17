@@ -1,5 +1,6 @@
 export type ProductKind = "saas" | "digital";
-export type Billing = "free" | "month" | "once";
+/** `waitlist` is a product with no checkout: it is UNGATED under PRODUCT-RELEASE-GATE. */
+export type Billing = "free" | "month" | "once" | "waitlist";
 
 export interface ProductSku {
   id: string;
@@ -57,8 +58,7 @@ export const saasTiers: ProductSku[] = [
       "Everything in Studio Member",
       "Up to 5 seats",
       "Shared shortlist workspace",
-      "Purchase policy templates",
-      "Quarterly stack review call"
+      "Purchase policy templates"
     ],
     cta: "Subscribe Ops",
     checkoutEnvKey: "NEXT_PUBLIC_POLAR_TECH_OPS_URL",
@@ -66,37 +66,36 @@ export const saasTiers: ProductSku[] = [
   }
 ];
 
+/**
+ * One digital product, no services. A human-reviewed blueprint and a remote stack audit were
+ * both 1:1 work; TRUTH.md rules that out, so they are gone rather than repriced. What replaces
+ * them is the artefact the configurator already produces, sold as a pack — and it is UNGATED
+ * under PRODUCT-RELEASE-GATE, so it captures demand and never takes money.
+ */
 export const digitalProducts: ProductSku[] = [
   {
-    id: "creator-blueprint",
-    name: "Creator System Blueprint",
+    id: "starlight-technology-build-sheets",
+    name: "Build sheet packs",
     kind: "digital",
-    billing: "once",
-    priceLabel: "€190",
-    summary: "Human-reviewed complete-system blueprint for one studio objective.",
-    includes: ["Workload map", "Budget allocation", "Wrong-purchase conditions", "Next purchase order"],
-    cta: "Buy blueprint",
-    checkoutEnvKey: "NEXT_PUBLIC_POLAR_BLUEPRINT_URL",
-    productPath: "/blueprint"
-  },
-  {
-    id: "stack-audit",
-    name: "Studio stack audit",
-    kind: "digital",
-    billing: "once",
-    priceLabel: "€890",
-    summary: "Remote audit of an existing creator/AI stack with upgrade sequence.",
-    includes: ["Bottleneck analysis", "Evidence gap report", "Upgrade sequence", "Regional offer notes"],
-    cta: "Buy audit",
-    checkoutEnvKey: "NEXT_PUBLIC_POLAR_STACK_AUDIT_URL",
-    productPath: "/offers"
+    billing: "waitlist",
+    priceLabel: "Waitlist",
+    summary:
+      "Cited, dated build sheets for a named studio objective, refreshed when the underlying prices or specs move.",
+    includes: [
+      "Complete system at three tiers, with the bottleneck named",
+      "Every claim tagged spec, benchmark, hands-on or inference",
+      "Wrong-purchase conditions and the upgrade path",
+      "Reissued when a price or spec change invalidates it"
+    ],
+    cta: "Join the waitlist",
+    productPath: "/studio"
   }
 ];
 
 export const allProducts = [...saasTiers, ...digitalProducts];
 export function getProduct(id: string) { return allProducts.find((p) => p.id === id); }
 export function checkoutHref(sku: ProductSku): string {
-  if (sku.billing === "free") return sku.productPath;
+  if (sku.billing === "free" || sku.billing === "waitlist") return sku.productPath;
   if (sku.checkoutEnvKey) {
     const url = process.env[sku.checkoutEnvKey];
     if (url?.startsWith("http")) return url;

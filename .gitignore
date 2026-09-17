@@ -31,3 +31,5 @@ Thumbs.db
 
 # local evidence exports
 .tmp/
+
+.vercel

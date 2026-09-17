@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const links = [
+  ["Studio", "/studio"],
   ["Builds", "/builds"],
   ["Compare", "/compare"],
   ["Pricing", "/pricing"],
@@ -22,7 +23,7 @@ export function SiteHeader() {
           <Link key={href} href={href}>{label}</Link>
         ))}
       </nav>
-      <Link className="header-cta" href="/pricing">Get Studio</Link>
+      <Link className="header-cta" href="/studio">Configure a system</Link>
     </header>
   );
 }
