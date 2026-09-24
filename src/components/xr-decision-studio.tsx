@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, useSyncExternalStore, type FormEvent } from "react";
 import { xrDevices } from "@/lib/xr-catalog";
-import { defaultXRSelection, getXRAdvice, getXRDevice, parseXRSelection, xrGoalOptions, type XRSelection } from "@/lib/xr-decision";
+import { getXRAdvice, getXRDevice, parseXRSelection, xrGoalOptions, type XRSelection } from "@/lib/xr-decision";
 import styles from "@/app/xr/xr.module.css";
 
 type Answer = {
@@ -12,9 +12,21 @@ type Answer = {
   unknown: string;
 };
 
+function subscribeToSelection(notify: () => void) {
+  window.addEventListener("popstate", notify);
+  window.addEventListener("xr-selection-change", notify);
+  return () => {
+    window.removeEventListener("popstate", notify);
+    window.removeEventListener("xr-selection-change", notify);
+  };
+}
+function currentSearch() { return window.location.search; }
+function serverSearch() { return ""; }
+
 export function XRDecisionStudio() {
-  const [selection, setSelection] = useState<XRSelection>(defaultXRSelection);
-  const [ready, setReady] = useState(false);
+  const search = useSyncExternalStore(subscribeToSelection, currentSearch, serverSearch);
+  const params = new URLSearchParams(search);
+  const selection = parseXRSelection({ goal: params.get("goal"), timing: params.get("timing"), host: params.get("host") });
   const [copied, setCopied] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState<Answer | null>(null);
@@ -22,26 +34,15 @@ export function XRDecisionStudio() {
   const advice = getXRAdvice(selection);
   const device = getXRDevice(advice.deviceId)!;
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setSelection(parseXRSelection({
-      goal: params.get("goal"), timing: params.get("timing"), host: params.get("host")
-    }));
-    setReady(true);
-  }, []);
-  useEffect(() => {
-    if (!ready) return;
+  function choose<K extends keyof XRSelection>(key: K, value: XRSelection[K]) {
     const url = new URL(window.location.href);
-    url.searchParams.set("goal", selection.goal);
-    url.searchParams.set("timing", selection.timing);
-    url.searchParams.set("host", selection.host);
+    url.searchParams.set("goal", key === "goal" ? value : selection.goal);
+    url.searchParams.set("timing", key === "timing" ? value : selection.timing);
+    url.searchParams.set("host", key === "host" ? value : selection.host);
     window.history.replaceState(null, "", url);
+    window.dispatchEvent(new Event("xr-selection-change"));
     setAnswer(null);
     setCopied(false);
-  }, [selection, ready]);
-
-  function choose<K extends keyof XRSelection>(key: K, value: XRSelection[K]) {
-    setSelection((current) => ({ ...current, [key]: value }));
   }
 
   async function share() {
