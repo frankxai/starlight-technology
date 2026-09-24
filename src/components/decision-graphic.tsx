@@ -15,7 +15,7 @@ export function DecisionGraphic({ comparison }: { comparison: Comparison }) {
       <div className="decision-graphic-paths">
         {[first, second].map((option, index) => (
           <div className="decision-graphic-path" key={option.name}>
-            <span className="decision-graphic-index">0{index + 1} / {index === 0 ? "START HERE" : "ALTERNATIVE"}</span>
+            <span className="decision-graphic-index">0{index + 1} / OPTION {index === 0 ? "A" : "B"}</span>
             <h3>{option.name}</h3>
             <dl>
               <div><dt>Choose when</dt><dd>{option.bestFor}</dd></div>
