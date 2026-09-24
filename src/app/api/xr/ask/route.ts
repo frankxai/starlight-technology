@@ -1,4 +1,4 @@
-import { getXRAdvice, getXRDevice, parseXRSelection, answerFromEvidence } from "@/lib/xr-decision";
+import { getXRAdvice, getXRDevice, parseXRSelection, answerFromEvidence } from "../../../../lib/xr-decision";
 
 export const maxDuration = 15;
 
