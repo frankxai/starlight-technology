@@ -1,0 +1,27 @@
+{
+  "feature": "XR device intelligence hub",
+  "branch": "feat/xr-device-intelligence",
+  "previewUrl": "https://starlight-technology-4w3u0p4v0-starlight-intelligence.vercel.app/xr",
+  "reviewedAt": "2026-09-24",
+  "verification": {
+    "lint": "passed using local ESLint executable",
+    "typecheck": "passed using local TypeScript executable",
+    "tests": "13 passed across 3 existing test files",
+    "build": "Next.js production build passed; /xr statically generated",
+    "ci": "GitHub Actions run 36011104632 passed on initial feature commit",
+    "desktop": "Inspected actual Vercel preview in browser at 1363 CSS px: decision headline, evidence artifact, navigation, primary actions and first section show without clipping.",
+    "mobile": "Inspected CSS source at <=850px and <=640px: hero and closing section become one column, decision rows become stacked, cards become one column, and navigation follows existing mobile header behavior. A mobile-width browser capture was unavailable, so physical/mobile visual QA remains open before merge.",
+    "accessibility": "Semantic headings, articles, dl evidence details, descriptive links, existing skip link and focus-visible styles; no motion added."
+  },
+  "designReview": {
+    "decisionObject": 5,
+    "hierarchy": 5,
+    "craft": 4,
+    "responsiveSource": 4,
+    "accessibility": 5,
+    "restraint": 4,
+    "total": 27,
+    "scale": 30
+  },
+  "remainingGate": "Inspect the preview on a real mobile viewport before merging; confirm official destination links and regional product status on publication."
+}
