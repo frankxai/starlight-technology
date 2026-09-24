@@ -54,7 +54,7 @@ export const xrDevices: readonly XRDevice[] = [
     id: "meta-vr-glasses",
     name: "Meta VR Glasses",
     class: "Immersive headset",
-    status: "Announced · spring 2027 US target",
+    status: "Announced · spring 2027 target",
     makerClaim: "About 100 g glasses tethered to a compute and battery puck; 5K Infinite Display, eye and hand input. Meta announces US$1,299.99 for spring 2027.",
     fit: "Track the promise of a lighter spatial workspace and reassess once independent tests and regional launch details arrive.",
     avoid: "You must ship a VR experience or purchase hardware this quarter; NL price and availability are not established here.",
