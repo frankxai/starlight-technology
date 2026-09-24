@@ -1,0 +1,38 @@
+{
+  "feature": "XR device intelligence hub",
+  "branch": "feat/xr-device-intelligence",
+  "previewUrl": "https://starlight-technology-4w3u0p4v0-starlight-intelligence.vercel.app/xr",
+  "reviewedAt": "2026-09-24",
+  "verification": {
+    "lint": "passed using local ESLint executable",
+    "typecheck": "passed using local TypeScript executable",
+    "tests": "13 passed across 3 existing test files",
+    "build": "Next.js production build passed; /xr statically generated",
+    "ci": "GitHub Actions run 36011104632 passed on initial feature commit",
+    "desktop": "Inspected actual Vercel preview in browser at 1363 CSS px: decision headline, evidence artifact, navigation, primary actions and first section show without clipping.",
+    "mobile": "Inspected CSS source at <=850px and <=640px: hero and closing section become one column, decision rows become stacked, cards become one column, and navigation follows existing mobile header behavior. A mobile-width browser capture was unavailable, so physical/mobile visual QA remains open before merge.",
+    "accessibility": "Semantic headings, articles, dl evidence details, descriptive links, existing skip link and focus-visible styles; no motion added."
+  },
+  "designReview": {
+    "decisionObject": 5,
+    "hierarchy": 5,
+    "craft": 4,
+    "responsiveSource": 4,
+    "accessibility": 5,
+    "restraint": 4,
+    "total": 27,
+    "scale": 30
+  },
+  "remainingGate": "Visually inspect the current iteration at desktop and mobile widths, test radio interaction and copy/share flow, verify source destinations; keep draft until passed.",
+  "iteration": {
+    "commit": "00c8cb32e7f60e87e75516a9a286b5d3ec5aed71",
+    "feature": "Interactive XR decision studio, public evidence APIs, bounded question endpoint",
+    "verification": {
+      "ci": "Run 36061994415 passed lint, typecheck, tests and production build",
+      "preview": "Vercel branch preview returned HTTP 200 with decision studio, device atlas and launch radar",
+      "api": "GET catalog and decision endpoints returned HTTP 200; future/later resolved to watchlist",
+      "visual": "Previous desktop preview was visually inspected. Current iteration has DOM and CSS inspection only; desktop and mobile screenshot review remains open because a screenshot-capable viewport is unavailable in this environment."
+    },
+    "score": "pending visual review"
+  }
+}
