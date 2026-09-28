@@ -2,6 +2,8 @@
 
 Objective: take the reviewed Technology Atlas branch toward a production-ready Vercel preview and a credible next release. Work in `frankxai/starlight-technology`; read `AGENTS.md`, `docs/EDITORIAL_STANDARD.md`, `docs/COMMERCE_AND_OPERATIONS.md`, `docs/PRODUCT_STRATEGY.md` and the PR before edits. The branch is `feat/technology-atlas-20260928`. Do not merge or change the production domain without the documented release gates.
 
+Existing stacked work matters: [PR #22](https://github.com/frankxai/starlight-technology/pull/22) has an XR decision hub and versioned APIs; [PR #20](https://github.com/frankxai/starlight-technology/pull/20) has bounded hardware editorial automation; [PR #21](https://github.com/frankxai/starlight-technology/pull/21) holds phone/laptop research packets pending regional and asset-rights evidence; [PR #18](https://github.com/frankxai/starlight-technology/pull/18) has article figures. Review dependencies and reuse these branches rather than rebuilding their features or publishing held research. Deep XR decisions belong in `/xr` once #22 clears its visual gate; the Atlas remains the cross-category index.
+
 ## Parallel team contracts
 
 Use separate worktrees and branches. One integrator owns the final merge into the feature branch, conflict resolution, verification and preview. Agents must not share a working tree or mutate the same files concurrently.
@@ -15,6 +17,8 @@ Use separate worktrees and branches. One integrator owns the final merge into th
 ## Integrator acceptance
 
 Run `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`. Inspect actual browser screenshots at 1440px and 390px and test search/filter, detail links and mobile navigation. Check source URLs and timestamps, metadata, sitemap, disclosure, noindex on previews and no fictitious offer JSON-LD. Record the commit SHA, preview URL, build outcome and unresolved gates in the PR. Vercel native Git integration is the only deployment path after project connection. Keep PR draft until checks and product review pass.
+
+Observed baseline: Vercel project `prj_YHhpzehDzOpD5OqLf1vgEAVlWYhE` hosts `starlight.technology`; the feature branch preview is `https://starlight-technology-4cg1th0zu-starlight-intelligence.vercel.app/shop` at commit `dc1636b8cca9cecd92a423eba1d5d017dc45b7c3`. GitHub CI and Vercel build passed. The preview returned HTTP 200 for the Atlas and a robotics detail page; visual inspection remains open.
 
 ## Decisions requiring Frank or external partners
 
