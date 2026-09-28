@@ -24,7 +24,8 @@ export function SiteHeader() {
           <Link key={href} href={href}>{label}</Link>
         ))}
       </nav>
-      <Link className="header-cta" href="/pricing">Get Studio</Link>
+      <details className="mobile-nav"><summary>Menu</summary><nav aria-label="Mobile navigation">{links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
+      <Link className="header-cta" href="/shop/studio">Open Studio</Link>
     </header>
   );
 }

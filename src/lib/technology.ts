@@ -1,4 +1,4 @@
-export type TechnologyCategory = "Compute" | "Spatial" | "Robotics";
+export type TechnologyCategory = "Compute" | "Spatial" | "Robotics" | "Mobile" | "Display";
 export type EditorialState = "manufacturer-sourced" | "research-queue";
 
 export interface TechnologyRecord {
@@ -54,6 +54,24 @@ export const technology: TechnologyRecord[] = [
     interfaces: ["Variant-specific SDK; verify before purchase", "Operator control", "Physical emergency procedure"],
     systemCosts: ["Training and supervision", "Battery and spares", "Service and repair", "Site safety and insurance"],
     source: { title: "Unitree Go2 specifications", url: "https://www.unitree.com/go2", checked: "2026-09-28" }, state: "manufacturer-sourced"
+  },
+  {
+    slug: "google-pixel-10-pro", name: "Pixel 10 Pro", maker: "Google", category: "Mobile",
+    role: "Mobile capture reference", decision: "Evaluate as a pocket capture and publishing node; the camera spec alone does not establish a complete production workflow.",
+    fit: ["Fast capture, review and publication on the move", "A mobile companion to a desktop or studio workflow"],
+    avoid: ["You need replaceable lenses or sustained professional recording", "Your capture chain requires an unverified external audio or storage path"],
+    interfaces: ["USB-C; verify accessory protocol", "Camera and app export workflow"],
+    systemCosts: ["Storage and cloud backup", "Audio capture", "Mounting and power", "Editing handoff"],
+    source: { title: "Google Pixel 10 Pro specifications", url: "https://store.google.com/product/pixel_10_pro_specs", checked: "2026-09-28" }, state: "manufacturer-sourced"
+  },
+  {
+    slug: "benq-pd3225u", name: "PD3225U", maker: "BenQ", category: "Display",
+    role: "32-inch 4K creator display", decision: "Evaluate when color work and a single-cable desk matter; verify your host's display and charging path first.",
+    fit: ["A fixed creator desk with 4K workspace", "A compatible Thunderbolt host and color workflow"],
+    avoid: ["You need a high-refresh gaming display", "Your host or dock cannot support the intended video and power path"],
+    interfaces: ["Thunderbolt 3 with up to 85 W power delivery", "HDMI 2.0 and DisplayPort 1.4"],
+    systemCosts: ["Host and cable compatibility", "Desk space and mounting", "Calibration workflow", "Power and replacement plan"],
+    source: { title: "BenQ PD3225U EU specifications", url: "https://www.benq.eu/en-eu/monitor/creative-pro/pd3225u/spec.html", checked: "2026-09-28" }, state: "manufacturer-sourced"
   }
 ];
 
@@ -61,8 +79,8 @@ export const coverage = [
   { name: "Computers & accelerators", status: "Open", detail: "Workstations, laptops, GPUs, local AI and cloud handoff" },
   { name: "Spatial computing", status: "Open", detail: "VR, AR, capture, development and fleet management" },
   { name: "Robotics", status: "Open", detail: "Platforms, control interfaces, supervision and operations" },
-  { name: "Phones & mobile capture", status: "Research queue", detail: "Cameras, on-device AI, battery and workflow integration" },
-  { name: "Displays & studios", status: "Research queue", detail: "Monitors, audio, storage, networking and ergonomics" },
+  { name: "Phones & mobile capture", status: "Open", detail: "Cameras, on-device AI, battery and workflow integration" },
+  { name: "Displays & studios", status: "Open", detail: "Monitors, audio, storage, networking and ergonomics" },
   { name: "AI glasses & wearables", status: "Research queue", detail: "Privacy, capture, assistant access and battery" },
   { name: "Aerospace & frontier systems", status: "Research queue", detail: "Research and systems architecture; no consumer offers" }
 ] as const;
