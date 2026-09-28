@@ -20,7 +20,7 @@ Use separate worktrees and branches. One integrator owns the final merge into th
 
 Run `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`. Inspect actual browser screenshots at 1440px and 390px and test search/filter, detail links and mobile navigation. Check source URLs and timestamps, metadata, sitemap, disclosure, noindex on previews and no fictitious offer JSON-LD. Record the commit SHA, preview URL, build outcome and unresolved gates in the PR. Vercel native Git integration is the only deployment path after project connection. Keep PR draft until checks and product review pass.
 
-Observed baseline: Vercel project `prj_YHhpzehDzOpD5OqLf1vgEAVlWYhE` hosts `starlight.technology`; the feature branch preview is `https://starlight-technology-4cg1th0zu-starlight-intelligence.vercel.app/shop` at commit `dc1636b8cca9cecd92a423eba1d5d017dc45b7c3`. GitHub CI and Vercel build passed. The preview returned HTTP 200 for the Atlas and a robotics detail page; visual inspection remains open.
+Observed baseline: Vercel project `prj_YHhpzehDzOpD5OqLf1vgEAVlWYhE` hosts `starlight.technology`; the updated feature preview is `https://starlight-technology-lanm5vv2m-starlight-intelligence.vercel.app/shop` at code commit `eafb9f07fb9da5a339356633e63c0d6cd184ca09`. GitHub CI run `36500646432` passed and Vercel reached READY. Preview fetch returned 200 and the correct canonical URL for `/shop` and `/shop/estate`, and 200 for `/api/technology/search?q=robot`. The Vercel fetch connector intermittently failed on other paths; local production-server route checks passed. Desktop/mobile browser screenshot and interaction inspection remain open.
 
 ## Decisions requiring Frank or external partners
 

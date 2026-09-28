@@ -12,7 +12,7 @@ The identity of a device is not its price. Separate `ProductFamily → Variant �
 
 | Surface | User action | Release rule |
 | --- | --- | --- |
-| `/shop` | Search, filter and inspect sourced device decisions | Shipped in this branch with four manufacturer-sourced references and no prices |
+| `/shop` | Search, filter and inspect sourced device decisions | Six manufacturer-sourced references on the draft branch; no prices |
 | `/builds`, `/compare`, `/guides` | Learn the workload boundary and complete system | Existing editorial product; retain canonical URLs |
 | System composer | Enter workload, assets, region, budget and constraints; receive a short list, exclusions and unknowns | Build deterministic logic before an AI explanation layer; save/share only after consent and persistence design |
 | Offer layer | Compare authorized regional seller offers and leave for merchant checkout | Requires program acceptance, feed rights, timestamps, freshness and disclosure |
@@ -75,9 +75,9 @@ For robots, first standardize **inventory and read-only telemetry**, then capabi
 
 ## Release sequence
 
-**R0, this PR:** Atlas and four decision records; verify responsive UI, source URLs, metadata, routes and existing tests. No affiliate links or robot commands.
+**R0, this PR:** Atlas and six decision records, local Studio and Estate, read-only APIs and an unpublished licensed-offer gate; verify responsive UI, source URLs, metadata, routes and existing tests. No affiliate links or robot commands.
 
-**R1, editorial expansion:** 20–30 deeply reviewed records in the creator-studio wedge; six complete builds; filtering by workload, region and constraints; source freshness report; product page schema only where eligible. Add phones, displays and glasses when evidence passes. Publish an editorial correction process.
+**R1, editorial expansion:** 20–30 deeply reviewed records in the creator-studio wedge; six complete builds; filtering by workload, region and constraints; source freshness report; product page schema only where eligible. Expand phone and display coverage and add glasses when evidence passes. Publish an editorial correction process.
 
 **R2, authorized commerce:** 2–3 approved merchants; feed adapter contract; offer ingestion with expiry, QA quarantine, disclosed outbound links and conversion instrumentation. Validate real unit economics before scaling feeds.
 
