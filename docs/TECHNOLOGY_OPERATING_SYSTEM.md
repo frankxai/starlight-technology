@@ -35,6 +35,8 @@ OwnedAsset -> Firmware / Location / Operator -> MaintenanceEvent
 
 The durable identity is source-backed `family + model + variant + region`, never the marketing name alone. A claim has exact source, observed date, reviewer and status. `CompatibilityEdge` is `compatible | incompatible | unknown`, tied to exact software/hardware versions and tested workload. No AI inference promotes unknown to compatible. Offer prices have source, tax/shipping basis and expiry. Owned assets and operational telemetry live in a separate private tenant boundary; the public product graph contains no household, client or fleet details.
 
+`src/lib/merchant-offer.ts` is the implementation boundary for a future licensed feed. It rejects an offer without an exact variant, publication rights, review, HTTPS source/destination, valid time window or complete tax/shipping basis. There is deliberately no public offer endpoint yet.
+
 When neural retrieval becomes useful, embed **reviewed claim chunks**, not raw merchant copy or whole pages. Key by `claim_id + revision_hash + embedding_model + dimensions`; re-embed changed chunks, retire superseded vectors and preserve citations. Use Vercel AI Gateway `/v1/embeddings` from a background ingestion job with an explicit model and spend ceiling. Store vectors with claim IDs in a dedicated Postgres/pgvector database after tenant and backup design. Public queries retrieve citations and deterministic compatibility checks before any optional AI explanation. Do not call the embedding provider from a page render or put a gateway key in `NEXT_PUBLIC_*`.
 
 ## External data contracts
@@ -48,6 +50,8 @@ When neural retrieval becomes useful, embed **reviewed claim chunks**, not raw m
 | Merchant programs | Authorized catalog/offer feeds and attributed links | None in launch | Partner acceptance, rights, exact locale, cache window, disclosure and return attribution |
 | Manufacturers | Specs, SDK support, documentation, warranty/service | Possible partner handoff | Exact variant, region, image rights and support terms |
 | Robot adapters | Simulator and read-only telemetry first | Supervised site-specific dispatch much later | Vendor SDK, local controller, authenticated operator, physical stop, incident plan and signed acceptance |
+
+The NL partner order is concrete: **bol first** for local computing/mobile/display coverage once the affiliate account and feed access are active. Bol publishes category CSV/XML feeds and says its per-shop feed refreshes every two hours; ordinary feed/API URLs are not affiliate links, so tracking URLs need the assigned site ID and the correct promotion code. **impact.com second** for approved specialist brands; its catalog API/FTP works only for brands the account has joined. **Amazon Creators API third** for gaps, with locale and program restrictions. **Thomann later** for music-studio systems: its current NL program states a threshold of 500 unique website visitors daily or 5,000 social followers. Do not claim any of these accounts is approved or configured.
 
 ## Ingest and synchronization
 
@@ -83,3 +87,7 @@ For the personal Studio, the JSON file is the portable sync mechanism today. A f
 - Vercel AI SDK embeddings: https://ai-sdk.dev/docs/ai-sdk-core/embeddings
 - Cloudflare R2 public custom domains and development URL: https://developers.cloudflare.com/r2/buckets/public-buckets/
 - Railway cron/worker tradeoffs and variables: https://docs.railway.com/guides/cron-workers-queues ; https://docs.railway.com/variables
+- bol affiliate feeds and tracking: https://api.bol.com/marketing/docs/product-feed/index.html ; https://affiliate.bol.com/nl/handleiding/tracking-url/
+- impact.com catalog access: https://help.impact.com/partner/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner
+- Amazon Creators API: https://affiliate-program.amazon.com/creatorsapi/docs/
+- Thomann NL affiliate terms: https://www.thomann.nl/faq_question_hoe_word_ik_een_thomann_affiliate.html

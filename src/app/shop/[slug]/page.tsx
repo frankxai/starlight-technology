@@ -6,7 +6,7 @@ import { getTechnology, technology } from "@/lib/technology";
 export function generateStaticParams() { return technology.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const item = getTechnology((await params).slug);
-  return { title: item ? `${item.name} decision record | Starlight Technology` : "Technology record", description: item?.decision };
+  return { title: item ? `${item.name} decision record` : "Technology record", description: item?.decision, alternates: item ? { canonical: `/shop/${item.slug}` } : undefined, openGraph: item ? { url: `/shop/${item.slug}` } : undefined };
 }
 
 export default async function TechnologyPage({ params }: { params: Promise<{ slug: string }> }) {

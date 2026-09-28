@@ -50,7 +50,7 @@
     "routes": ["/shop", "/shop/studio", "/shop/estate", "/shop/[slug]", "/api/technology/catalog", "/api/technology/search", "/api/technology/decision"],
     "decisionObject": "Searchable source-backed records and a deterministic brief with visible hold conditions; local equipment ledger is labelled unverified.",
     "responsiveSource": "Two-column desktop Atlas/Studio/Ledger switch to one column at 900px; mobile cards and actions reflow at 620px. Mobile navigation is exposed through a keyboard-operable details control.",
-    "verification": "Lint, typecheck, 20 tests and 50-route build passed locally. Production server returned HTTP 200 for representative UI/API routes and 400 for invalid input.",
+    "verification": "Lint, typecheck, 23 tests and 50-route build passed locally. Production server returned HTTP 200 for representative UI/API routes and 400 for invalid input.",
     "visualInspection": "Pending actual desktop and mobile screenshots and interaction review; the browser binary was unavailable in this workspace.",
     "designScore": null,
     "releaseGate": "Draft only until the current feature receives desktop/mobile inspection and reaches at least 26/30. The earlier 28/30 score above applies to Infrastructure Partnership OS, not this feature."
