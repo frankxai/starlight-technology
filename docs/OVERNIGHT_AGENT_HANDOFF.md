@@ -4,7 +4,7 @@ Objective: take the reviewed Technology Atlas branch toward a production-ready V
 
 Existing stacked work matters: [PR #22](https://github.com/frankxai/starlight-technology/pull/22) has an XR decision hub and versioned APIs; [PR #20](https://github.com/frankxai/starlight-technology/pull/20) has bounded hardware editorial automation; [PR #21](https://github.com/frankxai/starlight-technology/pull/21) holds phone/laptop research packets pending regional and asset-rights evidence; [PR #18](https://github.com/frankxai/starlight-technology/pull/18) has article figures. Review dependencies and reuse these branches rather than rebuilding their features or publishing held research. Deep XR decisions belong in `/xr` once #22 clears its visual gate; the Atlas remains the cross-category index.
 
-The follow-on slice on this branch adds `/shop/studio`, `/shop/estate`, six catalog records, read-only technology APIs and a local TF-IDF vector index. Read `docs/TECHNOLOGY_OPERATING_SYSTEM.md`. Do not call the lexical index neural, do not infer compatibility from the local ledger, and do not add a robot command endpoint.
+The follow-on slice on this branch adds `/shop/studio`, `/shop/estate`, six catalog records, read-only technology APIs and a local TF-IDF vector index. Read `docs/TECHNOLOGY_OPERATING_SYSTEM.md` and `docs/COMPETITIVE_DESIGN_DIRECTION.md` with its original SVG board before visual edits. Do not call the lexical index neural, do not infer compatibility from the local ledger, and do not add a robot command endpoint.
 
 ## Parallel team contracts
 
