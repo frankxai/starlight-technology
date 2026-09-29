@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { coverage, technology, type TechnologyCategory } from "@/lib/technology";
 import { searchTechnology } from "@/lib/technology-search";
+import { TechnologyArt } from "./technology-art";
 
 type Filter = "All" | TechnologyCategory;
 const filters: Filter[] = ["All", "Compute", "Mobile", "Display", "Spatial", "Robotics"];
@@ -24,6 +25,7 @@ export function TechnologyAtlas() {
     <div className="atlas-results-heading"><h2>Decision records</h2><span aria-live="polite">{results.length} of {technology.length} records · local vector search · no live prices</span></div>
     {results.length ? <div className="atlas-grid">{results.map((item, index) => <article className="atlas-card" key={item.slug}>
       <div className="atlas-card-top"><span>{String(index + 1).padStart(2, "0")} / {item.category.toUpperCase()}</span><span>{item.state.replace("-", " ")}</span></div>
+      <Link className="atlas-card-art-link" href={`/shop/${item.slug}`} aria-label={`Inspect ${item.name} decision record`}><TechnologyArt item={item} /></Link>
       <div className="atlas-card-main"><p className="atlas-maker">{item.maker}</p><h3><Link href={`/shop/${item.slug}`}>{item.name}</Link></h3><p className="atlas-role">{item.role}</p></div>
       <div className="atlas-system-graphic" aria-label={`System boundary: ${item.interfaces[0]}; ${item.systemCosts[0]}`}><div><small>INTERFACE</small><strong>{item.interfaces[0]}</strong></div><span aria-hidden="true">↔</span><div><small>COMPLETE COST</small><strong>{item.systemCosts[0]}</strong></div></div>
       <p className="atlas-decision">{item.decision}</p>

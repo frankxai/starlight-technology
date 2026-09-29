@@ -47,6 +47,8 @@ These are design hypotheses, not the repository's release score. Desktop/mobile 
 4. Define semantic surface, text, signal, warning, border, focus, spacing, type and motion tokens. Current root values include ink #050607, paper #f1f4ec, signal #c8f36b, cyan #75d8ff, amber #ffbf69. Build typed DecisionCard, EvidenceState, SystemBoundary, SourceStamp and AuthorityBadge with explicit unknown states.
 5. Inspect 1440px and 390px, keyboard and 200% zoom; capture interaction and media rights. Score the implemented result against the repository's 26/30 release gate. This research board does not satisfy it.
 
+Implementation on the Atlas branch: src/components/technology-art.tsx provides six original device-class SVG system studies; the public shop has a sourced compute/robotics decision stage, illustrated record grid and split detail headers. The studies are explicitly captioned as schematics. Actual viewport screenshots, interaction inspection and the release score remain pending; do not treat the board or source inspection as those receipts.
+
 ## Source and rights ledger
 
 All OEM links above are **reference-only**. Their copy, images, videos, fonts, marks and layout combinations are not licensed to Starlight by this review. The board is an owned SVG using current Starlight catalog text and system-font fallbacks; it contains no OEM media. No third-party capture is packaged.
