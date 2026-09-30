@@ -1,0 +1,24 @@
+{
+  "vram-workload": {
+    "src": "/images/editorial/vram-workload.svg",
+    "width": 960,
+    "height": 1060,
+    "alt": "GPU memory planning: model weights, runtime memory, concurrent applications and headroom all contribute to the required capacity.",
+    "caption": "Record all four sources of memory use for the same workload. This is a planning schematic, not a benchmark or a capacity estimate.",
+    "credit": "Original diagram by Starlight Technology",
+    "sourceUrl": "/guides/how-much-vram-local-ai",
+    "rights": "original",
+    "createdOn": "2026-09-16"
+  },
+  "complete-system": {
+    "src": "/images/editorial/complete-system.svg",
+    "width": 960,
+    "height": 1060,
+    "alt": "Complete studio cost includes the computer, daily peripherals, storage and recovery, and recurring operation.",
+    "caption": "Compare the complete working setup. The diagram defines cost categories; it contains no live merchant prices.",
+    "credit": "Original diagram by Starlight Technology",
+    "sourceUrl": "/guides/complete-system-cost",
+    "rights": "original",
+    "createdOn": "2026-09-16"
+  }
+}
