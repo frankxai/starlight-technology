@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1060" viewBox="0 0 960 1060" role="img" aria-labelledby="title desc">
+<title id="title">What needs GPU memory?</title><desc id="desc">Measure the complete workload before buying.. Model weights: Model size and precision.; Working memory: Context, resolution and intermediate data.; Concurrent applications: Other models, tools and the interface.; Operating headroom: Room for larger inputs and variation.. Starlight Technology  /  Planning schematic  /  September 2026</desc>
+<rect width="960" height="1060" rx="24" fill="#0a0a0b"/>
+<path d="M56 68h60" stroke="#d0ec8c" stroke-width="6"/>
+<text x="56" y="139" fill="#f4f4ef" font-family="Arial,sans-serif" font-size="48" font-weight="700">What needs GPU memory?</text>
+<text x="56" y="194" fill="#b6b9b4" font-family="Arial,sans-serif" font-size="30">Measure the complete workload before buying.</text>
+<rect x="56" y="244" width="848" height="142" rx="16" fill="#15191a" stroke="#303635"/>
+<text x="86" y="302" fill="#d0ec8c" font-family="Arial,sans-serif" font-size="32">01</text>
+<text x="158" y="302" fill="#f4f4ef" font-family="Arial,sans-serif" font-size="38" font-weight="700">Model weights</text>
+<text x="158" y="352" fill="#c5cbc7" font-family="Arial,sans-serif" font-size="30">Model size and precision.</text>
+<rect x="56" y="412" width="848" height="142" rx="16" fill="#15191a" stroke="#303635"/>
+<text x="86" y="470" fill="#d0ec8c" font-family="Arial,sans-serif" font-size="32">02</text>
+<text x="158" y="470" fill="#f4f4ef" font-family="Arial,sans-serif" font-size="38" font-weight="700">Working memory</text>
+<text x="158" y="520" fill="#c5cbc7" font-family="Arial,sans-serif" font-size="30">Context, resolution and intermediate data.</text>
+<rect x="56" y="580" width="848" height="142" rx="16" fill="#15191a" stroke="#303635"/>
+<text x="86" y="638" fill="#d0ec8c" font-family="Arial,sans-serif" font-size="32">03</text>
+<text x="158" y="638" fill="#f4f4ef" font-family="Arial,sans-serif" font-size="38" font-weight="700">Concurrent applications</text>
+<text x="158" y="688" fill="#c5cbc7" font-family="Arial,sans-serif" font-size="30">Other models, tools and the interface.</text>
+<rect x="56" y="748" width="848" height="142" rx="16" fill="#15191a" stroke="#303635"/>
+<text x="86" y="806" fill="#d0ec8c" font-family="Arial,sans-serif" font-size="32">04</text>
+<text x="158" y="806" fill="#f4f4ef" font-family="Arial,sans-serif" font-size="38" font-weight="700">Operating headroom</text>
+<text x="158" y="856" fill="#c5cbc7" font-family="Arial,sans-serif" font-size="30">Room for larger inputs and variation.</text>
+<path d="M56 942h848" stroke="#303635"/>
+<text x="56" y="992" fill="#b6b9b4" font-family="Arial,sans-serif" font-size="27">Starlight Technology  /  Planning schematic  /  September 2026</text></svg>

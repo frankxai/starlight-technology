@@ -9,7 +9,13 @@ export type SourceRecord = {
   primary: boolean;
 };
 
-export type Section = { heading: string; body: string[]; bullets?: string[] };
+export type Section = {
+  heading: string;
+  body: string[];
+  bullets?: string[];
+  visualId?: keyof typeof import("./editorial-visuals.json");
+  recommendationId?: string;
+};
 
 export type Build = {
   slug: string;
