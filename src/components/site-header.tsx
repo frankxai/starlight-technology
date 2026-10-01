@@ -3,10 +3,10 @@ import Link from "next/link";
 const links = [
   ["Builds", "/builds"],
   ["Compare", "/compare"],
+  ["XR", "/xr"],
   ["Infrastructure", "/infrastructure"],
   ["Pricing", "/pricing"],
-  ["Guides", "/guides"],
-  ["Method", "/methodology"]
+  ["Guides", "/guides"]
 ] as const;
 
 export function SiteHeader() {
