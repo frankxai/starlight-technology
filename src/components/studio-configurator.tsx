@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { type ConfiguratorInput, type ConfiguredSystem } from "@/lib/decision-graph/configurator";
-import { toBuildSheetJson, toBuildSheetMarkdown } from "@/lib/decision-graph/build-sheet";
+import { encodeCreatorReport, parseCreatorExport, toCreatorReport, toCreatorReportMarkdown } from "@/lib/decision-graph/creator-report";
 import { resolveOutboundLink } from "@/lib/decision-graph/partner-links";
 import { decisionGraph } from "@/lib/decision-graph/dataset";
 import { indexGraph } from "@/lib/decision-graph/graph";
@@ -261,15 +261,14 @@ export function StudioConfigurator() {
   const assessment = useMemo(() => assessCreatorPlan(plan), [plan]);
   const output = assessment.output;
   const monthly = monthlyScenario(plan.monthly, plan.factory);
-  const today = new Date().toISOString().slice(0, 10);
 
   async function importPlan(file?: File) {
     if (!file) return;
     try {
       if (file.size > CREATOR_PLAN_MAX_BYTES) throw new Error("Plan exceeds 64 KiB.");
-      const imported = parseCreatorPlan(await file.text());
+      const imported = parseCreatorExport(await file.text());
       if (!window.confirm("Replace your current draft with this plan? Export a backup first if needed.")) { setNotice("Import cancelled. Your current draft is unchanged."); return; }
-      setPlan(imported); setRecovery(null); setNotice("Plan imported. Current catalog evidence is checked again; persistence status is shown below.");
+      setPlan(imported); setRecovery(null); setNotice("Editable inputs imported. Comparisons and costs are recalculated; persistence status is shown below.");
     } catch (error) { setNotice(error instanceof Error ? error.message : "Import failed. Your current draft is unchanged."); }
   }
   function resetPlan() {
@@ -289,12 +288,12 @@ export function StudioConfigurator() {
   }
 
   const exportSheet = (format: "md" | "json") => {
-    const sheet = toBuildSheetJson(output, { now: today });
-    if (format === "json") {
-      download(`starlight-build-sheet-${output.inputsHash}.json`, JSON.stringify(sheet, null, 2), "application/json");
-      return;
-    }
-    download(`starlight-build-sheet-${output.inputsHash}.md`, toBuildSheetMarkdown(sheet), "text/markdown");
+    try {
+      const generatedAt = new Date().toISOString();
+      const text = format === "json" ? encodeCreatorReport(plan, generatedAt) : toCreatorReportMarkdown(toCreatorReport(plan, generatedAt));
+      download(`starlight-creator-report-${output.inputsHash}.${format}`, text, format === "json" ? "application/json" : "text/markdown");
+      setNotice("Complete plan exported with your private context, cost assumptions and dated evidence. Share it only when you choose.");
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Report export failed. Your draft is unchanged."); }
   };
 
   return (
@@ -454,15 +453,16 @@ export function StudioConfigurator() {
       )}
 
       <div className="dg-export">
-        <button type="button" className="button button-primary" onClick={() => exportSheet("md")} disabled={output.systems.length === 0}>
-          Export the build sheet
+        <button type="button" className="button button-primary" onClick={() => exportSheet("md")}>
+          Export complete plan
         </button>
-        <button type="button" className="button button-quiet" onClick={() => exportSheet("json")} disabled={output.systems.length === 0}>
-          Export as JSON
+        <button type="button" className="button button-quiet" onClick={() => exportSheet("json")}>
+          Export report JSON
         </button>
         <p className="dg-hint">
-          The sheet carries every source, every date, every price basis and every commercial relationship. Hardware here
-          earns us nothing; the software lines are disclosed partner links.
+          The report includes your private work notes, hardware alternatives, recurring costs and factory assumptions.
+          Import its JSON to restore editable inputs and recalculate against current evidence. Hardware earns us nothing;
+          software partner links are disclosed.
         </p>
       </div>
     </section>
