@@ -244,7 +244,7 @@ export function StudioConfigurator() {
   function keepCurrentDraft() {
     try {
       const raw = localStorage.getItem(storageKey);
-      if (!window.confirm("Replace the saved plan with this tab's draft? Export the other saved copy first if you want to keep both.")) return;
+      if (!confirmCreatorReplacement("replace", recovery !== null, (message) => window.confirm(message))) return;
       observedRaw.current = raw; setConflict(null); setRecovery(null); setPlan((current) => ({ ...current }));
       setNotice("Saving this draft if the acknowledged saved copy is still unchanged.");
     } catch { setNotice("Storage is unavailable. Export this draft before leaving."); }

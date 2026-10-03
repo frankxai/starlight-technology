@@ -69,9 +69,9 @@ export function parseCreatorExport(text: string, graph: DecisionGraph = decision
   return plan;
 }
 
-export function confirmCreatorReplacement(action: "import" | "reset", unreadableSave: boolean, confirm: (message: string) => boolean): boolean {
-  const message = unreadableSave ? `This device has unreadable saved data. ${action === "import" ? "Importing this plan" : "Resetting"} will replace that saved copy and this tab's draft. Export the recovery copy first to keep it. Replace the unreadable saved data?` :
-    action === "import" ? "Replace your current draft with this plan? Export a backup first if needed." : "Reset this plan? Export a backup first if needed.";
+export function confirmCreatorReplacement(action: "import" | "reset" | "replace", unreadableSave: boolean, confirm: (message: string) => boolean): boolean {
+  const message = unreadableSave ? `This tab is keeping unreadable saved data for recovery. ${action === "import" ? "Importing this plan" : action === "reset" ? "Resetting" : "Keeping this draft"} clears that recovery copy and may replace the device's saved plan. Export the recovery copy and any other saved copy first to keep them. Continue?` :
+    action === "import" ? "Replace your current draft with this plan? Export a backup first if needed." : action === "reset" ? "Reset this plan? Export a backup first if needed." : "Replace the saved plan with this tab's draft? Export the other saved copy first if you want to keep both.";
   return confirm(message);
 }
 
@@ -98,7 +98,7 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
     "", "## Recurring costs", "", "| Component | Monthly scenario |", "| --- | --- |",
     `| Existing software | ${euro(plan.monthly.softwareMinor)} |`, `| Existing cloud | ${euro(plan.monthly.cloudMinor)} |`,
     `| Electricity | ${euro(report.recurring.existing.electricityMinor)} |`, `| Existing recurring total | ${euro(report.recurring.existing.totalMinor)} |`,
-    `| Incremental factory | ${factory === null ? "Not included" : euro(factory.modeledSubtotal?.euroMinor ?? null)} |`, `| Combined recurring scenario | ${euro(report.recurring.combinedEuroMinor)} |`, "",
+    `| Incremental factory | ${factory === null ? "Not included" : euro(factory.modeledSubtotal?.euroMinor ?? null)} |`, `| Combined recurring scenario | ${factory === null ? "Not combined (no factory scenario)" : euro(report.recurring.combinedEuroMinor)} |`, "",
     "Electricity uses 30 days and your stated power, hours and tariff. Missing inputs remain unknown. Existing cloud/software must exclude the factory fees to avoid counting the same charge twice. Hardware purchases remain separate.");
   if (factory && plan.factory) {
     const scenario = plan.factory;
@@ -124,7 +124,7 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
       `Tax, egress and unlisted services need separate verification. ${factory.scope}`);
     if (factory.missing.length) lines.push(`Unknown fees: ${factory.missing.join(", ")}.`);
     for (const warning of factory.warnings) lines.push(`- ${warning}`);
-    lines.push("", "## Same-workload maker alternatives", "", "The maker rate changes; workload, API share, reviewer, repairs and compute stay equal. These comparisons grant no model access or measured performance.", "",
+    lines.push("", "## Same-workload maker alternatives", "", "The maker rate changes; workload, API share, reviewer, repairs and compute stay equal. API share and token counts are inherited from the selected maker and may not apply to another provider or tokenizer. These comparisons grant no model access or measured performance.", "",
       "| Maker | Monthly USD | Independent provider | Cap exceeded |", "| --- | --- | --- | --- |");
     for (const row of [{ label: scenario.maker.rate.label, result: factory }, ...report.makerAlternatives]) {
       lines.push(`| ${row.label} | ${dollars(row.result.modeledSubtotal?.usd)} | ${row.result.independentProvider ? "Yes" : "No"} | ${row.result.overCap === null ? "Unknown" : row.result.overCap ? "Yes" : "No"} |`);

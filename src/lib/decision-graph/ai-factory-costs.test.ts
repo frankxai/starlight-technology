@@ -5,6 +5,20 @@ import { saveCreatorDraft, type DraftLock } from "./draft-storage";
 
 const stamp = "2026-10-03T17:00:00.000Z";
 describe("recoverable agent operating estimates", () => {
+  it("marks unquoted cache-write pricing in computed results without changing the established fallback", () => {
+    const plan = newFactoryScenario("glm");
+    plan.maker.cacheWriteTokens = 20000;
+    const result = calculateFactoryScenario(plan);
+    expect(result.warnings.join(" ")).toMatch(/unquoted cache.write/);
+    const explicit = structuredClone(plan); explicit.maker.rate.cacheWriteMicroUsdPerMillion = explicit.maker.rate.inputMicroUsdPerMillion;
+    expect(result.makerApi).toEqual(calculateFactoryScenario(explicit).makerApi);
+  });
+  it("warns on an unquoted cache-read rate only when a cache hit is actually assumed", () => {
+    const plan = newFactoryScenario(); plan.maker.cacheCandidateTokens = 20000; plan.maker.rate.cacheReadMicroUsdPerMillion = null;
+    expect(calculateFactoryScenario(plan).warnings.join(" ")).not.toMatch(/unquoted cache.read/);
+    plan.maker.cacheHitBps = 5000;
+    expect(calculateFactoryScenario(plan).warnings.join(" ")).toMatch(/unquoted cache.read/);
+  });
   it("reproduces the matched frontier and GLM scenarios without rounding individual token calls", () => {
     const frontier = calculateFactoryScenario(newFactoryScenario()), glm = calculateFactoryScenario(newFactoryScenario("glm"));
     expect(frontier.knownSubtotal.usd).toBeCloseTo(78.9012, 8);

@@ -131,6 +131,8 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
     if (JSON.stringify(stage.rate) !== JSON.stringify(bundled)) warnings.push(`${stage.rate.label}: imported rate assumptions differ from the bundled dated observation. Verify them before purchasing or dispatching.`);
     const age = (Date.parse(now) - Date.parse(stage.rate.observedAt)) / 86_400_000;
     if (age < 0 || age > 30) warnings.push(`${stage.rate.label}: rate evidence is future-dated or older than 30 days.`);
+    if (stage.cacheWriteTokens > 0 && stage.rate.cacheWriteMicroUsdPerMillion === null) warnings.push(`${stage.rate.label}: unquoted cache-write pricing uses the fresh-input rate as a scenario assumption; verify the provider's cache terms.`);
+    if (stage.cacheCandidateTokens > 0 && stage.cacheHitBps > 0 && stage.rate.cacheReadMicroUsdPerMillion === null) warnings.push(`${stage.rate.label}: unquoted cache-read pricing uses the fresh-input rate as a scenario assumption; verify the provider's cache terms.`);
     if (stage.cacheCandidateTokens > 0 && stage.cacheHitBps > 0) warnings.push(`${stage.rate.label}: cache hits are a provider-local assumption, not shared cache or measured savings.`);
   }
   if (Object.keys(factoryComputeRate).some((key) => c[key as keyof typeof factoryComputeRate] !== factoryComputeRate[key as keyof typeof factoryComputeRate])) warnings.push("Imported compute rates differ from the bundled dated observation. Verify the billing region and terms.");

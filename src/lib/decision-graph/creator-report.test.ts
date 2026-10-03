@@ -104,7 +104,7 @@ describe("complete creator report", () => {
   });
 
   it("names unreadable saved data before permitting import or reset, and honors cancellation", () => {
-    for (const action of ["import", "reset"] as const) {
+    for (const action of ["import", "reset", "replace"] as const) {
       let calls = 0;
       const allowed = confirmCreatorReplacement(action, true, (message) => {
         calls++; expect(message).toMatch(/unreadable saved data/); expect(message).toMatch(/recovery copy/); return false;
@@ -112,6 +112,14 @@ describe("complete creator report", () => {
       expect(allowed).toBe(false); expect(calls).toBe(1);
       expect(confirmCreatorReplacement(action, false, () => true)).toBe(true);
     }
+  });
+
+  it("exposes an unquoted cache-write fallback in a matched alternative and its JSON", () => {
+    const plan = completePlan(); plan.factory!.maker.cacheWriteTokens = 20000;
+    const report = toCreatorReport(plan, at);
+    const glm = report.makerAlternatives.find((row) => row.modelId === "glm")!;
+    expect(glm.result.warnings.join(" ")).toMatch(/unquoted cache.write/i);
+    expect(toCreatorReportMarkdown(report)).toMatch(/GLM-5.3:.*unquoted cache.write/i);
   });
 
   it("makes the standalone Markdown auditable and separates listings from delivered costs", () => {
