@@ -21,8 +21,15 @@
 .table th:first-child { width: 28%; }
 .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1rem; }
 .warnings { font-size: .9rem; line-height: 1.5; color: var(--paper, #f1f4ec); padding-inline-start: 1.2rem; }
+.runtimeStages { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.runtimeStage { min-width: 0; }
+.runtimeStage h4 { font-size: 1.1rem; margin-block: 1rem .5rem; }
+.runtimeStage p { font-size: .9rem; line-height: 1.5; }
+.routeList { list-style: none; padding: 0; margin: 0; }
+.routeList li { border-top: 1px solid var(--line, #c7cdd4); padding-block: 1rem; overflow-wrap: anywhere; }
+.routeList strong { display: block; margin-bottom: .4rem; }
 @media (max-width: 640px) {
-  .inputs, .stages, .summary { grid-template-columns: 1fr; }
+  .inputs, .stages, .summary, .runtimeStages { grid-template-columns: 1fr; }
   .summary > div + div { border-top: 1px solid var(--line, #c7cdd4); }
   .stage { margin: .75rem 0; }
   .table { font-size: .8125rem; }

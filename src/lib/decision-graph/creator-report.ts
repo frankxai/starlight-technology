@@ -5,11 +5,13 @@ import { decisionGraph } from "./dataset";
 import { indexGraph, stableHash } from "./graph";
 import { assessPurchase } from "./purchase-review";
 import { assessFreshness } from "./staleness";
+import { planFactoryRuntime } from "./factory-runtime-plan";
 import type { DecisionGraph } from "./schema";
 
-export const CREATOR_REPORT_SCHEMA = "StarlightCreatorReport.v2";
+export const CREATOR_REPORT_SCHEMA = "StarlightCreatorReport.v3";
 const legacyFields = ["schema", "generatedAt", "sourceCatalogHash", "plan", "catalogChanged", "selectionInvalidated", "selectedSystem", "hardware", "recurring", "factory", "makerAlternatives"];
-const fields = [...legacyFields, "requirements", "purchaseReviews"];
+const versionTwoFields = [...legacyFields, "requirements", "purchaseReviews"];
+const fields = [...versionTwoFields, "runtimePlan"];
 
 function timestamp(value: unknown): value is string {
   return typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) &&
@@ -25,7 +27,10 @@ export function toCreatorReport(value: CreatorPlan, generatedAt: string, graph: 
   const index = indexGraph(graph);
   const hardware = toBuildSheetJson(assessment.output, { now: asOf, graph });
   const existing = monthlyScenario(plan.monthly);
-  const factory = plan.factory === null ? null : calculateFactoryScenario(plan.factory, asOf);
+  const runtime = plan.factory === null ? null : planFactoryRuntime(plan.factory, asOf);
+  const factory = runtime?.current ?? null;
+  // The report already carries the current calculation in factory; avoid duplicating it.
+  const runtimePlan = runtime === null ? null : (({ current: _current, ...decision }) => { void _current; return decision; })(runtime);
   const factoryEuroMinor = factory?.modeledSubtotal?.euroMinor ?? null;
   const combined = existing.totalMinor === null || factoryEuroMinor === null ? null : existing.totalMinor + factoryEuroMinor;
   // Only the maker's dated model rate changes. Work, repairs, API share, reviewer and compute stay equal.
@@ -41,7 +46,7 @@ export function toCreatorReport(value: CreatorPlan, generatedAt: string, graph: 
       constraints: plan.input.constraintIds.map((id) => ({ id, label: index.get(id)!.label })), budget: index.get(plan.input.budgetId)!.label, region: plan.input.regionCode },
     purchaseReviews: assessment.output.systems.map((system) => assessPurchase(system, plan.input, graph, asOf)),
     hardware, recurring: { existing, combinedEuroMinor: combined !== null && Number.isSafeInteger(combined) ? combined : null },
-    factory, makerAlternatives,
+    factory, makerAlternatives, runtimePlan,
   };
 }
 export type CreatorReport = ReturnType<typeof toCreatorReport>;
@@ -57,9 +62,9 @@ export function parseCreatorExport(text: string, graph: DecisionGraph = decision
   if (new TextEncoder().encode(text).byteLength > CREATOR_PLAN_MAX_BYTES) throw new Error("Plan exceeds 64 KiB.");
   let value: unknown;
   try { value = JSON.parse(text); } catch { return parseCreatorPlan(text, graph); }
-  if (!value || typeof value !== "object" || Array.isArray(value) || !("schema" in value) || ![CREATOR_REPORT_SCHEMA, "StarlightCreatorReport.v1"].includes(value.schema as string)) return parseCreatorPlan(text, graph);
+  if (!value || typeof value !== "object" || Array.isArray(value) || !("schema" in value) || ![CREATOR_REPORT_SCHEMA, "StarlightCreatorReport.v2", "StarlightCreatorReport.v1"].includes(value.schema as string)) return parseCreatorPlan(text, graph);
   const report = value as Record<string, unknown>;
-  const expected = report.schema === "StarlightCreatorReport.v1" ? legacyFields : fields;
+  const expected = report.schema === "StarlightCreatorReport.v1" ? legacyFields : report.schema === "StarlightCreatorReport.v2" ? versionTwoFields : fields;
   if (Object.keys(report).length !== expected.length || expected.some((field) => !Object.hasOwn(report, field)) ||
     !timestamp(report.generatedAt) || typeof report.sourceCatalogHash !== "string" || !/^[0-9a-f]{16}$/.test(report.sourceCatalogHash)) {
     throw new Error("Unsupported report envelope. Your current draft is unchanged.");
@@ -146,6 +151,27 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
   for (const purchase of report.purchaseReviews) {
     lines.push("", `### ${purchase.label}`, "", `Delivered total: ${purchase.deliveredTotalMinor === null ? "Unknown" : `${purchase.currency} ${(purchase.deliveredTotalMinor / 100).toFixed(2)}`}. Delivered budget verdict: ${purchase.budgetVerdict}.`);
     for (const unresolved of purchase.unresolved) lines.push(`- ${unresolved}`);
+  }
+  if (report.runtimePlan) {
+    const runtime = report.runtimePlan;
+    const contingency = runtime.meteredContingency;
+    const cap = contingency.overCap === null ? "Unknown" : contingency.overCap ? "Exceeded" : "Within entered cap";
+    lines.push("", "## Runtime and subscription routes", "",
+      `Fully metered contingency: ${dollars(contingency.modeledSubtotal?.usd)} / ${euro(contingency.modeledSubtotal?.euroMinor ?? null)}. Known subtotal: ${dollars(contingency.knownSubtotal.usd)}. Cap: ${cap}.`,
+      "The contingency uses the same workload, reviewer, repairs, compute and fees with 100% API share. It does not authorize fallback spending. Managed cloud may change your tool-compute needs; recompute that choice before dispatch.",
+      `Tool compute: ${runtime.toolCompute.plannedSlots} planned ${runtime.toolCompute.os} slots, ${runtime.toolCompute.vcpuPerSlot} vCPU / ${runtime.toolCompute.memoryGiBPerSlot} GiB each; ${runtime.toolCompute.activeHours} active hours and ${runtime.toolCompute.retainedGiBHours} retained GiB-hours. Admitted capacity is unknown. Model inference runs at the provider; local-model execution is outside this cost scenario.`);
+    for (const stage of runtime.stages) {
+      lines.push("", `### ${stage.role === "maker" ? "Maker" : "Reviewer"}: ${stage.model}`, "",
+        `${stage.apiShareBps / 100}% API / ${stage.nativeShareBps / 100}% native assumption. Account, model and quota access are unverified.`, "",
+        "| Route | Code execution | Requirement | Source |", "| --- | --- | --- | --- |");
+      for (const route of [stage.apiRoute, ...stage.nativeRoutes]) {
+        const source = runtime.sources.find((item) => item.id === route.sourceId)!;
+        lines.push(`| ${route.label} | ${route.executionLocation === "provider-cloud" ? "Provider cloud" : "Your chosen host"} | ${route.requirement} | [${source.label}](${source.url}), observed ${source.observedAt} |`);
+      }
+    }
+    lines.push("", "### Planned control roles", "", "These are role definitions; execution status is unknown. Use the existing dispatcher and release authority.");
+    for (const role of runtime.controlRoles) lines.push(`- ${role.role}: ${role.output}.`);
+    for (const warning of runtime.warnings) lines.push(`- ${warning}`);
   }
   lines.push("", "## Hardware alternatives, evidence and disclosures", "", toBuildSheetMarkdown(report.hardware));
   return lines.join("\n") + "\n";

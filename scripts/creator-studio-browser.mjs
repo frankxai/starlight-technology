@@ -115,6 +115,52 @@ async function exercise(width) {
       const text = fs.readFileSync(await download(page, 'Export hardware only', `${tag}-hardware.md`), 'utf8');
       assert.ok(!text.includes(notes)); assert.ok(!text.includes(title)); assert.ok(!text.includes('Factory workload'));
     });
+    await check(`${tag}: native routing and metered contingency survive edits, export and reload`, async () => {
+      const maker = page.getByRole('group', { name: 'Maker', exact: true });
+      await maker.getByText('Cache and native subscription assumptions', { exact: true }).click();
+      const share = maker.getByLabel('Missions billed through APIs (%)', { exact: true });
+      await share.fill('50'); await share.press('Tab');
+      await page.getByText('Compute, monthly fees and currency', { exact: true }).click();
+      const cap = page.getByLabel('Incremental monthly cap (EUR)', { exact: true });
+      await cap.fill('60'); await cap.press('Tab');
+      await page.waitForFunction((storageKey) => {
+        const factory = JSON.parse(localStorage.getItem(storageKey)).factory;
+        return factory.maker.apiShareBps === 5000 && factory.monthlyCapEuroMinor === 6000;
+      }, key);
+      await page.reload(); await saved(page, title);
+      const disclosure = page.getByText('Runtime and subscription routes', { exact: true });
+      await disclosure.click();
+      await page.getByText('Known costs exceed your incremental cap.', { exact: true }).waitFor();
+      await page.getByText('Codex managed cloud', { exact: true }).waitFor();
+      await page.getByText('Claude managed cloud', { exact: true }).waitFor();
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+      const routed = JSON.parse(fs.readFileSync(await download(page, 'Export report JSON', `${tag}-native-runtime-report.json`), 'utf8'));
+      assert.equal(routed.schema, 'StarlightCreatorReport.v3');
+      assert.equal(routed.runtimePlan.executionAuthorized, false);
+      assert.equal(routed.runtimePlan.stages[0].nativeShareBps, 5000);
+      assert.equal(routed.runtimePlan.stages[0].accountAccess, 'unverified');
+      assert.equal(routed.factory.modeledSubtotal.usd, 56.9012);
+      assert.equal(routed.factory.overCap, false);
+      assert.equal(routed.runtimePlan.meteredContingency.modeledSubtotal.usd, 78.9012);
+      assert.equal(routed.runtimePlan.meteredContingency.overCap, true);
+      const costs = JSON.parse(fs.readFileSync(await download(page, 'Export cost comparison', `${tag}-runtime-costs.json`), 'utf8'));
+      assert.equal(costs.schema, 'StarlightFactoryCostReport.v2');
+      assert.equal(costs.runtimePlan.meteredContingency.overCap, true);
+      assert.equal(costs.privateContextIncluded, false); assert.ok(!JSON.stringify(costs).includes(notes));
+      await capture(disclosure.locator('..'), `${tag}-runtime.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+    });
+    await check(`${tag}: changing the maker updates coding-plan boundaries without losing the workload`, async () => {
+      await page.getByRole('group', { name: 'Maker', exact: true }).getByLabel('Model', { exact: true }).selectOption('glm');
+      await page.getByText('GLM Coding Plan in supported tools', { exact: true }).waitFor();
+      const routed = JSON.parse(fs.readFileSync(await download(page, 'Export report JSON', `${tag}-glm-runtime-report.json`), 'utf8'));
+      assert.equal(routed.plan.factory.maker.apiShareBps, 5000);
+      assert.equal(routed.runtimePlan.stages[0].provider, 'zai');
+      assert.equal(routed.runtimePlan.stages[0].nativeRoutes.length, 1);
+      assert.match(routed.runtimePlan.stages[0].nativeRoutes[0].requirement, /5-hour and weekly/);
+      assert.deepEqual(routed.plan.factory.compute, report.plan.factory.compute);
+      await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(reportPath), true);
+      await page.waitForFunction((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory.maker.apiShareBps === 10000, key);
+    });
     await check(`${tag}: cancelled reset preserves inputs`, async () => {
       await dialog(page, () => page.getByRole('button', { name: 'Reset plan', exact: true }).click(), false);
       assert.equal(await page.getByLabel('Plan title', { exact: true }).inputValue(), title);

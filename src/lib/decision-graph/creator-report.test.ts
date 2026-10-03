@@ -98,9 +98,39 @@ describe("complete creator report", () => {
 
   it("keeps the first report format recoverable after purchase-review fields were added", () => {
     const report = toCreatorReport(completePlan(), at);
-    const { requirements: _requirements, purchaseReviews: _purchaseReviews, ...prior } = report;
-    void _requirements; void _purchaseReviews;
+    const { requirements: _requirements, purchaseReviews: _purchaseReviews, runtimePlan: _runtimePlan, ...prior } = report;
+    void _requirements; void _purchaseReviews; void _runtimePlan;
     expect(parseCreatorExport(JSON.stringify({ ...prior, schema: "StarlightCreatorReport.v1" }))).toEqual(report.plan);
+  });
+
+  it("recovers the second report format and recomputes a forged runtime claim", () => {
+    const plan = completePlan(); plan.factory!.maker.apiShareBps = 5000;
+    const report = toCreatorReport(plan, at);
+    const { runtimePlan: _runtimePlan, ...previous } = report;
+    void _runtimePlan;
+    expect(parseCreatorExport(JSON.stringify({ ...previous, schema: "StarlightCreatorReport.v2" }))).toEqual(plan);
+    const forged = { ...report, runtimePlan: { executionAuthorized: true, accountAccess: "available" } };
+    const restored = toCreatorReport(parseCreatorExport(JSON.stringify(forged)), at);
+    expect(restored.schema).toBe("StarlightCreatorReport.v3");
+    expect(restored.runtimePlan?.executionAuthorized).toBe(false);
+    expect(restored.runtimePlan?.stages.every((stage) => stage.accountAccess === "unverified")).toBe(true);
+    expect(restored.runtimePlan?.meteredContingency.modeledSubtotal?.usd).toBeCloseTo(78.9012, 8);
+    expect(restored.runtimePlan).not.toHaveProperty("current");
+  });
+
+  it("exports runtime choices and a matched contingency, omitting them when no scenario is present", () => {
+    const plan = completePlan(); plan.factory!.maker.apiShareBps = 0;
+    const report = toCreatorReport(plan, at);
+    const markdown = toCreatorReportMarkdown(report);
+    expect(markdown).toMatch(/Runtime and subscription routes/);
+    expect(markdown).toMatch(/Codex managed cloud/);
+    expect(markdown).toMatch(/Claude managed cloud/);
+    expect(markdown).toMatch(/USD 78.9012/);
+    expect(markdown).toMatch(/does not authorize/);
+    expect(parseCreatorExport(encodeCreatorReport(plan, at))).toEqual(plan);
+    plan.factory = null;
+    expect(toCreatorReport(plan, at).runtimePlan).toBeNull();
+    expect(toCreatorReportMarkdown(toCreatorReport(plan, at))).not.toMatch(/Runtime and subscription routes/);
   });
 
   it("names unreadable saved data before permitting import or reset, and honors cancellation", () => {

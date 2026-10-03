@@ -2,6 +2,7 @@
 import { useId, useRef, useState } from "react";
 import { calculateFactoryScenario, factoryComputeRate, factoryModelRates, readFactoryScenario, type FactoryCostScenario, type StageAssumptions } from "@/lib/decision-graph/ai-factory-costs";
 import { readFactoryInput } from "@/lib/decision-graph/factory-input";
+import { planFactoryRuntime } from "@/lib/decision-graph/factory-runtime-plan";
 import styles from "./factory-cost-editor.module.css";
 
 const dollars = (value: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: value < 0.01 ? 6 : 2 }).format(value);
@@ -33,7 +34,7 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
   const id = useId();
   const [notice, setNotice] = useState("");
   const today = new Date().toISOString().slice(0, 10);
-  const result = calculateFactoryScenario(value, today);
+  const { current: result, ...runtime } = planFactoryRuntime(value, today);
   const alternativeRate = factoryModelRates.find((rate) => rate.id === (value.maker.rate.id === "glm" ? "opus" : "glm"))!;
   const alternative = { ...value, maker: { ...value.maker, rate: { ...alternativeRate } } };
   const comparison = calculateFactoryScenario(alternative, today);
@@ -63,7 +64,7 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
   }
   function exportCosts() {
     try {
-    const text = JSON.stringify({ schema: "StarlightFactoryCostReport.v1", calculatedAt: new Date().toISOString(), assumptions: value, result, alternative: { assumptions: alternative, result: comparison }, privateContextIncluded: false }, null, 2);
+    const text = JSON.stringify({ schema: "StarlightFactoryCostReport.v2", calculatedAt: new Date().toISOString(), assumptions: value, result, runtimePlan: runtime, alternative: { assumptions: alternative, result: comparison }, privateContextIncluded: false }, null, 2);
     const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
     const link = document.createElement("a"); link.href = url; link.download = "starlight-factory-costs.json"; link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -85,6 +86,24 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
       {number("Accepted-output assumption (%)", value.acceptanceBps, 0, 100, (amount) => change({ ...value, acceptanceBps: amount as number }), 100)}
     </div>
     <div className={styles.stages}>{stageEditor("maker", value.maker)}{stageEditor("reviewer", value.reviewer)}</div>
+    <details className={styles.advanced}>
+      <summary>Runtime and subscription routes</summary>
+      <p>A subscription can fund supported native work while an API worker uses separate billing. Compare where code runs before treating either route as available.</p>
+      <div className={styles.summary}>
+        <div><span>Your API/native-share scenario</span><strong><Money amount={result.knownSubtotal} /></strong><p>{result.modeledSubtotal === null ? "Known subtotal; some fees are unknown." : "Modeled monthly increment before tax and unlisted costs."}</p></div>
+        <div><span>Fully metered contingency</span><strong><Money amount={runtime.meteredContingency.knownSubtotal} /></strong><p>{runtime.meteredContingency.overCap === true ? "Known costs exceed your incremental cap." : runtime.meteredContingency.overCap === null ? "Cap compliance is unknown." : "Modeled within your entered cap."} Same workload, repairs, reviewer, compute and fees; 100% API share.</p></div>
+      </div>
+      <div className={styles.runtimeStages}>{runtime.stages.map((stage) => <section key={stage.role} className={styles.runtimeStage} aria-label={`${stage.role === "maker" ? "Maker" : "Reviewer"} runtime choices`}>
+        <h4>{stage.role === "maker" ? "Maker" : "Reviewer"}: {stage.model}</h4>
+        <p>{stage.apiShareBps / 100}% API / {stage.nativeShareBps / 100}% native assumption. Account, exact model and quota access are unverified.</p>
+        <ul className={styles.routeList}>{[stage.apiRoute, ...stage.nativeRoutes].map((route) => {
+          const source = runtime.sources.find((item) => item.id === route.sourceId)!;
+          return <li key={route.id}><strong>{route.label}</strong><span className={styles.secondary}>Code runs: {route.executionLocation === "provider-cloud" ? "provider cloud" : "your chosen host"}. {route.relievesLocalCompute === false ? "This route keeps the tool workload on the executing machine." : ""}</span><p>{route.requirement}</p><a className={styles.secondary} href={source.url} target="_blank" rel="noopener noreferrer">{source.label}, observed {source.observedAt}</a></li>;
+        })}</ul>
+      </section>)}</div>
+      <p>{runtime.toolCompute.plannedSlots} planned {runtime.toolCompute.os} tool slots: {runtime.toolCompute.vcpuPerSlot} vCPU / {runtime.toolCompute.memoryGiBPerSlot} GiB each; {runtime.toolCompute.activeHours} active hours. Admitted capacity is unknown. These remote CPU resources do not establish local-model memory fit.</p>
+      <ul className={styles.warnings}>{runtime.warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
+    </details>
     <details className={styles.advanced}><summary>Compute, monthly fees and currency</summary>
       <p>These are reserved-resource assumptions. Active hours stop compute billing in the scenario; retained disks stay billed. Every retained GiB is charged here, with no assumed pooled free allowance.</p>
       <div className={styles.inputs}>
