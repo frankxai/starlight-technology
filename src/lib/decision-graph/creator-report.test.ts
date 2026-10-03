@@ -128,7 +128,7 @@ describe("complete creator report", () => {
     expect(report.factory?.rateEvidence[0]).toMatchObject({ sourceObservedAt: "2026-10-03", assumedObservedAt: "2026-11-04", sourceAgeStatus: "older-than-window", kind: "edited-assumption" });
     const text = toCreatorReportMarkdown(report);
     expect(text).toContain("Factory rate evidence: Edited or imported rate assumptions");
-    expect(text).toContain("2026-10-03 | 2026-11-04 | observedAt | older-than-window");
+    expect(text).toContain("2026-10-03 | 2026-11-04 | Observation date | Older than 30 days");
     const restored = parseCreatorExport(encodeCreatorReport(plan, "2026-11-04T00:00:00.000Z"));
     expect(restored.factory?.maker.rate.observedAt).toBe("2026-11-04");
     expect(report.makerAlternatives.every((row) => row.result.ratesModified === false)).toBe(true);

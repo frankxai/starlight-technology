@@ -50,15 +50,16 @@ async function saved(page, title) {
     try { return JSON.parse(localStorage.getItem(storageKey)).title === expected; } catch { return false; }
   }, [key, title], { timeout: 10000 });
 }
-async function capture(target, name, viewport) {
+async function capture(target, name, viewport, style) {
   const file = path.join(output, name), createdAt = new Date().toISOString();
-  await target.screenshot({ path: file, animations: 'disabled' });
+  await target.screenshot({ path: file, animations: 'disabled', style });
   const sha256 = createHash('sha256').update(fs.readFileSync(file)).digest('hex');
   const sidecar = { $schema: 'https://frankx.ai/schemas/vis-provenance-sidecar.schema.json', asset_id: `${receipt.testedCommit}-${name}`,
     created_at: createdAt, brand: 'starlight-technology', agent_session: '01a101b1-9d38-7fa1-b1f0-dec923631d7f',
     model: 'none (render capture)', provider: 'GitHub Actions / Playwright Chromium', seed: null,
     method: 'Actual rendered product screenshot; no image-generation model or image editing',
-    prompt: `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Preserve the rendered interface as evidence; do not grant design or release acceptance.`,
+    prompt: `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Capture-only CSS: ${style ?? 'none'}. The isolated component capture makes global navigation non-sticky so it cannot cover the component; page captures retain normal navigation. Preserve the rendered component as evidence; do not grant design or release acceptance.`,
+    capture_css: style ?? null,
     sha256, source_commit: receipt.testedCommit, viewport_width: viewport, private: false, public_release: false,
     schema_validation: { status: 'not-validated', reason: 'Referenced schema was unavailable; provenance fields recorded.' } };
   fs.writeFileSync(file + '.vis.provenance.json', JSON.stringify(sidecar, null, 2) + '\n');
@@ -108,7 +109,7 @@ async function exercise(width) {
       assert.ok(report.purchaseReviews.length); assert.equal(report.purchaseReviews[0].deliveredTotalMinor, null);
       await page.evaluate(() => scrollTo(0, 0));
       await capture(page, `${tag}-studio.png`, width);
-      await capture(page.getByRole('region', { name: 'What would this workload cost?', exact: true }), `${tag}-factory.png`, width);
+      await capture(page.getByRole('region', { name: 'What would this workload cost?', exact: true }), `${tag}-factory.png`, width, '.site-header { position: static !important; }');
     });
     await check(`${tag}: hardware-only share omits private work and factory assumptions`, async () => {
       const text = fs.readFileSync(await download(page, 'Export hardware only', `${tag}-hardware.md`), 'utf8');
