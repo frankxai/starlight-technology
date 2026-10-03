@@ -8,18 +8,24 @@ const dollars = (value: number) => new Intl.NumberFormat("en-US", { style: "curr
 const euros = (minor: number | null) => minor === null ? "EUR unknown" : new Intl.NumberFormat("en-NL", { style: "currency", currency: "EUR" }).format(minor / 100);
 type Amount = ReturnType<typeof calculateFactoryScenario>["knownSubtotal"];
 function Money({ amount }: { amount: Amount }) { return <>{dollars(amount.usd)} <span className={styles.secondary}>{euros(amount.euroMinor)}</span></>; }
-function NumberField({ label, current, min, max, changeValue, scale, optional }: { label: string; current: number | null; min: number; max: number; changeValue: (amount: number | null) => void; scale: number; optional: boolean }) {
+function NumberField({ label, current, min, max, changeValue, scale, optional }: { label: string; current: number | null; min: number; max: number; changeValue: (amount: number | null) => boolean; scale: number; optional: boolean }) {
   const id = useId();
-  const [draft, setDraft] = useState<string | null>(null);
-  const parsed = draft === null ? null : readFactoryInput(draft, { min, max, scale, optional });
-  const error = parsed?.ok === false ? parsed.error : "";
+  const [edit, setEdit] = useState<{ base: number | null; draft: string | null; error: string }>({ base: current, draft: null, error: "" });
+  if (edit.base !== current) setEdit({ base: current, draft: null, error: "" });
+  const { draft, error } = edit.base === current ? edit : { draft: null, error: "" };
+  function restore() { setEdit({ base: current, draft: null, error: "" }); }
   function commit() {
-    if (parsed?.ok) { changeValue(parsed.value); setDraft(null); }
+    if (draft === null) return;
+    const parsed = readFactoryInput(draft, { min, max, scale, optional });
+    if (!parsed.ok) { setEdit({ base: current, draft, error: parsed.error }); return; }
+    if (changeValue(parsed.value)) restore();
+    else setEdit({ base: current, draft, error: "These assumptions conflict. The saved value is unchanged." });
   }
-  return <label><span id={`${id}-label`}>{label}</span><input type="text" inputMode={scale === 1 ? "numeric" : "decimal"} maxLength={64} aria-labelledby={`${id}-label`} aria-describedby={`${id}-range${error ? ` ${id}-error` : ""}`} aria-invalid={error ? true : undefined} value={draft ?? (current === null ? "" : current / scale)} placeholder={optional ? "Unknown" : undefined} onBlur={commit} onChange={(event) => setDraft(event.target.value)} onKeyDown={(event) => {
+  return <div><label><span id={`${id}-label`}>{label}</span><input type="text" inputMode={scale === 1 ? "numeric" : "decimal"} aria-labelledby={`${id}-label`} aria-describedby={`${id}-range${error ? ` ${id}-error` : ""}`} aria-invalid={error ? true : undefined} value={draft ?? (current === null ? "" : current / scale)} placeholder={optional ? "Unknown" : undefined} onBlur={commit} onChange={(event) => setEdit({ base: current, draft: event.target.value, error: "" })} onKeyDown={(event) => {
+    if (event.nativeEvent.isComposing) return;
     if (event.key === "Enter") { event.preventDefault(); commit(); }
-    if (event.key === "Escape") { event.preventDefault(); setDraft(null); }
-  }} /><span id={`${id}-range`} className={styles.secondary}>Range {min} to {max}; {scale === 1 ? "whole numbers" : `up to ${scale === 100 ? 2 : 6} decimal places`}.{optional ? " Blank means unknown." : ""}</span>{error && <span id={`${id}-error`} role="status">{error} Press Escape to restore it.</span>}</label>;
+    if (event.key === "Escape") { event.preventDefault(); restore(); }
+  }} /><span id={`${id}-range`} className={styles.secondary}>Range {min} to {max}; {scale === 1 ? "whole numbers" : `up to ${scale === 100 ? 2 : 6} decimal places`}.{optional ? " Blank means unknown." : ""}</span></label><span id={`${id}-error`} role="status">{error}</span>{error && <button type="button" className="button button-quiet" onClick={restore}>Restore saved value for {label.toLowerCase()}</button>}</div>;
 }
 
 export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScenario; onChange: (next: FactoryCostScenario) => void }) {
@@ -32,10 +38,10 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
   const comparison = calculateFactoryScenario(alternative, today);
   function change(next: FactoryCostScenario) {
     const checked = readFactoryScenario(next);
-    if (!checked) { setNotice("Enter a nonnegative value within the displayed range. The previous assumptions are kept."); return; }
-    onChange(checked); setNotice("");
+    if (!checked) { setNotice("Enter a nonnegative value within the displayed range. The previous assumptions are kept."); return false; }
+    onChange(checked); setNotice(""); return true;
   }
-  function number(label: string, current: number | null, min: number, max: number, changeValue: (amount: number | null) => void, scale = 1, optional = false) {
+  function number(label: string, current: number | null, min: number, max: number, changeValue: (amount: number | null) => boolean, scale = 1, optional = false) {
     return <NumberField label={label} current={current} min={min} max={max} changeValue={changeValue} scale={scale} optional={optional} />;
   }
   function stageEditor(kind: "maker" | "reviewer", stage: StageAssumptions) {

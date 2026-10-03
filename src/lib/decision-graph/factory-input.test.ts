@@ -39,4 +39,12 @@ describe("exact factory assumptions", () => {
     expect(readFactoryInput("1", { ...fee, scale: 3 }).ok).toBe(false);
     expect(readFactoryInput("1", { ...fee, max: Infinity }).ok).toBe(false);
   });
+  it("rejects a long paste whose last significant digit would be lost by a browser maxlength", () => {
+    expect(readFactoryInput("5." + "0".repeat(62) + "1", fee).ok).toBe(false);
+  });
+  it("accepts the exact minimum exchange rate and rejects zero", () => {
+    const fx = { scale: 1_000_000, min: 0.000001, max: 100, optional: true };
+    expect(readFactoryInput("0.000001", fx)).toEqual({ ok: true, value: 1 });
+    expect(readFactoryInput("0", fx).ok).toBe(false);
+  });
 });

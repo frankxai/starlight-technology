@@ -9,7 +9,7 @@ export function readFactoryInput(text: string, limits: FactoryInputLimits): Fact
   }
   if (text === "" && limits.optional) return { ok: true, value: null };
   if (text.length > 64 || !/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)) {
-    return { ok: false, error: "Enter a nonnegative decimal number. The saved assumption is unchanged." };
+    return { ok: false, error: "Use digits and a period for the decimal point, up to 64 characters. The saved assumption is unchanged." };
   }
   const [whole, rawFraction = ""] = text.split(".");
   const fraction = rawFraction.replace(/0+$/, "");
