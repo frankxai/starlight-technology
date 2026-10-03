@@ -140,7 +140,9 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
   const knownAmount = amount(known);
   const modeledSubtotal = missing.length ? null : knownAmount;
   const acceptedCost = missing.length || expectedAccepted === 0 ? null : amount(times(known, 10_000, missions * plan.acceptanceBps));
-  const overCap = missing.length || plan.monthlyCapEuroMinor === null || plan.eurPerUsdMicros === null ? null : known.n * BigInt(plan.eurPerUsdMicros) > BigInt(plan.monthlyCapEuroMinor) * known.d * BigInt(10_000_000_000);
+  const knownExceedsCap = plan.monthlyCapEuroMinor === null || plan.eurPerUsdMicros === null ? null : known.n * BigInt(plan.eurPerUsdMicros) > BigInt(plan.monthlyCapEuroMinor) * known.d * BigInt(10_000_000_000);
+  // Unknown fees are nonnegative: they cannot undo a breach proven by known costs.
+  const overCap = knownExceedsCap === true ? true : missing.length ? null : knownExceedsCap;
   return {
     measured: false as const, executable: false as const, currency: "USD" as const,
     plannedMissions: missions, expectedAttempts: missions * (10_000 + plan.repairBps) / 10_000, expectedAccepted, independentProvider,

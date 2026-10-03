@@ -42,6 +42,34 @@ describe("recoverable agent operating estimates", () => {
     cost = calculateFactoryScenario(scenario);
     expect(cost.modeledSubtotal).toBeNull(); expect(cost.knownSubtotal.euroMinor).toBeNull(); expect(cost.overCap).toBeNull(); expect(cost.costPerExpectedAccepted).toBeNull();
   });
+  it("reports a proven cap breach even while another fee remains unknown", () => {
+    const scenario = newFactoryScenario();
+    scenario.fees.browserMicroUsd = null;
+    scenario.monthlyCapEuroMinor = 7200;
+    const cost = calculateFactoryScenario(scenario);
+    expect(cost.knownSubtotal.euroMinor).toBe(7259);
+    expect(cost.modeledSubtotal).toBeNull();
+    expect(cost.overCap).toBe(true);
+    scenario.monthlyCapEuroMinor = 10_000;
+    expect(calculateFactoryScenario(scenario).overCap).toBeNull();
+    scenario.fees.browserMicroUsd = 0;
+    expect(calculateFactoryScenario(scenario).overCap).toBe(false);
+  });
+  it("compares the exact known lower bound before rounding or unknown fees", () => {
+    const scenario = newFactoryScenario();
+    scenario.missionsPerDay = 0; scenario.compute.slots = 0;
+    scenario.fees.toolsMicroUsd = 1_000_000; scenario.fees.browserMicroUsd = null;
+    scenario.eurPerUsdMicros = 1_000_000; scenario.monthlyCapEuroMinor = 100;
+    expect(calculateFactoryScenario(scenario).overCap).toBeNull();
+    scenario.fees.toolsMicroUsd += 1;
+    const cost = calculateFactoryScenario(scenario);
+    expect(cost.knownSubtotal.euroMinor).toBe(100);
+    expect(cost.overCap).toBe(true);
+    scenario.eurPerUsdMicros = null;
+    expect(calculateFactoryScenario(scenario).overCap).toBeNull();
+    scenario.eurPerUsdMicros = 1_000_000; scenario.monthlyCapEuroMinor = null;
+    expect(calculateFactoryScenario(scenario).overCap).toBeNull();
+  });
   it("denies malformed imports and preserves bounded snapshot prices as disclosed assumptions", () => {
     const scenario = newFactoryScenario();
     for (const invalid of [

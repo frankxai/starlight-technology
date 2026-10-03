@@ -1,0 +1,170 @@
+{
+  "schema": "StarlightNativeCoreReview.v1",
+  "at": "2026-10-03T18:18:27.335759+00:00",
+  "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+  "reviewedCommit": "b8b079ffba5c8256d9febe206d68f7ac7302bc2f",
+  "scope": "Three supplied immutable core files; UI, tests, design, buyer evidence and wider integration were not supplied to this review.",
+  "provider": "Google through installed native Antigravity CLI",
+  "modelRequested": "gemini-3.1-pro-high",
+  "cliReportedModel": "gemini-3.1-pro-high",
+  "servedModelProven": false,
+  "promptSha256": "95865b033cf92749851eace2cf3b34d9fdf525f6e4dbf5f56def40a682834c0d",
+  "sourceFiles": [
+    {
+      "path": "src/lib/decision-graph/ai-factory-costs.ts",
+      "sha256": "42c7beb6eec7b9161ad7189fd25d492c0f67be6639261a23beafd099badc937d"
+    },
+    {
+      "path": "src/lib/decision-graph/creator-plan.ts",
+      "sha256": "66c578c6f25061c80b48548da6eaee27997ea025cf8756160d611865e8c228ac"
+    },
+    {
+      "path": "src/lib/decision-graph/draft-storage.ts",
+      "sha256": "f249c19d0d584240c0e4eabef5cf9788030e9a260aa3c94663fc6b642e56cbd6"
+    }
+  ],
+  "elapsedSeconds": 195.109,
+  "terminalStatus": "SUCCESS",
+  "usage": {
+    "input_tokens": 45021,
+    "output_tokens": 27961,
+    "thinking_tokens": 27254,
+    "cache_read_tokens": 0,
+    "total_tokens": 72982
+  },
+  "toolStepCount": 0,
+  "requestedPlanMode": true,
+  "planCommandExpanded": true,
+  "permissionModeObserved": "always-proceed",
+  "registeredToolCount": 60,
+  "toolConfinementProven": false,
+  "quotaProven": false,
+  "invoiceProven": false,
+  "apiOverride": false,
+  "providerReview": {
+    "nonce": "5a7c83866cea9754e4d76867",
+    "reviewed_commit": "b8b079ffba5c8256d9febe206d68f7ac7302bc2f",
+    "verdict": "fail",
+    "material_findings": [
+      {
+        "severity": "high",
+        "file": "src/lib/decision-graph/ai-factory-costs.ts",
+        "evidence": "const overCap = missing.length || plan.monthlyCapEuroMinor === null ... ? null : known.n * ... > ...",
+        "fix": "Evaluate known costs against the exact cap first; return true if the known subtotal already strictly exceeds the cap, instead of short-circuiting to null when missing fees are present."
+      },
+      {
+        "severity": "medium",
+        "file": "src/lib/decision-graph/ai-factory-costs.ts",
+        "evidence": "reviewer: stage(factoryModelRates[makerId === \"sol\" ? 0 : 1], 10_000, 2_000)",
+        "fix": "Decouple the reviewer fallback logic so it remains Opus (index 0) when evaluating alternative makers like GLM, preventing an unintended downgrade to Sol that underreports the Maker-only AI cost scenario (yielding 51.1812 instead of 59.9812)."
+      },
+      {
+        "severity": "high",
+        "file": "src/lib/decision-graph/creator-plan.ts",
+        "evidence": "const text = JSON.stringify(checked, null, 2); (where checked retains privateContext)",
+        "fix": "Explicitly strip or clear the privateContext field from the checked plan payload prior to serialization in encodeCreatorPlan to prevent leaking private context notes on export."
+      },
+      {
+        "severity": "high",
+        "file": "src/lib/decision-graph/creator-plan.ts",
+        "evidence": "if (!ids(input.workloadIds, \"Workload\") || !ids(input.constraintIds, \"Constraint\")) return null;",
+        "fix": "Filter out unrecognized or deprecated IDs during normalization to gracefully salvage the remainder of the legacy draft, rather than outright aborting the read operation and returning null."
+      },
+      {
+        "severity": "medium",
+        "file": "src/lib/decision-graph/draft-storage.ts",
+        "evidence": "if (raw !== null && samePlan(raw, payload)) { onSaved(raw); return { status: \"saved\", raw }; }",
+        "fix": "When payloads are functionally identical but structurally different (e.g., schema migrations), write the upgraded payload to disk and pass it to onSaved, rather than intercepting the write and permanently trapping the draft and client state in the legacy raw format."
+      }
+    ],
+    "unproven_gates": [
+      "permission",
+      "acceptance",
+      "ROI"
+    ]
+  },
+  "leadDispositions": [
+    {
+      "findingIndex": 0,
+      "status": "accepted-and-fixed",
+      "evidence": "Unknown fees are bounded nonnegative values. Known costs above the cap therefore prove a breach. Two new regression cases failed before the correction and passed afterward, including an exact sub-cent breach, unknown fees below cap, missing FX and missing cap.",
+      "changedFiles": [
+        "src/lib/decision-graph/ai-factory-costs.ts",
+        "src/lib/decision-graph/ai-factory-costs.test.ts"
+      ]
+    },
+    {
+      "findingIndex": 1,
+      "status": "not-reproduced-in-maker-only-comparison",
+      "evidence": "src/components/factory-cost-editor.tsx constructs alternative with only maker.rate replaced and keeps reviewer/compute/fees unchanged. The existing matched-maker regression expects USD59.9812. newFactoryScenario(\"glm\") is the separate GLM/Sol preset, expected USD51.1812; changing its reviewer would change that preset rather than fix the actual comparison."
+    },
+    {
+      "findingIndex": 2,
+      "status": "conflicts-with-complete-plan-recovery-contract",
+      "evidence": "encodeCreatorPlan is shared by local recovery and explicit complete-plan export; stripping privateContext would delete saved notes. studio-configurator.tsx describes that plan export includes private context. factory-cost-editor.tsx cost-only export has no private-context input. Existing actual Chrome downloads proved complete-plan roundtrip and private-context-free cost export. The reviewer received no UI source."
+    },
+    {
+      "findingIndex": 3,
+      "status": "conflicts-with-strict-import-preservation-contract",
+      "evidence": "Unknown IDs are rejected before replacing the current draft. creator-plan.test.ts rejects unknown workloads and hidden authority. studio-configurator.tsx retains unreadable raw draft and offers export/recovery. Silently deleting an unknown workload would change intent without a migration rule; no catalog deprecation map was supplied."
+    },
+    {
+      "findingIndex": 4,
+      "status": "conflicts-with-timestamp-only-legacy-preservation-contract",
+      "evidence": "samePlan intentionally preserves legacy bytes on an unchanged open to avoid a conflicting write in another tab. Actual edits change the semantic payload and save v2. Existing Chrome legacy/edit/reload and two-tab checks prove both paths; regression retains exact legacy bytes without a write. The reviewer received no surrounding UI or tests."
+    }
+  ],
+  "fixSourceFiles": [
+    {
+      "path": "src/lib/decision-graph/ai-factory-costs.ts",
+      "sha256": "c3f220115997a41105f2311f84076b7e5ebada42d5cdc761b83816393fef5fea"
+    },
+    {
+      "path": "src/lib/decision-graph/ai-factory-costs.test.ts",
+      "sha256": "95cd7e260f481930eb70fb56f82b9a4c6e2fe5a3c16e391da5d88400a8a83b53"
+    }
+  ],
+  "verification": {
+    "at": "20261003T181628Z",
+    "status": "passed",
+    "checks": [
+      {
+        "name": "toolchain",
+        "exitCode": 0,
+        "logSha256": "89dd3a91795ada9a650577b6dd421571db6489f5c3531b52a3a1cd15bf23c2b4"
+      },
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "logSha256": "901f2997d805fdcf689541b413e82fca8905cdbe5eb515d9d1e212beabdd1cb5"
+      },
+      {
+        "name": "typecheck",
+        "exitCode": 0,
+        "logSha256": "4e1f6ef75188b2ede63b0f0d15424720b4cd12033e6a27c420a0fec791117e78"
+      },
+      {
+        "name": "tests",
+        "exitCode": 0,
+        "logSha256": "6965668246073f8013ca2033e0c4c79ceb085a2a9eb7fc3db86b3a6dc5425feb"
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "logSha256": "5b9239ab739be853193fe9c40ca05b5ed4d0d0acb7ffbf325b50e49a1c2fee94"
+      }
+    ],
+    "vitestTests": 102,
+    "newRegressionCases": 2,
+    "newBrowserRun": false
+  },
+  "freshPostFixProviderReview": "pending",
+  "releaseAcceptance": false,
+  "remainingGates": [
+    "Fresh pinned review of corrected revision",
+    "Independent wider product/security and rendered design/buyer review",
+    "Privacy/licence/commercial acceptance",
+    "Native entitlement/quota and hard tool confinement",
+    "Measured useful missions and ROI"
+  ]
+}
