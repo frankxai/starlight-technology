@@ -3,7 +3,7 @@ import { decisionGraph } from "./dataset";
 import { newFactoryScenario } from "./ai-factory-costs";
 import { assessCreatorPlan, encodeCreatorPlan, newCreatorPlan } from "./creator-plan";
 import { toBuildSheetJson } from "./build-sheet";
-import { encodeCreatorReport, parseCreatorExport, toCreatorReport, toCreatorReportMarkdown } from "./creator-report";
+import { confirmCreatorReplacement, encodeCreatorReport, parseCreatorExport, toCreatorReport, toCreatorReportMarkdown } from "./creator-report";
 
 const at = "2026-10-03T20:00:00.000Z";
 function completePlan() {
@@ -93,6 +93,35 @@ describe("complete creator report", () => {
     expect(report.catalogChanged).toBe(true); expect(report.plan.catalogHash).toBe(oldHash);
     expect(report.factory?.warnings.join(" ")).toMatch(/older than 30 days/);
     expect(toCreatorReportMarkdown(report)).toMatch(/catalog changed/i);
+    expect(toCreatorReportMarkdown(report)).toMatch(/GLM-5.3:.*older than 30 days/);
+  });
+
+  it("keeps the first report format recoverable after purchase-review fields were added", () => {
+    const report = toCreatorReport(completePlan(), at);
+    const { requirements: _requirements, purchaseReviews: _purchaseReviews, ...prior } = report;
+    void _requirements; void _purchaseReviews;
+    expect(parseCreatorExport(JSON.stringify({ ...prior, schema: "StarlightCreatorReport.v1" }))).toEqual(report.plan);
+  });
+
+  it("names unreadable saved data before permitting import or reset, and honors cancellation", () => {
+    for (const action of ["import", "reset"] as const) {
+      let calls = 0;
+      const allowed = confirmCreatorReplacement(action, true, (message) => {
+        calls++; expect(message).toMatch(/unreadable saved data/); expect(message).toMatch(/recovery copy/); return false;
+      });
+      expect(allowed).toBe(false); expect(calls).toBe(1);
+      expect(confirmCreatorReplacement(action, false, () => true)).toBe(true);
+    }
+  });
+
+  it("makes the standalone Markdown auditable and separates listings from delivered costs", () => {
+    const plan = completePlan(); const report = toCreatorReport(plan, at);
+    const markdown = toCreatorReportMarkdown(report);
+    for (const text of ["0.920000 EUR per USD", "50,000", "Repair allowance", "Expected acceptance", "Fresh input tokens", "VAT", "Delivered total: Unknown", "bud-3000", "EU-NL"]) {
+      expect(markdown.replace("50000", "50,000")).toContain(text);
+    }
+    expect(report.purchaseReviews.every((row) => row.deliveredTotalMinor === null)).toBe(true);
+    expect(markdown).toContain("USD 5.0000");
   });
 
   it("quotes private text so it cannot plant markup or sections in the Markdown report", () => {

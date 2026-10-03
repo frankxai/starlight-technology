@@ -2,7 +2,8 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { type ConfiguratorInput, type ConfiguredSystem } from "@/lib/decision-graph/configurator";
-import { encodeCreatorReport, parseCreatorExport, toCreatorReport, toCreatorReportMarkdown } from "@/lib/decision-graph/creator-report";
+import { confirmCreatorReplacement, encodeCreatorReport, parseCreatorExport, toCreatorReport, toCreatorReportMarkdown } from "@/lib/decision-graph/creator-report";
+import { toBuildSheetJson, toBuildSheetMarkdown } from "@/lib/decision-graph/build-sheet";
 import { resolveOutboundLink } from "@/lib/decision-graph/partner-links";
 import { decisionGraph } from "@/lib/decision-graph/dataset";
 import { indexGraph } from "@/lib/decision-graph/graph";
@@ -267,12 +268,12 @@ export function StudioConfigurator() {
     try {
       if (file.size > CREATOR_PLAN_MAX_BYTES) throw new Error("Plan exceeds 64 KiB.");
       const imported = parseCreatorExport(await file.text());
-      if (!window.confirm("Replace your current draft with this plan? Export a backup first if needed.")) { setNotice("Import cancelled. Your current draft is unchanged."); return; }
+      if (!confirmCreatorReplacement("import", recovery !== null, (message) => window.confirm(message))) { setNotice("Import cancelled. Your current draft and recovery copy are unchanged."); return; }
       setPlan(imported); setRecovery(null); setNotice("Editable inputs imported. Comparisons and costs are recalculated; persistence status is shown below.");
     } catch (error) { setNotice(error instanceof Error ? error.message : "Import failed. Your current draft is unchanged."); }
   }
   function resetPlan() {
-    if (!window.confirm("Reset this plan? Export a backup or recovery copy first if needed.")) return;
+    if (!confirmCreatorReplacement("reset", recovery !== null, (message) => window.confirm(message))) return;
     setPlan(newCreatorPlan()); setRecovery(null); setNotice("Plan reset. Persistence status is shown below.");
   }
   function exportPlan() {
@@ -295,6 +296,11 @@ export function StudioConfigurator() {
       setNotice("Complete plan exported with your private context, cost assumptions and dated evidence. Share it only when you choose.");
     } catch (error) { setNotice(error instanceof Error ? error.message : "Report export failed. Your draft is unchanged."); }
   };
+  function exportHardwareSheet() {
+    const sheet = toBuildSheetJson(output, { now: new Date().toISOString().slice(0, 10) });
+    download(`starlight-build-sheet-${output.inputsHash}.md`, toBuildSheetMarkdown(sheet), "text/markdown");
+    setNotice("Hardware-only sheet exported without your private work notes or factory assumptions.");
+  }
 
   return (
     <section className="dg" aria-labelledby="dg-title">
@@ -459,6 +465,7 @@ export function StudioConfigurator() {
         <button type="button" className="button button-quiet" onClick={() => exportSheet("json")}>
           Export report JSON
         </button>
+        <button type="button" className="button button-quiet" onClick={exportHardwareSheet}>Export hardware only</button>
         <p className="dg-hint">
           The report includes your private work notes, hardware alternatives, recurring costs and factory assumptions.
           Import its JSON to restore editable inputs and recalculate against current evidence. Hardware earns us nothing;
