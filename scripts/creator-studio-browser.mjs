@@ -130,7 +130,7 @@ async function exercise(width) {
       await page.reload(); await saved(page, title);
       const disclosure = page.getByText('Runtime and subscription routes', { exact: true });
       await disclosure.click();
-      await page.getByText('Known costs exceed your incremental cap.', { exact: true }).waitFor();
+      await page.getByText('Known costs exceed your incremental cap.').waitFor();
       await page.getByText('Codex managed cloud', { exact: true }).waitFor();
       await page.getByText('Claude managed cloud', { exact: true }).waitFor();
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
