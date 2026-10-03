@@ -1,6 +1,7 @@
 "use client";
 import { useId, useState } from "react";
 import { calculateFactoryScenario, factoryComputeRate, factoryModelRates, readFactoryScenario, type FactoryCostScenario, type StageAssumptions } from "@/lib/decision-graph/ai-factory-costs";
+import { readFactoryInput } from "@/lib/decision-graph/factory-input";
 import styles from "./factory-cost-editor.module.css";
 
 const dollars = (value: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: value < 0.01 ? 6 : 2 }).format(value);
@@ -8,13 +9,17 @@ const euros = (minor: number | null) => minor === null ? "EUR unknown" : new Int
 type Amount = ReturnType<typeof calculateFactoryScenario>["knownSubtotal"];
 function Money({ amount }: { amount: Amount }) { return <>{dollars(amount.usd)} <span className={styles.secondary}>{euros(amount.euroMinor)}</span></>; }
 function NumberField({ label, current, min, max, changeValue, scale, optional }: { label: string; current: number | null; min: number; max: number; changeValue: (amount: number | null) => void; scale: number; optional: boolean }) {
+  const id = useId();
   const [draft, setDraft] = useState<string | null>(null);
-  return <label>{label}<input type="number" min={min} max={max} step={scale === 1 ? 1 : scale === 100 ? 0.01 : 0.000001} value={draft ?? (current === null ? "" : current / scale)} placeholder={optional ? "Unknown" : undefined} onBlur={() => setDraft(null)} onChange={(event) => {
-    const text = event.target.value;
-    setDraft(text);
-    if (text === "" && optional) changeValue(null);
-    else if (text !== "" && Number.isFinite(Number(text))) changeValue(scale === 1 ? Number(text) : Math.round(Number(text) * scale));
-  }} /></label>;
+  const parsed = draft === null ? null : readFactoryInput(draft, { min, max, scale, optional });
+  const error = parsed?.ok === false ? parsed.error : "";
+  function commit() {
+    if (parsed?.ok) { changeValue(parsed.value); setDraft(null); }
+  }
+  return <label><span id={`${id}-label`}>{label}</span><input type="text" inputMode={scale === 1 ? "numeric" : "decimal"} maxLength={64} aria-labelledby={`${id}-label`} aria-describedby={`${id}-range${error ? ` ${id}-error` : ""}`} aria-invalid={error ? true : undefined} value={draft ?? (current === null ? "" : current / scale)} placeholder={optional ? "Unknown" : undefined} onBlur={commit} onChange={(event) => setDraft(event.target.value)} onKeyDown={(event) => {
+    if (event.key === "Enter") { event.preventDefault(); commit(); }
+    if (event.key === "Escape") { event.preventDefault(); setDraft(null); }
+  }} /><span id={`${id}-range`} className={styles.secondary}>Range {min} to {max}; {scale === 1 ? "whole numbers" : `up to ${scale === 100 ? 2 : 6} decimal places`}.{optional ? " Blank means unknown." : ""}</span>{error && <span id={`${id}-error`} role="status">{error} Press Escape to restore it.</span>}</label>;
 }
 
 export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScenario; onChange: (next: FactoryCostScenario) => void }) {
@@ -60,6 +65,7 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
   }
   return <section className={styles.root} aria-labelledby={`${id}-title`}>
     <header className={styles.heading}><div><p className={styles.secondary}>Agent operating scenario</p><h3 id={`${id}-title`}>What would this workload cost?</h3></div><button type="button" className="button button-quiet" onClick={exportCosts}>Export cost comparison</button></header>
+    <p className={styles.secondary}>Numeric assumptions save when you leave a field or press Enter. Press Escape to restore the saved value.</p>
     <div className={styles.summary} aria-live="polite">
       <div><span>Modeled increment before tax</span><strong><Money amount={result.knownSubtotal} /></strong><p>{result.missing.length ? "Partial subtotal. Some monthly fees are unknown." : "All entered fees included. Tax, egress and unlisted services remain outside this estimate."}</p></div>
       <div><span>Useful output assumption</span><strong>{result.expectedAccepted.toLocaleString()} accepted missions</strong><p>From {result.plannedMissions} planned missions and {result.expectedAttempts.toLocaleString()} expected attempts. Acceptance is hypothetical.</p></div>
