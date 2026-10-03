@@ -1,29 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { checkoutHref, digitalProducts, saasTiers } from "@/lib/products";
-
-export const metadata: Metadata = {
-  title: "Offers",
-  description: "SaaS membership and digital products for Starlight Technology."
-};
-
+import { candidateProducts, checkoutHref } from "@/lib/products";
+export const metadata: Metadata = { title: "Creator tools", description: "Self-service creator tools in development and the open system library." };
 export default function OffersPage() {
-  const paid = [...saasTiers.filter((t) => t.billing !== "free"), ...digitalProducts];
-  return (
-    <div className="shell page-header offers-page">
-      <p className="eyebrow">Catalog</p>
-      <h1>SaaS membership + digital blueprints.</h1>
-      <p className="lede">See full comparison on <Link href="/pricing">pricing</Link>.</p>
-      <div className="offers-grid">
-        {paid.map((p) => (
-          <article className="offer-card" key={p.id}>
-            <h2>{p.name}</h2>
-            <p className="offer-price">{p.priceLabel}{p.billing === "month" ? " / mo" : ""}</p>
-            <p>{p.summary}</p>
-            <a className="button button-primary" href={checkoutHref(p)}>{p.cta}</a>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
+  return <div className="shell page-header offers-page"><p>Creator tools</p><h1>Tools for your next system and workflow.</h1><p className="lede">The library is open. The creator kit is in development, with price and release date pending.</p><div className="offers-grid">{candidateProducts.map(product => <article className="offer-card" key={product.id}><h2>{product.name}</h2><p>{product.summary}</p><p>Orders are not open.</p><Link className="button button-primary" href={checkoutHref(product)}>{product.cta}</Link></article>)}</div><Link className="button" href="/builds">Explore the free library</Link><Link className="button" href="/pricing">Product status</Link></div>;
 }
