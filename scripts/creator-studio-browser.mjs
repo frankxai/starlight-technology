@@ -58,7 +58,7 @@ async function capture(target, name, viewport, style) {
     created_at: createdAt, brand: 'starlight-technology', agent_session: '01a101b1-9d38-7fa1-b1f0-dec923631d7f',
     model: 'none (render capture)', provider: 'GitHub Actions / Playwright Chromium', seed: null,
     method: 'Actual rendered product screenshot; no image-generation model or image editing',
-    prompt: `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Capture-only CSS: ${style ?? 'none'}. The isolated component capture makes global navigation non-sticky so it cannot cover the component; page captures retain normal navigation. Preserve the rendered component as evidence; do not grant design or release acceptance.`,
+    prompt: `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Capture-only CSS: ${style ?? 'none'}. The isolated component capture makes global navigation non-sticky and hides the global skip link so neither can cover the component; page captures retain normal navigation and skip-link behavior. Preserve the rendered component as evidence; do not grant design or release acceptance.`,
     capture_css: style ?? null,
     sha256, source_commit: receipt.testedCommit, viewport_width: viewport, private: false, public_release: false,
     schema_validation: { status: 'not-validated', reason: 'Referenced schema was unavailable; provenance fields recorded.' } };
@@ -109,7 +109,7 @@ async function exercise(width) {
       assert.ok(report.purchaseReviews.length); assert.equal(report.purchaseReviews[0].deliveredTotalMinor, null);
       await page.evaluate(() => scrollTo(0, 0));
       await capture(page, `${tag}-studio.png`, width);
-      await capture(page.getByRole('region', { name: 'What would this workload cost?', exact: true }), `${tag}-factory.png`, width, '.site-header { position: static !important; }');
+      await capture(page.getByRole('region', { name: 'What would this workload cost?', exact: true }), `${tag}-factory.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
     });
     await check(`${tag}: hardware-only share omits private work and factory assumptions`, async () => {
       const text = fs.readFileSync(await download(page, 'Export hardware only', `${tag}-hardware.md`), 'utf8');
