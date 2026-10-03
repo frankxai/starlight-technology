@@ -16,3 +16,14 @@ Every analysis declares whether evidence is owned-and-tested, hands-on, source-b
 - /builds — complete systems by objective and planning budget
 - /compare — constraint-led comparisons
 - /guides — decision frameworks
+- /shop — source-backed technology Atlas and coverage map
+- /shop/studio — local, exportable system brief and conservative decision model
+- /shop/estate — private local equipment ledger with JSON export/import; no remote sync or robot commands
+
+## Read-only technology APIs
+
+- /api/technology/catalog — versioned research records and source dates
+- /api/technology/search?q=robot — local TF-IDF vector retrieval with cited results
+- /api/technology/decision?workload=Local%20AI&environment=Desk&constraint=None — deterministic starting point or hold
+
+The APIs do not contain live merchant offers, user inventory, robot commands or neural embeddings. See /disclosure and /methodology before reusing conclusions.
