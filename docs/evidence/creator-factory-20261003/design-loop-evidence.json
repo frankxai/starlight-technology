@@ -1,0 +1,46 @@
+{
+  "feature": "Creator Studio operating-cost scenario",
+  "status": "draft; independent design and buyer review pending",
+  "branch": "agent/codex/creator-studio-factory-20261003",
+  "baseRevision": "4588a2409588b62cb394dc370ff52a46819ba346",
+  "runtimeSourceFileCount": 59,
+  "runtimeSourceSetSha256": "efd760e121785e3e924eba96553cdfc5754307a40848fd789b5590cacde383f5",
+  "verifiedAt": "2026-10-03T17:27:00Z",
+  "surface": "/studio in the actual optimized Windows build",
+  "viewports": [
+    { "width": 1440, "height": 1000 },
+    { "width": 390, "height": 844 }
+  ],
+  "actualBehavior": {
+    "passedChecks": 15,
+    "pageErrors": 0,
+    "privateSentinelFoundInObservedRequests": false,
+    "observedRequests": 216,
+    "recovery": "Legacy-byte preservation; explicit migration; two-tab and old-writer conflict; export; denied locks; unsafe import preservation; reload",
+    "accessibility": "Actual labeled controls, 37 visible mobile targets at least 44px high, keyboard focus outline, reduced-motion context",
+    "overflow": "Full document remained within the 390px viewport",
+    "lifecycle": "Owned browser workers and SDS server stopped"
+  },
+  "leadInspection": {
+    "decisionObject": 5,
+    "hierarchy": 5,
+    "craft": 4,
+    "responsive": 5,
+    "accessibility": 4,
+    "restraint": 5,
+    "total": 28,
+    "scale": 30,
+    "authority": "Lead provisional assessment from seven inspected actual screenshots; no independent approval"
+  },
+  "refinement": "Preserved the existing dark Technology tokens, responsive one-column controls and separated maker/reviewer assumptions. Added heading-aligned captures after initial screenshots landed mid-section. Product source did not change during capture refinement.",
+  "captureProvenance": "Each of seven private actual-browser screenshots has an adjacent exact-prompt provenance sidecar and entries in image-generation and taste-feedback ledgers. Private evidence remains in the task receipt; writable memory-vault synchronization is pending.",
+  "seriousAlternative": "The existing operating-architecture cost lab on the matched eight-mission scenario and the published Creator Studio without integrated operating costs. Arithmetic matches the source-backed baseline; buyer usefulness and repair/time advantage have not been measured.",
+  "openGates": [
+    "Independent provider review bound to the exact integrated commit",
+    "Independent rendered design and skeptical buyer review",
+    "Exact-commit CI and Vercel preview verification",
+    "Privacy, licence and commercial release acceptance",
+    "Measured accepted work and hardware quote evidence"
+  ],
+  "publicRelease": false
+}

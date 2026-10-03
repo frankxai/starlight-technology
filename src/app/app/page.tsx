@@ -1,26 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = { title: "Member app", robots: { index: false, follow: false } };
-
+export const metadata: Metadata = { title: "Library and product access", robots: { index: false, follow: false } };
 export default function MemberAppPage() {
-  return (
-    <div className="shell page-header" style={{ paddingBottom: "5rem" }}>
-      <p className="eyebrow">SaaS product surface</p>
-      <h1>Studio Member workspace</h1>
-      <p className="lede">Shortlists, blueprint history, and alerts unlock after subscription. Free library stays open.</p>
-      <div className="sku-grid" style={{ marginTop: "1.5rem" }}>
-        <article className="sku-card">
-          <h2>Free library</h2>
-          <p>Builds and comparisons without an account.</p>
-          <Link className="button button-primary" href="/builds">Open builds</Link>
-        </article>
-        <article className="sku-card">
-          <h2>Subscribe</h2>
-          <p>Studio Member and Ops plans.</p>
-          <Link className="button button-primary" href="/pricing">Pricing</Link>
-        </article>
-      </div>
-    </div>
-  );
+  return <div className="shell page-header" style={{ paddingBottom: "5rem" }}><p>Library and product access</p><h1>Start with the free system library.</h1><p className="lede">Builds and comparisons are available without an account. New creator tools are in development; paid workspace access is not verified on this page.</p><div className="sku-grid" style={{ marginTop: "1.5rem" }}><article className="sku-card"><h2>Explore systems</h2><p>Inspect the objective, alternatives and evidence before selecting hardware.</p><Link className="button button-primary" href="/builds">Open builds</Link></article><article className="sku-card"><h2>Product status</h2><p>See what is available and share a workflow for the creator kit.</p><Link className="button button-primary" href="/pricing">Products and release status</Link></article><article className="sku-card"><h2>Earlier purchase</h2><p>Use your provider receipt and original delivery instructions.</p><Link className="button" href="/success">Purchase help</Link></article></div></div>;
 }
