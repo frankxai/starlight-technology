@@ -1,5 +1,5 @@
 "use client";
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { calculateFactoryScenario, factoryComputeRate, factoryModelRates, readFactoryScenario, type FactoryCostScenario, type StageAssumptions } from "@/lib/decision-graph/ai-factory-costs";
 import { readFactoryInput } from "@/lib/decision-graph/factory-input";
 import styles from "./factory-cost-editor.module.css";
@@ -10,6 +10,7 @@ type Amount = ReturnType<typeof calculateFactoryScenario>["knownSubtotal"];
 function Money({ amount }: { amount: Amount }) { return <>{dollars(amount.usd)} <span className={styles.secondary}>{euros(amount.euroMinor)}</span></>; }
 function NumberField({ label, current, min, max, changeValue, scale, optional }: { label: string; current: number | null; min: number; max: number; changeValue: (amount: number | null) => boolean; scale: number; optional: boolean }) {
   const id = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [edit, setEdit] = useState<{ base: number | null; draft: string | null; error: string }>({ base: current, draft: null, error: "" });
   if (edit.base !== current) setEdit({ base: current, draft: null, error: "" });
   const { draft, error } = edit.base === current ? edit : { draft: null, error: "" };
@@ -21,11 +22,11 @@ function NumberField({ label, current, min, max, changeValue, scale, optional }:
     if (changeValue(parsed.value)) restore();
     else setEdit({ base: current, draft, error: "These assumptions conflict. The saved value is unchanged." });
   }
-  return <div><label><span id={`${id}-label`}>{label}</span><input type="text" inputMode={scale === 1 ? "numeric" : "decimal"} aria-labelledby={`${id}-label`} aria-describedby={`${id}-range${error ? ` ${id}-error` : ""}`} aria-invalid={error ? true : undefined} value={draft ?? (current === null ? "" : current / scale)} placeholder={optional ? "Unknown" : undefined} onBlur={commit} onChange={(event) => setEdit({ base: current, draft: event.target.value, error: "" })} onKeyDown={(event) => {
+  return <div><label><span id={`${id}-label`}>{label}</span><input ref={inputRef} type="text" inputMode={scale === 1 ? "numeric" : "decimal"} aria-labelledby={`${id}-label`} aria-describedby={`${id}-range${error ? ` ${id}-error` : ""}`} aria-invalid={error ? true : undefined} value={draft ?? (current === null ? "" : current / scale)} placeholder={optional ? "Unknown" : undefined} onBlur={commit} onChange={(event) => setEdit({ base: current, draft: event.target.value, error: "" })} onKeyDown={(event) => {
     if (event.nativeEvent.isComposing) return;
     if (event.key === "Enter") { event.preventDefault(); commit(); }
     if (event.key === "Escape") { event.preventDefault(); restore(); }
-  }} /><span id={`${id}-range`} className={styles.secondary}>Range {min} to {max}; {scale === 1 ? "whole numbers" : `up to ${scale === 100 ? 2 : 6} decimal places`}.{optional ? " Blank means unknown." : ""}</span></label><span id={`${id}-error`} role="status">{error}</span>{error && <button type="button" className="button button-quiet" onClick={restore}>Restore saved value for {label.toLowerCase()}</button>}</div>;
+  }} /><span id={`${id}-range`} className={styles.secondary}>Range {min} to {max}; {scale === 1 ? "whole numbers" : `up to ${scale === 100 ? 2 : 6} decimal places`}.{optional ? " Blank means unknown." : ""}</span></label><span id={`${id}-error`} role="status">{error}</span>{error && <button type="button" className="button button-quiet" onClick={() => { restore(); inputRef.current?.focus(); }}>Restore saved value for {label.toLowerCase()}</button>}</div>;
 }
 
 export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScenario; onChange: (next: FactoryCostScenario) => void }) {
