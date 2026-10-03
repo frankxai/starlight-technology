@@ -73,6 +73,7 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
   return <section className={styles.root} aria-labelledby={`${id}-title`}>
     <header className={styles.heading}><div><p className={styles.secondary}>Agent operating scenario</p><h3 id={`${id}-title`}>What would this workload cost?</h3></div><button type="button" className="button button-quiet" onClick={exportCosts}>Export cost comparison</button></header>
     <p className={styles.secondary}>Numeric assumptions save when you leave a field or press Enter. Press Escape to restore the saved value.</p>
+    <p className={styles.secondary}>{result.ratesModified ? "Imported rate or observation-date assumptions differ from the bundled snapshots. The cost comparison uses your assumptions." : "This comparison uses bundled dated rate snapshots; current provider billing still needs verification."}</p>
     <div className={styles.summary} aria-live="polite">
       <div><span>Modeled increment before tax</span><strong><Money amount={result.knownSubtotal} /></strong><p>{result.missing.length ? "Partial subtotal. Some monthly fees are unknown." : "All entered fees included. Tax, egress and unlisted services remain outside this estimate."}</p></div>
       <div><span>Useful output assumption</span><strong>{result.expectedAccepted.toLocaleString()} accepted missions</strong><p>From {result.plannedMissions} planned missions and {result.expectedAttempts.toLocaleString()} expected attempts. Acceptance is hypothetical.</p></div>

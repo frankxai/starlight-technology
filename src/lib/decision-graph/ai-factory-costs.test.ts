@@ -5,6 +5,38 @@ import { saveCreatorDraft, type DraftLock } from "./draft-storage";
 
 const stamp = "2026-10-03T17:00:00.000Z";
 describe("recoverable agent operating estimates", () => {
+  it("identifies bundled model and compute observations without implying measured billing", () => {
+    const result = calculateFactoryScenario(newFactoryScenario(), "2026-10-03");
+    expect(result).toMatchObject({ ratesModified: false, rateEvidence: [
+      { component: "maker", kind: "bundled-snapshot", modifiedFields: [], sourceAgeStatus: "within-window" },
+      { component: "reviewer", kind: "bundled-snapshot", modifiedFields: [], sourceAgeStatus: "within-window" },
+      { component: "compute", kind: "bundled-snapshot", modifiedFields: [], sourceAgeStatus: "within-window" },
+    ], measured: false, executable: false });
+  });
+  it("keeps the trusted source date when an imported scenario rebases model and compute dates", () => {
+    const original = newFactoryScenario(); const imported = structuredClone(original);
+    imported.maker.rate.observedAt = "2026-11-04"; imported.compute.observedAt = "2026-11-04";
+    const result = calculateFactoryScenario(imported, "2026-11-04");
+    expect(result).toMatchObject({ ratesModified: true, rateEvidence: [
+      { component: "maker", kind: "edited-assumption", sourceObservedAt: original.maker.rate.observedAt, assumedObservedAt: "2026-11-04", modifiedFields: ["observedAt"], sourceAgeStatus: "older-than-window" },
+      { component: "reviewer", kind: "bundled-snapshot", sourceAgeStatus: "older-than-window" },
+      { component: "compute", kind: "edited-assumption", sourceObservedAt: original.compute.observedAt, assumedObservedAt: "2026-11-04", modifiedFields: ["observedAt"], sourceAgeStatus: "older-than-window" },
+    ] });
+    // Date-only edits already produce an import warning; they never establish a new source observation.
+    expect(result.warnings.join(" ")).toMatch(/imported rate assumptions/);
+    expect(result.knownSubtotal).toEqual(calculateFactoryScenario(original, "2026-11-04").knownSubtotal);
+  });
+  it("labels modified price fields while preserving the user's scenario arithmetic", () => {
+    const scenario = newFactoryScenario(); scenario.maker.rate.inputMicroUsdPerMillion = 0;
+    scenario.compute.cpuMicroUsdPerHour += 1;
+    const result = calculateFactoryScenario(scenario, "2026-10-03");
+    expect(result).toMatchObject({ ratesModified: true, rateEvidence: [
+      { component: "maker", kind: "edited-assumption", modifiedFields: ["inputMicroUsdPerMillion"] },
+      { component: "reviewer", kind: "bundled-snapshot" },
+      { component: "compute", kind: "edited-assumption", modifiedFields: ["cpuMicroUsdPerHour"] },
+    ] });
+    expect(result.makerApi.usd).toBeLessThan(calculateFactoryScenario(newFactoryScenario()).makerApi.usd);
+  });
   it("marks unquoted cache-write pricing in computed results without changing the established fallback", () => {
     const plan = newFactoryScenario("glm");
     plan.maker.cacheWriteTokens = 20000;

@@ -121,6 +121,18 @@ describe("complete creator report", () => {
     expect(glm.result.warnings.join(" ")).toMatch(/unquoted cache.write/i);
     expect(toCreatorReportMarkdown(report)).toMatch(/GLM-5.3:.*unquoted cache.write/i);
   });
+  it("carries imported-rate provenance into JSON and the standalone Markdown headline", () => {
+    const plan = completePlan(); plan.factory!.maker.rate.observedAt = "2026-11-04";
+    const report = toCreatorReport(plan, "2026-11-04T00:00:00.000Z");
+    expect(report.factory?.ratesModified).toBe(true);
+    expect(report.factory?.rateEvidence[0]).toMatchObject({ sourceObservedAt: "2026-10-03", assumedObservedAt: "2026-11-04", sourceAgeStatus: "older-than-window", kind: "edited-assumption" });
+    const text = toCreatorReportMarkdown(report);
+    expect(text).toContain("Factory rate evidence: Edited or imported rate assumptions");
+    expect(text).toContain("2026-10-03 | 2026-11-04 | observedAt | older-than-window");
+    const restored = parseCreatorExport(encodeCreatorReport(plan, "2026-11-04T00:00:00.000Z"));
+    expect(restored.factory?.maker.rate.observedAt).toBe("2026-11-04");
+    expect(report.makerAlternatives.every((row) => row.result.ratesModified === false)).toBe(true);
+  });
 
   it("makes the standalone Markdown auditable and separates listings from delivered costs", () => {
     const plan = completePlan(); const report = toCreatorReport(plan, at);

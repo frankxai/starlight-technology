@@ -92,6 +92,7 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
   if (report.selectedSystem && !report.selectedSystem.freshness.valid) lines.push(`Selected hardware evidence needs renewal: ${report.selectedSystem.freshness.reasons.join("; ")}`);
   if (report.selectionInvalidated) lines.push("The saved selection no longer meets the current constraints. Keep the preference for reference and choose a compatible alternative.");
   if (report.catalogChanged) lines.push("The catalog changed since this plan was saved. Comparisons are recalculated against the current catalog; the original plan identity is preserved.");
+  if (factory) lines.push("", `Factory rate evidence: ${factory.ratesModified ? "Edited or imported rate assumptions differ from the bundled observations." : "Bundled dated snapshots; current provider billing still needs verification."}`);
   lines.push("", "## Requirements used", "", `Workloads: ${report.requirements.workloads.map((row) => `${row.label} (${row.id})`).join("; ") || "None"}.`,
     `Constraints: ${report.requirements.constraints.map((row) => `${row.label} (${row.id})`).join("; ") || "None"}.`,
     `Hardware budget: ${report.requirements.budget} (${plan.input.budgetId}). Destination: ${report.requirements.region}.`,
@@ -102,6 +103,9 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
     "Electricity uses 30 days and your stated power, hours and tariff. Missing inputs remain unknown. Existing cloud/software must exclude the factory fees to avoid counting the same charge twice. Hardware purchases remain separate.");
   if (factory && plan.factory) {
     const scenario = plan.factory;
+    lines.push("", "### Rate provenance", "", "Source observation dates come from the bundled catalog. Imported dates and prices remain scenario assumptions; a recent assumption date cannot renew a source observation.", "",
+      "| Component | Rate kind | Source observed | Assumed observed | Changed fields | Source age |", "| --- | --- | --- | --- | --- | --- |");
+    for (const row of factory.rateEvidence) lines.push(`| ${row.component} | ${row.kind} | ${row.sourceObservedAt} | ${row.assumedObservedAt} | ${row.modifiedFields.join(", ") || "None"} | ${row.sourceAgeStatus} |`);
     lines.push("", "## Factory assumptions used", "", `Volume: ${scenario.missionsPerDay} missions/day × ${scenario.workDays} work days. Repair allowance: ${scenario.repairBps / 100}%. Expected acceptance: ${scenario.acceptanceBps / 100}%.`,
       `Conversion: ${scenario.eurPerUsdMicros === null ? "Unknown" : (scenario.eurPerUsdMicros / 1_000_000).toFixed(6)} EUR per USD. Incremental cap: ${euro(scenario.monthlyCapEuroMinor)}.`, "",
       "| Stage | Fresh input tokens | Cache writes | Cache candidates | Output tokens | Cache hit assumption | API share |", "| --- | --- | --- | --- | --- | --- | --- |");

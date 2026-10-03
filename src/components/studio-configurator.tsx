@@ -269,7 +269,7 @@ export function StudioConfigurator() {
       if (file.size > CREATOR_PLAN_MAX_BYTES) throw new Error("Plan exceeds 64 KiB.");
       const imported = parseCreatorExport(await file.text());
       if (!confirmCreatorReplacement("import", recovery !== null, (message) => window.confirm(message))) { setNotice("Import cancelled. Your current draft and recovery copy are unchanged."); return; }
-      setPlan(imported); setRecovery(null); setNotice("Editable inputs imported. Comparisons and costs are recalculated; persistence status is shown below.");
+      setPlan(imported); setRecovery(null); setNotice(conflict !== null ? "Editable inputs imported. Autosave stays paused to preserve the other saved copy; export this draft or choose a copy below." : "Editable inputs imported. Comparisons and costs are recalculated; persistence status is shown below.");
     } catch (error) { setNotice(error instanceof Error ? error.message : "Import failed. Your current draft is unchanged."); }
   }
   function resetPlan() {
@@ -469,7 +469,7 @@ export function StudioConfigurator() {
         <p className="dg-hint">
           The report includes your private work notes, hardware alternatives, recurring costs and factory assumptions.
           Import its JSON to restore editable inputs and recalculate against current evidence. Hardware earns us nothing;
-          software partner links are disclosed.
+          software partner links are disclosed. Report JSON is limited to 64 KiB; if it exceeds that limit, export the editable plan separately.
         </p>
       </div>
     </section>

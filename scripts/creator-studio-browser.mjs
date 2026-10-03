@@ -5,6 +5,7 @@ import path from 'node:path';
 import { spawn, execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
 if (process.env.GITHUB_ACTIONS !== 'true' || process.platform !== 'linux' || !process.env.STARLIGHT_PLAYWRIGHT_DIR) {
   throw Error('This browser workload requires the admitted ephemeral GitHub Linux runner.');
 }
@@ -16,7 +17,7 @@ fs.mkdirSync(output, { recursive: true });
 const receipt = { schema: 'StarlightCreatorBrowser.v1', startedAt: new Date().toISOString(),
   testedCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   scope: 'Real Chromium edit/export/import/reload/recovery at desktop and mobile sizes; synthetic private fixture, no model calls or visual approval', checks: [],
-  noModelCalls: true, productionActivated: false, serverExited: false, browserClosed: false };
+  noModelCalls: true, productionActivated: false, serverExited: false, browserClosed: false, captures: [] };
 let browser;
 const server = spawn(process.execPath, [createRequire(import.meta.url).resolve('next/dist/bin/next'), 'start', '--hostname', '127.0.0.1', '--port', '3199'],
   { cwd: process.cwd(), stdio: ['ignore', 'pipe', 'pipe'] });
@@ -48,6 +49,20 @@ async function saved(page, title) {
   await page.waitForFunction(([storageKey, expected]) => {
     try { return JSON.parse(localStorage.getItem(storageKey)).title === expected; } catch { return false; }
   }, [key, title], { timeout: 10000 });
+}
+async function capture(target, name, viewport) {
+  const file = path.join(output, name), createdAt = new Date().toISOString();
+  await target.screenshot({ path: file, animations: 'disabled' });
+  const sha256 = createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+  const sidecar = { $schema: 'https://frankx.ai/schemas/vis-provenance-sidecar.schema.json', asset_id: `${receipt.testedCommit}-${name}`,
+    created_at: createdAt, brand: 'starlight-technology', agent_session: '01a101b1-9d38-7fa1-b1f0-dec923631d7f',
+    model: 'none (render capture)', provider: 'GitHub Actions / Playwright Chromium', seed: null,
+    method: 'Actual rendered product screenshot; no image-generation model or image editing',
+    prompt: `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Preserve the rendered interface as evidence; do not grant design or release acceptance.`,
+    sha256, source_commit: receipt.testedCommit, viewport_width: viewport, private: false, public_release: false,
+    schema_validation: { status: 'not-validated', reason: 'Referenced schema was unavailable; provenance fields recorded.' } };
+  fs.writeFileSync(file + '.vis.provenance.json', JSON.stringify(sidecar, null, 2) + '\n');
+  receipt.captures.push({ name, sha256, sidecar: name + '.vis.provenance.json', createdAt });
 }
 async function exercise(width) {
   const tag = width === 390 ? 'mobile' : 'desktop';
@@ -88,7 +103,12 @@ async function exercise(width) {
       report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
       assert.equal(report.plan.title, title); assert.equal(report.plan.privateContext, notes);
       assert.equal(report.factory.modeledSubtotal.usd, 78.9012);
+      assert.equal(report.factory.ratesModified, false);
+      assert.ok(report.factory.rateEvidence.every((row) => row.kind === 'bundled-snapshot'));
       assert.ok(report.purchaseReviews.length); assert.equal(report.purchaseReviews[0].deliveredTotalMinor, null);
+      await page.evaluate(() => scrollTo(0, 0));
+      await capture(page, `${tag}-studio.png`, width);
+      await capture(page.getByRole('region', { name: 'What would this workload cost?', exact: true }), `${tag}-factory.png`, width);
     });
     await check(`${tag}: hardware-only share omits private work and factory assumptions`, async () => {
       const text = fs.readFileSync(await download(page, 'Export hardware only', `${tag}-hardware.md`), 'utf8');
@@ -104,6 +124,19 @@ async function exercise(width) {
       await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(reportPath), true);
       await saved(page, title); await page.reload();
       await saved(page, title); assert.equal(await page.getByLabel('Existing equipment and intended work', { exact: true }).inputValue(), notes);
+    });
+    await check(`${tag}: imported observation date remains an assumption in rendered and downloaded costs`, async () => {
+      const changed = structuredClone(report); changed.plan.factory.maker.rate.observedAt = '2026-11-04';
+      const importedFile = path.join(output, `${tag}-changed-rate-input.json`); fs.writeFileSync(importedFile, JSON.stringify(changed));
+      await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(importedFile), true);
+      await page.getByText('Imported rate or observation-date assumptions differ from the bundled snapshots. The cost comparison uses your assumptions.', { exact: true }).waitFor();
+      await page.waitForFunction((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory.maker.rate.observedAt === '2026-11-04', key);
+      const edited = JSON.parse(fs.readFileSync(await download(page, 'Export report JSON', `${tag}-changed-rate-report.json`), 'utf8'));
+      assert.equal(edited.factory.ratesModified, true); assert.equal(edited.factory.rateEvidence[0].sourceObservedAt, '2026-10-03');
+      assert.equal(edited.factory.rateEvidence[0].assumedObservedAt, '2026-11-04'); assert.equal(edited.factory.rateEvidence[0].kind, 'edited-assumption');
+      assert.equal(edited.factory.modeledSubtotal.usd, report.factory.modeledSubtotal.usd);
+      await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(reportPath), true);
+      await page.waitForFunction((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory.maker.rate.observedAt === '2026-10-03', key);
     });
     await check(`${tag}: unsafe report import preserves the saved copy`, async () => {
       const before = await page.evaluate((storageKey) => localStorage.getItem(storageKey), key);
@@ -137,6 +170,21 @@ async function exercise(width) {
       await saved(page, 'My creator system');
       await page.getByRole('button', { name: 'Export recovery copy', exact: true }).waitFor({ state: 'hidden' });
       await other.close();
+    });
+    await check(`${tag}: import during a save conflict keeps the other copy and explains paused autosave`, async () => {
+      const other = await context.newPage(); await other.goto(origin + '/studio');
+      await other.getByLabel('Plan title', { exact: true }).waitFor();
+      const otherRaw = JSON.stringify(report.plan);
+      await other.evaluate(([storageKey, raw]) => localStorage.setItem(storageKey, raw), [key, otherRaw]);
+      await page.getByRole('button', { name: 'Save this draft instead', exact: true }).waitFor();
+      const imported = structuredClone(report); imported.plan.title = `${title} conflict import`;
+      const conflictFile = path.join(output, `${tag}-conflict-input.json`); fs.writeFileSync(conflictFile, JSON.stringify(imported));
+      await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(conflictFile), true);
+      await page.getByText('Editable inputs imported. Autosave stays paused to preserve the other saved copy; export this draft or choose a copy below.', { exact: true }).waitFor();
+      assert.equal(await page.getByLabel('Plan title', { exact: true }).inputValue(), imported.plan.title);
+      assert.equal(await page.evaluate((storageKey) => localStorage.getItem(storageKey), key), otherRaw);
+      await dialog(page, () => page.getByRole('button', { name: 'Save this draft instead', exact: true }).click(), true);
+      await saved(page, imported.plan.title); await other.close();
     });
     await check(`${tag}: no external browser request or uncaught application error`, async () => {
       assert.deepEqual(blocked, []); assert.deepEqual(errors, []);

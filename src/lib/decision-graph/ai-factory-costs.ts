@@ -111,6 +111,19 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
   const makerEquivalent = withAttempts(plan.maker), reviewerEquivalent = withAttempts(plan.reviewer);
   const makerApi = times(makerEquivalent, plan.maker.apiShareBps, 10_000), reviewerApi = times(reviewerEquivalent, plan.reviewer.apiShareBps, 10_000);
   const c = plan.compute;
+  function evidence<T extends { observedAt: string; sourceUrl: string }>(component: "maker" | "reviewer" | "compute", label: string, assumed: T, bundled: Partial<T> & { observedAt: string; sourceUrl: string }) {
+    const modifiedFields = (Object.keys(bundled) as (keyof T)[]).filter((key) => assumed[key] !== bundled[key]).map(String);
+    const sourceAge = (Date.parse(now) - Date.parse(bundled.observedAt)) / 86_400_000;
+    return { component, label, sourceUrl: bundled.sourceUrl, sourceObservedAt: bundled.observedAt, assumedObservedAt: assumed.observedAt, modifiedFields,
+      kind: modifiedFields.length ? "edited-assumption" as const : "bundled-snapshot" as const,
+      sourceAgeStatus: sourceAge < 0 ? "future" as const : sourceAge > 30 ? "older-than-window" as const : "within-window" as const };
+  }
+  const rateEvidence = [
+    evidence("maker", plan.maker.rate.label, plan.maker.rate, factoryModelRates.find((rate) => rate.id === plan.maker.rate.id)!),
+    evidence("reviewer", plan.reviewer.rate.label, plan.reviewer.rate, factoryModelRates.find((rate) => rate.id === plan.reviewer.rate.id)!),
+    evidence("compute", "Compute", c, factoryComputeRate),
+  ];
+  const ratesModified = rateEvidence.some((row) => row.kind === "edited-assumption");
   const activeHours = c.slots * c.activeHoursPerSlot;
   const compute = rational(BigInt(activeHours) * (BigInt(c.vcpu) * BigInt(c.cpuMicroUsdPerHour) + BigInt(c.memoryGiB) * BigInt(c.memoryMicroUsdPerGiBHour) + (c.os === "windows" ? BigInt(c.vcpu) * BigInt(c.windowsMicroUsdPerCpuHour) : BigInt(0))));
   // Charge every retained GiB; no free allowance is silently pooled across sandboxes.
@@ -123,6 +136,9 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
     return { usd: Number(cost.n) / Number(cost.d) / 1_000_000, usdMicros: rounded(cost).toString(), euroMinor: euroMinor !== null && Number.isSafeInteger(euroMinor) ? euroMinor : null };
   }
   const warnings: string[] = [];
+  for (const row of rateEvidence) {
+    if (row.kind === "edited-assumption" && row.sourceAgeStatus !== "within-window") warnings.push(`${row.label}: the bundled source observation is future-dated or older than 30 days. An imported assumption date does not renew source evidence.`);
+  }
   const independentProvider = plan.maker.rate.provider !== plan.reviewer.rate.provider;
   if (!independentProvider) warnings.push("Maker and reviewer use the same provider; the independent-provider requirement is unmet.");
   if (plan.maker.apiShareBps < 10_000 || plan.reviewer.apiShareBps < 10_000) warnings.push("The native share is an assumption. Entitlement, remaining quota and runnable authentication still need separate evidence; no pooled API tokens are granted.");
@@ -146,7 +162,7 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
   // Unknown fees are nonnegative: they cannot undo a breach proven by known costs.
   const overCap = knownExceedsCap === true ? true : missing.length ? null : knownExceedsCap;
   return {
-    measured: false as const, executable: false as const, currency: "USD" as const,
+    measured: false as const, executable: false as const, currency: "USD" as const, ratesModified, rateEvidence,
     plannedMissions: missions, expectedAttempts: missions * (10_000 + plan.repairBps) / 10_000, expectedAccepted, independentProvider,
     makerApi: amount(makerApi), reviewerApi: amount(reviewerApi), allApiEquivalent: amount(plus(makerEquivalent, reviewerEquivalent)),
     compute: amount(compute), retainedStorage: amount(storage), fees: amount(feeSum), knownSubtotal: knownAmount, modeledSubtotal, costPerExpectedAccepted: acceptedCost,
