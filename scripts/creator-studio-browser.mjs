@@ -150,7 +150,7 @@ async function exercise(width) {
       await capture(disclosure.locator('..'), `${tag}-runtime.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
     });
     await check(`${tag}: changing the maker updates coding-plan boundaries without losing the workload`, async () => {
-      await page.getByRole('group', { name: 'Maker', exact: true }).getByLabel('Model', { exact: true }).selectOption('glm');
+      await page.getByRole('group', { name: 'Maker', exact: true }).getByRole('combobox').selectOption('glm');
       await page.getByText('GLM Coding Plan in supported tools', { exact: true }).waitFor();
       const routed = JSON.parse(fs.readFileSync(await download(page, 'Export report JSON', `${tag}-glm-runtime-report.json`), 'utf8'));
       assert.equal(routed.plan.factory.maker.apiShareBps, 5000);
