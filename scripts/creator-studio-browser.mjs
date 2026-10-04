@@ -93,7 +93,8 @@ async function exercise(width) {
       const outline = await choices.first().evaluate((node) => getComputedStyle(node).outlineStyle);
       assert.notEqual(outline, 'none');
       await choices.last().click(); await choices.first().click();
-      const chosen = await page.evaluate((storageKey) => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key);
+      const chosen = await choices.first().getAttribute('data-archetype-id');
+      await page.waitForFunction(([storageKey, expected]) => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId === expected, [key, chosen]);
       assert.ok(chosen); await page.reload(); await saved(page, 'My creator system');
       assert.equal(await page.evaluate((storageKey) => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key), chosen);
       const transitions = await explorer.getByRole('button').first().evaluate((node) => getComputedStyle(node).transitionDuration);

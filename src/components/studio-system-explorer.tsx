@@ -89,7 +89,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
           const price = line.priceObservationId ? graph.get(line.priceObservationId) : undefined;
           return price?.kind === "PriceObservation" ? [price.observedAt] : [];
         }))];
-        return <button type="button" key={system.tier} aria-pressed={active} aria-label={`Use ${system.label} (${system.tier.replaceAll("-", " ")})`} className={`${styles.candidate} ${active ? styles.selected : ""}`} onClick={() => onSelect(system.archetypeId)}>
+        return <button type="button" key={system.tier} data-archetype-id={system.archetypeId} aria-pressed={active} aria-label={`Use ${system.label} (${system.tier.replaceAll("-", " ")})`} className={`${styles.candidate} ${active ? styles.selected : ""}`} onClick={() => onSelect(system.archetypeId)}>
           <span className={styles.tier}>{system.tier.replaceAll("-", " ")}</span>
           <strong>{system.label}</strong>
           <span>{specs?.systemRamGb} GB RAM · {specs?.fastStorageTb} TB storage</span>
