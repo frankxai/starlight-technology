@@ -1,0 +1,302 @@
+[
+  {
+    "area": "gmktec",
+    "text": "Buyer region assumed NL/EU; no NL merchant price (Amazon.nl, Tweakers Pricewatch, Amazon.de) was retrievable; only Geizhals.at and datafox.ee seen."
+  },
+  {
+    "area": "gmktec",
+    "text": "EU EUR price for EVO-X2 128GB/1TB and 128GB/2TB on de.gmktec.com not extracted; whether EU official prices include VAT is not stated."
+  },
+  {
+    "area": "gmktec",
+    "text": "Firecrawl had no credits; Notebookcheck and Tom's Hardware pages were blocked, so the Notebookcheck EVO-X2 review (thermals) and EVO-X3 launch facts were not read at source."
+  },
+  {
+    "area": "gmktec",
+    "text": "No independent review of EVO-X3, EVO-X5 Pro, EVO-X1 Pro, EVO-T2, K13, K17 or K11 opened; no EVO-X3 llama.cpp numbers; X3 release date comes from an aggregator."
+  },
+  {
+    "area": "gmktec",
+    "text": "Windows vs Linux GPU memory allocation (96GB cap, dynamic VGM) seen only as a search-result summary; Windows llama.cpp numbers and BIOS/firmware issues for GMKtec not verified."
+  },
+  {
+    "area": "gmktec",
+    "text": "Whether 96GB GPU window plus 32GB host RAM can host 20+ concurrent Claude Code/Codex sessions and headless browsers next to a 70B model is not measured; sustained multi-hour thermals and OCuLink/USB4 behaviour not verified."
+  },
+  {
+    "area": "gmktec",
+    "text": "Affiliate program: only a search-result mention of a 30-day UK cookie on affi.io; commission, network and terms unverified."
+  },
+  {
+    "area": "gmktec",
+    "text": "Legal entity name, founding date, ODM/factory relationship and manufacturing claims not confirmed on a primary page; Trustpilot not opened."
+  },
+  {
+    "area": "gmktec",
+    "text": "The EU shipping policy summary says GMKtec reportedly declares a lower commodity value; read the original policy and treat as a compliance risk."
+  },
+  {
+    "area": "gmktec",
+    "text": "US 1-year vs EU 2-year warranty discrepancy; EU 14-day withdrawal right not reflected in the 7-day policy text."
+  },
+  {
+    "area": "gmktec",
+    "text": "EVO-X5 Pro GPU, cooling and PSU not on page; EVO-T2 GPU not named; K11 CPU/GPU and cooling not extracted."
+  },
+  {
+    "area": "gmktec",
+    "text": "Price volatility: EVO-X2 USD 2,199.99 now vs USD 1,999 at the STH review vs USD 3,649.99 cited by an aggregator; treat all as a snapshot."
+  },
+  {
+    "area": "minisforum",
+    "text": "Buyer location assumed NL/EU; VAT status of every EUR price is not stated on list pages (tax status null)."
+  },
+  {
+    "area": "minisforum",
+    "text": "Independent merchant price in EUR not verified. Geizhals blocked (403), Amazon/Tweakers/idealo not opened, Proshop.nl 403, Firecrawl out of credits. Geizhals EUR 3,149 current / 2,399.99 historical is a search snippet only."
+  },
+  {
+    "area": "minisforum",
+    "text": "MS-S1 MAX 128GB EU sale price differs between a search snippet (EUR 3,879) and the fetched page (EUR 3,999); re-check at purchase."
+  },
+  {
+    "area": "minisforum",
+    "text": "minisforum.com vs minisforumpc.eu relationship: EU store self-identifies as official via copyright footer; legal entity, VAT number, customs/IOSS handling not read."
+  },
+  {
+    "area": "minisforum",
+    "text": "Legal name, ODM/OEM relationships, ownership and reputation data not found."
+  },
+  {
+    "area": "minisforum",
+    "text": "Windows vs Linux GPU memory allocation limits for MS-S1 MAX (96GB BIOS setting vs 126GB in STH test) not reconciled; Level1Techs thread had no Windows data."
+  },
+  {
+    "area": "minisforum",
+    "text": "Notebookcheck page returned 403; its noise/power numbers come from a search digest. STH read only page 3 of its review. No Phoronix, Chips and Cheese or Minisforum-specific Level1Techs review opened."
+  },
+  {
+    "area": "minisforum",
+    "text": "LLM numbers for Minisforum hardware are mostly Ollama ROCm (AkitaOnRails); Vulkan/llama.cpp numbers are from Framework hardware; no Minisforum 64GB, AI X1 Pro 96GB MoE, or Windows LLM benchmark."
+  },
+  {
+    "area": "minisforum",
+    "text": "USB4 v2 port count conflict (Liliputing 1x 80Gbps + 2x 40Gbps; STH dual 80Gbps)."
+  },
+  {
+    "area": "minisforum",
+    "text": "MS-A2, MS-02 Ultra, MS-03, UM series, AtomMan/Venus: exact RAM/SSD variants, ports, OCuLink, power/noise not researched; AI X1 Pro only partly."
+  },
+  {
+    "area": "minisforum",
+    "text": "BD395i MAX price and ship date unknown; no Strix Halo board seen in EU catalogue pages opened (page 9 not opened)."
+  },
+  {
+    "area": "minisforum",
+    "text": "DEG1 dock specs and reviews not researched (price only)."
+  },
+  {
+    "area": "minisforum",
+    "text": "MS-S1 MAX-P495 has only press coverage, no independent review; soldered status unknown."
+  },
+  {
+    "area": "minisforum",
+    "text": "Cluster product: only MS-S1 MAX 2U/rack cluster marketing found; no dedicated Minisforum cluster appliance verified."
+  },
+  {
+    "area": "minisforum",
+    "text": "EU/NL consumer warranty text (legal guarantee, RMA handling for NL) not read; only UK page."
+  },
+  {
+    "area": "minisforum",
+    "text": "minipclab review conflicts with manufacturer specs and was discarded for specs."
+  },
+  {
+    "area": "landscape",
+    "text": "Bosgame M5, Beelink EU/NL price: bosgamepc.com 403, Beelink page shows USD with unknown tax."
+  },
+  {
+    "area": "landscape",
+    "text": "Dell, Lenovo, MSI, Acer GB10 prices and EU list prices for DGX Spark/GX10: not found beyond one forum post."
+  },
+  {
+    "area": "landscape",
+    "text": "Mac Studio M5 Max 128GB and Ultra 128/192/256/512GB EUR prices; Apple NL pages render no prices to fetch."
+  },
+  {
+    "area": "landscape",
+    "text": "Independent tokens/s on Apple M5 Max/Ultra (only unopened search snippets); independent 70B dense on DGX Spark; Strix Halo numbers are aggregator-level, not primary."
+  },
+  {
+    "area": "landscape",
+    "text": "Intel Panther Lake large-memory mini PCs: bandwidth, price, tokens/s all unverified; Intel Arc Pro not researched."
+  },
+  {
+    "area": "landscape",
+    "text": "Windows VGM 96GB cap on 128GB Strix Halo and Linux GTT specifics not confirmed from an opened page; AMD primary doc not fetched."
+  },
+  {
+    "area": "landscape",
+    "text": "12-month monthly series of 128GB machine prices not obtained; only start/end points per vendor."
+  },
+  {
+    "area": "landscape",
+    "text": "Firecrawl out of credits; several sites 403 (Notebookcheck some pages, Bosgame, Acemagic, Tweaktown)."
+  },
+  {
+    "area": "landscape",
+    "text": "Region NL/EU is an assumption (OPEN). Prices mix USD ex-tax and EUR incl-VAT; price per GB uses total memory not GPU-addressable share."
+  },
+  {
+    "area": "landscape",
+    "text": "pricePerGbMemory for Mac mini M5 Pro 64GB uses a derived price; RTX 5090 EUR figure from search text."
+  },
+  {
+    "area": "landscape",
+    "text": "Page budget exceeded slightly (about 40 opens)."
+  },
+  {
+    "area": "supply-chain",
+    "text": "No verified complete DIY totals: case, PSU, cooler, SSD prices for either build not retrieved from merchant pages (Geizhals, Tweakers, ProShop, Alternate, Megekko, Azerty returned 403 or blocked). No AM5/mini-ITX 96-192GB build priced."
+  },
+  {
+    "area": "supply-chain",
+    "text": "Firecrawl credits exhausted, so JS-rendered shops could not be scraped."
+  },
+  {
+    "area": "supply-chain",
+    "text": "No NL second-hand listing counts or medians for Marktplaats, Tweakers V&A, Back Market NL, eBay.nl; Mac Studio M2 Ultra, Mac mini M-series and RTX 4090 not priced for NL."
+  },
+  {
+    "area": "supply-chain",
+    "text": "Memory, SSD and SoC fab suppliers inside Strix Halo boxes (Samsung/SK hynix/Micron, TSMC) not documented in opened sources; marked rumor/inferred."
+  },
+  {
+    "area": "supply-chain",
+    "text": "No Sixunited MOQ, NRE, certification cost or lead time found; the 500-1,000 MOQ and 30-60 day lead time are search snippets for generic mini PCs."
+  },
+  {
+    "area": "supply-chain",
+    "text": "Primary Dutch/EU pages (Douane, Belastingdienst, TARIC, EUR-Lex on CE/RoHS/WEEE/ecodesign/batteries/GPSR) not retrieved; items rely on snippets or secondary sources."
+  },
+  {
+    "area": "supply-chain",
+    "text": "Bosgame and GMKtec current EUR prices (Oct 2026) and EU warehouse/warranty terms not verified live; Bosgame page 403."
+  },
+  {
+    "area": "supply-chain",
+    "text": "Taiwan ODM link (Compal, Wistron, Quanta, ASUS, MSI, Gigabyte, ASRock) to these mini PCs found nowhere; no evidence they build them."
+  },
+  {
+    "area": "supply-chain",
+    "text": "Scam/quality evidence for Strix Halo specifically is thin: Beelink GTR9 Pro issues and Bosgame stuck-power-button reports only; AliExpress spoofed-spec case is from a search snippet."
+  },
+  {
+    "area": "supply-chain",
+    "text": "buyer's VAT status (business vs consumer) changes the import and warranty analysis."
+  },
+  {
+    "area": "stack",
+    "text": "Firecrawl MCP out of credits; Tweakers, Coolblue, Proshop, Alternate returned 403/blocked, so almost all peripheral EUR prices are unverified."
+  },
+  {
+    "area": "stack",
+    "text": "Peripherals with no verified EUR price: 27-32 inch 4K USB-C monitors (only Dell U2725QE seen, in USD), ultrawide, portable/touch display, 4-port KVM, 2.5GbE/10GbE switch, Thunderbolt dock (search snippet only), NAS, keyboard/trackpad. Only the UPS has one verified price; the 3-per-category target was not met."
+  },
+  {
+    "area": "stack",
+    "text": "Not researched: Cloudflare Tunnel, Uptime Kuma, Grafana/Prometheus, Beszel, Podman/Docker, Proxmox, restic/Kopia, Infisical/1Password CLI, Moonlight/Sunshine/Parsec, Universal Control equivalents, shared storage."
+  },
+  {
+    "area": "stack",
+    "text": "OS: no macOS always-on, Mac mini/Studio, Windows 11 Pro licence EUR price, or Windows Server licence pages opened. No Windows-vs-Linux Strix Halo benchmark found. AMD VGM blog fetch timed out."
+  },
+  {
+    "area": "stack",
+    "text": "Runtimes: Ollama, LM Studio, MLX, DGX Spark support pages not opened."
+  },
+  {
+    "area": "stack",
+    "text": "GPU: used RTX 4090 price not checked; eGPU/OCuLink not researched; Flux/SDXL LoRA VRAM not found; aggregator pages (gpupricehistory, gpuprix) do not name merchants for most rows; RTX 5070 Ti/5080 VRAM not page-verified. Search snippets claiming RTX PRO 6000 at EUR 9,000-15,390 and R9700 at EUR 1,579 conflict with the opened aggregator pages (19,999 and 1,876); opened pages used."
+  },
+  {
+    "area": "stack",
+    "text": "Cloud USD prices not converted to EUR; Vast.ai pricing page has no numbers and computeprices shows 0.47/hr undated; Lambda lists no RTX 4090/5090."
+  },
+  {
+    "area": "stack",
+    "text": "Buyer location Netherlands/EU is an assumption (OPEN); VAT treatment only where stated."
+  },
+  {
+    "area": "partners",
+    "text": "Primary text of ACM 2024 guidelines, EU UCPD/Omnibus, Dutch Reclamecode affiliate specifics, UK ASA/CMA affiliate rule: not read; ASA PDF extraction unreliable."
+  },
+  {
+    "area": "partners",
+    "text": "GMKtec, Bosgame, Geizhals, Crucial, LG, BenQ: no terms found. GMKtec terms are behind Awin signup; Bosgame site returned 403."
+  },
+  {
+    "area": "partners",
+    "text": "Beelink and Framework rates are directory claims; Framework cookie unknown; Framework own affiliate page 404."
+  },
+  {
+    "area": "partners",
+    "text": "Amazon NL/DE rates conflict and cookie window not read from an Amazon page."
+  },
+  {
+    "area": "partners",
+    "text": "Corsair, Dell NL, Samsung, idealo, Alibaba, Wirecutter, MSP margin figures come from search summaries only."
+  },
+  {
+    "area": "partners",
+    "text": "tinybox and current Framework Desktop EUR prices not extracted."
+  },
+  {
+    "area": "partners",
+    "text": "No Dutch/EU AI-workstation reseller with published pricing and no 'agent server in a box' product were found; Tweakers affiliate policy not found."
+  },
+  {
+    "area": "partners",
+    "text": "No sourced numbers for setup fees or AI-fleet retainers."
+  },
+  {
+    "area": "partners",
+    "text": "Solo-founder NL/EU status is an OPEN assumption; VAT/tax and merchant-of-record questions not researched."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "Region assumption (Netherlands/EU) is OPEN; all prices are USD unless stated and EU VAT is not applied."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "Windows 11 Home/Pro EUR prices from Microsoft not verified (Store pages timed out, compare page 404)."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "Cloudflare Zero Trust free-plan user limit not verified from a Cloudflare page (pages opened lacked it)."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "Windows Credential Manager, Windows File History, SMB shared storage, Microsoft Remote Desktop client and Parsec (403) not researched or not opened."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "AMD page for Windows 96GB VGM timed out twice; Linux 124GB figure not on ROCm doc."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "Apple pages do not document headless Screen Sharing or Windows VNC clients; the Mac sleep guide page returned off-topic content (HT201714 used instead)."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "No SDXL/Flux/LoRA VRAM figures in official docs opened; kohya/ai-toolkit docs not checked."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "Mini PC spec pages opened: only the GMKtec guide (vendor blog); Minisforum/Beelink product pages not opened; OCuLink bandwidth in Gbps not stated."
+  },
+  {
+    "area": "stack-gaps",
+    "text": "1Password plan eligibility/pricing, Kopia licence/OS list, Tailscale OS/Windows-service detail not verified."
+  }
+]

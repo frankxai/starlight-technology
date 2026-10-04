@@ -1,0 +1,153 @@
+{
+  "diy": [
+    {
+      "id": "diy-agent-node",
+      "goal": "16-core / 64GB always-on agent node",
+      "status": "incomplete",
+      "pricedParts": [
+        {
+          "part": "Framework Desktop mainboard, Ryzen AI Max+ 395 64GB",
+          "amount": 1859,
+          "currency": "EUR",
+          "merchant": "Framework NL",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceIds": [
+            "supply-s04"
+          ]
+        }
+      ],
+      "missingParts": [
+        "case",
+        "PSU (Framework uses FSP 400 W Flex ATX)",
+        "cooler",
+        "SSD"
+      ],
+      "totalEur": null,
+      "compareToBuilt": "No complete total: case, PSU and SSD prices were not retrievable. An AM5 alternative (Ryzen 9 9950X) was seen only in a search snippet.",
+      "sourceIds": [
+        "supply-s04"
+      ]
+    },
+    {
+      "id": "diy-llm-box",
+      "goal": "128GB LLM box",
+      "status": "incomplete",
+      "pricedParts": [
+        {
+          "part": "Framework Desktop mainboard, Ryzen AI Max+ 395 128GB",
+          "amount": 3539,
+          "currency": "EUR",
+          "merchant": "Framework NL",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceIds": [
+            "supply-s04"
+          ]
+        }
+      ],
+      "missingParts": [
+        "case",
+        "PSU",
+        "SSD"
+      ],
+      "totalEur": null,
+      "compareToBuilt": "Board alone is about EUR 1,100 above a complete Bosgame M5 128GB/2TB seen at EUR 2,439.95 on 24 June 2026. DIY buys serviceability and named suppliers, not savings.",
+      "sourceIds": [
+        "supply-s04",
+        "supply-s08"
+      ]
+    }
+  ],
+  "secondHand": [
+    {
+      "id": "used-1",
+      "item": "Refurbished business mini PC (EliteDesk 800 G5 DM / ThinkCentre M920q / OptiPlex 5080 Micro)",
+      "priceLowEur": 163.99,
+      "priceMedianEur": null,
+      "priceHighEur": 329.95,
+      "listingsSeen": 4,
+      "worthIt": "yes",
+      "why": "12-month warranty, cheap always-on agent node, but base RAM 4-8GB and not 64GB class. Median not computed from 4 listings.",
+      "sourceIds": [
+        "supply-s17"
+      ]
+    },
+    {
+      "id": "used-2",
+      "item": "Lenovo ThinkCentre M70q Gen 3 Tiny 16GB/512GB (refurbed.nl)",
+      "priceLowEur": 494.95,
+      "priceMedianEur": null,
+      "priceHighEur": 494.95,
+      "listingsSeen": 1,
+      "worthIt": "conditional",
+      "why": "Verified single listing; newer platform, still 16GB.",
+      "sourceIds": [
+        "supply-s17"
+      ]
+    },
+    {
+      "id": "used-3",
+      "item": "Mac mini 2018 8GB/256GB refurbished (refurbed.nl)",
+      "priceLowEur": 236.49,
+      "priceMedianEur": null,
+      "priceHighEur": 236.49,
+      "listingsSeen": 1,
+      "worthIt": "no",
+      "why": "Intel-era, no unified-memory LLM value.",
+      "sourceIds": [
+        "supply-s17"
+      ]
+    },
+    {
+      "id": "used-4",
+      "item": "Mac Studio M1 Ultra 64GB (Swiss refurbisher, CHF)",
+      "priceLowEur": null,
+      "priceMedianEur": null,
+      "priceHighEur": null,
+      "listingsSeen": 1,
+      "worthIt": "conditional",
+      "why": "Revendo CH 1,620 CHF, out of stock, one listing; EUR conversion not done (rate not sourced). New price was EUR 4,599 (LDLC). No NL listing evidence. Apple NL refurbished page showed no Mac Studio.",
+      "sourceIds": [
+        "supply-s18",
+        "supply-s19"
+      ]
+    },
+    {
+      "id": "used-5",
+      "item": "Mac Studio M1/M2 Ultra 128/192GB, NL",
+      "priceLowEur": null,
+      "priceMedianEur": null,
+      "priceHighEur": null,
+      "listingsSeen": 0,
+      "worthIt": "conditional",
+      "why": "No NL data obtained. Marktplaats, Tweakers V&A, Back Market NL, eBay.nl blocked or not retrievable. Search snippets from other regions (USD 4,200-11,676 for M2 Ultra 192GB) are too wide to quote.",
+      "sourceIds": []
+    },
+    {
+      "id": "used-6",
+      "item": "Used RTX 3090 24GB (eBay.de snippets)",
+      "priceLowEur": 660,
+      "priceMedianEur": null,
+      "priceHighEur": 1039,
+      "listingsSeen": 4,
+      "worthIt": "conditional",
+      "why": "4 snippet listings EUR 660-1,039; US tracker USD 1,338-1,355 and rising. Mining wear and no warranty risk from private sellers. RTX 4090 not researched.",
+      "sourceIds": [
+        "supply-s21",
+        "supply-s22"
+      ]
+    },
+    {
+      "id": "used-7",
+      "item": "Mac mini M-series used, used workstations",
+      "priceLowEur": null,
+      "priceMedianEur": null,
+      "priceHighEur": null,
+      "listingsSeen": 0,
+      "worthIt": "conditional",
+      "why": "Not retrieved.",
+      "sourceIds": []
+    }
+  ]
+}

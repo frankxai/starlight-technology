@@ -1,0 +1,1922 @@
+[
+  {
+    "id": "gmktec-s01",
+    "title": "GMKtec EVO-X2 product page (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com/products/amd-ryzen%E2%84%A2-ai-max-395-evo-x2-ai-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD prices, specs, PSU 19.5V 11.8A, 1-year warranty, 7-day return"
+  },
+  {
+    "id": "gmktec-s02",
+    "title": "GMKtec EVO-X3 product page (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com/products/gmktec-evo-x3-ai-mini-pc-amd-ryzen-ai-max-395",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD 3,799.99 sale (regular 4,100.00), variants listed sold out/unavailable"
+  },
+  {
+    "id": "gmktec-s03",
+    "title": "GMKtec EVO-X1 Pro product page (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com/products/gmktec-evo-x1-pro-ai-mini-pc-amd-ryzen-ai-9-hx-470",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD 1,599.99, 64GB LPDDR5 6400 soldered"
+  },
+  {
+    "id": "gmktec-s04",
+    "title": "GMKtec EVO-T2 product page (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com/products/intel-core-ultra-x7-358h-x9-388h-evo-t2-ai-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD 2,399.99, sold out/unavailable"
+  },
+  {
+    "id": "gmktec-s05",
+    "title": "GMKtec EVO-X5 Pro product page (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com/products/gmktec-evo-x5-pro-amd-ryzen-ai-max-pro-495-ai-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD 6,599.00, 192GB, sold out, ship Oct 5 or Oct 9"
+  },
+  {
+    "id": "gmktec-s06",
+    "title": "GMKtec K13 product page (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com/products/gmktec-k13-mini-pc-intel-core-ultra-7-256v",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD 589.99, 16GB only, soldered"
+  },
+  {
+    "id": "gmktec-s07",
+    "title": "GMKtec homepage (US store)",
+    "publisher": "gmktec.com",
+    "url": "https://www.gmktec.com",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "lineup and USD prices; EVO-X2 sale 2,199.99 from 2,599.99; free shipping worldwide; no import fees US"
+  },
+  {
+    "id": "gmktec-s08",
+    "title": "GMKtec EU store homepage",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR prices; page states prices include VAT where applicable"
+  },
+  {
+    "id": "gmktec-s09",
+    "title": "GMKtec EU EVO-X2 page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/products/gmktec-evo-x2-amd-ryzen%E2%84%A2-ai-max-395-mini-pc-1",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "64GB+1TB EUR 1.999,99; 128GB variant prices not extracted; EU warehouse statement"
+  },
+  {
+    "id": "gmktec-s10",
+    "title": "GMKtec EU EVO-X3 page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/products/gmktec-evo-x3-amd-ryzen%E2%84%A2-ai-max-395-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR 3.499,99; in stock 331 units; 2 Jahre Garantie"
+  },
+  {
+    "id": "gmktec-s11",
+    "title": "GMKtec EU K17 page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/products/gmktec-nucbox-k17-intel%C2%AE-core%E2%84%A2-ultra-5-226v",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR 529.99 16GB; 32GB sold out; K17 Plus Ultra 7 258V 32GB in stock (price not extracted)"
+  },
+  {
+    "id": "gmktec-s12",
+    "title": "GMKtec EU EVO-T2 page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/products/gmktec-evo-t2-intel-core-ultra-x9-388h-x7-358h-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR 1,799.99; X9 sold out, X7 in stock"
+  },
+  {
+    "id": "gmktec-s13",
+    "title": "GMKtec EU NucBox K11 page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/products/gmktec-nucbox-k11-amd-ryzen%E2%84%A2-9-8945hs",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR 469.99 base; SO-DIMM DDR5-5600 up to 64GB; 120W adapter; 2-year warranty stated"
+  },
+  {
+    "id": "gmktec-s14",
+    "title": "GMKtec EU all-products collection",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/collections/all",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "K11 469.99, K8 Plus 389.99, M6 Ultra from 249.99, M7 Ultra 349.99, M8 349.99 EUR"
+  },
+  {
+    "id": "gmktec-s15",
+    "title": "GMKtec EU warranty page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/pages/warranty",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "2-year warranty; customer pays outbound shipping, GMK pays return; 7-day return; 15% restocking; no explicit 14-day EU withdrawal mention"
+  },
+  {
+    "id": "gmktec-s16",
+    "title": "GMKtec EU returns page",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/pages/ruckgabe-umtausch",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "7 days, customer pays return shipping, 15% restocking for non-defective, USD 35 deduction after 7 days"
+  },
+  {
+    "id": "gmktec-s17",
+    "title": "GMKtec EU shipping policy",
+    "publisher": "de.gmktec.com",
+    "url": "https://de.gmktec.com/en/pages/versandrichtlinie",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Bremen DE warehouse primary, Shenzhen secondary; 2-8 business days from DE; customs possible from China; fetched summary says policy reportedly declares lower commodity value (needs reading of original)"
+  },
+  {
+    "id": "gmktec-s18",
+    "title": "GMKtec EVO-X2 review (pages 3-4)",
+    "publisher": "ServeTheHome",
+    "url": "https://www.servethehome.com/gmktec-evo-x2-review-an-amd-ryzen-ai-max-395-powerhouse/4/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "idle 8-14W, 70B Q6_K load 147-160W, noise 37-38 dBA idle, 41-43 dBA AI load; 70B Q6_K 3.7-3.8 t/s, Qwen3-32B 10.4-10.5 t/s (page 3)"
+  },
+  {
+    "id": "gmktec-s19",
+    "title": "GMKtec EVO-X2 review (page 1 ports)",
+    "publisher": "ServeTheHome",
+    "url": "https://www.servethehome.com/gmktec-evo-x2-review-an-amd-ryzen-ai-max-395-powerhouse/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "ports, Realtek RTL8125BG 2.5GbE, criticism of SSD cooling fan per commenters"
+  },
+  {
+    "id": "gmktec-s20",
+    "title": "Strix Halo LLM Performance Benchmarks (EVO-X2, Fedora 43)",
+    "publisher": "visorcraft (GitHub)",
+    "url": "https://raw.githubusercontent.com/visorcraft/strix-halo-llm-perf/main/README.md",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "community measurement: Qwen3 30B MoE Q4_K_M 86.1 t/s Vulkan; Qwen3-Coder-Next 80B Q4_K_M 42.7 t/s; backend caveats"
+  },
+  {
+    "id": "gmktec-s21",
+    "title": "Ryzen AI Max+ 395 mini PC comparison",
+    "publisher": "computingforgeeks.com",
+    "url": "https://computingforgeeks.com/ryzen-ai-max-395-mini-pc-comparison/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "secondary aggregator; cites Tom's Hardware 61C under 70B load (not verified at source); 52-56 t/s 120B MoE, 4-6 t/s dense 70B"
+  },
+  {
+    "id": "gmktec-s22",
+    "title": "GMKtec EVO-X2 AI review (minipclab)",
+    "publisher": "minipclab.com",
+    "url": "https://minipclab.com/blog/gmktec-evo-x2-ai-review",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "secondary blog; user-reported numbers; idle ~12W, load ~120W; 1-year warranty; low-trust"
+  },
+  {
+    "id": "gmktec-s23",
+    "title": "GMKtec EVO-X3 model page",
+    "publisher": "starryhope.com",
+    "url": "https://www.starryhope.com/minipcs/models/gmktec-evo-x3/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "aggregator: release date August 29, 2026; summarises Level1Techs 118 GB/s bandwidth and ETA PRIME review; not verified at source"
+  },
+  {
+    "id": "gmktec-s24",
+    "title": "GMKtec EVO-X3 specs article",
+    "publisher": "Pause Hardware",
+    "url": "https://pausehardware.com/gmktec-evo-x3-strix-halo-oculink",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "pre-launch specs; OCuLink, 2x PCIe4 M.2, WiFi 7"
+  },
+  {
+    "id": "gmktec-s25",
+    "title": "GMKtec EVO-X2 listing",
+    "publisher": "Geizhals.at",
+    "url": "https://geizhals.at/gmktec-evo-x2-a3485299.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "128GB/2TB cheapest EUR 3,999.00 incl 19% Austrian VAT (galaxus.at), Proshop.at 4,123.72; last update 2026-10-05"
+  },
+  {
+    "id": "gmktec-s26",
+    "title": "GMKtec EVO-X2 128GB/2TB listing",
+    "publisher": "datafox.ee",
+    "url": "https://pood.datafox.ee/evo-x2-amd-ryzen-ai-max-395-128gb-ram-2tb-ssd",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "EUR 4,450.20 incl 24% Estonian VAT"
+  },
+  {
+    "id": "gmktec-s27",
+    "title": "Strix Halo toolboxes and VRAM notes",
+    "publisher": "WebSearch result summary (kyuz0 GitHub, Framework community)",
+    "url": "https://github.com/kyuz0/amd-strix-halo-toolboxes",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "only seen as search result, page not opened; Windows dynamic VGM vs Linux boot-time allocation claim is unverified"
+  },
+  {
+    "id": "gmktec-s28",
+    "title": "GMKtec UK affiliate listing",
+    "publisher": "affi.io",
+    "url": "https://affi.io/m/gmktec-uk",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "search result only, page not opened; 30-day cookie claimed for UK program"
+  },
+  {
+    "id": "gmktec-s29",
+    "title": "Trustpilot reviews de.gmktec.com",
+    "publisher": "Trustpilot",
+    "url": "https://it.trustpilot.com/review/de.gmktec.com",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "search result only; customer reports of duty (EUR 23.90) and a lost-return dispute; not opened"
+  },
+  {
+    "id": "gmktec-s30",
+    "title": "GMKtec launches EVO-X3 (2x price)",
+    "publisher": "Notebookcheck",
+    "url": "https://www.notebookcheck.net/GMKtec-launches-repackaged-Strix-Halo-mini-PC-with-2x-higher-price.1335259.0.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "fetch blocked (403); only search snippet seen: launch USD 3,600 128/2TB, 3,849 4TB, 495 version late 2026"
+  },
+  {
+    "id": "minisforum-s01",
+    "title": "Minisforum EU store, Workstations collection",
+    "publisher": "minisforumpc.eu (self-described official Minisforum EU store)",
+    "url": "https://minisforumpc.eu/collections/minisforum-ai-workstations",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR sale/regular prices; page does not state tax status."
+  },
+  {
+    "id": "minisforum-s02",
+    "title": "Minisforum EU store, all products pages 1-12",
+    "publisher": "minisforumpc.eu",
+    "url": "https://minisforumpc.eu/collections/all?page=7",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Catalogue read across pages 1-8 and 10-12 (page 9 not opened). Page 7 has MS-S1 MAX/MS-A2/N5; page 3 DEG1/DEG2; page 2 AI X1 Pro; page 1 BD-series ITX boards and AI NAS."
+  },
+  {
+    "id": "minisforum-s03",
+    "title": "Minisforum UK store, Workstations collection",
+    "publisher": "minisforum.uk",
+    "url": "https://www.minisforum.uk/collections/workstations",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "GBP prices; tax status not stated."
+  },
+  {
+    "id": "minisforum-s04",
+    "title": "MINISFORUM MS-S1 MAX product page (DE collection, USD price shown)",
+    "publisher": "minisforum.com",
+    "url": "https://www.minisforum.com/de/collections/ai-mini-work-station/products/ms-s1-max",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "$2,919.90 for 128GB+2TB, shown out of stock; spec bullets: 320W PSU, 160W peak/130W sustained, 6 heatpipes, dual fans, phase-change material."
+  },
+  {
+    "id": "minisforum-s05",
+    "title": "Liliputing: MS-S1 Max features",
+    "publisher": "Liliputing",
+    "url": "https://liliputing.com/minisforum-ms-s1-max-ai-pc-features-amd-strix-halo-80-gbps-usb-10-gb-lan-and-pcie-x16/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Port list; PCIe x16 slot is electrically 4 lanes PCIe 4.0; M.2 x4 + x1."
+  },
+  {
+    "id": "minisforum-s06",
+    "title": "ServeTheHome: Minisforum MS-S1 Max review (page 3)",
+    "publisher": "ServeTheHome",
+    "url": "https://www.servethehome.com/minisforum-ms-s1-max-review-the-best-ryzen-ai-max-mini-pc-yet/3/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Power modes, idle/peak power, RTL8127 10GbE, USB4v2 via discrete controller, DRAM split effect on CPU. One page of several, read through a summarizing fetch."
+  },
+  {
+    "id": "minisforum-s07",
+    "title": "Search digest of Notebookcheck MS-S1 Max reviews (idle 9-12W, ~120W AI load, 43 dBA, BIOS v1.03 quieter idle)",
+    "publisher": "Notebookcheck (via WebSearch summary)",
+    "url": "https://www.notebookcheck.net/One-of-the-most-powerful-mini-PCs-of-2025-Minisforum-MS-S1-Max-review-AMD-Strix-Halo-Power-128-GB-RAM-Radeon-8060S-for-professionals-AI.1124332.0.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "WebFetch returned 403; numbers come from the search summary only, not an opened page."
+  },
+  {
+    "id": "minisforum-s08",
+    "title": "Review: Minisforum MS-S1 Max, AMD AI Max+ 395 with 96GB of VRAM",
+    "publisher": "AkitaOnRails",
+    "url": "https://akitaonrails.com/en/2026/03/31/minisforum-ms-s1-max-amd-ai-max-395-review/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Ollama/ROCm tok/s for qwen3.5 35b/122b, glm-4.7-flash bf16; ROCm deepseek-r1:70b assert bug; under 100W claim. Reviewer did not disclose price."
+  },
+  {
+    "id": "minisforum-s09",
+    "title": "Strix Halo LLM inference notes",
+    "publisher": "Level1Techs forum",
+    "url": "https://forum.level1techs.com/t/strix-halo-llm-inference-notes/249466",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Framework Strix Halo community numbers (not Minisforum hardware) for the same APU; Vulkan vs ROCm."
+  },
+  {
+    "id": "minisforum-s10",
+    "title": "Strix Halo Mini PCs for Local LLM Inference",
+    "publisher": "StarryHope",
+    "url": "https://www.starryhope.com/minipcs/strix-halo-local-llm-inference-2026/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "MS-S1 MAX MSRP $3,799 (128GB/2TB); MS-S1 MAX-P495 $7,399; 70B dense about 5 tok/s and gpt-oss-120b about 31 tok/s per search digest."
+  },
+  {
+    "id": "minisforum-s11",
+    "title": "Minisforum affiliate program (EU)",
+    "publisher": "minisforumpc.eu",
+    "url": "https://minisforumpc.eu/pages/minisforum-affiliate-program",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "2% commission, AWIN, cookie 7 days in FAQ while the same page also says 30 days."
+  },
+  {
+    "id": "minisforum-s12",
+    "title": "Minisforum UK warranty policy",
+    "publisher": "minisforum.uk",
+    "url": "https://minisforum.uk/pages/warranty",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "24 months standard; 36 months only for orders 2026-03-09 to 2026-07-31; Ireland RMA via German service center."
+  },
+  {
+    "id": "minisforum-s13",
+    "title": "Search digest: official policies and About page (founded 2018, Shenzhen, 30-day returns)",
+    "publisher": "minisforum.uk / store.minisforum.com (WebSearch summary)",
+    "url": "https://www.minisforum.uk/pages/about",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Search summary only; pages not opened."
+  },
+  {
+    "id": "minisforum-s14",
+    "title": "2 month MiniPC mini-review: Minisforum AI X1 Pro",
+    "publisher": "Ivoras (Substack)",
+    "url": "https://ivoras.substack.com/p/2-month-minipc-mini-review-minisforum",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Single-user 96GB DDR5-5600 report; stability issues fixed by BIOS."
+  },
+  {
+    "id": "minisforum-s15",
+    "title": "Minisforum AI X1 Pro review",
+    "publisher": "PCGamesN",
+    "url": "https://www.pcgamesn.com/minisforum/ai-x1-pro-review",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "US MSRP, specs, fan noise under load."
+  },
+  {
+    "id": "minisforum-s16",
+    "title": "Minisforum BD395i MAX mini-ITX motherboard",
+    "publisher": "Liliputing",
+    "url": "https://liliputing.com/minisforum-bd395i-max-is-a-mini-itx-motherboard-with-amd-ryzen-ai-max-395/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Specs; price not announced at article time."
+  },
+  {
+    "id": "minisforum-s17",
+    "title": "MS-S1 MAX-P495 coverage (HotHardware/Notebookcheck/Techspot) via search digest",
+    "publisher": "HotHardware et al. (WebSearch summary)",
+    "url": "https://hothardware.com/news/minisforum-192gb-gorgon-halo-mini-pc-local-ai-powerhouse",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Search summary only: IFA 2026 announcement, 192GB LPDDR5X-8533, up to 160GB GPU-allocatable, $7,399 US."
+  },
+  {
+    "id": "minisforum-s18",
+    "title": "MS-S1 MAX cluster / 2U rack marketing and dual-unit 235B Q4 claim",
+    "publisher": "minisforum.uk / minisforum.com (WebSearch summary)",
+    "url": "https://www.minisforum.uk/products/minisforum-ms-s1-max",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Manufacturer claim of 10.87 tok/s for 235B Q4 on two units; from search summary, page not opened."
+  },
+  {
+    "id": "minisforum-s19",
+    "title": "Geizhals / Newegg / Amazon price digest for MS-S1 MAX 128GB",
+    "publisher": "WebSearch summary (Geizhals, Newegg, Amazon)",
+    "url": "https://geizhals.eu/?fs=minisforum+ms-s1+max",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Geizhals page returned 403 when opened; figures (EUR 3,149 current, 2,399.99 historical low) come from a search snippet only and are unverified."
+  },
+  {
+    "id": "minisforum-s20",
+    "title": "MS-S1 MAX review (minipclab)",
+    "publisher": "minipclab.com",
+    "url": "https://minipclab.com/blog/minisforum-ms-s1-max-review",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Contradicts manufacturer specs (says 2.5GbE, 140W adapter, about $1,049-1,199, 18-22W idle). Low reliability; not used for specs."
+  },
+  {
+    "id": "landscape-s01",
+    "title": "Mac Studio tech specs (NL)",
+    "publisher": "Apple",
+    "url": "https://www.apple.com/nl/mac-studio/specs/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "M5 Max 460/614 GB/s, M5 Ultra 1.2 TB/s; max 128GB (Max), 512GB (Ultra). No prices on page."
+  },
+  {
+    "id": "landscape-s02",
+    "title": "Mac mini tech specs (NL)",
+    "publisher": "Apple",
+    "url": "https://www.apple.com/nl/mac-mini/specs/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "M6 153-170 GB/s max 32GB; M5 Pro 307 GB/s max 64GB."
+  },
+  {
+    "id": "landscape-s03",
+    "title": "Buy Mac Studio (NL)",
+    "publisher": "Apple",
+    "url": "https://www.apple.com/nl/shop/buy-mac/mac-studio/m5-ultra",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Lists 3 configs (M5 Max 36GB, M5 Max 40c 64GB, M5 Ultra 96GB). Prices not rendered in fetch."
+  },
+  {
+    "id": "landscape-s04",
+    "title": "Mac Studio 2026 officieel",
+    "publisher": "iCulture",
+    "url": "https://www.iculture.nl/nieuws/mac-studio-2026-officieel/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "NL prices EUR 3,029 / 6,649; 512GB ships late Oct 2026."
+  },
+  {
+    "id": "landscape-s05",
+    "title": "Mac mini 2026 prijzen",
+    "publisher": "iCulture",
+    "url": "https://www.iculture.nl/nieuws/mac-mini-2026-prijzen/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "NL prices EUR 1,069 / 2,019; RAM upgrade prices."
+  },
+  {
+    "id": "landscape-s06",
+    "title": "All MSRP Mac Studio prices in Netherlands",
+    "publisher": "EveryMac",
+    "url": "https://everymac.com/global-mac-prices/all-msrp-mac-studio-prices-in-netherlands.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "NL MSRP EUR 3,029 / 3,689 / 6,649 / 8,079."
+  },
+  {
+    "id": "landscape-s07",
+    "title": "Framework Desktop DIY config (NL)",
+    "publisher": "Framework",
+    "url": "https://frame.work/nl/en/products/desktop-diy-amd-aimax300/configuration/new",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR 1,429 / 2,209 / 3,889; all out of stock on fetch date."
+  },
+  {
+    "id": "landscape-s08",
+    "title": "Framework Desktop landing (NL)",
+    "publisher": "Framework",
+    "url": "https://frame.work/nl/en/desktop",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Lists Max+ PRO 495 192GB tier; Fedora or BYO OS."
+  },
+  {
+    "id": "landscape-s09",
+    "title": "Framework Desktop prices impacted by RAM shortage",
+    "publisher": "Mezha",
+    "url": "https://mezha.ua/en/news/framework-desktop-prices-impacted-by-ram-shortage-307704/amp/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "13 Jan 2026 USD increases: 128GB 1,999 to 2,459."
+  },
+  {
+    "id": "landscape-s10",
+    "title": "Framework Desktop 192GB",
+    "publisher": "BornCity",
+    "url": "https://borncity.com/news/framework-desktop-bis-zu-192-gb-ram-und-preise-ab-6-799-us-dollar/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "192GB DIY USD 6,799, prebuilt 7,449, ship Nov 2026; up to 160GB iGPU-allocable; Windows 11 supported."
+  },
+  {
+    "id": "landscape-s11",
+    "title": "Framework Ryzen AI Max+ 495 desktop",
+    "publisher": "Wccftech",
+    "url": "https://wccftech.com/framework-amd-ryzen-ai-max-pro-495-pc-desktop-192-gb-memory-runs-deepseek-v4-flash/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "8533 MT/s, 273 GB/s; Framework earlier guided USD 5000+; conflicts with BornCity price."
+  },
+  {
+    "id": "landscape-s12",
+    "title": "NVIDIA DGX Spark",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/products/workstations/dgx-spark/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "273 GB/s, 128GB LPDDR5x, DGX OS; 64GB variant OEM-only; OEMs Acer ASUS Dell Gigabyte HP Lenovo MSI."
+  },
+  {
+    "id": "landscape-s13",
+    "title": "September 2026 availability of GB10s",
+    "publisher": "NVIDIA Developer Forums (user thread)",
+    "url": "https://forums.developer.nvidia.com/t/september-2026-availability-of-gb10s/382068",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "User reports: ASUS GX10 1TB USD 6,999, EU GX10 1TB EUR 3,680 ex VAT, FE still USD 4,699, widespread stock-outs."
+  },
+  {
+    "id": "landscape-s14",
+    "title": "DGX Spark price: every GB10 box",
+    "publisher": "OpenClawDC",
+    "url": "https://openclawdc.com/blog/dgx-spark-price-every-gb10-box/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Spark USD 4,699 (+700 in Feb 2026); GB10 OEM boxes USD 5,400-8,200 Sept 2026."
+  },
+  {
+    "id": "landscape-s15",
+    "title": "HP Z2 Mini G1a variants (NL reseller)",
+    "publisher": "Bechtle/ARP NL",
+    "url": "https://www.arp.nl/nl-en/shop/product-family/hp-z2-mini-g1a-workstation--6634--f",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Dutch B2B prices ex and incl VAT."
+  },
+  {
+    "id": "landscape-s16",
+    "title": "Corsair confirms new prices AI Workstation 300",
+    "publisher": "Notebookcheck",
+    "url": "https://www.notebookcheck.org/Corsair-confirma-el-nuevo-precio-del-mini-PC-AMD-Strix-Halo-con-hasta-96-GB-de-VRAM.1269374.0.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "395 SKU now from USD 2,699.99 (was 1,999.99), 128GB."
+  },
+  {
+    "id": "landscape-s17",
+    "title": "AMD Ryzen AI Halo mini PC",
+    "publisher": "Notebookcheck",
+    "url": "https://www.notebookcheck.com/AMDs-hauseigener-Mini-PC-mit-128GB-RAM-und-Strix-Halo-zeigt-sich-fuer-fast-4-000EUR.1336528.0.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "AMD's own box, about EUR 4,100 incl 19% DE VAT, launched 10 Jul 2026 US; Windows and Linux."
+  },
+  {
+    "id": "landscape-s18",
+    "title": "Beelink GTR9 Pro (DE store)",
+    "publisher": "Beelink",
+    "url": "https://www.bee-link.com/de/products/beelink-gtr9-pro-amd-ryzen-ai-max-395",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "128GB LPDDR5X-8000, Windows 11 Pro; USD 4,349 shown, pre-order 35 days. Tax status unknown."
+  },
+  {
+    "id": "landscape-s19",
+    "title": "llama.cpp DGX Spark benchmark thread",
+    "publisher": "GitHub ggml-org/llama.cpp",
+    "url": "https://github.com/ggml-org/llama.cpp/discussions/16578",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Community-measured DGX Spark pp/tg numbers."
+  },
+  {
+    "id": "landscape-s21",
+    "title": "Strix Halo AI capabilities overview",
+    "publisher": "Strix Halo HomeLab wiki",
+    "url": "https://strixhalo.wiki/AI/AI_Capabilities_Overview",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Vulkan recommended on Windows and Linux; ROCm immature; kernel 6.15+; 256GB/s theoretical."
+  },
+  {
+    "id": "landscape-s22",
+    "title": "lhl/strix-halo-testing",
+    "publisher": "GitHub lhl",
+    "url": "https://github.com/lhl/strix-halo-testing",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Strix Halo vs DGX Spark: tg competitive at short ctx; Spark far ahead in prompt processing."
+  },
+  {
+    "id": "landscape-s23",
+    "title": "RTX 5090 EU street prices exceed EUR 5,000",
+    "publisher": "Guru3D",
+    "url": "https://www.guru3d.com/story/geforce-rtx-5090-street-prices-in-eu-now-exceed/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Geizhals-sourced; relief maybe not before 2027. Exact EUR 5,242.94 INNO3D figure came from search result text, not this page."
+  },
+  {
+    "id": "landscape-s24",
+    "title": "Radeon AI PRO R9700 EU price tracker",
+    "publisher": "GPU PRIX",
+    "url": "https://gpuprix.com/eu/gpus/radeon-ai-pro-r9700",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Lowest EUR 1,545, 32GB, 644.6 GB/s. Tracker, date label inconsistent."
+  },
+  {
+    "id": "landscape-s25",
+    "title": "RTX PRO 6000 Blackwell EU price tracker",
+    "publisher": "GPU PRIX",
+    "url": "https://gpuprix.com/eu/gpus/rtx-pro-6000-blackwell",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Lowest EUR 15,490, 96GB, 1,792 GB/s; 12-mo low 7,628."
+  },
+  {
+    "id": "landscape-s26",
+    "title": "AI server demand sustains memory contract price increases in 4Q26",
+    "publisher": "TrendForce",
+    "url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "DRAM +10-15% QoQ, NAND +15-20% QoQ in 4Q26; tight into 2027."
+  },
+  {
+    "id": "landscape-s27",
+    "title": "DDR5 prices up 500% in a year, 128GB kit lists at USD 3,399",
+    "publisher": "HWBusters",
+    "url": "https://hwbusters.com/news/ddr5-memory-prices-are-up-500-in-a-year-and-a-128gb-kit-now-lists-at-3399/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "18 Aug 2026; DDR5-6400 128GB kit from USD 329 low to 3,399."
+  },
+  {
+    "id": "landscape-s28",
+    "title": "Self-hosting LLMs on 512GB M5 Ultra Mac Studio",
+    "publisher": "Pinggy",
+    "url": "https://pinggy.io/amp/blog/self_hosting_llms_on_512gb_m5_ultra_mac_studio/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "iogpu.wired_limit_mb needed to raise GPU wired limit; dense 405B ~2.9 t/s."
+  },
+  {
+    "id": "landscape-s29",
+    "title": "AMD Medusa Halo / Ryzen AI Max 500 LPDDR6",
+    "publisher": "Igor's Lab",
+    "url": "https://www.igorslab.de/en/amd-medusa-halo-ryzen-ai-max-socs-rely-on-lpddr6-bandwidth-as-a-strategic-lever/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "RUMOR: LPDDR6 256-bit ~460 GB/s, Zen 6/RDNA 5, 2027-2028."
+  },
+  {
+    "id": "landscape-s30",
+    "title": "Mac Studio M5 Ultra arrives",
+    "publisher": "Guru3D",
+    "url": "https://www.guru3d.com/story/apple-mac-studio-with-m5-ultra-reaches-stores-with-up-to-512gb-of-unified-memory/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Retail 22 Sep 2026; USD from 2,499; 256GB/4TB Ultra reviewed at USD 12,299."
+  },
+  {
+    "id": "landscape-s31",
+    "title": "DRAM price forecast 4Q25",
+    "publisher": "TrendForce DRAMeXchange",
+    "url": "https://www.dramexchange.com/WeeklyResearch/Post/2/12476.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "24 Sep 2025 report: 4Q25 conventional DRAM +8-13% QoQ (baseline for 12-month trend)."
+  },
+  {
+    "id": "supply-s01",
+    "title": "Strix Halo Buyer's Guide",
+    "publisher": "Strix Halo HomeLab Wiki (community)",
+    "url": "https://strixhalo.wiki/Guides/Buyer's_Guide/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Community wiki. States about 90% of Chinese Strix Halo PCs (GMKtec, Bosgame, FEVM, Corsair, NIMO) are built on the same Sixunited platform; Beelink GTR9 Pro warning; non-upgradeable LPDDR5X; limited BIOS."
+  },
+  {
+    "id": "supply-s02",
+    "title": "GMKtec EVO-X2 hardware page",
+    "publisher": "Strix Halo HomeLab Wiki (community)",
+    "url": "https://strixhalo.wiki/Hardware/PCs/GMKtec_EVO-X2/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Identifies Sixunited AXB35-02 board, 120x25 mm rear fan, Huntkey HKA230195A2-0A7 PSU. No memory/SSD suppliers documented."
+  },
+  {
+    "id": "supply-s03",
+    "title": "Introducing the Framework Desktop",
+    "publisher": "Framework Computer (blog)",
+    "url": "https://frame.work/blog/introducing-the-framework-desktop",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Names Cooler Master and Noctua (thermal), FSP (semi-custom 400W Flex ATX PSU), RZ717 Wi-Fi module. Launch prices $1,999 (128GB), mainboard from $799. LPDDR5x soldered, vendor not named."
+  },
+  {
+    "id": "supply-s04",
+    "title": "Framework Desktop Mainboard (AMD Ryzen AI Max 300 Series), NL store",
+    "publisher": "Framework Computer",
+    "url": "https://frame.work/nl/en/products/framework-desktop-mainboard-amd-ryzen-ai-max-300-series",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "EUR incl. VAT: Max 385 32GB 1,079; Max+ 395 64GB 1,859; Max+ 395 128GB 3,539. 'Ships within 5 business days'. Freight delays up to 7 days noted."
+  },
+  {
+    "id": "supply-s05",
+    "title": "Framework Desktop Mainboard, US store",
+    "publisher": "Framework Computer",
+    "url": "https://frame.work/products/framework-desktop-mainboard-amd-ryzen-ai-max-300-series",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD: 385/32GB 969; 395/64GB 1,659; 395/128GB 3,149."
+  },
+  {
+    "id": "supply-s06",
+    "title": "Framework increases Desktop prices by up to $460 due to RAM crisis",
+    "publisher": "Engadget",
+    "url": "https://www.engadget.com/computing/framework-increases-desktop-prices-by-up-to-460-due-to-ram-crisis-234827145.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "12 Jan 2026: Desktop 32GB $1,139, 64GB $1,639, 128GB $2,459 (+$460). Framework said it would reduce prices again once market calms."
+  },
+  {
+    "id": "supply-s08",
+    "title": "Is a Strix Halo mini PC worth buying for local AI?",
+    "publisher": "Popular AI",
+    "url": "https://www.popularai.org/p/strix-halo-mini-pc-local-ai",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Bosgame EU page 24 Jun 2026: M5 395 128GB/2TB EUR 2,439.95 (was 2,875.95). References about EUR 1,700 earlier price class."
+  },
+  {
+    "id": "supply-s09",
+    "title": "Minisforum MS-S1 Max review (page 2)",
+    "publisher": "ServeTheHome",
+    "url": "https://www.servethehome.com/minisforum-ms-s1-max-review-the-best-ryzen-ai-max-mini-pc-yet/2/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Internal 320W Lite-On PSU, dual blower fans, 128GB soldered LPDDR5X, sample shipped with 2TB Kingston QLC SSD."
+  },
+  {
+    "id": "supply-s10",
+    "title": "Framework Desktop price rises and RAM outlook",
+    "publisher": "Notebookcheck / PCGamer / TechRadar (search results only, pages not opened except Engadget)",
+    "url": "https://www.notebookcheck.net/Framework-Desktop-now-cost-up-to-460-more-due-to-RAM-shortage.1203235.0.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Seen in search results only; corroborates s06."
+  },
+  {
+    "id": "supply-s11",
+    "title": "Ensuring fairness and safety: EUR 3 customs duty on low-value parcels",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/news-and-media/news/ensuring-fairness-and-safety-eur3-customs-duty-low-value-parcels-2026-06-29_en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "From 1 July 2026 temporary EUR 3 duty per item (tariff classification) on parcels up to EUR 150; ends 1 July 2028; seller/importer declares and pays."
+  },
+  {
+    "id": "supply-s12",
+    "title": "Vanaf 1 juli 2026 EUR 3 vast douanerecht op invoer tot EUR 150",
+    "publisher": "SRA (Dutch accountants body)",
+    "url": "https://www.sra.nl/nieuws/004501/2026/01/vanaf-1-juli-2026-3-vast-douanerecht-op-invoer-tot-150",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Per product group; temporary until 2028; does not address B2B or VAT."
+  },
+  {
+    "id": "supply-s13",
+    "title": "Search result: EU tariff heading 8471 duty 0% under ITA",
+    "publisher": "WTO goods schedules / tariff sites (search snippet; PDF not readable)",
+    "url": "https://goods-schedules.wto.org/system/files/2020-06/RS47.pdf",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Page opened but PDF text not extractable. 0% rate for 8471 is from search-summary of ITA commitments; Douane/TARIC confirmation not obtained."
+  },
+  {
+    "id": "supply-s14",
+    "title": "Goederen importeren buiten EU",
+    "publisher": "Wolters Kluwer (search result only; page 403)",
+    "url": "https://www.wolterskluwer.com/nl-nl/expert-insights/goederen-importeren-buiten-eu",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Not opened (403). Search snippet: import VAT 21%/9% on customs value plus duties; art. 23 permit shifts import VAT to the VAT return."
+  },
+  {
+    "id": "supply-s15",
+    "title": "Guarantees and returns",
+    "publisher": "Your Europe (European Commission)",
+    "url": "https://europa.eu/youreurope/citizens/consumers/shopping/guarantees-returns/index_en.htm",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Minimum 2-year legal guarantee; 1-year reversed burden of proof; second-hand via professional sellers can be agreed down to 1 year in some states; commercial guarantees cannot reduce legal guarantee."
+  },
+  {
+    "id": "supply-s16",
+    "title": "Importer obligations: CE, RoHS, WEEE (Stichting OPEN) - search results",
+    "publisher": "Various (carraglobe.com, bol partner platform) - search snippets only",
+    "url": "https://carraglobe.com/weee-producer-obligations-importer/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Not opened. Snippet says Dutch importers must register as WEEE producer (Stichting OPEN) and CE needs DoC + technical file (RED/LVD/RoHS). Primary EU/Dutch sources not retrieved."
+  },
+  {
+    "id": "supply-s17",
+    "title": "Refurbished desktop PCs listing",
+    "publisher": "refurbed.nl",
+    "url": "https://www.refurbed.nl/c/desktops/?q=thinkcentre+tiny",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "6 listings: ThinkCentre M920q Tiny 4GB/256GB EUR 190.93; HP EliteDesk 800 G5 DM 8GB/128GB 163.99; Dell OptiPlex 5080 Micro 8GB/128GB 329.95; M70q Gen3 Tiny 16GB/512GB 494.95; M70q 8GB/256GB 323.90; Mac mini 2018 8GB/256GB 236.49. 12-month warranty, 30-day trial."
+  },
+  {
+    "id": "supply-s18",
+    "title": "Mac Studio (Early 2022) refurbished inventory",
+    "publisher": "Revendo (Switzerland)",
+    "url": "https://revendo.ch/en/collections/mac-studio-early-2022",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "CHF, not EUR, not NL. M1 Ultra 64GB/1TB 1,620 CHF; M1 Max 64GB/1TB 1,176; all 7 out of stock; 1-year warranty. Swiss price used only as a rough anchor."
+  },
+  {
+    "id": "supply-s19",
+    "title": "Apple Mac Studio M1 Ultra 64GB/1TB (discontinued)",
+    "publisher": "LDLC",
+    "url": "https://ldlc.com/en/product/PB00489428.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Last new price EUR 4,599; no longer on sale; 2-year seller warranty."
+  },
+  {
+    "id": "supply-s20",
+    "title": "Apple Refurbished Mac (NL)",
+    "publisher": "Apple Netherlands",
+    "url": "https://www.apple.com/nl/shop/refurbished/mac/mac-studio",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Page showed no Mac Studio models; refurbished range EUR 1,399 to 9,579 for MacBook Air/Pro, iMac, Mac mini."
+  },
+  {
+    "id": "supply-s21",
+    "title": "NVIDIA GeForce RTX 3090 price statistics, September 2026",
+    "publisher": "GPUPoet (eBay-derived tracker)",
+    "url": "https://gpupoet.com/gpu/learn/price/september-2026/nvidia-geforce-rtx-3090",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "USD, not EUR, used/new not separated: lowest-3 average $1,355 in Sept 2026 (range $1,242-1,395), Oct 2026 $1,338; 76 deals tracked; up 16.9% vs prior 3 months."
+  },
+  {
+    "id": "supply-s22",
+    "title": "eBay.de used RTX 3090 listings",
+    "publisher": "eBay.de (search results only, item pages 403)",
+    "url": "https://www.ebay.de/itm/236289441605",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "From search snippets, not opened: ASUS TUF 3090 EUR 660; Founders EUR 896; Founders water-cooled EUR 960; ASUS TUF boxed EUR 1,039."
+  },
+  {
+    "id": "supply-s23",
+    "title": "Alibaba electronics: AMD Ryzen mini PC",
+    "publisher": "Alibaba.com",
+    "url": "https://electronics.alibaba.com/product/amd-ryzen-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Opened: no Strix Halo listings in extracted content; lists Ryzen AI 9 HX 370 mini PCs from USD 935-960 and Bosgame VIA-439 USD 1,033."
+  },
+  {
+    "id": "supply-s24",
+    "title": "Alibaba search result: Strix Halo 128GB mini PC listing",
+    "publisher": "Alibaba.com via WebSearch snippet",
+    "url": "https://electronics.alibaba.com/product/mini-computer",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "NOT opened. Search snippet only: Shenzhen Moshangyun Technology 'Gamer Mini PC Ryzen AI Max+ 395 128GB' USD 3,027-3,107, MOQ 1. Treat as unverified."
+  },
+  {
+    "id": "supply-s25",
+    "title": "AliExpress mini PC spoofed specs complaint",
+    "publisher": "Reddit/consumer reports via WebSearch snippet",
+    "url": "https://www.tomshardware.com/pc-components/ddr5/scammers-are-selling-fake-ddr5-with-empty-plastic-chips-relabeled-to-pass-as-legit-fake-components-mounted-to-pcbs-are-yet-another-sign-of-the-rampocalypse",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Tom's Hardware page opened but body paywalled; only headline: fake DDR5 modules with empty relabeled plastic chips. The AliExpress i9-claimed N5095A, 8GB case (EUR 100 refund after PayPal) is from search snippet only."
+  },
+  {
+    "id": "supply-s26",
+    "title": "GMKtec store",
+    "publisher": "GMKtec",
+    "url": "https://www.gmktec.com/products/amd-ryzen-ai-max-395-evo-x2-ai-mini-pc",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Home page content: 365-day warranty, 7-day return, free shipping on mainstream markets, 70+ countries, 35 with service partners; EVO range USD 1,149.99-6,599."
+  },
+  {
+    "id": "supply-s27",
+    "title": "Beelink GTR9 Pro forum threads",
+    "publisher": "Beelink community forum (search results only)",
+    "url": "https://bbs.bee-link.com/d/8935-gtr9-pro-troubles-and-how-sort-of-solved-it",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Not opened. Search snippets: stability, NIC, microcode and BIOS issues on GTR9 Pro."
+  },
+  {
+    "id": "supply-s28",
+    "title": "Global Sources mini PC OEM listings",
+    "publisher": "Global Sources (search snippet; page 429)",
+    "url": "https://m.globalsources.com/Mini-PC/Powerful-Performance-1230818800p.htm",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Not opened. Snippet: custom logo/packaging OEM at MOQ 500 (some 1,000), lead time 30-60 days (some 20-30), CE/FCC claimed; Celeron class around USD 150 at 100+ pcs."
+  },
+  {
+    "id": "supply-s29",
+    "title": "DRAM price surge 2026",
+    "publisher": "TechRadar, PCWorld, TrendForce (search results only)",
+    "url": "https://evertiq.com/news/2026-02-02-drampocalypse-memory-price-projections-skyrocket-for-1q26",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Not opened. Snippets: PC DRAM contract prices expected +100% QoQ in 1Q26; shortage may last into 2027; 96Gb LPDDR5X +89% in one quarter."
+  },
+  {
+    "id": "stack-s01",
+    "title": "Strix Halo Toolboxes",
+    "publisher": "strix-halo-toolboxes.com (community)",
+    "url": "https://strix-halo-toolboxes.com/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Linux-only (Fedora, Ubuntu/Debian). Kernel params amdgpu.gttsize=126976, ttm.pages_limit=32505856 (~124GB GPU-addressable); amd_iommu=off gives 5-12% (author claim). Supports Vulkan and ROCm."
+  },
+  {
+    "id": "stack-s02",
+    "title": "Lemonade SDK README",
+    "publisher": "lemonade-sdk (GitHub)",
+    "url": "https://github.com/lemonade-sdk/lemonade",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Windows 11, Ubuntu 24.04+, Fedora 43+, Debian, Arch, macOS, Docker. Backends vulkan/rocm/cuda/metal/flm/ryzenai-llm; gfx1151 listed; OpenAI-compatible at localhost:13305/v1."
+  },
+  {
+    "id": "stack-s03",
+    "title": "FastFlowLM README",
+    "publisher": "FastFlowLM (GitHub)",
+    "url": "https://github.com/FastFlowLM/FastFlowLM",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "XDNA2 NPU runtime on Windows and Linux (Strix, Strix Halo, Kraken, Gorgon Point); MIT orchestration, free kernels incl. commercial; flm serve gives OpenAI API; v1.0.0 dated 08/11/2026 (fetch summary; date format ambiguous)."
+  },
+  {
+    "id": "stack-s04",
+    "title": "Tailscale pricing",
+    "publisher": "Tailscale",
+    "url": "https://tailscale.com/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Personal free (up to 6 users, unlimited devices); Standard $8/user/mo; Premium $18/user/mo. USD, seat-based."
+  },
+  {
+    "id": "stack-s05",
+    "title": "Strix Halo LLM performance notes",
+    "publisher": "llm-tracker.info (community)",
+    "url": "https://llm-tracker.info/_TOORG/Strix-Halo",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "May 2025: Vulkan faster than HIP/ROCm on llama-bench. 2025-07-22: 30B MoE Q4_K_XL HIP+WMMA+FA 60.29 t/s; 32B dense Q8_0 6.43 t/s. NPU exploratory. Linux only."
+  },
+  {
+    "id": "stack-s06",
+    "title": "AMD Strix Halo local LLM guide 2026",
+    "publisher": "toolhalla.ai (secondary blog)",
+    "url": "https://toolhalla.ai/blog/amd-strix-halo-local-llm-guide-2026",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "March 2026 figures: 30B MoE (Qwen 3) 86 t/s; 70B dense Q4_K_M 8-12 t/s. Says RADV Vulkan beats ROCm HIP on gfx1151; Windows VGM up to 96GB; BIOS path Advanced > AMD CBS > NBIO > GFX Configuration > UMA Frame Buffer Size. Secondary source, treat as unverified measurement."
+  },
+  {
+    "id": "stack-s07",
+    "title": "AMD Ryzen AI Max+ upgraded: 128B parameter LLMs on Windows with LM Studio (search snippet only)",
+    "publisher": "AMD (page fetch timed out)",
+    "url": "https://www.amd.com/en/blogs/2025/amd-ryzen-ai-max-upgraded-run-up-to-128-billion-parameter-llms-lm-studio.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "NOT opened: only the WebSearch snippet. Snippet says Variable Graphics Memory gives up to 96GB VRAM on 128GB machines on Windows, Vulkan llama.cpp, Adrenalin 25.8.1 (July 2025). Treat as unverified until opened."
+  },
+  {
+    "id": "stack-s08",
+    "title": "Get started with OpenSSH Server for Windows",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Windows 11: OpenSSH Server is an optional feature; sshd set to Automatic; firewall rule OpenSSH-Server-In-TCP port 22; default shell is the Windows command shell. Page updated 2026-09-08."
+  },
+  {
+    "id": "stack-s09",
+    "title": "Manage device restarts after updates",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/windows/deployment/update/waas-restart",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Default active hours 8-17, max range 18h; Windows restarts outside active hours; many restart GPOs are legacy and not applicable to Windows 11; 'no auto-restart with logged on users' described as not working as documented; only active RDP sessions count as signed-in."
+  },
+  {
+    "id": "stack-s10",
+    "title": "Advanced settings configuration in WSL",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "WSL2 VM memory defaults to 50% of Windows RAM, swap 25%, vmIdleTimeout 60000ms, networkingMode default NAT (mirrored available on Win11 22H2+), autoMemoryReclaim experimental, systemd supported. Page updated 2026-09-16."
+  },
+  {
+    "id": "stack-s11",
+    "title": "RunPod pricing",
+    "publisher": "RunPod",
+    "url": "https://www.runpod.io/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Rates as of 2026-09-27, USD/hr secure/community: 4090 0.74/0.34; 5090 0.99/0.69; RTX PRO 6000 96GB 2.09/1.69; A100 80GB 1.59/1.19; H100 PCIe 2.89/1.99; L40S 1.09/0.79."
+  },
+  {
+    "id": "stack-s12",
+    "title": "Lambda on-demand pricing",
+    "publisher": "Lambda",
+    "url": "https://lambda.ai/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "USD per GPU-hour plus tax: H100 PCIe 3.29, H100 SXM 3.99-4.29, A100 80GB 2.79, A6000 48GB 1.09, B200 6.69-6.99, GH200 2.29. No consumer RTX 4090/5090 listed."
+  },
+  {
+    "id": "stack-s13",
+    "title": "Modal pricing",
+    "publisher": "Modal",
+    "url": "https://modal.com/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Per-second: L40S 0.000542 (~1.95/hr), A100-80GB 0.000694 (~2.50/hr), H100 0.001097 (~3.95/hr), RTX PRO 6000 0.000842 (~3.03/hr), B200 0.001736 (~6.25/hr); Starter plan $30/month free credit. Hourly figures are my x3600 arithmetic."
+  },
+  {
+    "id": "stack-s14",
+    "title": "Vast.ai pricing",
+    "publisher": "Vast.ai",
+    "url": "https://vast.ai/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Marketplace pricing, per-second billing; interruptible 50%+ cheaper; reserved up to 50% off. No per-GPU numbers on page."
+  },
+  {
+    "id": "stack-s15",
+    "title": "RTX 5090 Netherlands price",
+    "publisher": "gpupricehistory.com (aggregator)",
+    "url": "https://gpupricehistory.com/nl/rtx-5090",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Updated 2026-10-03: min EUR 5,499 (Gigabyte RTX 5090 GAMING OC White), average 6,367.96."
+  },
+  {
+    "id": "stack-s16",
+    "title": "RTX 5080 Netherlands price",
+    "publisher": "gpupricehistory.com",
+    "url": "https://gpupricehistory.com/nl/rtx-5080",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Updated 2026-10-03: Gigabyte RTX 5080 AERO OC EUR 1,649; MSI Ventus 3X OC 1,689; ASUS Noctua OC 1,899. Merchant not named on page."
+  },
+  {
+    "id": "stack-s17",
+    "title": "RTX 5070 Ti Netherlands price",
+    "publisher": "gpupricehistory.com",
+    "url": "https://gpupricehistory.com/nl/rtx-5070-ti",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "PNY RTX 5070 Ti EPIC-X Black EUR 1,181; Palit GamingPro-S OC 1,199; MSI Ventus 3X OC 1,223; page headline min 1,229; update date not shown; merchant not named."
+  },
+  {
+    "id": "stack-s18",
+    "title": "RTX 4090 Netherlands price",
+    "publisher": "gpupricehistory.com",
+    "url": "https://gpupricehistory.com/nl/rtx-4090",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Updated 2026-09-28: new-card listings Gigabyte 3,990; MSI 3,790; NVIDIA FE 3,990; headline min EUR 189 is a data anomaly. Page covers new cards; used market NOT checked."
+  },
+  {
+    "id": "stack-s19",
+    "title": "RTX PRO 6000 Blackwell Netherlands",
+    "publisher": "gpuprix.com (aggregator)",
+    "url": "https://gpuprix.com/netherlands/gpus/rtx-pro-6000-blackwell",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Updated 2026-10-03: lowest EUR 19,999 (PNY via Alternate.nl); 12-month median 16,470; 12-month low 14,213. 96GB GDDR7, 600W."
+  },
+  {
+    "id": "stack-s20",
+    "title": "Radeon AI PRO R9700 Netherlands",
+    "publisher": "gpuprix.com",
+    "url": "https://gpuprix.com/netherlands/gpus/radeon-ai-pro-r9700",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Lowest EUR 1,876 (3-month typical 1,678, est. MSRP 1,208); 32GB GDDR6, 300W. Merchant/date not shown."
+  },
+  {
+    "id": "stack-s21",
+    "title": "Arc Pro B60 Netherlands",
+    "publisher": "gpuprix.com",
+    "url": "https://gpuprix.com/netherlands/gpus/arc-pro-b60",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Updated 2026-10-03: EUR 799 at Amazon.nl; 3-month typical 999; 24GB GDDR6, 200W, PCIe 5.0 x8, 456 GB/s."
+  },
+  {
+    "id": "stack-s22",
+    "title": "AI image and video model VRAM requirements",
+    "publisher": "AceCloud (vendor blog)",
+    "url": "https://acecloud.ai/blog/ai-image-video-model-vram-requirements/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Updated 2026-09-08: FLUX.1-dev 33.9GiB unoptimised, sub-16GB with quant+offload; SD3.5 Large 31.6GiB peak at 1024; Wan2.2 TI2V-5B 24GB with offload, A14B 80GB+; HunyuanVideo 1.5 14GB min with offload; LTX-2.5 training 80GB recommended, 32GB INT8 low-VRAM. Vendor selling GPU cloud."
+  },
+  {
+    "id": "stack-s23",
+    "title": "RTX 5090 on Vast.ai",
+    "publisher": "computeprices.com (aggregator)",
+    "url": "https://computeprices.com/providers/vast/gpus/rtx5090",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Vast.ai RTX 5090 from USD 0.47/hr single GPU; date not shown on page."
+  },
+  {
+    "id": "stack-s24",
+    "title": "APC Back-UPS BX1600MI",
+    "publisher": "dectdirect.nl",
+    "url": "https://www.dectdirect.nl/de/back-ups-bx1600mi-1600va-900w.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "1600VA/900W line-interactive, 6x C13, EUR 220.00 incl VAT (181.82 excl), 10+ in stock, 10.3 kg."
+  },
+  {
+    "id": "partners-s01",
+    "title": "Disclosures 101 for Social Media Influencers",
+    "publisher": "US FTC",
+    "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Disclose any material connection; clear, hard to miss, with the endorsement."
+  },
+  {
+    "id": "partners-s02",
+    "title": "Guidelines on the protection of the online consumer 2024 (landing page)",
+    "publisher": "ACM (NL)",
+    "url": "https://www.acm.nl/en/publications/guidelines-protection-online-consumer",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Landing page only; the detailed PDF was not read, so ACM influencer/affiliate specifics are unverified."
+  },
+  {
+    "id": "partners-s03",
+    "title": "GMKtec site (affiliate link)",
+    "publisher": "GMKtec",
+    "url": "https://www.gmktec.com/pages/affiliate-program",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Page links to an Awin express-signup (merchant 45751); no rates, cookie or terms shown."
+  },
+  {
+    "id": "partners-s04",
+    "title": "MINISFORUM Affiliate Program",
+    "publisher": "Minisforum",
+    "url": "https://store.minisforum.com/pages/affiliate",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. 2% on qualified sales, 30-day cookie, Awin and Impact join links, approval about 48h."
+  },
+  {
+    "id": "partners-s05",
+    "title": "Minisforum DE programme on Webgains",
+    "publisher": "Webgains",
+    "url": "https://www.webgains.com/front/publisher/program/view/programID/304228",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. 2% ex VAT and postage, 30-day cookie, EUR, auto-approval, PPC closed, live since 2023-12-06."
+  },
+  {
+    "id": "partners-s06",
+    "title": "Beelink on affi.io",
+    "publisher": "affi.io (directory)",
+    "url": "https://affi.io/m/beelink",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Opened. Third-party directory: 5-10% incl. VAT, 30-day window, networks Impact, Webgains, BlueAff, Sale Gains; PPC allowed. Not a Beelink page."
+  },
+  {
+    "id": "partners-s07",
+    "title": "Amazon PartnerNet DE fee schedule",
+    "publisher": "Amazon",
+    "url": "https://partnernet.amazon.de/help/node/topic/GRXPHT8U84RAYDXZ",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened; summary of the schedule returned electronics 5% and large appliances/mobile electronics 2.5%. Extraction not cross-checked, treat as partial."
+  },
+  {
+    "id": "partners-s08",
+    "title": "Amazon PartnerNet NL fee schedule",
+    "publisher": "Amazon",
+    "url": "https://partnernet.amazon.nl/help/node/topic/GRXPHT8U84RAYDXZ",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened; summary returned electronics/computers 6%, consoles 1%. Conflicts with the DE read, so rates must be confirmed inside an approved account. Cookie window not on these pages."
+  },
+  {
+    "id": "partners-s09",
+    "title": "Framework Computer affiliate program",
+    "publisher": "LinkClicky (directory)",
+    "url": "https://linkclicky.com/affiliate-program/framework-computer/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Opened. Third-party: Impact, 1-5% per sale, all regions, cookie not stated. Framework's own affiliate page returned 404."
+  },
+  {
+    "id": "partners-s10",
+    "title": "Back Market IE programme on Awin",
+    "publisher": "Awin",
+    "url": "https://ui.awin.com/merchant-profile/30861",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Opened. 30-day cookie, payment within 60 days of invoice, 18 countries, no voucher/cashback, no SEM or brand bidding. Commission rate not shown (a search snippet said 5%)."
+  },
+  {
+    "id": "partners-s11",
+    "title": "Apple Services Performance Partner program overview",
+    "publisher": "Apple",
+    "url": "https://performance-partners.apple.com/program-overview",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Partnerize; covers Apple Music, TV+, Podcasts, movies, TV, books, audiobooks. Hardware not listed. Limited partner acceptance."
+  },
+  {
+    "id": "partners-s12",
+    "title": "Apple Performance Partners commissions and payments",
+    "publisher": "Apple",
+    "url": "https://performance-partners.apple.com/commissions-payments",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. 7% on TV/movies/books, one-time payment on memberships, 30-day cookie, 60-90 days after month end, $30 minimum."
+  },
+  {
+    "id": "partners-s13",
+    "title": "AliExpress UK programme on Awin",
+    "publisher": "Awin",
+    "url": "https://ui.awin.com/merchant-profile/7035",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Base commissions 2.6% and 8% by category, 30-day cookie, paid after delivery; NL among regions."
+  },
+  {
+    "id": "partners-s14",
+    "title": "Puget Systems generative AI workstations",
+    "publisher": "Puget Systems",
+    "url": "https://www.pugetsystems.com/solutions/ai-and-hpc-workstations/generative-ai/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Single-GPU from $4,812.73, multi-GPU rackmount from $25,734.72; optional onsite support; non-commissioned consultants."
+  },
+  {
+    "id": "partners-s15",
+    "title": "tinygrad / tinybox",
+    "publisher": "tiny corp",
+    "url": "https://tinygrad.org/#tinybox",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. red v2 (4x 9070XT, 64GB), green v2 blackwell (4x RTX PRO 6000, 384GB), exabox 2027 preorder; direct sales, wire transfer only, no customisation. Prices not extracted."
+  },
+  {
+    "id": "partners-s17",
+    "title": "Awin link disclosure guidelines for influencers",
+    "publisher": "Awin",
+    "url": "https://help.awin.com/docs/link-disclosure-guidelines-influencers-and-social-media-partners",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. Requires #Ad/#PaidAd/#sponsorship/#sponsoredpost; #affiliate, #partner not sufficient; links regulators incl. Benelux."
+  },
+  {
+    "id": "partners-s18",
+    "title": "Tom's Hardware about page",
+    "publisher": "Tom's Hardware",
+    "url": "https://www.tomshardware.com/about-us",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. References an affiliate commission disclosure statement and review sample policy; their text was not retrieved."
+  },
+  {
+    "id": "partners-s19",
+    "title": "AiBitches.nl launches plug-and-play AI for MKB",
+    "publisher": "Dutch IT Channel",
+    "url": "https://www.dutchitchannel.nl/news/712495/aibitches-nl-lanceert-plug-and-play-ai-voor-mkb",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Opened. Ten AI integration modules for SMB, available 2025-09-23, no pricing in article."
+  },
+  {
+    "id": "partners-s20",
+    "title": "Minisforum bulk discount / corporate purchase (EU)",
+    "publisher": "Minisforum",
+    "url": "https://minisforumpc.eu/pages/bulk-discount",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. B2B wholesale form, minimum 10 units, German warehouse, 3-year extended warranty, account manager; eustore@minisforum.com."
+  },
+  {
+    "id": "partners-s21",
+    "title": "Beelink about us (EU)",
+    "publisher": "Beelink",
+    "url": "https://eu.bee-link.com/pages/about-us",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened. ODM/OEM offered; system integrator for private cloud/small business office; wholesale@bee-link.com."
+  },
+  {
+    "id": "partners-s22",
+    "title": "Advertising code for social media and influencer marketing",
+    "publisher": "EU Better Internet for Kids (Stichting Reclame Code)",
+    "url": "https://better-internet-for-kids.europa.eu/en/rules-guidelines/advertising-code-social-media-and-influencer-marketing",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Opened. Dutch self-regulatory code since 2022: advertising must be recognisable, relationships disclosed."
+  },
+  {
+    "id": "partners-s23",
+    "title": "ASA influencer guidance 2023 (PDF)",
+    "publisher": "UK ASA",
+    "url": "https://www.asa.org.uk/static/790d2e01-e3f8-4fea-b3c99ef91a9f04dc/Influencerguidance2023v4-FINAL.pdf",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Opened, but the extraction cited FTC and generic points rather than ASA text; unreliable. Treat UK rule as unverified."
+  },
+  {
+    "id": "partners-s24",
+    "title": "Search snippets (not opened pages): Corsair, Dell NL, Samsung Awin, idealo, Alibaba, Wirecutter, Amazon 24h cookie, Framework EUR price, MSP margins, Tweakers",
+    "publisher": "WebSearch results",
+    "url": "https://www.flexoffers.com/affiliate-programs/corsair-affiliate-program/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Facts attributed to this id come from search-result summaries only; pages themselves were not opened. Use as leads, not as verified terms."
+  },
+  {
+    "id": "gaps-s02",
+    "title": "Cloudflare Tunnel overview",
+    "publisher": "Cloudflare",
+    "url": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "cloudflared makes outbound-only connections; page has no pricing."
+  },
+  {
+    "id": "gaps-s03",
+    "title": "cloudflared downloads",
+    "publisher": "Cloudflare",
+    "url": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Windows exe and MSI exist; no auto-update on Windows."
+  },
+  {
+    "id": "gaps-s05",
+    "title": "Uptime Kuma README",
+    "publisher": "GitHub louislam",
+    "url": "https://github.com/louislam/uptime-kuma",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT; Docker or Node >=20.4 + PM2; Windows 10 x64+ supported for non-Docker."
+  },
+  {
+    "id": "gaps-s06",
+    "title": "Beszel README",
+    "publisher": "GitHub henrygd",
+    "url": "https://github.com/henrygd/beszel",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT; hub (PocketBase) plus agents; Docker/Podman."
+  },
+  {
+    "id": "gaps-s07",
+    "title": "Beszel agent installation",
+    "publisher": "beszel.dev",
+    "url": "https://beszel.dev/guide/agent-installation",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Windows agent via WinGet/Scoop with NSSM service; Homebrew for macOS."
+  },
+  {
+    "id": "gaps-s08",
+    "title": "Netdata README",
+    "publisher": "GitHub netdata",
+    "url": "https://github.com/netdata/netdata",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Agent GPLv3+, UI proprietary but free; Windows supported; ~5% CPU/150MiB default claim (vendor claim)."
+  },
+  {
+    "id": "gaps-s09",
+    "title": "windows_exporter README",
+    "publisher": "GitHub prometheus-community",
+    "url": "https://github.com/prometheus-community/windows_exporter",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT; MSI installs service; port 9182; 7 default collectors."
+  },
+  {
+    "id": "gaps-s10",
+    "title": "restic README",
+    "publisher": "GitHub restic",
+    "url": "https://github.com/restic/restic",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "BSD-2-Clause; Linux/macOS/Windows; B2, S3, SFTP, rclone backends."
+  },
+  {
+    "id": "gaps-s11",
+    "title": "Kopia features",
+    "publisher": "kopia.io",
+    "url": "https://kopia.io/docs/features/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "CLI and GUI; B2/S3/Azure/GCS/SFTP/WebDAV/rclone; AES-256 or ChaCha20; dedup. Page states no licence or OS list."
+  },
+  {
+    "id": "gaps-s12",
+    "title": "Backblaze B2 pricing",
+    "publisher": "Backblaze",
+    "url": "https://www.backblaze.com/cloud-storage/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "$6.95/TB/mo; free egress up to 3x stored; $0.01/GB beyond; first 10GB free; price shown for U.S. West."
+  },
+  {
+    "id": "gaps-s13",
+    "title": "Infisical pricing",
+    "publisher": "Infisical",
+    "url": "https://infisical.com/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Free: 5 identities, unlimited projects, 3 environments; Pro $20 per identity/mo (billed yearly, $23 monthly); MIT licence, free to self-host."
+  },
+  {
+    "id": "gaps-s14",
+    "title": "1Password service accounts",
+    "publisher": "1Password",
+    "url": "https://www.1password.dev/service-accounts/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Not tied to a person; for op CLI; up to 100 per organisation. Plan eligibility and price not on page."
+  },
+  {
+    "id": "gaps-s15",
+    "title": "Hyper-V overview",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/overview",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "On Windows 11, Hyper-V is in Pro, Enterprise, Education."
+  },
+  {
+    "id": "gaps-s16",
+    "title": "Enable Remote Desktop on your PC",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Home cannot host incoming RDP; Pro/Enterprise/Education can."
+  },
+  {
+    "id": "gaps-s17",
+    "title": "What is WSL",
+    "publisher": "Microsoft Learn",
+    "url": "https://learn.microsoft.com/en-us/windows/wsl/about",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "WSL2 runs a Linux kernel in a lightweight utility VM; open source; GPU compute supported."
+  },
+  {
+    "id": "gaps-s18",
+    "title": "Docker pricing",
+    "publisher": "Docker",
+    "url": "https://www.docker.com/pricing/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Personal $0; Pro $11 monthly/$9 annual per user; Team $16/$15; Business $24."
+  },
+  {
+    "id": "gaps-s19",
+    "title": "Docker Desktop license agreement",
+    "publisher": "Docker Docs",
+    "url": "https://docs.docker.com/subscription/desktop-license/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Free for small business: fewer than 250 employees AND under $10M annual revenue."
+  },
+  {
+    "id": "gaps-s20",
+    "title": "Podman Desktop",
+    "publisher": "podman-desktop.io",
+    "url": "https://podman-desktop.io/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Free, open source, CNCF sandbox; Linux/macOS/Windows. Page does not state licence type or Windows backend."
+  },
+  {
+    "id": "gaps-s21",
+    "title": "Proxmox VE pricing",
+    "publisher": "Proxmox",
+    "url": "https://www.proxmox.com/en/products/proxmox-virtual-environment/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "AGPL open source; subscriptions per CPU socket/yr: Community EUR120, Basic EUR370, Standard EUR550, Premium EUR1,100."
+  },
+  {
+    "id": "gaps-s22",
+    "title": "Mac Energy settings (desktop Mac)",
+    "publisher": "Apple Support",
+    "url": "https://support.apple.com/HT201714",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Energy settings include start up after power interruption and prevent automatic sleep when display is off."
+  },
+  {
+    "id": "gaps-s23",
+    "title": "Share the screen of another Mac",
+    "publisher": "Apple Support",
+    "url": "https://support.apple.com/guide/mac-help/share-the-screen-of-another-mac-mh14066/mac",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Documents Mac-to-Mac only; no Windows/VNC/headless statement."
+  },
+  {
+    "id": "gaps-s24",
+    "title": "Allow a remote computer to access your Mac",
+    "publisher": "Apple Support",
+    "url": "https://support.apple.com/guide/mac-help/allow-a-remote-computer-to-access-your-mac-mchlp1066/mac",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Remote Login (SSH/SFTP) in System Settings > General > Sharing."
+  },
+  {
+    "id": "gaps-s25",
+    "title": "Use one keyboard and mouse to control Mac and iPad (Universal Control)",
+    "publisher": "Apple Support",
+    "url": "https://support.apple.com/en-us/102459",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "One Mac plus up to two other Mac/iPad devices; same Apple Account with 2FA; within 10 m."
+  },
+  {
+    "id": "gaps-s26",
+    "title": "launchd job creation",
+    "publisher": "Apple Developer (archive)",
+    "url": "https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "LaunchDaemons run regardless of login; LaunchAgents only while the user is logged in; KeepAlive true keeps running. Archived doc."
+  },
+  {
+    "id": "gaps-s27",
+    "title": "MLX README",
+    "publisher": "GitHub ml-explore",
+    "url": "https://github.com/ml-explore/mlx",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT; Apple silicon unified memory model; Linux CUDA/CPU builds also exist."
+  },
+  {
+    "id": "gaps-s28",
+    "title": "Sunshine README",
+    "publisher": "GitHub LizardByte",
+    "url": "https://github.com/LizardByte/Sunshine",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "GPL-3.0; hosts: Windows 11+, Linux, macOS 14.2+, FreeBSD."
+  },
+  {
+    "id": "gaps-s29",
+    "title": "Moonlight setup guide",
+    "publisher": "Moonlight docs",
+    "url": "https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Clients for Windows, macOS, Linux, Android, iOS, tvOS, ChromeOS; host via Sunshine or GeForce Experience."
+  },
+  {
+    "id": "gaps-s30",
+    "title": "OCuLink vs USB4 eGPU guide",
+    "publisher": "GMKtec",
+    "url": "https://de.gmktec.com/fr/blogs/news/oculink-vs-usb4-egpu-mini-pc-guide",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Vendor guide. USB4 = 40 Gbps; K8 Plus, K11, K12, M7 Ultra list OCuLink PCIe Gen4 x4 plus USB4 (matrix checked 2026-08-11)."
+  },
+  {
+    "id": "gaps-s31",
+    "title": "AMD Strix Halo system optimization",
+    "publisher": "AMD ROCm docs",
+    "url": "https://rocm.docs.amd.com/en/latest/how-to/system-optimization/strixhalo.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Linux: default GTT ~50% of RAM; raise TTM pages_limit; example 125.65 GB system with 100 GB shared limit; keep BIOS VRAM small."
+  },
+  {
+    "id": "gaps-s32",
+    "title": "FLUX.1-dev model card",
+    "publisher": "Black Forest Labs / Hugging Face",
+    "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "12B params, BF16, non-commercial licence; suggests CPU offload; no VRAM figure."
+  },
+  {
+    "id": "gaps-s33",
+    "title": "SDXL base 1.0 model card",
+    "publisher": "Stability AI / Hugging Face",
+    "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Page gives no VRAM figure; CreativeML Open RAIL++-M; CPU offload suggested."
+  },
+  {
+    "id": "gaps-s34",
+    "title": "Wan2.2 README",
+    "publisher": "GitHub Wan-Video",
+    "url": "https://github.com/Wan-Video/Wan2.2",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "TI2V-5B at least 24GB VRAM; A14B at least 80GB single GPU; offload flags reduce usage."
+  },
+  {
+    "id": "gaps-s35",
+    "title": "HunyuanVideo README",
+    "publisher": "GitHub Tencent-Hunyuan",
+    "url": "https://github.com/Tencent-Hunyuan/HunyuanVideo",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "720p129f 60GB min, 540p129f 45GB min, 80GB recommended; Linux NVIDIA CUDA required; FP8 saves ~10GB."
+  },
+  {
+    "id": "gaps-s36",
+    "title": "LTX-Video README",
+    "publisher": "GitHub Lightricks",
+    "url": "https://github.com/Lightricks/LTX-Video",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "13B and 2B variants, FP8 variant; OpenRail-M; CUDA 12.2 tested; macOS MPS noted; no total VRAM table."
+  },
+  {
+    "id": "gaps-s37",
+    "title": "Diffusers LoRA training guide",
+    "publisher": "Hugging Face",
+    "url": "https://huggingface.co/docs/diffusers/main/en/training/lora",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Only figure: SD1.5 512px run ~5 h on 11GB 2080 Ti. No SDXL/Flux VRAM table."
+  },
+  {
+    "id": "gaps-s38",
+    "title": "Windows 11 Pro price search (secondary)",
+    "publisher": "search summary of third-party results",
+    "url": "https://www.pcwelt.de/article/2177772/windows-11-pro-bei-pc-welt-fuer-70-euro.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Not opened. Microsoft Store NL pages timed out; no Microsoft price verified."
+  },
+  {
+    "id": "gaps-s39",
+    "title": "Cloudflare Zero Trust free plan search (secondary)",
+    "publisher": "search summary of third-party results",
+    "url": "https://www.cloudflare.com/en-au/products/cloudflare-access",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Search snippet only, not opened. Cloudflare plans page returned no limits."
+  }
+]
