@@ -8,6 +8,7 @@ import { decisionGraph } from "@/lib/decision-graph/dataset";
 import { indexGraph } from "@/lib/decision-graph/graph";
 import { productVisualFor } from "@/lib/decision-graph/product-visuals";
 import { resolveOutboundLink } from "@/lib/decision-graph/partner-links";
+import { assessFreshness } from "@/lib/decision-graph/staleness";
 import type { CreatorPlan } from "@/lib/decision-graph/creator-plan";
 import { getTechnology } from "@/lib/technology";
 import { TechnologyArt } from "./technology-art";
@@ -49,7 +50,7 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
       <rect x="203" y="52" width="149" height="43" rx="6" fill="var(--panel)" stroke="var(--line-bright)" />
       <text x="277" y="79" textAnchor="middle" fill="var(--paper)" fontSize="15">{archetype?.systemRamGb ?? "?"} GB system RAM</text>
       <rect x="203" y="108" width="149" height="42" rx="6" fill="var(--panel)" stroke="var(--line-bright)" />
-      <text x="277" y="135" textAnchor="middle" fill="var(--paper)" fontSize="15">{archetype?.fastStorageTb ?? "?"} TB fast storage</text>
+      <text x="277" y="135" textAnchor="middle" fill="var(--paper)" fontSize="15">{archetype?.fastStorageTb ?? "?"} TB base storage</text>
       <circle cx="70" cy="175" r="4" fill="var(--signal)" /><path d="M 89 175 H 352" stroke="var(--line-bright)" />
     </svg>
     <figcaption>{failed ? "Photo unavailable. " : ""}Original capacity diagram, not product imagery. Planning figures; exact configuration needs verification.</figcaption>
@@ -76,8 +77,8 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   const workloads = plan.input.workloadIds.map((id) => graph.get(id)?.label ?? id);
   return <section className={styles.explorer} aria-label="Current system alternatives">
     <div className={styles.heading}>
-      <div><p className={styles.kicker}>Your system, assembled</p><h3>{output.systems.length ? "Compare the machines. See the whole workflow." : "No candidate fits these constraints."}</h3></div>
-      <a href="#studio-requirements" className={styles.textLink}>Edit the work and constraints <span aria-hidden="true">↗</span></a>
+      <div><p className={styles.kicker}>Your system, assembled</p><h3>{output.systems.length ? "Compare your system candidates." : "No candidate fits these constraints."}</h3></div>
+      <a href="#studio-requirements" className={styles.textLink}>Change the work <span aria-hidden="true">↗</span></a>
     </div>
     <div className={styles.comparison}>
     {featured && <ProductFigure key={featured.archetypeId} system={featured} />}
@@ -85,6 +86,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
       {output.systems.map((system) => {
         const active = plan.selectedArchetypeId === system.archetypeId;
         const specs = configuratorArchetypes.find((item) => item.id === system.archetypeId);
+        const freshness = assessFreshness(system, { now: new Date().toISOString().slice(0, 10) });
         const dates = [...new Set(system.lines.flatMap((line) => {
           const price = line.priceObservationId ? graph.get(line.priceObservationId) : undefined;
           return price?.kind === "PriceObservation" ? [price.observedAt] : [];
@@ -92,9 +94,10 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
         return <button type="button" key={system.tier} data-archetype-id={system.archetypeId} aria-pressed={active} aria-label={`Use ${system.label} (${system.tier.replaceAll("-", " ")})`} className={`${styles.candidate} ${active ? styles.selected : ""}`} onClick={() => onSelect(system.archetypeId)}>
           <span className={styles.tier}>{system.tier.replaceAll("-", " ")}</span>
           <strong>{system.label}</strong>
-          <span>{specs?.systemRamGb} GB RAM · {specs?.fastStorageTb} TB storage</span>
+          <span>{specs?.systemRamGb} GB RAM · {specs?.fastStorageTb} TB base storage</span>
           <span className={styles.price}>{Object.entries(system.cost.pricedTotalsMinor).map(([currency, minor]) => `${currency} ${(minor / 100).toLocaleString("en", { maximumFractionDigits: 2 })}`).join(" + ") || "Part prices unknown"}</span>
-          <span>Parts observed {dates.join(", ") || "date unknown"} · delivered total unknown</span>
+          <span>{dates.length ? `Parts observed ${dates.join(", ")}` : "No dated prices"}. {system.cost.unpricedLines.length ? `${system.cost.unpricedLines.length} unpriced lines. ` : ""}Delivered total unknown.</span>
+          {!freshness.valid && <span className={styles.expired}>Evidence needs refresh before buying.</span>}
           <span className={styles.selection}>{active ? "✓ Selected in your plan" : "Choose this candidate →"}</span>
         </button>;
       })}

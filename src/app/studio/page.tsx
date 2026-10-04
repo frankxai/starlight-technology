@@ -28,9 +28,10 @@ export default function StudioPage() {
       <p className="eyebrow">AI creator studio</p>
       <h1>Plan your creator system.</h1>
       <p className="lede">
-        See how the hardware, models and running costs fit your work. Compare sourced alternatives,
-        save your private plan on this device, and export it when you’re ready.
+        Match hardware and agent costs to your work. Save a private plan, then export it.
       </p>
+
+      <StudioConfigurator />
 
       <details className="dg-evidence-summary"><summary>Catalog evidence and commercial disclosures</summary><dl className="dg-ledger">
         <div>
@@ -49,8 +50,6 @@ export default function StudioPage() {
           </dd>
         </div>
       </dl></details>
-
-      <StudioConfigurator />
 
       <section className="dg-footnote">
         <h2>What this cannot tell you yet</h2>

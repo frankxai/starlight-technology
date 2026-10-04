@@ -78,7 +78,9 @@
       "No gesture library, moving keyboard selection or faux telemetry"
     ],
     "verified": [
-      "Typecheck and28 focused tests passed before final patch"
+      "Full cloud lint/typecheck/175units/51page build/38 browser checks at5b6edb5",
+      "Actual keyboard focus,44px visible explorer targets,reduced motion,rapid selection persistence and photo failure recovery",
+      "Rendered initial review found two concrete design defects; current refinement remains to be rendered"
     ],
     "renderedVerification": "pending cloud runner"
   },
@@ -90,5 +92,109 @@
     "Full integrated security/privacy/licence/commercial review",
     "Verified native Git production deployment and actual serving-SHA recovery exercises"
   ],
-  "publicRelease": false
+  "publicRelease": false,
+  "renderedIteration": {
+    "source": "5b6edb537bdeea02d73e85c530b330c9b269e3db",
+    "testedMerge": "26361840a2bab95c265e2a912fb8285f3cb922fc",
+    "matchingTree": "f0a632a8027ebed1d44caf6dbdfc81289264dfdb",
+    "ciRun": 37230920351,
+    "checksPassed": 38,
+    "captures": [
+      {
+        "name": "desktop-visual-studio.png",
+        "sha256": "54bde25a0aae961b84390d8c58a45a825cce01d113d455c4382f8410acd0ecd2",
+        "sidecar": "desktop-visual-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:54.542Z"
+      },
+      {
+        "name": "desktop-system-explorer.png",
+        "sha256": "60d11bb7ff515cfcbf0416e69798df5a893ccf12a705a76e6956c982c8aa7da6",
+        "sidecar": "desktop-system-explorer.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:54.610Z"
+      },
+      {
+        "name": "desktop-licensed-product.png",
+        "sha256": "1a74df7b01a5f58b372c0cae7bed12f0690ea700edcc1ca98f6f1917923503f4",
+        "sidecar": "desktop-licensed-product.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:55.183Z"
+      },
+      {
+        "name": "desktop-studio.png",
+        "sha256": "d8729a827475eee294be52d8f95f0c771b79b30fc54b0553a6da04acf4b781f0",
+        "sidecar": "desktop-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:56.075Z"
+      },
+      {
+        "name": "desktop-factory.png",
+        "sha256": "a2ed8b0e2cc32b86f869de1ff346f35b7029e7f8389f6f0b8223618a9bdfa03c",
+        "sidecar": "desktop-factory.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:56.164Z"
+      },
+      {
+        "name": "desktop-runtime.png",
+        "sha256": "e8875407da956c9756d5de384d4b16ca305c1ab2ad3cff7468331aa01a43f117",
+        "sidecar": "desktop-runtime.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:56.945Z"
+      },
+      {
+        "name": "desktop-kimi.png",
+        "sha256": "7a8d1bc47bc4e21dd31f2fb4744ed8f017ef4ae80ddee6c2a29ee1b52c58efbc",
+        "sidecar": "desktop-kimi.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:57.960Z"
+      },
+      {
+        "name": "mobile-visual-studio.png",
+        "sha256": "c2cdf2d463be505161be773c143f6e10228ae780178125a8c8d9e163f82de21e",
+        "sidecar": "mobile-visual-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:01.291Z"
+      },
+      {
+        "name": "mobile-system-explorer.png",
+        "sha256": "5f45b1ae13b1b5aef7c8a166b60e5ebb17b88ca5033b5fe0805afba825fa340c",
+        "sidecar": "mobile-system-explorer.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:01.326Z"
+      },
+      {
+        "name": "mobile-licensed-product.png",
+        "sha256": "8ebe05e3a246e84f2fe403ad2fa08b16c653af6a610f60dacb6b7563872c6178",
+        "sidecar": "mobile-licensed-product.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:01.703Z"
+      },
+      {
+        "name": "mobile-studio.png",
+        "sha256": "563eef1c659a7f1f1cb61313011d05308d5d5637cfccc32c4f688e49e457e4d5",
+        "sidecar": "mobile-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:02.477Z"
+      },
+      {
+        "name": "mobile-factory.png",
+        "sha256": "72f736a30b70cb79b7dc533f83d1d814f1e38f8e49806041138cd525870a519d",
+        "sidecar": "mobile-factory.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:02.510Z"
+      },
+      {
+        "name": "mobile-runtime.png",
+        "sha256": "e5c488c5cda5a9d7d2cb0eaf5216e3e01dcf6afb51a893d4222ce12f1a5be634",
+        "sidecar": "mobile-runtime.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:03.212Z"
+      },
+      {
+        "name": "mobile-kimi.png",
+        "sha256": "05a04a8dbf6b1c2613cbc559bdf265929352cc472b3642ad53631b298b80e1bd",
+        "sidecar": "mobile-kimi.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:04.225Z"
+      }
+    ],
+    "inspection": [
+      "Actual desktop/mobile full page and complete explorer inspected",
+      "Actual licensed product view inspected at both widths",
+      "Caption overlap and mobile hierarchy failed initial visual acceptance"
+    ],
+    "refinement": [
+      "Static caption outside diagram area",
+      "One visible task heading; details/disclosures remain available below the decision",
+      "Explicit base-storage label, unpriced lines and expired evidence notice"
+    ],
+    "refinedInspection": "pending next exact cloud capture"
+  }
 }

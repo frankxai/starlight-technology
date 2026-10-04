@@ -16,6 +16,7 @@ import { assessFreshness } from "@/lib/decision-graph/staleness";
 import { newFactoryScenario } from "@/lib/decision-graph/ai-factory-costs";
 import { FactoryCostEditor } from "./factory-cost-editor";
 import { StudioSystemExplorer } from "./studio-system-explorer";
+import explorerStyles from "./studio-system-explorer.module.css";
 
 const workloadOptions = [
   { id: "wl-local-llm-large", label: "Run a 70B-class model locally" },
@@ -305,12 +306,12 @@ export function StudioConfigurator() {
 
   return (
     <section className="dg" aria-labelledby="dg-title">
-      <div className="finder-head">
+      <div className={`finder-head ${explorerStyles.privateHeading}`}>
         <span>AI creator studio configurator</span>
         <span>Your private plan stays in this browser</span>
       </div>
 
-      <h2 id="dg-title" className="dg-title">
+      <h2 id="dg-title" className={explorerStyles.accessibleHeading}>
         Choose the work and constraints.
       </h2>
 
