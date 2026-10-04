@@ -65,13 +65,13 @@ async function capture(target, name, viewport, style) {
   fs.writeFileSync(file + '.vis.provenance.json', JSON.stringify(sidecar, null, 2) + '\n');
   receipt.captures.push({ name, sha256, sidecar: name + '.vis.provenance.json', createdAt });
 }
-async function exercise(width) {
-  const tag = width === 390 ? 'mobile' : 'desktop';
+async function exercise(width, testOrigin = origin, expectedRevision = null) {
+  const tag = `${expectedRevision ? 'production-' : ''}${width === 390 ? 'mobile' : 'desktop'}`;
   const context = await browser.newContext({ viewport: { width, height: width === 390 ? 844 : 1000 }, isMobile: width === 390, reducedMotion: 'reduce', acceptDownloads: true });
   const blocked = [], errors = [];
   await context.route('**/*', (route) => {
     const url = route.request().url();
-    if (url.startsWith(origin + '/') || url.startsWith('blob:')) return route.continue();
+    if ((url.startsWith(testOrigin + '/') && ['GET', 'HEAD'].includes(route.request().method())) || url.startsWith('blob:')) return route.continue();
     blocked.push(url); return route.abort();
   });
   const page = await context.newPage(); page.setDefaultTimeout(10000);
@@ -79,7 +79,20 @@ async function exercise(width) {
   let reportPath, report;
   const title = `CI ${tag} creator plan`, notes = 'Synthetic private work notes for recovery testing.';
   try {
-    await page.goto(origin + '/studio');
+    await page.goto(testOrigin + '/studio');
+    if (expectedRevision) {
+      await check(`${tag}: served revision and actual Atlas/Studio navigation match the merge`, async () => {
+        assert.equal(await page.locator('[data-source-revision]').getAttribute('data-source-revision'), expectedRevision);
+        async function navigation() {
+          if (width === 390 && !await page.locator('.mobile-nav').evaluate((node) => node.open)) await page.getByText('Menu', { exact: true }).click();
+          return page.getByRole('navigation', { name: width === 390 ? 'Mobile navigation' : 'Primary navigation', exact: true });
+        }
+        await (await navigation()).getByRole('link', { name: 'Atlas', exact: true }).click();
+        await page.waitForURL(testOrigin + '/shop');
+        await (await navigation()).getByRole('link', { name: 'Studio', exact: true }).click();
+        await page.waitForURL(testOrigin + '/studio');
+      });
+    }
     await saved(page, 'My creator system');
     await check(`${tag}: hydrated responsive plan without horizontal overflow`, async () => {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
@@ -298,7 +311,7 @@ async function exercise(width) {
     await check(`${tag}: blocked recovery plus another-tab change requires named replacement`, async () => {
       await page.evaluate((storageKey) => localStorage.setItem(storageKey, '{broken'), key); await page.reload();
       await page.getByRole('button', { name: 'Export recovery copy', exact: true }).waitFor();
-      const other = await context.newPage(); await other.goto(origin + '/studio');
+      const other = await context.newPage(); await other.goto(testOrigin + '/studio');
       await other.getByRole('button', { name: 'Export recovery copy', exact: true }).waitFor();
       await other.evaluate(([storageKey, raw]) => localStorage.setItem(storageKey, raw), [key, JSON.stringify(report.plan)]);
       await page.getByRole('button', { name: 'Save this draft instead', exact: true }).waitFor();
@@ -310,7 +323,7 @@ async function exercise(width) {
       await other.close();
     });
     await check(`${tag}: import during a save conflict keeps the other copy and explains paused autosave`, async () => {
-      const other = await context.newPage(); await other.goto(origin + '/studio');
+      const other = await context.newPage(); await other.goto(testOrigin + '/studio');
       await other.getByLabel('Plan title', { exact: true }).waitFor();
       const otherRaw = JSON.stringify(report.plan);
       await other.evaluate(([storageKey, raw]) => localStorage.setItem(storageKey, raw), [key, otherRaw]);
@@ -326,6 +339,7 @@ async function exercise(width) {
     });
     await check(`${tag}: no external browser request or uncaught application error`, async () => {
       assert.deepEqual(blocked, []); assert.deepEqual(errors, []);
+      if (expectedRevision) assert.equal(await page.locator('[data-source-revision]').getAttribute('data-source-revision'), expectedRevision);
     });
   } finally { await context.close(); }
 }
@@ -341,6 +355,31 @@ async function exercise(width) {
     assert.ok(ready, 'Owned Next server must become ready');
     browser = await chromium.launch({ headless: true }); receipt.browserVersion = browser.version();
     await exercise(1440); await exercise(390);
+    // This is the existing public main-push verification, not a deployment path.
+    // Anonymous fresh contexts change only their local browser storage/downloads.
+    if (process.env.GITHUB_EVENT_NAME === 'push' && process.env.GITHUB_REF === 'refs/heads/main') {
+      const productionOrigin = 'https://starlight.technology';
+      receipt.production = { origin: productionOrigin, expectedRevision: receipt.testedCommit, verified: false, polls: 0 };
+      const deadline = Date.now() + 300000;
+      let servingRevision = null;
+      while (Date.now() < deadline) {
+        receipt.production.polls++;
+        try {
+          const response = await fetch(productionOrigin + '/studio', { redirect: 'error', cache: 'no-store', signal: AbortSignal.timeout(5000) });
+          if (response.ok) {
+            const html = await response.text();
+            servingRevision = html.match(/data-source-revision="([a-f0-9]{40})"/)?.[1] ?? null;
+            if (servingRevision === receipt.testedCommit) break;
+          }
+        } catch { /* Git deployment may still be starting; bounded read-only retry. */ }
+        await delay(Math.max(0, Math.min(5000, deadline - Date.now())));
+      }
+      receipt.production.servingRevision = servingRevision;
+      assert.equal(servingRevision, receipt.testedCommit, 'Production must serve the actual merged SHA before recovery verification.');
+      await exercise(1440, productionOrigin, receipt.testedCommit);
+      await exercise(390, productionOrigin, receipt.testedCommit);
+      receipt.production.verified = true;
+    }
   } catch (error) { failure = error; receipt.error = error.stack; }
   finally {
     try { if (browser) { await browser.close(); receipt.browserClosed = true; } }

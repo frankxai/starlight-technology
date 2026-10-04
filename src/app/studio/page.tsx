@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function StudioPage() {
+  const gitRevision = process.env.VERCEL_GIT_COMMIT_SHA;
+  const sourceRevision = gitRevision && /^[a-f0-9]{40}$/.test(gitRevision) ? gitRevision : undefined;
   const today = new Date().toISOString().slice(0, 10);
   const report = stalenessReport(today);
   const priceCount = nodesOfKind(decisionGraph, "PriceObservation").length;
@@ -24,7 +26,7 @@ export default function StudioPage() {
   const commercialCount = relationships.filter((item) => item.hasRelationship).length;
 
   return (
-    <div className={`shell page-header dg-page ${styles.page}`}>
+    <div className={`shell page-header dg-page ${styles.page}`} data-source-revision={sourceRevision}>
       <p className="eyebrow">AI creator studio</p>
       <h1>Plan your creator system.</h1>
       <p className="lede">
