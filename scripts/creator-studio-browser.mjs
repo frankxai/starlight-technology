@@ -67,7 +67,7 @@ async function capture(target, name, viewport, style) {
 }
 async function exercise(width) {
   const tag = width === 390 ? 'mobile' : 'desktop';
-  const context = await browser.newContext({ viewport: { width, height: 1000 }, isMobile: width === 390, reducedMotion: 'reduce', acceptDownloads: true });
+  const context = await browser.newContext({ viewport: { width, height: width === 390 ? 844 : 1000 }, isMobile: width === 390, reducedMotion: 'reduce', acceptDownloads: true });
   const blocked = [], errors = [];
   await context.route('**/*', (route) => {
     const url = route.request().url();
@@ -105,7 +105,12 @@ async function exercise(width) {
       assert.ok(links.filter((link) => link.href.startsWith('https:')).every((link) => link.rel.includes('noopener')));
       const targets = await explorer.locator('button, a, summary').evaluateAll((nodes) => nodes.filter((node) => node.getClientRects().length).map((node) => node.getBoundingClientRect().height));
       assert.ok(targets.every((height) => height >= 44));
-      await page.evaluate(() => scrollTo(0, 0)); await capture(page, `${tag}-visual-studio.png`, width);
+      await page.evaluate(() => { scrollTo(0, 0); return new Promise(requestAnimationFrame); });
+      const artifactInViewport = await explorer.getByRole('img').first().evaluate((node) => {
+        const bounds = node.getBoundingClientRect(); return bounds.y >= 0 && bounds.bottom <= innerHeight;
+      });
+      assert.equal(artifactInViewport, true, 'The actual system artifact must fit in the first viewport.');
+      await capture(page, `${tag}-visual-studio.png`, width);
       await capture(explorer, `${tag}-system-explorer.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
     });
     await check(`${tag}: licensed product photograph and failed-image recovery preserve editable inputs`, async () => {
