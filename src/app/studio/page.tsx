@@ -5,6 +5,7 @@ import { partnerRouteProvenance } from "@/lib/decision-graph/partner-links";
 import { stalenessReport } from "@/lib/decision-graph/staleness";
 import { decisionGraph } from "@/lib/decision-graph/dataset";
 import { nodesOfKind } from "@/lib/decision-graph/graph";
+import styles from "@/components/studio-system-explorer.module.css";
 
 export const metadata: Metadata = {
   title: "AI creator studio configurator",
@@ -23,12 +24,12 @@ export default function StudioPage() {
   const commercialCount = relationships.filter((item) => item.hasRelationship).length;
 
   return (
-    <div className="shell page-header dg-page">
+    <div className={`shell page-header dg-page ${styles.page}`}>
       <p className="eyebrow">AI creator studio</p>
       <h1>Plan your creator system.</h1>
       <p className="lede">
-        Compare sourced system candidates for your work and constraints. Keep your choices, existing equipment and running-cost
-        assumptions in an editable plan you can save on this device and export.
+        See how the hardware, models and running costs fit your work. Compare sourced alternatives,
+        save your private plan on this device, and export it when you’re ready.
       </p>
 
       <details className="dg-evidence-summary"><summary>Catalog evidence and commercial disclosures</summary><dl className="dg-ledger">

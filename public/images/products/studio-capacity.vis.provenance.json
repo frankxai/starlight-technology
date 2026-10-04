@@ -1,0 +1,21 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "starlight-technology-studio-capacity-diagram",
+  "created_at": "2026-10-04T20:02:15.157141+00:00",
+  "brand": "starlight-technology",
+  "agent_session": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+  "model": "none (authored SVG)",
+  "provider": "Codex source authoring",
+  "seed": null,
+  "prompt": "Draw an original SVG device-class capacity diagram with a336by168px chassis in420by230 viewBox, model allocation at left and system RAM/storage at right. Bind each label to the selected existing configurator archetype. Use current dark Technology tokens with acid-green allocation outline. Caption explicitly as a planning diagram, not manufacturer product imagery. For unavailable photographs, show this diagram without changing the saved plan. No real benchmark or device appearance claims.",
+  "source_file": "src/components/studio-system-explorer.tsx",
+  "method": "Source-authored inline SVG; runtime values come from configuratorArchetypes",
+  "rights": {
+    "author": "Starlight Technology",
+    "basis": "Original diagram authored for this product; no manufacturer artwork copied"
+  },
+  "schema_validation": {
+    "status": "not-validated",
+    "reason": "Public referenced schema unavailable"
+  }
+}

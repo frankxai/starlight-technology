@@ -15,6 +15,7 @@ import { assessPurchase } from "@/lib/decision-graph/purchase-review";
 import { assessFreshness } from "@/lib/decision-graph/staleness";
 import { newFactoryScenario } from "@/lib/decision-graph/ai-factory-costs";
 import { FactoryCostEditor } from "./factory-cost-editor";
+import { StudioSystemExplorer } from "./studio-system-explorer";
 
 const workloadOptions = [
   { id: "wl-local-llm-large", label: "Run a 70B-class model locally" },
@@ -313,11 +314,7 @@ export function StudioConfigurator() {
         Choose the work and constraints.
       </h2>
 
-      <section className="dg-plan-summary" aria-label="Current system alternatives" aria-live="polite">
-        <h3>{output.systems.length ? `${output.systems.length} system ${output.systems.length === 1 ? "candidate" : "candidates"} for this plan` : "No system candidate meets these constraints"}</h3>
-        {output.systems.length > 0 && <ul>{output.systems.map((system) => <li key={system.archetypeId}><a href={`#${comparisonId}`}>{system.label}</a><span>{plan.selectedArchetypeId === system.archetypeId ? "Selected in your plan. " : ""}{system.cost.budgetVerdict === "unknown" ? "Delivered cost needs verification." : system.cost.budgetNote}</span></li>)}</ul>}
-        <p>Compare the parts, bottlenecks and source evidence below. A selection records your preference; it does not place an order.</p>
-      </section>
+      <StudioSystemExplorer output={output} plan={plan} comparisonId={comparisonId} onSelect={(selectedArchetypeId) => setPlan((current) => ({ ...current, selectedArchetypeId }))} />
 
       <fieldset className="dg-plan">
         <legend>Your editable plan</legend>
@@ -344,7 +341,7 @@ export function StudioConfigurator() {
         {assessment.selectionInvalidated && <p className="dg-plan-warning">Your previous selected system no longer satisfies these requirements. Choose an eligible alternative or revise the constraints.</p>}
       </fieldset>
 
-      <div className="dg-inputs">
+      <div className="dg-inputs" id="studio-requirements" tabIndex={-1}>
         <fieldset>
           <legend>Workloads</legend>
           {workloadOptions.map((option) => (
@@ -458,7 +455,7 @@ export function StudioConfigurator() {
         </section>
       )}
 
-      <div className="dg-export">
+      <div className="dg-export" id="studio-export" tabIndex={-1}>
         <button type="button" className="button button-primary" onClick={() => exportSheet("md")}>
           Export complete plan
         </button>
