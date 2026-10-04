@@ -161,6 +161,44 @@ async function exercise(width) {
       await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(reportPath), true);
       await page.waitForFunction((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory.maker.apiShareBps === 10000, key);
     });
+    await check(`${tag}: Kimi TTL prices, membership limits and same-provider recovery`, async () => {
+      const maker = page.getByRole('group', { name: 'Maker', exact: true });
+      await maker.getByRole('combobox').selectOption('kimi-k3-5m');
+      await maker.getByText('Cache and native subscription assumptions', { exact: true }).click();
+      for (const [label, value] of [['Fresh input tokens per mission', '0'], ['Output tokens per mission', '0'], ['Cache-write tokens per mission', '1000000'], ['Cache-candidate input tokens', '1000000'], ['This provider’s cache-hit assumption (%)', '50']]) {
+        const field = maker.getByLabel(label, { exact: true }); await field.fill(value); await field.press('Tab');
+      }
+      await page.waitForFunction((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory.maker.cacheHitBps === 5000, key);
+      const short = JSON.parse(fs.readFileSync(await download(page, 'Export report JSON', `${tag}-kimi-5m-report.json`), 'utf8'));
+      assert.equal(short.factory.makerApi.usd, 1023);
+      await maker.getByRole('combobox').selectOption('kimi-k3-1h');
+      const kimiPath = await download(page, 'Export report JSON', `${tag}-kimi-1h-report.json`);
+      assert.ok(fs.statSync(kimiPath).size <= 64 * 1024);
+      const long = JSON.parse(fs.readFileSync(kimiPath, 'utf8'));
+      assert.equal(long.factory.makerApi.usd, 2013);
+      assert.equal(long.factory.rateEvidence[0].cachePolicy.candidateMiss, 'write');
+      assert.equal(long.factory.rateEvidence[0].sources.length, 2);
+      assert.match(long.runtimePlan.stages[0].nativeRoutes[0].requirement, /New plans.*no weekly/);
+      assert.match(long.runtimePlan.stages[0].nativeRoutes[0].requirement, /Legacy plans retain the weekly/);
+      assert.equal(long.runtimePlan.executionAuthorized, false);
+      await page.reload(); await saved(page, title);
+      assert.equal(await page.getByRole('group', { name: 'Maker', exact: true }).getByRole('combobox').inputValue(), 'kimi-k3-1h');
+      await page.getByText('Runtime and subscription routes', { exact: true }).click();
+      await page.getByText('Kimi Code in supported coding hosts', { exact: true }).waitFor();
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+      await capture(page.getByRole('region', { name: 'What would this workload cost?', exact: true }), `${tag}-kimi.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+      await page.getByRole('group', { name: 'Independent reviewer', exact: true }).getByRole('combobox').selectOption('kimi-k3-5m');
+      const shared = JSON.parse(fs.readFileSync(await download(page, 'Export report JSON', `${tag}-kimi-same-provider.json`), 'utf8'));
+      assert.equal(shared.factory.independentProvider, false);
+      await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(kimiPath), true);
+      await page.waitForFunction((storageKey) => {
+        const factory = JSON.parse(localStorage.getItem(storageKey)).factory;
+        return factory.maker.rate.id === 'kimi-k3-1h' && factory.reviewer.rate.id === 'opus' && factory.maker.cacheHitBps === 5000;
+      }, key);
+      assert.deepEqual(await page.evaluate((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory, key), long.plan.factory);
+      await dialog(page, () => page.getByLabel('Import editable plan', { exact: true }).setInputFiles(reportPath), true);
+      await page.waitForFunction((storageKey) => JSON.parse(localStorage.getItem(storageKey)).factory.maker.rate.id === 'sol', key);
+    });
     await check(`${tag}: cancelled reset preserves inputs`, async () => {
       await dialog(page, () => page.getByRole('button', { name: 'Reset plan', exact: true }).click(), false);
       assert.equal(await page.getByLabel('Plan title', { exact: true }).inputValue(), title);

@@ -1,4 +1,4 @@
-import { calculateFactoryScenario, factoryModelRates } from "./ai-factory-costs";
+import { calculateFactoryScenario, factoryCachePolicy, factoryModelRates, factoryRateSources } from "./ai-factory-costs";
 import { toBuildSheetJson, toBuildSheetMarkdown } from "./build-sheet";
 import { assessCreatorPlan, CREATOR_PLAN_MAX_BYTES, monthlyScenario, parseCreatorPlan, readCreatorPlan, type CreatorPlan } from "./creator-plan";
 import { decisionGraph } from "./dataset";
@@ -117,6 +117,7 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
       "| Stage | Fresh input tokens | Cache writes | Cache candidates | Output tokens | Cache hit assumption | API share |", "| --- | --- | --- | --- | --- | --- | --- |");
     for (const [label, stage] of [["Maker", scenario.maker], ["Reviewer", scenario.reviewer]] as const) {
       lines.push(`| ${label} | ${stage.freshInputTokens} | ${stage.cacheWriteTokens} | ${stage.cacheCandidateTokens} | ${stage.outputTokens} | ${stage.cacheHitBps / 100}% | ${stage.apiShareBps / 100}% |`);
+      if (factoryCachePolicy(stage.rate.id).candidateMiss === "write") lines.push(`${label}: fresh input, first writes and writable cache candidates are disjoint. Candidate misses use the selected cache-write rate; hits use the read rate. Confirm TTL and write configuration; non-cacheable input belongs only to fresh input.`);
       if ((stage.cacheWriteTokens > 0 && stage.rate.cacheWriteMicroUsdPerMillion === null) || (stage.cacheCandidateTokens > 0 && stage.rate.cacheReadMicroUsdPerMillion === null)) lines.push(`${label}: an unquoted cache rate uses the fresh-input price for this scenario; verify the provider's cache terms.`);
     }
     lines.push("", "| Fee | Monthly USD assumption |", "| --- | --- |");
@@ -143,6 +144,7 @@ export function toCreatorReportMarkdown(report: CreatorReport): string {
     lines.push("", "### Factory rate sources", "");
     for (const rate of [scenario.maker.rate, scenario.reviewer.rate, ...factoryModelRates.filter((rate) => report.makerAlternatives.some((row) => row.modelId === rate.id))]) {
       lines.push(`- ${rate.label}: ${rate.sourceUrl}, observed ${rate.observedAt}. Per million tokens: input USD ${(rate.inputMicroUsdPerMillion / 1_000_000).toFixed(6)}, output USD ${(rate.outputMicroUsdPerMillion / 1_000_000).toFixed(6)}, cache write ${rate.cacheWriteMicroUsdPerMillion === null ? "unquoted" : `USD ${(rate.cacheWriteMicroUsdPerMillion / 1_000_000).toFixed(6)}`}, cache read ${rate.cacheReadMicroUsdPerMillion === null ? "unquoted" : `USD ${(rate.cacheReadMicroUsdPerMillion / 1_000_000).toFixed(6)}`}.`);
+      for (const source of factoryRateSources(rate.id).slice(1)) lines.push(`  ${source.label}: ${source.url}, source observed ${source.observedAt}; verify current account billing.`);
     }
     lines.push(`- Compute: ${scenario.compute.sourceUrl}, observed ${scenario.compute.observedAt}.`, "",
       "Model-rate, token-volume, cache, API-share, fee, currency and workload inputs are retained in the report JSON. Native authentication alone does not establish included usage. No runtime, spend or execution is authorized by this report.");

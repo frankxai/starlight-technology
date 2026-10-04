@@ -1,6 +1,6 @@
 "use client";
 import { useId, useRef, useState } from "react";
-import { calculateFactoryScenario, factoryComputeRate, factoryModelRates, readFactoryScenario, type FactoryCostScenario, type StageAssumptions } from "@/lib/decision-graph/ai-factory-costs";
+import { calculateFactoryScenario, factoryCachePolicy, factoryComputeRate, factoryModelRates, factoryRateSources, readFactoryScenario, type FactoryCostScenario, type StageAssumptions } from "@/lib/decision-graph/ai-factory-costs";
 import { readFactoryInput } from "@/lib/decision-graph/factory-input";
 import { planFactoryRuntime } from "@/lib/decision-graph/factory-runtime-plan";
 import styles from "./factory-cost-editor.module.css";
@@ -58,8 +58,9 @@ export function FactoryCostEditor({ value, onChange }: { value: FactoryCostScena
         {number("Cache-candidate input tokens", stage.cacheCandidateTokens, 0, 10_000_000, (amount) => set("cacheCandidateTokens", amount))}
         {number("This provider’s cache-hit assumption (%)", stage.cacheHitBps, 0, 100, (amount) => set("cacheHitBps", amount), 100)}
         {number("Missions billed through APIs (%)", stage.apiShareBps, 0, 100, (amount) => set("apiShareBps", amount), 100)}
-      </div><p>Cache candidates that miss are billed as fresh input. Each stage has its own cache and API share. Native capacity needs separate entitlement and quota evidence.</p></details>
+      </div><p>{factoryCachePolicy(stage.rate.id).candidateMiss === "write" ? "For Kimi, keep fresh input, first cache writes and writable cache candidates separate. Candidate misses use the selected cache-write rate; hits use the read rate. Put non-cacheable tokens in fresh input. Confirm the selected TTL and API write configuration." : "Cache candidates that miss are billed as fresh input."} Each stage has its own cache and API share. Native capacity needs separate entitlement and quota evidence.</p></details>
       <p className={styles.secondary}><a href={stage.rate.sourceUrl} target="_blank" rel="noopener noreferrer">Rate source</a>, snapshot {stage.rate.observedAt}. USD per million tokens: fresh {dollars(stage.rate.inputMicroUsdPerMillion / 1_000_000)}, output {dollars(stage.rate.outputMicroUsdPerMillion / 1_000_000)}. {stage.rate.cacheWriteMicroUsdPerMillion === null ? "Unlisted cache writes use the fresh-input rate in this estimate." : ""}</p>
+      {stage.rate.provider === "moonshot" && <p className={styles.secondary}>Cache writes {stage.rate.cacheWriteMicroUsdPerMillion === null ? "unquoted" : dollars(stage.rate.cacheWriteMicroUsdPerMillion / 1_000_000)} and reads {stage.rate.cacheReadMicroUsdPerMillion === null ? "unquoted" : dollars(stage.rate.cacheReadMicroUsdPerMillion / 1_000_000)} per million tokens. <a href={factoryRateSources(stage.rate.id)[1].url} target="_blank" rel="noopener noreferrer">Published K3 output price</a>; verify current account billing.</p>}
     </fieldset>;
   }
   function exportCosts() {

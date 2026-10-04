@@ -9,6 +9,9 @@ const sourceCatalog = {
   claudeHosted: { id: "claude-hosted", label: "Claude self-hosted environments", url: "https://code.claude.com/docs/en/self-hosted-environments", observedAt },
   claudeRemote: { id: "claude-remote", label: "Claude Remote Control", url: "https://code.claude.com/docs/en/remote-control", observedAt },
   glm: { id: "glm", label: "GLM coding-plan tool and quota boundaries", url: "https://docs.z.ai/devpack/faq", observedAt },
+  kimi: { id: "kimi-code", label: "Kimi Code new and legacy membership limits", url: "https://www.kimi.com/code/docs/en/kimi-code/membership.html", observedAt: "2026-10-04" },
+  kimiCache: { id: "kimi-cache", label: "Kimi API cache pricing and TTL configuration", url: "https://platform.kimi.ai/docs/guide/context-caching", observedAt: "2026-10-04" },
+  kimiOutput: { id: "kimi-output", label: "Published K3 output pricing", url: "https://www.kimi.com/en/blog/kimi-k3", observedAt: "2026-10-04" },
 } as const;
 type Source = typeof sourceCatalog[keyof typeof sourceCatalog];
 type Route = {
@@ -46,10 +49,15 @@ function stageRoutes(role: "maker" | "reviewer", stage: StageAssumptions) {
       nativeRoutes = [route("glm-coding-plan", "GLM Coding Plan in supported tools", "customer-host", "Use only officially supported coding tools/products and their plan endpoint. All tools share 5-hour and weekly limits; confirm host/tool eligibility.", sourceCatalog.glm, null)];
       apiRequirement = "General API workers require a separate metered API route. Coding-plan quota is limited to supported tools and is not an API balance.";
       break;
+    case "moonshot":
+      sources = [sourceCatalog.kimi, sourceCatalog.kimiCache, sourceCatalog.kimiOutput];
+      nativeRoutes = [route("kimi-code", "Kimi Code in supported coding hosts", "customer-host", "K3 requires new Plus or above, or legacy Moderato or above; Go includes no Code quota. New plans share a rolling 5-hour limit and monthly total, with no weekly limit. Legacy plans retain the weekly limit as well. Devices and supported tools share the applicable account pool. New Pro or legacy Allegretto is required for 1M context/High Speed. Verify this host, model and account. Extra Usage can spend prepaid funds when enabled; this plan does not enable it.", sourceCatalog.kimi, null)];
+      apiRequirement = "General workers use a separate metered Kimi API account and route. Membership/Code quota does not fund API credits. Configure the selected cache TTL explicitly; the Messages API requires top-level cache_control to write. No paid fallback is enabled by this plan.";
+      break;
     default:
       throw new Error("This provider has no documented runtime route.");
   }
-  const apiRoute = route(`${stage.rate.provider}-api`, "Customer-owned metered API worker", "customer-host", apiRequirement, sources[0], null);
+  const apiRoute = route(`${stage.rate.provider}-api`, "Customer-owned metered API worker", "customer-host", apiRequirement, stage.rate.provider === "moonshot" ? sourceCatalog.kimiCache : sources[0], null);
   return { role, modelId: stage.rate.id, model: stage.rate.label, provider: stage.rate.provider,
     apiShareBps: stage.apiShareBps, nativeShareBps: 10000 - stage.apiShareBps,
     accountAccess: "unverified" as const, apiRoute, nativeRoutes, sources };
@@ -65,8 +73,8 @@ export function planFactoryRuntime(scenario: FactoryCostScenario, asOf = new Dat
     maker: { ...scenario.maker, apiShareBps: 10000 }, reviewer: { ...scenario.reviewer, apiShareBps: 10000 } }, asOf);
   const stages = [stageRoutes("maker", scenario.maker), stageRoutes("reviewer", scenario.reviewer)];
   const sources = [...new Map(stages.flatMap((stage) => stage.sources).map((source) => [source.id, source])).values()];
-  const sourceAge = (Date.parse(asOf) - Date.parse(observedAt)) / 86400000;
-  const sourceAgeStatus = sourceAge < 0 ? "future" as const : sourceAge > 30 ? "older-than-window" as const : "within-window" as const;
+  const sourceAges = sources.map((source) => (Date.parse(asOf) - Date.parse(source.observedAt)) / 86400000);
+  const sourceAgeStatus = sourceAges.some((age) => age < 0) ? "future" as const : sourceAges.some((age) => age > 30) ? "older-than-window" as const : "within-window" as const;
   const nativeUsePlanned = current.plannedMissions > 0 && stages.some((stage) => stage.nativeShareBps > 0);
   const warnings = [
     "Runtime choices are documented possibilities. Account access, quota, exact model, permissions and actual execution are unverified.",

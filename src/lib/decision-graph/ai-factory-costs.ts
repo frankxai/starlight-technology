@@ -10,7 +10,22 @@ export const factoryModelRates: readonly ModelRate[] = [
   { id: "opus", label: "Claude Opus 5.5", provider: "anthropic", sourceUrl: "https://platform.claude.com/docs/en/about-claude/pricing", observedAt: OBSERVED_AT, inputMicroUsdPerMillion: 4_000_000, outputMicroUsdPerMillion: 20_000_000, cacheReadMicroUsdPerMillion: 200_000, cacheWriteMicroUsdPerMillion: 5_000_000 },
   { id: "sol", label: "GPT-6.1 Sol", provider: "openai", sourceUrl: "https://developers.openai.com/api/docs/pricing", observedAt: OBSERVED_AT, inputMicroUsdPerMillion: 2_000_000, outputMicroUsdPerMillion: 10_000_000, cacheReadMicroUsdPerMillion: 100_000, cacheWriteMicroUsdPerMillion: 2_500_000 },
   { id: "glm", label: "GLM-5.3", provider: "zai", sourceUrl: "https://docs.z.ai/guides/overview/pricing", observedAt: OBSERVED_AT, inputMicroUsdPerMillion: 1_400_000, outputMicroUsdPerMillion: 4_400_000, cacheReadMicroUsdPerMillion: 260_000, cacheWriteMicroUsdPerMillion: null },
+  { id: "kimi-k3-5m", label: "Kimi K3 (5-minute cache)", provider: "moonshot", sourceUrl: "https://platform.kimi.ai/docs/guide/context-caching", observedAt: "2026-10-04", inputMicroUsdPerMillion: 3_000_000, outputMicroUsdPerMillion: 15_000_000, cacheReadMicroUsdPerMillion: 300_000, cacheWriteMicroUsdPerMillion: 3_000_000 },
+  { id: "kimi-k3-1h", label: "Kimi K3 (1-hour cache)", provider: "moonshot", sourceUrl: "https://platform.kimi.ai/docs/guide/context-caching", observedAt: "2026-10-04", inputMicroUsdPerMillion: 3_000_000, outputMicroUsdPerMillion: 15_000_000, cacheReadMicroUsdPerMillion: 300_000, cacheWriteMicroUsdPerMillion: 6_000_000 },
 ];
+// Billing policy belongs to the trusted model variant, not editable imported directives.
+export function factoryCachePolicy(modelId: string) {
+  if (modelId === "kimi-k3-5m" || modelId === "kimi-k3-1h") return { ttl: modelId === "kimi-k3-5m" ? "5m" as const : "1h" as const, candidateMiss: "write" as const };
+  return { ttl: null, candidateMiss: "fresh" as const };
+}
+export function factoryRateSources(modelId: string) {
+  const rate = factoryModelRates.find((item) => item.id === modelId);
+  if (!rate) throw new Error("Unknown model rate source.");
+  const sources = [{ url: rate.sourceUrl, observedAt: rate.observedAt, label: "Input and cache pricing" }];
+  if (rate.provider === "moonshot") sources.push({ url: "https://www.kimi.com/en/blog/kimi-k3", observedAt: rate.observedAt, label: "Published K3 output pricing" });
+  else sources[0].label = "Model pricing";
+  return sources;
+}
 export type StageAssumptions = {
   rate: ModelRate;
   freshInputTokens: number; cacheWriteTokens: number; cacheCandidateTokens: number;
@@ -100,7 +115,10 @@ function rounded(value: Rational): bigint { return (value.n * BigInt(2) + value.
 function stageCost(stage: StageAssumptions): Rational {
   const rate = stage.rate;
   const freshAndWrite = BigInt(stage.freshInputTokens) * BigInt(rate.inputMicroUsdPerMillion) + BigInt(stage.cacheWriteTokens) * BigInt(rate.cacheWriteMicroUsdPerMillion ?? rate.inputMicroUsdPerMillion) + BigInt(stage.outputTokens) * BigInt(rate.outputMicroUsdPerMillion);
-  const cacheRate = BigInt(10_000 - stage.cacheHitBps) * BigInt(rate.inputMicroUsdPerMillion) + BigInt(stage.cacheHitBps) * BigInt(rate.cacheReadMicroUsdPerMillion ?? rate.inputMicroUsdPerMillion);
+  // Kimi candidates are writable prefixes: a miss rewrites under the selected TTL.
+  // Non-cacheable tokens belong only to fresh input. Writes, reads and fresh input are disjoint.
+  const missRate = factoryCachePolicy(rate.id).candidateMiss === "write" ? rate.cacheWriteMicroUsdPerMillion ?? rate.inputMicroUsdPerMillion : rate.inputMicroUsdPerMillion;
+  const cacheRate = BigInt(10_000 - stage.cacheHitBps) * BigInt(missRate) + BigInt(stage.cacheHitBps) * BigInt(rate.cacheReadMicroUsdPerMillion ?? rate.inputMicroUsdPerMillion);
   return rational(freshAndWrite * BigInt(10_000) + BigInt(stage.cacheCandidateTokens) * cacheRate, BigInt(10_000_000_000));
 }
 export function calculateFactoryScenario(value: FactoryCostScenario, now = new Date().toISOString().slice(0, 10)) {
@@ -111,16 +129,18 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
   const makerEquivalent = withAttempts(plan.maker), reviewerEquivalent = withAttempts(plan.reviewer);
   const makerApi = times(makerEquivalent, plan.maker.apiShareBps, 10_000), reviewerApi = times(reviewerEquivalent, plan.reviewer.apiShareBps, 10_000);
   const c = plan.compute;
-  function evidence<T extends { observedAt: string; sourceUrl: string }>(component: "maker" | "reviewer" | "compute", label: string, assumed: T, bundled: Partial<T> & { observedAt: string; sourceUrl: string }) {
+  function evidence<T extends { observedAt: string; sourceUrl: string }>(component: "maker" | "reviewer" | "compute", label: string, assumed: T, bundled: Partial<T> & { observedAt: string; sourceUrl: string }, modelId?: string) {
     const modifiedFields = (Object.keys(bundled) as (keyof T)[]).filter((key) => assumed[key] !== bundled[key]).map(String);
     const sourceAge = (Date.parse(now) - Date.parse(bundled.observedAt)) / 86_400_000;
     return { component, label, sourceUrl: bundled.sourceUrl, sourceObservedAt: bundled.observedAt, assumedObservedAt: assumed.observedAt, modifiedFields,
+      sources: modelId ? factoryRateSources(modelId) : [{ url: bundled.sourceUrl, observedAt: bundled.observedAt, label: "Compute pricing" }],
+      cachePolicy: modelId ? factoryCachePolicy(modelId) : null,
       kind: modifiedFields.length ? "edited-assumption" as const : "bundled-snapshot" as const,
       sourceAgeStatus: sourceAge < 0 ? "future" as const : sourceAge > 30 ? "older-than-window" as const : "within-window" as const };
   }
   const rateEvidence = [
-    evidence("maker", plan.maker.rate.label, plan.maker.rate, factoryModelRates.find((rate) => rate.id === plan.maker.rate.id)!),
-    evidence("reviewer", plan.reviewer.rate.label, plan.reviewer.rate, factoryModelRates.find((rate) => rate.id === plan.reviewer.rate.id)!),
+    evidence("maker", plan.maker.rate.label, plan.maker.rate, factoryModelRates.find((rate) => rate.id === plan.maker.rate.id)!, plan.maker.rate.id),
+    evidence("reviewer", plan.reviewer.rate.label, plan.reviewer.rate, factoryModelRates.find((rate) => rate.id === plan.reviewer.rate.id)!, plan.reviewer.rate.id),
     evidence("compute", "Compute", c, factoryComputeRate),
   ];
   const ratesModified = rateEvidence.some((row) => row.kind === "edited-assumption");
@@ -147,7 +167,10 @@ export function calculateFactoryScenario(value: FactoryCostScenario, now = new D
     if (JSON.stringify(stage.rate) !== JSON.stringify(bundled)) warnings.push(`${stage.rate.label}: imported rate assumptions differ from the bundled dated observation. Verify them before purchasing or dispatching.`);
     const age = (Date.parse(now) - Date.parse(stage.rate.observedAt)) / 86_400_000;
     if (age < 0 || age > 30) warnings.push(`${stage.rate.label}: rate evidence is future-dated or older than 30 days.`);
-    if (stage.cacheWriteTokens > 0 && stage.rate.cacheWriteMicroUsdPerMillion === null) warnings.push(`${stage.rate.label}: unquoted cache-write pricing uses the fresh-input rate as a scenario assumption; verify the provider's cache terms.`);
+    const cachePolicy = factoryCachePolicy(stage.rate.id);
+    const writesPlanned = stage.cacheWriteTokens > 0 || (cachePolicy.candidateMiss === "write" && stage.cacheCandidateTokens > 0 && stage.cacheHitBps < 10_000);
+    if (writesPlanned && stage.rate.cacheWriteMicroUsdPerMillion === null) warnings.push(`${stage.rate.label}: unquoted cache-write pricing uses the fresh-input rate as a scenario assumption; verify the provider's cache terms.`);
+    if (cachePolicy.candidateMiss === "write") warnings.push(`${stage.rate.label}: fresh input, initial writes and writable cache candidates are separate token portions. Candidate misses use the selected cache-write rate; hits use the read rate. Confirm the API's TTL/write configuration. Published output pricing comes from the K3 release page; verify account billing before use.`);
     if (stage.cacheCandidateTokens > 0 && stage.cacheHitBps > 0 && stage.rate.cacheReadMicroUsdPerMillion === null) warnings.push(`${stage.rate.label}: unquoted cache-read pricing uses the fresh-input rate as a scenario assumption; verify the provider's cache terms.`);
     if (stage.cacheCandidateTokens > 0 && stage.cacheHitBps > 0) warnings.push(`${stage.rate.label}: cache hits are a provider-local assumption, not shared cache or measured savings.`);
   }
