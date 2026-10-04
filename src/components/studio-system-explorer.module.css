@@ -62,7 +62,6 @@
 .steps a { color: var(--signal); font-size: .8rem; min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 4px; }
 .explorer :is(button, a, summary):focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 @media (hover: hover) and (pointer: fine) {
-  .candidate { transition: border-color 150ms ease; }
   .candidate:hover { border-color: var(--signal); }
   .textLink:hover, .parts a:hover, .steps a:hover { color: var(--paper); }
 }

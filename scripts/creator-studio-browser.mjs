@@ -88,8 +88,10 @@ async function exercise(width) {
     await check(`${tag}: visual candidate keyboard selection and interrupted changes survive reload`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
       const choices = explorer.getByRole('button');
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
       await choices.first().focus(); await page.keyboard.press('Enter');
       assert.equal(await choices.first().getAttribute('aria-pressed'), 'true');
+      assert.equal(await choices.first().evaluate((node) => getComputedStyle(node).transitionDuration), '0s', 'Keyboard selection must be immediate with normal motion settings too.');
       const outline = await choices.first().evaluate((node) => getComputedStyle(node).outlineStyle);
       assert.notEqual(outline, 'none');
       await choices.last().click(); await choices.first().click();
@@ -97,6 +99,7 @@ async function exercise(width) {
       await page.waitForFunction(([storageKey, expected]) => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId === expected, [key, chosen]);
       assert.ok(chosen); await page.reload(); await saved(page, 'My creator system');
       assert.equal(await page.evaluate((storageKey) => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key), chosen);
+      await page.emulateMedia({ reducedMotion: 'reduce' });
       const transitions = await explorer.getByRole('button').first().evaluate((node) => getComputedStyle(node).transitionDuration);
       assert.equal(transitions, '0s');
       assert.ok(await explorer.getByRole('link', { name: /Framework Desktop/ }).count());
