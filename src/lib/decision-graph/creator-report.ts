@@ -52,7 +52,7 @@ export function toCreatorReport(value: CreatorPlan, generatedAt: string, graph: 
 export type CreatorReport = ReturnType<typeof toCreatorReport>;
 
 export function encodeCreatorReport(plan: CreatorPlan, generatedAt: string, graph: DecisionGraph = decisionGraph): string {
-  const text = JSON.stringify(toCreatorReport(plan, generatedAt, graph), null, 2);
+  const text = JSON.stringify(toCreatorReport(plan, generatedAt, graph));
   if (new TextEncoder().encode(text).byteLength > CREATOR_PLAN_MAX_BYTES) throw new Error("Report exceeds 64 KiB; export has been stopped. Export the editable plan separately.");
   return text;
 }

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { decisionGraph } from "./dataset";
 import { newFactoryScenario } from "./ai-factory-costs";
-import { assessCreatorPlan, encodeCreatorPlan, newCreatorPlan } from "./creator-plan";
+import { assessCreatorPlan, CREATOR_PLAN_MAX_BYTES, encodeCreatorPlan, newCreatorPlan } from "./creator-plan";
 import { toBuildSheetJson } from "./build-sheet";
 import { confirmCreatorReplacement, encodeCreatorReport, parseCreatorExport, toCreatorReport, toCreatorReportMarkdown } from "./creator-report";
 
@@ -30,6 +30,40 @@ describe("complete creator report", () => {
     expect(report.factory?.modeledSubtotal?.usd).toBeCloseTo(78.9012, 8);
     expect(report.recurring.combinedEuroMinor).toBe(69979);
     expect(report.factory?.executable).toBe(false);
+  });
+
+  it("exports rich valid context without dropping any comparison or evidence fields", () => {
+    const plan = completePlan(); plan.title = "题".repeat(120); plan.privateContext = "界".repeat(4000);
+    const expected = toCreatorReport(plan, at);
+    expect(new TextEncoder().encode(JSON.stringify(expected, null, 2)).byteLength).toBeGreaterThan(CREATOR_PLAN_MAX_BYTES);
+    const encoded = encodeCreatorReport(plan, at);
+    expect(new TextEncoder().encode(encoded).byteLength).toBeLessThan(CREATOR_PLAN_MAX_BYTES);
+    expect(JSON.parse(encoded)).toEqual(expected);
+    expect(expected.purchaseReviews.length).toBeGreaterThan(1);
+    expect(expected.makerAlternatives.length).toBeGreaterThan(1);
+    expect(parseCreatorExport(encoded)).toEqual(plan);
+  });
+
+  it("accepts exactly64KiB of UTF8 report data and rejects the next byte", () => {
+    const plan = completePlan(); plan.privateContext = "界".repeat(100);
+    const encoded = encodeCreatorReport(plan, at);
+    const bytes = new TextEncoder().encode(encoded).byteLength;
+    expect(bytes).toBeGreaterThan(encoded.length);
+    const atLimit = encoded + " ".repeat(CREATOR_PLAN_MAX_BYTES - bytes);
+    expect(new TextEncoder().encode(atLimit).byteLength).toBe(CREATOR_PLAN_MAX_BYTES);
+    expect(parseCreatorExport(atLimit)).toEqual(plan);
+    expect(() => parseCreatorExport(atLimit + " ")).toThrow(/64 KiB/);
+  });
+
+  it("still refuses an oversized complete report while keeping the editable plan recoverable", () => {
+    const plan = completePlan(); const graph = structuredClone(decisionGraph);
+    const quoteSourceId = toCreatorReport(plan, at).purchaseReviews.flatMap((row) => row.sources)[0].id;
+    const source = graph.nodes.find((node) => node.id === quoteSourceId);
+    if (!source || source.kind !== "EvidenceSource") throw new Error("Quote source missing");
+    source.title += "界".repeat(25000);
+    expect(new TextEncoder().encode(JSON.stringify(toCreatorReport(plan, at, graph))).byteLength).toBeGreaterThan(CREATOR_PLAN_MAX_BYTES);
+    expect(() => encodeCreatorReport(plan, at, graph)).toThrow(/Report exceeds 64 KiB/);
+    expect(parseCreatorExport(encodeCreatorPlan(plan, at, graph), graph)).toEqual({ ...plan, savedAt: at });
   });
 
   it("compares named maker alternatives with the same workload and reviewer", () => {
