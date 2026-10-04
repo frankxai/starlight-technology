@@ -171,7 +171,6 @@ const taxLabel = (p) => (p.includesTax === true ? "incl. VAT" : p.includesTax ==
 
 export function renderIndex(data, graph) {
   const L = [];
-  const brandName = new Map(data.brands.map((b) => [b.id, b.name]));
   const supName = new Map(data.suppliers.map((s) => [s.id, s.name]));
   const silName = new Map(data.silicon.map((s) => [s.id, s]));
   L.push("# Engineering index: mini PCs and local-AI compute");

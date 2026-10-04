@@ -1,0 +1,38 @@
+{
+  "feature": "Compute atlas: sourced mini-PC and local-AI compute records, generated graph, /compute page, /api/compute/graph",
+  "branch": "agent/claude/compute-fleet-intel",
+  "baseRevision": "4588a24",
+  "status": "DRAFT_NOT_LIVE",
+  "scope": ["/compute", "/api/compute/graph"],
+  "researchDate": "2026-10-05",
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed (0 warnings after removing one unused variable)",
+    "vitest": "21 passed across 5 files, including a parity test between src/lib/compute.ts and scripts/compute/lib.mjs",
+    "computeDataTests": "13 passed (node --test scripts/compute/compute.test.mjs); each validator rule is proven to fail on bad input",
+    "generatedFilesDrift": "node scripts/compute/build.mjs --check passed",
+    "editorialPlannerTests": "11 passed (unchanged)",
+    "build": "not run locally: pp preflight held the build workload (RAM 3-5 GB free, 8 GB required). CI runs it on the draft PR.",
+    "browserLayout": "pending: pp preflight held browser-qa for the same reason. Desktop and mobile inspection has not been done.",
+    "independentReview": "pending: needs a different harness or provider as a skeptical buyer, and a facts review of the records"
+  },
+  "designScore": null,
+  "productionEligible": false,
+  "publicationState": "Page is noindex and unlinked: header and sitemap are untouched because open PRs #22 and #24 edit them. API route is read-only static JSON.",
+  "dataPolicy": {
+    "prices": "Headline prices are page-read only, dated, with merchant, region and tax status. Reported, forum, derived and snippet prices are held back from headline views.",
+    "amazon": "Amazon prices are never stored (validator rule).",
+    "affiliate": "No affiliate links. Programs recorded as research only; applying is an owner action."
+  },
+  "knownLimitations": [
+    "Research only. No machine was tested hands-on.",
+    "Buyer region NL/EU is an assumption.",
+    "No independent NL merchant prices: Tweakers, Coolblue, Proshop, Alternate and Geizhals returned 403 to fetches; Firecrawl had no credits.",
+    "Windows GPU-memory cap on 128 GB Strix Halo machines is unconfirmed from a primary source.",
+    "Customs, VAT and CE/WEEE statements rest partly on search summaries rather than Douane, TARIC or EUR-Lex pages.",
+    "Used-market prices for NL were not retrieved.",
+    "The page has not been inspected at desktop or mobile widths."
+  ],
+  "nextAction": "Run next build and browser inspection when RAM allows or on a Vercel preview; get an independent critique; close the NL merchant price gap with a browser session.",
+  "rollback": "Revert this isolated PR."
+}
