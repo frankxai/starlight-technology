@@ -31,6 +31,62 @@ describe("purchase review", () => {
     expect(gmktec(decisionGraph).cost.budgetVerdict).toBe("unknown");
     expect(gmktec(decisionGraph).cost.budgetNote).toContain("delivered budget");
   });
+  it("shows that the exact recorded listing already exceeds the budget while delivery is unknown", () => {
+    const constrained = { ...input, budgetId: "bud-3000" };
+    const system = configure(constrained).systems.find((candidate) => candidate.archetypeId === "arch-gmktec-evox2-128")!;
+    const review = assessPurchase(system, constrained, decisionGraph, "2026-10-03");
+    expect(review.unresolved).toContain("Recorded EUR 3399.99 subtotal exceeds the EUR 3000.00 budget. Confirm current prices and delivered terms.");
+    expect(system.cost.budgetNote).toContain("Recorded EUR 3399.99 subtotal exceeds");
+    expect(review.deliveredTotalMinor).toBeNull(); expect(review.budgetVerdict).toBe("unknown");
+  });
+  it.each([0, 299999, 300000])("does not infer affordability from a recorded subtotal of %s", (amount) => {
+    const graph = clone();
+    (graph.nodes.find((node) => node.id === "px-gmktec-evox2-128-2tb-eu") as PriceObservationNode).amountMinor = amount;
+    const review = assessPurchase(gmktec(graph), { ...input, budgetId: "bud-3000" }, graph, "2026-10-03");
+    expect(review.unresolved.join(" ")).not.toContain("subtotal exceeds");
+    expect(review.deliveredTotalMinor).toBeNull(); expect(review.budgetVerdict).toBe("unknown");
+  });
+  it.each(["stale", "future", "invalid-date", "unverified", "missing-source"])("does not use %s price evidence for a budget warning", (failure) => {
+    const graph = clone(); const system = gmktec(graph);
+    const observation = graph.nodes.find((node) => node.id === "px-gmktec-evox2-128-2tb-eu") as PriceObservationNode;
+    if (failure === "stale") observation.observedAt = "2026-09-01";
+    if (failure === "future") observation.observedAt = "2026-10-04";
+    if (failure === "invalid-date") observation.observedAt = "2026-02-30";
+    if (failure === "unverified") observation.basis = "unverified";
+    if (failure === "missing-source") observation.sourceId = "missing-source";
+    const review = assessPurchase(system, { ...input, budgetId: "bud-3000" }, graph, "2026-10-03");
+    expect(review.unresolved.join(" ")).not.toContain("subtotal exceeds");
+    expect(review.deliveredTotalMinor).toBeNull(); expect(review.budgetVerdict).toBe("unknown");
+  });
+  it("keeps currencies separate instead of converting a USD listing to the EUR budget", () => {
+    const graph = clone();
+    (graph.nodes.find((node) => node.id === "px-gmktec-evox2-128-2tb-eu") as PriceObservationNode).currency = "USD";
+    const review = assessPurchase(gmktec(graph), { ...input, budgetId: "bud-3000" }, graph, "2026-10-03");
+    expect(review.listedTotalsMinor).toEqual({ USD: 339999 });
+    expect(review.unresolved.join(" ")).not.toContain("subtotal exceeds");
+    expect(review.budgetVerdict).toBe("unknown");
+  });
+  it("counts selected quantities even when other configured items are unpriced", () => {
+    const mixed = { ...input, workloadIds: ["wl-local-llm-mid", "wl-video-4k"] };
+    const system = configure(mixed).systems.find((candidate) => candidate.archetypeId === "arch-gmktec-evox2-128")!;
+    expect(system.lines.some((line) => line.priceMinor === null)).toBe(true);
+    system.lines.find((line) => line.priceObservationId === "px-gmktec-evox2-128-2tb-eu")!.quantity = 3;
+    const review = assessPurchase(system, mixed, decisionGraph, "2026-10-03");
+    expect(review.unresolved).toContain("Recorded EUR 10199.97 subtotal exceeds the EUR 7000.00 budget. Confirm current prices and delivered terms.");
+    expect(review.deliveredTotalMinor).toBeNull(); expect(review.budgetVerdict).toBe("unknown");
+  });
+  it("preserves every cent at the safe integer boundary", () => {
+    const graph = clone();
+    (graph.nodes.find((node) => node.id === "px-gmktec-evox2-128-2tb-eu") as PriceObservationNode).amountMinor = Number.MAX_SAFE_INTEGER - 1;
+    const review = assessPurchase(gmktec(graph), { ...input, budgetId: "bud-3000" }, graph, "2026-10-03");
+    expect(review.unresolved).toContain("Recorded EUR 90071992547409.90 subtotal exceeds the EUR 3000.00 budget. Confirm current prices and delivered terms.");
+  });
+  it.each([0, -1, 1.5])("does not count invalid quantity %s toward a budget warning", (quantity) => {
+    const system = gmktec(decisionGraph); system.lines[0].quantity = quantity;
+    const review = assessPurchase(system, { ...input, budgetId: "bud-3000" }, decisionGraph, "2026-10-03");
+    expect(review.unresolved.join(" ")).not.toContain("subtotal exceeds");
+    expect(review.budgetVerdict).toBe("unknown");
+  });
   it("does not qualify unmeasured wall power under a hard power ceiling", () => {
     const result = configure({ ...input, constraintIds: ["con-watts-400"] });
     expect(result.systems.some((system) => system.archetypeId === "arch-gmktec-evox2-128")).toBe(false);

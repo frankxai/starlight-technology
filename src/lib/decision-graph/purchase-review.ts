@@ -1,5 +1,5 @@
 import { indexGraph } from "./graph";
-import { assessFreshness } from "./staleness";
+import { assessFreshness, DEFAULT_MAX_PRICE_AGE_DAYS } from "./staleness";
 import type { ConfiguratorInput, ConfiguredSystem } from "./configurator";
 import type { ComponentClass, DecisionGraph, EvidenceSourceNode } from "./schema";
 
@@ -43,6 +43,11 @@ function money(value: number | null | undefined): value is number {
   return typeof value === "number" && Number.isSafeInteger(value) && value >= 0;
 }
 
+function formatMinor(value: number): string {
+  const digits = String(value).padStart(3, "0");
+  return `${digits.slice(0, -2)}.${digits.slice(-2)}`;
+}
+
 /** A compatibility review is separate from a complete delivered quote. This proves neither installation nor model speed. */
 export function assessPurchase(system: ConfiguredSystem, input: ConfiguratorInput, graph: DecisionGraph, now: string): PurchaseReview {
   if (!validDate(now)) throw new Error("Purchase review needs a real YYYY-MM-DD date.");
@@ -65,6 +70,8 @@ export function assessPurchase(system: ConfiguredSystem, input: ConfiguratorInpu
   const quotes: PurchaseReview["quotes"] = [];
   const listedTotalsMinor: Record<string, number> = {};
   const sourceIds = new Set<string>();
+  const budget = index.get(input.budgetId);
+  let budgetListedSubtotalMinor = 0;
   let deliveredTotalMinor = 0;
   let currency: string | null = null;
   let complete = missingAssemblySlots.length === 0 && freshness.valid;
@@ -84,6 +91,10 @@ export function assessPurchase(system: ConfiguredSystem, input: ConfiguratorInpu
     listedTotalsMinor[observation.currency] = (listedTotalsMinor[observation.currency] ?? 0) + subtotal;
     const source = index.get(observation.sourceId);
     const dateOkay = validDate(observation.observedAt) && observation.observedAt <= now;
+    const priceAgeDays = (Date.parse(now) - Date.parse(observation.observedAt)) / 86_400_000;
+    if (budget?.kind === "Budget" && observation.currency === budget.currency && observation.basis !== "unverified" && source?.kind === "EvidenceSource" && dateOkay && priceAgeDays <= DEFAULT_MAX_PRICE_AGE_DAYS) {
+      budgetListedSubtotalMinor += subtotal;
+    }
     const expiryOkay = terms && validDate(terms.expiresAt) && terms.expiresAt >= now && terms.expiresAt >= observation.observedAt;
     const deliveryOkay = terms?.kind === "delivered-quote" && terms.destinationRegion === input.regionCode && terms.quantity === line.quantity && terms.vatIncluded === true && money(terms.shippingMinor) && money(terms.importDutyMinor) && !!terms.merchantSku.trim();
     if (!dateOkay || !expiryOkay || !deliveryOkay || source?.kind !== "EvidenceSource") {
@@ -101,8 +112,10 @@ export function assessPurchase(system: ConfiguredSystem, input: ConfiguratorInpu
     }
   }
   if (!system.lines.length) complete = false;
-  const budget = index.get(input.budgetId);
   let budgetVerdict: PurchaseReview["budgetVerdict"] = "unknown";
+  if (!complete && budget?.kind === "Budget" && money(budget.ceilingMinor) && budgetListedSubtotalMinor > budget.ceilingMinor) {
+    unresolved.push(`Recorded ${budget.currency} ${formatMinor(budgetListedSubtotalMinor)} subtotal exceeds the ${budget.currency} ${formatMinor(budget.ceilingMinor)} budget. Confirm current prices and delivered terms.`);
+  }
   if (complete && budget?.kind === "Budget" && currency === budget.currency) {
     budgetVerdict = deliveredTotalMinor <= budget.ceilingMinor ? "within" : "over";
   } else if (budget?.kind !== "Budget" || currency !== budget.currency) {

@@ -173,6 +173,15 @@ describe("complete creator report", () => {
     expect(report.purchaseReviews.every((row) => row.deliveredTotalMinor === null)).toBe(true);
     expect(markdown).toContain("USD 5.0000");
   });
+  it("carries listed overshoot into complete JSON and Markdown without making delivery affordable", () => {
+    const plan = completePlan(); plan.input.budgetId = "bud-3000";
+    const report = toCreatorReport(plan, at);
+    const purchase = report.purchaseReviews.find((row) => row.quotes.some((quote) => quote.observationId === "px-gmktec-evox2-128-2tb-eu"))!;
+    expect(purchase.unresolved.join(" ")).toContain("Recorded EUR 3399.99 subtotal exceeds the EUR 3000.00 budget");
+    expect(purchase.deliveredTotalMinor).toBeNull(); expect(purchase.budgetVerdict).toBe("unknown");
+    expect(toCreatorReportMarkdown(report)).toContain("Recorded EUR 3399.99 subtotal exceeds the EUR 3000.00 budget");
+    expect(parseCreatorExport(encodeCreatorReport(plan, at))).toEqual(plan);
+  });
 
   it("quotes private text so it cannot plant markup or sections in the Markdown report", () => {
     const plan = completePlan(); plan.title = "<img src=https://tracker.invalid>";
