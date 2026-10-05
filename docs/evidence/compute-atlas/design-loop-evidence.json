@@ -17,7 +17,7 @@
     "editorialPlannerTests": "11 passed (unchanged)",
     "build": "passed on CI (GitHub verify job) and on the Vercel preview deployment. Not run locally: pp preflight held the build workload (RAM 3-5 GB free, 8 GB required).",
     "browserLayout": "Desktop inspected on the Vercel preview (about 1100 px wide). A 390 px iframe pass found a 609 px document in a 375 px viewport, caused by visually hidden labels leaking past the table scroll wrapper; fixed with a positioned, focusable scroll region. Also fixed from the review: ladder grouped by memory class, long names and dates wrapping, hero too tall. After the fixes a script measure showed the first ladder row at 660 px in a 975 px viewport. The post-fix 390 px re-measure and screenshots are pending: the browser renderer stalled under RAM pressure and browser checks were stopped.",
-    "independentReview": "pending: needs a different harness or provider as a skeptical buyer, and a facts review of the records"
+    "independentReview": "Codex (a different provider) reviewed b7586a3 read-only on 2026-10-05: verdict CHANGES REQUESTED, 1 blocker and 13 major or minor findings. Fixed in 201b92a: per-price sources and host matching, tax-basis headline, claim relabelling, edge provenance, blueprint scoping, VAT-aware affiliate maths, visible evidence labels. Not yet re-reviewed: a second pass should confirm the fixes and the remaining items (a price-comparison listing counts as page-read; claim-level splitting is partial)."
   },
   "designScore": null,
   "productionEligible": false,
