@@ -34,9 +34,9 @@
     "Windows GPU-memory cap on 128 GB Strix Halo machines is unconfirmed from a primary source.",
     "Customs, VAT and CE/WEEE statements rest partly on search summaries rather than Douane, TARIC or EUR-Lex pages.",
     "Used-market prices for NL were not retrieved.",
-    "The page has not been inspected at desktop or mobile widths.",
-    "Post-fix phone-width re-measure is pending; the real-device check is also pending."
+    "The page has not been inspected on a real phone, and the post-fix 390 px render has not been re-measured.",
+    "Browser checks stopped after two renderer stalls under RAM pressure; resume them when memory allows."
   ],
-  "nextAction": "Run next build and browser inspection when RAM allows or on a Vercel preview; get an independent critique; close the NL merchant price gap with a browser session.",
+  "nextAction": "Re-measure the preview at 390 px and on a real phone when RAM allows; get an independent critique; close the NL merchant price gap with a browser session.",
   "rollback": "Revert this isolated PR."
 }
