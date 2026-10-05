@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { loadData, dataHash, validate, buildGraph, renderIndex, headlinePrice, fits } from "./lib.mjs";
+import { loadData, dataHash, validate, buildGraph, renderIndex, headlinePrice, fits, normalizeText } from "./lib.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const dir = join(root, "data", "compute");
@@ -98,4 +98,9 @@ test("capacity rule: 64 GB cannot host a 70B Q4 beside agent sessions, 128 GB ca
   assert.equal(fits(machine(d, "gmktec-evo-x2-64"), w70), false);
   assert.equal(fits(machine(d, "gmktec-evo-x2-128"), w70), true);
   assert.equal(fits(machine(d, "gmktec-k11-64"), w70), null);
+});
+
+test("data hash does not depend on line endings", () => {
+  assert.equal(normalizeText("a\r\nb\r\n"), normalizeText("a\nb\n"));
+  assert.match(dataHash(dir), /^[0-9a-f]{16}$/);
 });

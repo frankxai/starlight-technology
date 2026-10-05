@@ -14,9 +14,11 @@ export function loadData(dir) {
   return data;
 }
 
+export const normalizeText = (text) => text.replace(/\r\n/g, "\n");
+
 export function dataHash(dir) {
   const h = createHash("sha256");
-  for (const f of FILES) h.update(readFileSync(join(dir, f + ".json")));
+  for (const f of FILES) h.update(normalizeText(readFileSync(join(dir, f + ".json"), "utf8")));
   return h.digest("hex").slice(0, 16);
 }
 
