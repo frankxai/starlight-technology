@@ -12,7 +12,7 @@ export function PriceLadder() {
         <section className={styles.group} key={g.memoryGb} aria-labelledby={`class-${g.memoryGb}`}>
           <h3 className={styles.groupHead} id={`class-${g.memoryGb}`}>
             {g.label}
-            <span>{g.rows.length === 1 ? eur(g.low) : `${eur(g.low)} to ${eur(g.high)}`}</span>
+            <span>{g.low === g.high ? eur(g.low) : `${eur(g.low)} to ${eur(g.high)}`}{g.rangeIsPageRead ? "" : " (reported)"}</span>
           </h3>
           <ol className={styles.ladder}>
             {g.rows.map((r) => (

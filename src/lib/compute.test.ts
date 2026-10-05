@@ -28,6 +28,9 @@ describe("compute data layer", () => {
     expect(groups.map((g) => g.memoryGb)).toEqual([64, 96, 128, 192]);
     const g128 = groups.find((g) => g.memoryGb === 128)!;
     expect(g128.low).toBe(3215);
+    expect(g128.high).toBe(3999);
+    expect(g128.rangeIsPageRead).toBe(true);
+    expect(groups.find((g) => g.memoryGb === 96)!.rangeIsPageRead).toBe(false);
     expect(g128.rows.every((r) => r.memoryGb === 128)).toBe(true);
     expect(g128.rows.every((r, i) => i === 0 || g128.rows[i - 1].amountEur <= r.amountEur)).toBe(true);
     expect(groups.find((g) => g.memoryGb === 64)!.rows.some((r) => r.evidence === "reported")).toBe(true);

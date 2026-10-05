@@ -157,14 +157,16 @@ export function ladderRows(minGb = 64): LadderRow[] {
   return rows.sort((a, b) => a.amountEur - b.amountEur);
 }
 
-export interface LadderGroup { memoryGb: number; label: string; low: number; high: number; rows: LadderRow[] }
+export interface LadderGroup { memoryGb: number; label: string; low: number; high: number; rows: LadderRow[]; rangeIsPageRead: boolean }
 
 export function ladderGroups(minGb = 64): LadderGroup[] {
   const rows = ladderRows(minGb);
   const sizes = [...new Set(rows.map((r) => r.memoryGb))].sort((a, b) => a - b);
   return sizes.map((gb) => {
     const group = rows.filter((r) => r.memoryGb === gb);
-    return { memoryGb: gb, label: `${gb} GB class`, low: group[0].amountEur, high: group[group.length - 1].amountEur, rows: group };
+    const read = group.filter((r) => r.evidence === "page-read");
+    const span = read.length ? read : group;
+    return { memoryGb: gb, label: `${gb} GB class`, low: span[0].amountEur, high: span[span.length - 1].amountEur, rows: group, rangeIsPageRead: read.length > 0 };
   });
 }
 
