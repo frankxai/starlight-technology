@@ -325,7 +325,7 @@ test("planner: hand-computed totals for the four scenarios", () => {
   assert.equal(s2.split.nodeA.classGb, 128);
   assert.equal(s2.split.nodeB.classGb, 64);
   assert.deepEqual([s2.split.nodeA.low, s2.split.nodeA.high, s2.split.nodeB.low, s2.split.nodeB.high], [77.2, 97.2, 41, 43]);
-  const s3 = plans["s3-plus-family-erp-and-70b"];
+  const s3 = plans["s3-plus-erp-and-70b"];
   assert.equal(s3.oneNode.low, 145.6);
   assert.equal(s3.oneNode.high, 176.6);
   assert.equal(s3.oneNode.smallestClassGb, 192);

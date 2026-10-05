@@ -15,8 +15,8 @@
       "langfuse": "same-node", "litellm": true, "monitoring": true, "odooUsers": 0, "ragMillionChunks": 1, "localModel": "local-moe-30b-q4", "gpuJobs": []
     },
     {
-      "id": "s3-plus-family-erp-and-70b",
-      "name": "Add a family business ERP and a 70B model",
+      "id": "s3-plus-erp-and-70b",
+      "name": "Add a business ERP and a 70B model",
       "description": "Scenario 2 with 24 agent sessions, an Odoo instance for 15 users, 3M RAG chunks and a 70B dense local model.",
       "agentSessions": 24, "headlessBrowsers": 8, "linuxDesktops": 6, "windowsVms": 2, "concurrentBuilds": 2,
       "langfuse": "same-node", "litellm": true, "monitoring": true, "odooUsers": 15, "ragMillionChunks": 3, "localModel": "local-dense-70b-q4", "gpuJobs": []

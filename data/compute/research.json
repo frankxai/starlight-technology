@@ -1743,7 +1743,7 @@
         "Odoo Peppol/NLCIUS support, ERPNext Dutch localisation, Dolibarr Dutch features: not confirmed.",
         "Twenty licence type, official MCP server and self-host requirements: not confirmed; Docker Compose docs page not opened.",
         "Frappe MCP package on PyPI, other Odoo MCP servers (tuanle96, nicolasramos, parth-unjiya): only seen in search snippets; star counts in snippets are stale versus repo page. Last release dates for MCP servers not captured.",
-        "Joint controllership between the two family businesses, breach notification (Art. 33), data-subject erasure in backups, EDPB criteria text, and Anthropic/Google EU residency terms: not researched.",
+        "Joint controllership between separate businesses sharing one stack, breach notification (Art. 33), data-subject erasure in backups, EDPB criteria text, and Anthropic/Google EU residency terms: not researched.",
         "Odoo release version and date not captured (repo page shows default branch 20.0 only).",
         "No cost, uptime or hardware-failure data for hosting options."
       ]
