@@ -12,7 +12,7 @@
 .blockHead p { margin: 0; color: var(--muted); }
 
 .group + .group { margin-top: 28px; }
-.groupHead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0; padding: 0 0 10px; font: 800 .72rem/1.3 ui-monospace, "Cascadia Code", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
+.groupHead { flex-wrap: wrap; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0; padding: 0 0 10px; font: 800 .72rem/1.3 ui-monospace, "Cascadia Code", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
 .groupHead span { color: var(--paper); letter-spacing: .02em; text-transform: none; font-size: .9rem; font-variant-numeric: tabular-nums; }
 .ladder { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-bright); }
 .rung > * { min-width: 0; }
@@ -56,6 +56,8 @@
 .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border: 1px solid var(--line-bright); font-size: .72rem; }
 .chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
 .chipInferred i { background: var(--amber); }
+.chipNote { color: var(--amber); font-style: normal; font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; }
+.price a { color: inherit; }
 .chipRumor i { background: transparent; border: 1px solid var(--muted); }
 .brandList { margin: 0; padding-left: 1.05rem; color: var(--muted); font-size: .82rem; }
 .brandList li + li { margin-top: .35rem; }

@@ -40,7 +40,7 @@ test("gate: unresolved source id is rejected", () => {
 test("gate: price without a date is rejected", () => {
   const d = fresh();
   delete machine(d, "gmktec-evo-x2-64").prices[0].verifiedOn;
-  assert.ok(firstError(d).some((e) => e.includes("verifiedOn missing")));
+  assert.ok(firstError(d).some((e) => e.includes("real past or present")));
 });
 
 test("gate: Amazon prices are never stored", () => {
@@ -55,13 +55,70 @@ test("gate: a price for another memory size is rejected", () => {
   assert.ok(firstError(d).some((e) => e.includes("disagrees with the machine memory")));
 });
 
-test("gate: page-read price needs an opened source", () => {
+test("gate: a snippet relabelled page-read is rejected", () => {
   const d = fresh();
   const m = machine(d, "gmktec-evo-x2-64");
-  for (const id of m.sourceIds) d.sources.find((s) => s.id === id).access = "snippet";
-  assert.ok(firstError(d).some((e) => e.includes("no opened source")));
+  d.sources.find((s) => s.id === m.prices[0].sourceId).access = "snippet";
+  assert.ok(firstError(d).some((e) => e.includes("was not opened")));
 });
 
+test("gate: a page-read price needs its own source on the merchant's host", () => {
+  const d = fresh();
+  const m = machine(d, "gmktec-evo-x2-64");
+  delete m.prices[0].sourceId;
+  assert.ok(firstError(d).some((e) => e.includes("needs its own sourceId")));
+  const d2 = fresh();
+  const m2 = machine(d2, "gmktec-evo-x2-64");
+  m2.prices[0].sourceId = machine(d2, "minisforum-ms-s1-max-64").prices[0].sourceId;
+  assert.ok(firstError(d2).some((e) => e.includes("does not match merchantHost")));
+});
+
+test("gate: an Amazon source is rejected even under another merchant name", () => {
+  const d = fresh();
+  d.sources.push({ id: "t-amazon", title: "listing", publisher: "Amazon", url: "https://www.amazon.nl/dp/B0TEST", verifiedOn: "2026-10-05", primary: false, access: "opened" });
+  const p = machine(d, "gmktec-evo-x2-64").prices[0];
+  p.merchant = "Marketplace";
+  p.sourceId = "t-amazon";
+  assert.ok(firstError(d).some((e) => e.includes("Amazon prices are not stored")));
+});
+
+test("gate: impossible and future dates are rejected", () => {
+  const d = fresh();
+  machine(d, "gmktec-evo-x2-64").prices[0].verifiedOn = "2026-13-45";
+  assert.ok(firstError(d).some((e) => e.includes("real past or present")));
+  const d2 = fresh();
+  machine(d2, "gmktec-evo-x2-64").prices[0].verifiedOn = "2027-01-01";
+  assert.ok(firstError(d2).some((e) => e.includes("real past or present")));
+});
+
+test("gate: GiB variants, bandwidth and capacity must agree with the machine and silicon", () => {
+  const d = fresh();
+  machine(d, "gmktec-evo-x2-128").prices.push({ kind: "msrp", amount: 1, currency: "EUR", merchant: "x", region: "EU", variant: "64GiB", includesTax: null, verifiedOn: "2026-10-05", evidence: "reported" });
+  assert.ok(firstError(d).some((e) => e.includes("disagrees with the machine memory")));
+  const d2 = fresh();
+  machine(d2, "gmktec-evo-x2-128").memory.bandwidthGBs = 999;
+  assert.ok(firstError(d2).some((e) => e.includes("disagrees with silicon")));
+  const d3 = fresh();
+  machine(d3, "gmktec-evo-x2-128").memory.gb = 256;
+  assert.ok(firstError(d3).some((e) => e.includes("exceeds the 128 GB maximum")));
+});
+
+test("headline price uses one tax basis: VAT-inclusive beats ex-VAT", () => {
+  const d = fresh();
+  const hp = machine(d, "hp-z2-mini-g1a-128");
+  assert.ok(hp.prices.some((p) => p.includesTax === false));
+  assert.equal(headlinePrice(hp).amount, 3890.15);
+  assert.equal(headlinePrice(hp).includesTax, true);
+});
+
+test("graph edges cite sources or say they are unsourced", () => {
+  const data = loadData(dir);
+  const graph = buildGraph(data, "t");
+  const made = graph.edges.filter((e) => e.rel === "made-by");
+  const bosgame = made.find((e) => e.from === "machine:bosgame-m5");
+  assert.equal(bosgame.evidence, "unsourced");
+  assert.ok(made.filter((e) => e.evidence === "documented").every((e) => e.sourceIds.length > 0));
+});
 test("gate: a measurement claim cannot rest only on search snippets", () => {
   const d = fresh();
   const snippet = d.sources.find((s) => s.access === "snippet");

@@ -17,7 +17,7 @@ export default function ComputePage() {
         <p className="eyebrow">Compute atlas</p>
         <h1 className={styles.title}>What a 128 GB local AI machine costs today, and who builds it.</h1>
         <p className={styles.lede}>
-          Dated prices for 64 GB and larger mini PCs, the memory each workload needs, and the parts and platforms behind GMKtec, Minisforum, Framework and others. Every figure carries its source and evidence level.
+          Dated prices for 64 GB and larger mini PCs, the memory each workload needs, and the parts and platforms behind GMKtec, Minisforum, Framework and others. Prices link to the page they were read from; every claim and edge in the data lists its sources and evidence level.
         </p>
         <ul className={styles.status}>
           <li><span className={styles.dot} /> Research only, {researchDate}</li>
@@ -37,7 +37,7 @@ export default function ComputePage() {
       <section className={styles.block} aria-labelledby="capacity">
         <div className={styles.blockHead}>
           <h2 id="capacity">What fits in which memory class</h2>
-          <p>Model memory competes with the operating system and agent sessions on the same box. Speed is a separate question: 70B dense models stay at single-digit tokens/s on every 256-273 GB/s machine in the data.</p>
+          <p>Model memory competes with the operating system and agent sessions on the same box. Speed is a separate question: in the independent tests in the data, 70B dense models ran at about 4-5 tokens/s on 256 GB/s class memory (one secondary report says 8-12).</p>
         </div>
         <CapacityTable />
       </section>
@@ -45,7 +45,7 @@ export default function ComputePage() {
       <section className={styles.block} aria-labelledby="builders">
         <div className={styles.blockHead}>
           <h2 id="builders">How each brand builds and sells</h2>
-          <p>Dots show evidence: filled green is documented, amber is inferred, hollow is rumor. Hover a chip for the note.</p>
+          <p>Dots show evidence: filled green is documented, amber is inferred, hollow is rumor; inferred and rumor chips also say so in words.</p>
         </div>
         <BrandCards />
       </section>

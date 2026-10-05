@@ -6,7 +6,7 @@
     "hq": "Shenzhen, China (search summary, unverified at primary)",
     "platform": "sixunited",
     "ownBoardDesign": false,
-    "approach": "Sells the shared Sixunited AXB35-02 Strix Halo board in its own chassis (EVO-X2) and a larger OCuLink chassis with the same SoC (EVO-X3) at roughly 1.75x the EVO-X2 64GB EU list. Competes on list price and frequent sale pricing, not on a distinct board.",
+    "approach": "Sells the Sixunited AXB35-02 Strix Halo board (a community wiki's attribution) in its own chassis as the EVO-X2, and a larger OCuLink chassis with the same SoC as the EVO-X3. EU list prices seen: EVO-X2 64GB EUR 1,999.99 and EVO-X3 128GB EUR 3,499.99. No like-for-like official EU EVO-X2 128GB price was extracted.",
     "techChoices": [
       {
         "topic": "memory",
@@ -70,8 +70,8 @@
       "Large model range incl. serviceable K11"
     ],
     "weaknesses": [
-      "No distinct engineering: shared board",
-      "128GB EU official price not extracted; independent retail EUR 3,999-4,450 incl. VAT",
+      "Shares a board platform with several other brands per a community wiki, so the hardware itself is not distinctive",
+      "Official EU 128GB EVO-X2 price not extracted; independent retail EUR 3,999-4,450 incl. VAT (Austria, Estonia)",
       "Short EU return window, restocking fee"
     ],
     "affiliate": {
@@ -92,8 +92,8 @@
     "kind": "maker",
     "hq": "Shenzhen, China (search digest of About page, unverified at primary)",
     "platform": "own",
-    "ownBoardDesign": true,
-    "approach": "Designs its own boards and chassis and positions the MS-S1 MAX as a workstation: internal 320 W PSU, 2x10GbE, PCIe x16 slot wired x4, rack and two-unit cluster marketing. Also sells SO-DIMM machines (AI X1 Pro up to 96GB) and announced a Strix Halo mini-ITX board (BD395i MAX).",
+    "ownBoardDesign": null,
+    "approach": "Positions the MS-S1 MAX as a workstation: internal 320 W PSU, 2x10GbE, PCIe x16 slot wired x4, rack and two-unit cluster marketing. The board appears to be its own design (inferred; the board fab was not identified). Also sells SO-DIMM machines (AI X1 Pro up to 96GB) and announced a Strix Halo mini-ITX board (BD395i MAX).",
     "techChoices": [
       {
         "topic": "power",
@@ -209,8 +209,8 @@
       "sourceIds": []
     },
     "strengths": [
-      "Named suppliers, serviceable, EU store with VAT-inclusive prices",
-      "Mainboard sold alone: closest thing to a build-your-own Strix Halo"
+      "Named suppliers (FSP, Cooler Master, Noctua), serviceable design, EU store with VAT-inclusive prices",
+      "Mainboard sold alone: the closest thing to a build-your-own Strix Halo"
     ],
     "weaknesses": [
       "128GB mainboard alone EUR 3,539 incl. VAT, about EUR 1,100 above a complete Bosgame M5 128GB seen in June",

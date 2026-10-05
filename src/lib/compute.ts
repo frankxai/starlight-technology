@@ -22,6 +22,8 @@ export interface Price {
   includesTax: boolean | null;
   verifiedOn: string;
   evidence: PriceEvidence;
+  sourceId?: string | null;
+  merchantHost?: string;
   note?: string;
 }
 
@@ -86,10 +88,17 @@ export const stats = {
   brands: brands.length
 };
 
+const taxRank = (p: Price) => (p.includesTax === true ? 0 : p.includesTax === null ? 1 : 2);
+
+// Tax basis first: VAT-inclusive beats tax-unknown beats ex-tax, so a machine never headlines at its ex-VAT price.
 export function headlinePrice(machine: Pick<Machine, "prices">, currency = "EUR"): Price | null {
   const pool = machine.prices.filter((p) => p.evidence === "page-read" && p.currency === currency);
-  return pool.length ? pool.reduce((a, b) => (b.amount < a.amount ? b : a)) : null;
+  if (!pool.length) return null;
+  const best = Math.min(...pool.map(taxRank));
+  return pool.filter((p) => taxRank(p) === best).reduce((a, b) => (b.amount < a.amount ? b : a));
 }
+
+export const sourceUrl = (id?: string | null) => (id ? (sourcesJson.find((s) => s.id === id)?.url ?? null) : null);
 
 export function fits(machine: Pick<Machine, "kind" | "memory">, workload: Workload): boolean | null {
   if (machine.kind === "gpu") {
@@ -116,6 +125,8 @@ export interface LadderRow {
   bandwidth: number | null;
   tax: string;
   source: string;
+  sourceUrl: string | null;
+  boardOnly: boolean;
   verifiedOn: string;
   speed: string | null;
 }
@@ -150,6 +161,8 @@ export function ladderRows(minGb = 64): LadderRow[] {
       bandwidth: m.memory.bandwidthGBs,
       tax: taxLabel(p),
       source: p.merchant,
+      sourceUrl: sourceUrl(p.sourceId),
+      boardOnly: m.kind === "board",
       verifiedOn: p.verifiedOn,
       speed: llm ? `${llm.model} ${llm.tokensPerSecond} t/s` : null
     });
@@ -164,7 +177,7 @@ export function ladderGroups(minGb = 64): LadderGroup[] {
   const sizes = [...new Set(rows.map((r) => r.memoryGb))].sort((a, b) => a - b);
   return sizes.map((gb) => {
     const group = rows.filter((r) => r.memoryGb === gb);
-    const read = group.filter((r) => r.evidence === "page-read");
+    const read = group.filter((r) => r.evidence === "page-read" && !r.boardOnly);
     const span = read.length ? read : group;
     return { memoryGb: gb, label: `${gb} GB class`, low: span[0].amountEur, high: span[span.length - 1].amountEur, rows: group, rangeIsPageRead: read.length > 0 };
   });

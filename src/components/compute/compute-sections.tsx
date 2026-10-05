@@ -22,6 +22,7 @@ export function PriceLadder() {
                     {r.name}
                     {r.evidence === "reported" && <span className={`${styles.tag} ${styles.tagReported}`}>reported</span>}
                     {r.sale && <span className={styles.tag}>sale</span>}
+                    {r.boardOnly && <span className={styles.tag}>board only</span>}
                   </p>
                   <span className={styles.rungMeta}>
                     {r.bandwidth ? `${r.bandwidth} GB/s` : "bandwidth not verified"} · {eur(r.eurPerGb)} per GB
@@ -35,7 +36,10 @@ export function PriceLadder() {
                 </div>
                 <div className={styles.price}>
                   <strong>{eur(r.amountEur)}</strong>
-                  <small>{r.tax} · {r.source}</small>
+                  <small>
+                    {r.tax} ·{" "}
+                    {r.sourceUrl ? <a href={r.sourceUrl} target="_blank" rel="noopener noreferrer">{r.source}</a> : r.source}
+                  </small>
                   <small className={styles.date}>{r.verifiedOn}</small>
                 </div>
               </li>
@@ -109,7 +113,7 @@ export function BrandCards() {
               <>
                 <p className={styles.label}>Documented supply</p>
                 <ul className={styles.chips}>
-                  {parts.map((p) => <li className={chipClass(p.evidence)} key={`${p.supplier}-${p.part}`} title={`${p.evidence}${p.note ? `: ${p.note}` : ""}`}><i />{p.part}: {p.supplier}</li>)}
+                  {parts.map((p) => <li className={chipClass(p.evidence)} key={`${p.supplier}-${p.part}`} title={p.note}><i />{p.part}: {p.supplier}{p.evidence !== "documented" && <em className={styles.chipNote}>{p.evidence}</em>}</li>)}
                 </ul>
               </>
             )}
@@ -143,7 +147,7 @@ export function EvidencePanel() {
         <div><dt>Open gaps</dt><dd>{stats.gaps}</dd></div>
       </dl>
       <p className={styles.notes}>
-        Agents can read the same graph at <a href="/api/compute/graph">/api/compute/graph</a>. Every price is a snapshot from the named merchant on the named date. No affiliate links are used on this page, and Amazon prices are not stored. Machines were not tested hands-on.
+        Agents can read the same graph at <a href="/api/compute/graph">/api/compute/graph</a>. Each ladder price links to the page it was read from, with the date. Claims and graph edges list their source IDs in the data files. No affiliate links are used on this page, and Amazon prices are not stored. Machines were not tested hands-on.
       </p>
     </>
   );

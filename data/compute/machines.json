@@ -33,7 +33,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/amd-ryzen%E2%84%A2-ai-max-395-evo-x2-ai-mini-pc",
         "evidence": "page-read",
-        "note": "sale from regular 2,599.99; tax status not stated"
+        "note": "sale from regular 2,599.99; tax status not stated",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s01"
       },
       {
         "kind": "merchant",
@@ -46,7 +48,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://geizhals.at/gmktec-evo-x2-a3485299.html",
         "evidence": "page-read",
-        "note": "19% Austrian VAT per page; Proshop.at 4,123.72"
+        "note": "19% Austrian VAT per page; Proshop.at 4,123.72",
+        "merchantHost": "geizhals.at",
+        "sourceId": "gmktec-s25"
       },
       {
         "kind": "merchant",
@@ -59,7 +63,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://pood.datafox.ee/evo-x2-amd-ryzen-ai-max-395-128gb-ram-2tb-ssd",
         "evidence": "page-read",
-        "note": "24% VAT; EUR 3,588.87 ex-VAT"
+        "note": "24% VAT; EUR 3,588.87 ex-VAT",
+        "merchantHost": "datafox.ee",
+        "sourceId": "gmktec-s26"
       }
     ],
     "llmEvidence": [
@@ -168,7 +174,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://de.gmktec.com/en/products/gmktec-evo-x2-amd-ryzen%E2%84%A2-ai-max-395-mini-pc-1",
         "evidence": "page-read",
-        "note": "In stock 280+ units"
+        "note": "In stock 280+ units",
+        "merchantHost": "de.gmktec.com",
+        "sourceId": "gmktec-s09"
       },
       {
         "kind": "msrp",
@@ -181,7 +189,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/amd-ryzen%E2%84%A2-ai-max-395-evo-x2-ai-mini-pc",
         "evidence": "page-read",
-        "note": "same price as 128GB variants on the page, suggests sale pricing"
+        "note": "same price as 128GB variants on the page, suggests sale pricing",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s01"
       }
     ],
     "llmEvidence": [],
@@ -227,7 +237,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/gmktec-evo-x3-ai-mini-pc-amd-ryzen-ai-max-395",
         "evidence": "page-read",
-        "note": "regular 4,100.00; sold out/unavailable on US page"
+        "note": "regular 4,100.00; sold out/unavailable on US page",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s02"
       },
       {
         "kind": "msrp",
@@ -240,12 +252,14 @@
         "verifiedOn": "2026-10-05",
         "url": "https://de.gmktec.com/en/products/gmktec-evo-x3-amd-ryzen%E2%84%A2-ai-max-395-mini-pc",
         "evidence": "page-read",
-        "note": "in stock 331 units; 2-year warranty"
+        "note": "in stock 331 units; 2-year warranty",
+        "merchantHost": "de.gmktec.com",
+        "sourceId": "gmktec-s10"
       }
     ],
     "llmEvidence": [],
     "issues": [
-      "Same SoC as EVO-X2 at roughly 1.75x the EU 64GB EVO-X2 list price; extra is OCuLink, bigger chassis, cooling",
+      "Same SoC as the EVO-X2 (EU 128GB list EUR 3,499.99 here; the EU EVO-X2 listing extracted was the 64GB model at EUR 1,999.99, so no like-for-like price gap is established); adds OCuLink, a bigger chassis and cooling",
       "Reviewers criticise price, single Ethernet, soldered RAM (aggregator)",
       "No independent X3 benchmarks opened"
     ],
@@ -291,7 +305,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/gmktec-evo-x5-pro-amd-ryzen-ai-max-pro-495-ai-mini-pc",
         "evidence": "page-read",
-        "note": "sold out, ship Oct 5 or Oct 9; EU plug sold out"
+        "note": "sold out, ship Oct 5 or Oct 9; EU plug sold out",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s05"
       }
     ],
     "llmEvidence": [],
@@ -337,7 +353,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/gmktec-evo-x1-pro-ai-mini-pc-amd-ryzen-ai-9-hx-470",
         "evidence": "page-read",
-        "note": "regular 2,299.99; in stock"
+        "note": "regular 2,299.99; in stock",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s03"
       },
       {
         "kind": "msrp",
@@ -350,7 +368,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://de.gmktec.com/en",
         "evidence": "page-read",
-        "note": "homepage listing"
+        "note": "homepage listing",
+        "merchantHost": "de.gmktec.com",
+        "sourceId": "gmktec-s08"
       }
     ],
     "llmEvidence": [],
@@ -394,7 +414,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://de.gmktec.com/en/products/gmktec-evo-t2-intel-core-ultra-x9-388h-x7-358h-mini-pc",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "de.gmktec.com",
+        "sourceId": "gmktec-s12"
       },
       {
         "kind": "msrp",
@@ -407,7 +429,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/intel-core-ultra-x7-358h-x9-388h-evo-t2-ai-mini-pc",
         "evidence": "page-read",
-        "note": "sold out/unavailable"
+        "note": "sold out/unavailable",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s04"
       }
     ],
     "llmEvidence": [],
@@ -452,7 +476,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://de.gmktec.com/en",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "de.gmktec.com",
+        "sourceId": "gmktec-s08"
       },
       {
         "kind": "msrp",
@@ -465,7 +491,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.gmktec.com/products/gmktec-k13-mini-pc-intel-core-ultra-7-256v",
         "evidence": "page-read",
-        "note": "regular 899.99"
+        "note": "regular 899.99",
+        "merchantHost": "gmktec.com",
+        "sourceId": "gmktec-s06"
       }
     ],
     "llmEvidence": [],
@@ -541,7 +569,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://de.gmktec.com/en/products/gmktec-nucbox-k11-amd-ryzen%E2%84%A2-9-8945hs",
         "evidence": "page-read",
-        "note": "which variant the 469.99 refers to is unclear"
+        "note": "which variant the 469.99 refers to is unclear",
+        "merchantHost": "de.gmktec.com",
+        "sourceId": "gmktec-s13"
       }
     ],
     "llmEvidence": [],
@@ -587,7 +617,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://minisforumpc.eu/collections/all?page=7",
         "evidence": "page-read",
-        "note": "Sale price; regular EUR 4,999.00. A search snippet showed EUR 3,879.00 sale / 4,849.00 regular for a 'Max AI Compute Edition' listing; unresolved."
+        "note": "Sale price; regular EUR 4,999.00. A search snippet showed EUR 3,879.00 sale / 4,849.00 regular for a 'Max AI Compute Edition' listing; unresolved.",
+        "merchantHost": "minisforumpc.eu",
+        "sourceId": "minisforum-s01"
       },
       {
         "kind": "promo",
@@ -600,7 +632,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.minisforum.uk/collections/workstations",
         "evidence": "page-read",
-        "note": "Sale; regular GBP 4,249.00."
+        "note": "Sale; regular GBP 4,249.00.",
+        "merchantHost": "minisforum.uk",
+        "sourceId": "minisforum-s03"
       },
       {
         "kind": "msrp",
@@ -613,7 +647,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.minisforum.com/de/collections/ai-mini-work-station/products/ms-s1-max",
         "evidence": "page-read",
-        "note": "Shown out of stock on page."
+        "note": "Shown out of stock on page.",
+        "merchantHost": "minisforum.com",
+        "sourceId": "minisforum-s04"
       },
       {
         "kind": "msrp",
@@ -626,7 +662,8 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.starryhope.com/minipcs/strix-halo-local-llm-inference-2026/",
         "evidence": "reported",
-        "note": "Third-party article, not a merchant listing; conflicts with USD 2,919.90 on the official page."
+        "note": "Third-party article, not a merchant listing; conflicts with USD 2,919.90 on the official page.",
+        "sourceId": "minisforum-s10"
       }
     ],
     "llmEvidence": [
@@ -745,7 +782,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://minisforumpc.eu/collections/all?page=7",
         "evidence": "page-read",
-        "note": "Regular EUR 3,449.00. SSD size not shown."
+        "note": "Regular EUR 3,449.00. SSD size not shown.",
+        "merchantHost": "minisforumpc.eu",
+        "sourceId": "minisforum-s01"
       },
       {
         "kind": "promo",
@@ -758,7 +797,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.minisforum.uk/collections/workstations",
         "evidence": "page-read",
-        "note": "Regular GBP 2,949.00."
+        "note": "Regular GBP 2,949.00.",
+        "merchantHost": "minisforum.uk",
+        "sourceId": "minisforum-s03"
       }
     ],
     "llmEvidence": [],
@@ -804,7 +845,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://minisforumpc.eu/collections/minisforum-ai-workstations",
         "evidence": "page-read",
-        "note": "Regular EUR 9,749.00; listed Available."
+        "note": "Regular EUR 9,749.00; listed Available.",
+        "merchantHost": "minisforumpc.eu",
+        "sourceId": "minisforum-s01"
       },
       {
         "kind": "promo",
@@ -817,7 +860,9 @@
         "verifiedOn": "2026-10-05",
         "url": "https://www.minisforum.uk/collections/workstations",
         "evidence": "page-read",
-        "note": "Regular GBP 8,349.00."
+        "note": "Regular GBP 8,349.00.",
+        "merchantHost": "minisforum.uk",
+        "sourceId": "minisforum-s03"
       },
       {
         "kind": "msrp",
@@ -830,7 +875,8 @@
         "verifiedOn": "2026-10-05",
         "url": "https://hothardware.com/news/minisforum-192gb-gorgon-halo-mini-pc-local-ai-powerhouse",
         "evidence": "reported",
-        "note": "Search digest and StarryHope."
+        "note": "Search digest and StarryHope.",
+        "sourceId": "landscape-s13"
       }
     ],
     "llmEvidence": [],
@@ -907,8 +953,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://minisforumpc.eu/collections/all?page=2",
-        "evidence": "page-read",
-        "note": "Regular EUR 909.00; barebone vs configured unknown. AI X1 Pro-470 EUR 799.00 (regular 999.00) also listed; AI X1 Mini PC EUR 379.00 (regular 469.00) on page 1."
+        "evidence": "snippet",
+        "note": "Regular EUR 909.00; barebone vs configured unknown. AI X1 Pro-470 EUR 799.00 (regular 999.00) also listed; AI X1 Mini PC EUR 379.00 (regular 469.00) on page 1.",
+        "sourceId": "minisforum-s02"
       }
     ],
     "llmEvidence": [
@@ -965,8 +1012,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://minisforumpc.eu/collections/all?page=7",
-        "evidence": "page-read",
-        "note": "Regular EUR 1,049.00. UK GBP 725.00 (regular 909.00). Specs not researched."
+        "evidence": "snippet",
+        "note": "Regular EUR 1,049.00. UK GBP 725.00 (regular 909.00). Specs not researched.",
+        "sourceId": "minisforum-s02"
       }
     ],
     "llmEvidence": [],
@@ -1008,7 +1056,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://frame.work/nl/en/products/desktop-diy-amd-aimax300/configuration/new",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "frame.work",
+        "sourceId": "landscape-s07"
       }
     ],
     "llmEvidence": [],
@@ -1053,7 +1103,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://frame.work/nl/en/products/desktop-diy-amd-aimax300/configuration/new",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "frame.work",
+        "sourceId": "landscape-s07"
       }
     ],
     "llmEvidence": [],
@@ -1096,7 +1148,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://frame.work/nl/en/products/desktop-diy-amd-aimax300/configuration/new",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "frame.work",
+        "sourceId": "landscape-s07"
       }
     ],
     "llmEvidence": [],
@@ -1139,7 +1193,8 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://borncity.com/news/framework-desktop-bis-zu-192-gb-ram-und-preise-ab-6-799-us-dollar/",
-        "evidence": "reported"
+        "evidence": "reported",
+        "sourceId": "landscape-s10"
       }
     ],
     "llmEvidence": [
@@ -1195,7 +1250,9 @@
         "includesTax": true,
         "verifiedOn": "2026-10-05",
         "url": "https://www.arp.nl/nl-en/shop/product-family/hp-z2-mini-g1a-workstation--6634--f",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "arp.nl",
+        "sourceId": "landscape-s15"
       },
       {
         "kind": "merchant",
@@ -1207,7 +1264,9 @@
         "includesTax": false,
         "verifiedOn": "2026-10-05",
         "url": "https://www.arp.nl/nl-en/shop/product-family/hp-z2-mini-g1a-workstation--6634--f",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "arp.nl",
+        "sourceId": "landscape-s15"
       }
     ],
     "llmEvidence": [],
@@ -1250,7 +1309,8 @@
         "includesTax": false,
         "verifiedOn": "2026-10-05",
         "url": "https://www.notebookcheck.org/Corsair-confirma-el-nuevo-precio-del-mini-PC-AMD-Strix-Halo-con-hasta-96-GB-de-VRAM.1269374.0.html",
-        "evidence": "page-read"
+        "evidence": "reported",
+        "sourceId": null
       }
     ],
     "llmEvidence": [],
@@ -1293,7 +1353,8 @@
         "includesTax": true,
         "verifiedOn": "2026-10-05",
         "url": "https://www.notebookcheck.com/AMDs-hauseigener-Mini-PC-mit-128GB-RAM-und-Strix-Halo-zeigt-sich-fuer-fast-4-000EUR.1336528.0.html",
-        "evidence": "reported"
+        "evidence": "reported",
+        "sourceId": "landscape-s17"
       }
     ],
     "llmEvidence": [
@@ -1348,7 +1409,9 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://www.bee-link.com/de/products/beelink-gtr9-pro-amd-ryzen-ai-max-395",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "bee-link.com",
+        "sourceId": "landscape-s18"
       }
     ],
     "llmEvidence": [],
@@ -1418,7 +1481,8 @@
         "includesTax": false,
         "verifiedOn": "2026-10-05",
         "url": "https://forums.developer.nvidia.com/t/september-2026-availability-of-gb10s/382068",
-        "evidence": "forum"
+        "evidence": "forum",
+        "sourceId": "landscape-s14"
       }
     ],
     "llmEvidence": [
@@ -1494,7 +1558,8 @@
         "includesTax": false,
         "verifiedOn": "2026-10-05",
         "url": "https://forums.developer.nvidia.com/t/september-2026-availability-of-gb10s/382068",
-        "evidence": "forum"
+        "evidence": "forum",
+        "sourceId": "landscape-s13"
       },
       {
         "kind": "merchant",
@@ -1506,7 +1571,8 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://forums.developer.nvidia.com/t/september-2026-availability-of-gb10s/382068",
-        "evidence": "forum"
+        "evidence": "forum",
+        "sourceId": "landscape-s13"
       }
     ],
     "llmEvidence": [],
@@ -1550,7 +1616,8 @@
         "includesTax": true,
         "verifiedOn": "2026-10-05",
         "url": "https://www.iculture.nl/nieuws/mac-mini-2026-prijzen/",
-        "evidence": "derived"
+        "evidence": "derived",
+        "sourceId": "landscape-s05"
       }
     ],
     "llmEvidence": [],
@@ -1593,7 +1660,8 @@
         "includesTax": true,
         "verifiedOn": "2026-10-05",
         "url": "https://everymac.com/global-mac-prices/all-msrp-mac-studio-prices-in-netherlands.html",
-        "evidence": "reported"
+        "evidence": "reported",
+        "sourceId": "landscape-s06"
       }
     ],
     "llmEvidence": [],
@@ -1637,24 +1705,14 @@
         "includesTax": true,
         "verifiedOn": "2026-10-05",
         "url": "https://www.iculture.nl/nieuws/mac-studio-2026-officieel/",
-        "evidence": "reported"
-      },
-      {
-        "kind": "msrp",
-        "amount": 8079,
-        "currency": "EUR",
-        "merchant": "Apple NL (EveryMac)",
-        "region": "NL",
-        "variant": "36c CPU/80c GPU",
-        "includesTax": true,
-        "verifiedOn": "2026-10-05",
-        "url": "https://everymac.com/global-mac-prices/all-msrp-mac-studio-prices-in-netherlands.html",
-        "evidence": "reported"
+        "evidence": "reported",
+        "sourceId": "landscape-s05"
       }
     ],
     "llmEvidence": [],
     "issues": [
-      "Delivery from 22 Sep 2026; 512GB late Oct 2026. 128/192/256/512GB EUR upgrade prices not found. USD 256GB/4TB Ultra reviewed at USD 12,299 (s30). No independent LLM numbers verified: gap."
+      "Delivery from 22 Sep 2026; 512GB late Oct 2026. 128/192/256/512GB EUR upgrade prices not found. USD 256GB/4TB Ultra reviewed at USD 12,299 (s30). No independent LLM numbers verified: gap.",
+      "A EUR 8,079 price in the research notes was for the 36-core CPU / 80-core GPU configuration, not this base 96GB machine, and was removed."
     ],
     "sourceIds": [
       "landscape-s01",
@@ -1694,7 +1752,8 @@
         "includesTax": true,
         "verifiedOn": "2026-10-05",
         "url": "https://www.guru3d.com/story/geforce-rtx-5090-street-prices-in-eu-now-exceed/",
-        "evidence": "snippet"
+        "evidence": "snippet",
+        "sourceId": "landscape-s23"
       }
     ],
     "llmEvidence": [],
@@ -1734,7 +1793,8 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://gpuprix.com/eu/gpus/rtx-pro-6000-blackwell",
-        "evidence": "reported"
+        "evidence": "reported",
+        "sourceId": "landscape-s25"
       }
     ],
     "llmEvidence": [],
@@ -1774,7 +1834,8 @@
         "includesTax": null,
         "verifiedOn": "2026-10-05",
         "url": "https://gpuprix.com/eu/gpus/radeon-ai-pro-r9700",
-        "evidence": "reported"
+        "evidence": "reported",
+        "sourceId": "landscape-s24"
       }
     ],
     "llmEvidence": [],
@@ -1816,7 +1877,9 @@
         "variant": "Mainboard 32GB",
         "includesTax": true,
         "verifiedOn": "2026-10-05",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "frame.work",
+        "sourceId": "supply-s04"
       }
     ],
     "llmEvidence": [],
@@ -1858,7 +1921,9 @@
         "variant": "Mainboard 64GB",
         "includesTax": true,
         "verifiedOn": "2026-10-05",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "frame.work",
+        "sourceId": "supply-s04"
       }
     ],
     "llmEvidence": [],
@@ -1900,7 +1965,9 @@
         "variant": "Mainboard 128GB",
         "includesTax": true,
         "verifiedOn": "2026-10-05",
-        "evidence": "page-read"
+        "evidence": "page-read",
+        "merchantHost": "frame.work",
+        "sourceId": "supply-s04"
       }
     ],
     "llmEvidence": [],

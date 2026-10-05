@@ -41,8 +41,8 @@
     "modelGb": 46,
     "headroomGb": 24,
     "basis": "size arithmetic",
-    "measured": "3.7-5.3 t/s on 256 GB/s class memory",
-    "note": "Weights about 40 GB at Q4 plus about 6 GB KV cache at moderate context; same 24 GB headroom estimate. Single-digit tokens/s on every 256-273 GB/s machine in the data: bandwidth, not capacity, sets the speed.",
+    "measured": "Independent tests: Llama 70B Q4_K_M 5.26 tok/s (Framework Strix Halo, llama.cpp Vulkan); Llama 3.3 70B Q6_K 3.7-3.8 tok/s (GMKtec EVO-X2). A secondary source reports 8-12 tok/s at Q4.",
+    "note": "Weights about 40 GB at Q4 plus about 6 GB KV cache at moderate context; same 24 GB headroom estimate. Measured speeds on 256 GB/s class memory are about 4-5 tok/s; one secondary report says 8-12. Bandwidth, not capacity, sets the speed.",
     "sourceIds": [
       "gmktec-s18",
       "minisforum-s09",
@@ -86,4 +86,3 @@
     ]
   }
 ]
-

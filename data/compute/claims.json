@@ -12,7 +12,7 @@
   },
   {
     "id": "gmktec-c02",
-    "text": "EVO-X3 uses the same Ryzen AI Max+ 395 as EVO-X2 and adds OCuLink and a larger triple-fan chassis; EU list EUR 3,499.99 vs EVO-X2 64GB EUR 1,999.99.",
+    "text": "EVO-X3 (128GB, EUR 3,499.99 on the EU store) uses the same Ryzen AI Max+ 395 as the EVO-X2 and adds OCuLink and a larger triple-fan chassis. The EU EVO-X2 listing extracted was the 64GB model at EUR 1,999.99, so the two prices are for different memory sizes.",
     "type": "market-data",
     "sourceIds": [
       "gmktec-s08",
@@ -61,7 +61,7 @@
   },
   {
     "id": "gmktec-c07",
-    "text": "EVO-X2 128GB/2TB retail in AT/EE (EUR 3,999-4,450 incl VAT) is about double the official EU 64GB list and above the US store sale price, pointing to tight 2026 supply or a pricing reset.",
+    "text": "EVO-X2 128GB/2TB retail prices in Austria (EUR 3,999 incl. 19% VAT) and Estonia (EUR 4,450.20 incl. 24% VAT) differ by country, VAT rate and merchant from the official EU 64GB list of EUR 1,999.99, so they cannot be compared directly; no official EU 128GB price was extracted.",
     "type": "inference",
     "sourceIds": [
       "gmktec-s25",
@@ -96,18 +96,17 @@
   },
   {
     "id": "minisforum-c02",
-    "text": "MS-S1 MAX idles about 10W in Windows and 5-6W without a desktop, and peaks about 200-220W in synthetic testing (ServeTheHome). Notebookcheck search digest: 9-12W idle, about 120W under AI inference, 43 dBA under load.",
+    "text": "ServeTheHome measured the MS-S1 MAX at about 10 W idle in Windows, 5-6 W without a desktop, and a peak of about 200-220 W in synthetic testing.",
     "type": "independent-measurement",
     "sourceIds": [
-      "minisforum-s06",
-      "minisforum-s07"
+      "minisforum-s06"
     ],
     "asOf": "2026-10-05"
   },
   {
     "id": "minisforum-c03",
-    "text": "128GB LPDDR5X-8000 at 256GB/s is bandwidth-bound: 70B dense Q4 about 5 tok/s, 30-35B MoE 43-66 tok/s, 120B-class MoE roughly 19-31 tok/s.",
-    "type": "independent-measurement",
+    "text": "Reported speeds for 128GB LPDDR5X-8000 (256 GB/s) systems mix Minisforum and Framework tests and runtimes: 70B dense Q4 about 5 tok/s, 30-35B mixture-of-experts 43-66 tok/s, 120B-class mixture-of-experts roughly 19-31 tok/s. Framework results are not Minisforum measurements.",
+    "type": "community-report",
     "sourceIds": [
       "minisforum-s08",
       "minisforum-s09",
@@ -261,8 +260,8 @@
   },
   {
     "id": "landscape-c11",
-    "text": "128GB Strix Halo/GB10 machines rose roughly 35% to 50%+ at vendor list level in 2026 (Framework USD +23%, Corsair +35%, Framework NL EUR 3,889 vs USD 2,459).",
-    "type": "inference",
+    "text": "US list prices of 128GB-class machines rose in 2026: Framework Desktop USD 1,999 to 2,459 (+23%), Corsair AI Workstation 300 USD 1,999.99 to 2,699.99 (+35%), DGX Spark USD 3,999 to 4,699 (+17.5%). These are matched-product US list prices; no cause is established here.",
+    "type": "market-data",
     "sourceIds": [
       "landscape-s07",
       "landscape-s09",
@@ -311,7 +310,7 @@
   {
     "id": "landscape-c16",
     "text": "Strix Halo software: Vulkan via llama.cpp/LM Studio recommended on Windows and Linux; ROCm immature; Linux needs kernel 6.15+. A Windows 96GB VGM cap on 128GB machines and Linux GTT tuning appeared only in search snippets and are unverified.",
-    "type": "independent-measurement",
+    "type": "community-report",
     "sourceIds": [
       "landscape-s21",
       "minisforum-s10"
@@ -357,8 +356,8 @@
   },
   {
     "id": "supply-c01",
-    "text": "Community wiki states about 90% of Chinese Strix Halo PCs (GMKtec, Bosgame, FEVM, Corsair, NIMO) are built on the same Sixunited platform; the GMKtec EVO-X2 uses the Sixunited AXB35-02 board.",
-    "type": "independent-measurement",
+    "text": "A community wiki (no counting method stated) estimates about 90% of Chinese Strix Halo PCs, including GMKtec, Bosgame, FEVM, Corsair and NIMO, use the Sixunited platform. Its hardware page lists the GMKtec EVO-X2 with the Sixunited AXB35-02 board.",
+    "type": "community-report",
     "sourceIds": [
       "supply-s01",
       "supply-s02"
@@ -414,7 +413,7 @@
   },
   {
     "id": "supply-c07",
-    "text": "EU consumers have a 2-year minimum legal guarantee; a brand warranty of 365 days does not replace it for consumer sales.",
+    "text": "EU consumers have a 2-year minimum legal guarantee from the seller; a shorter brand warranty (for example 12 months) does not replace it for consumer sales.",
     "type": "manufacturer-assertion",
     "sourceIds": [
       "supply-s15",
@@ -754,6 +753,15 @@
     "type": "manufacturer-assertion",
     "sourceIds": [
       "gaps-s25"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "minisforum-c02b",
+    "text": "A search digest of Notebookcheck's MS-S1 Max reviews reports 9-12 W idle, about 120 W under AI inference and 43 dBA under load (page not opened).",
+    "type": "community-report",
+    "sourceIds": [
+      "minisforum-s07"
     ],
     "asOf": "2026-10-05"
   }

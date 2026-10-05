@@ -9,7 +9,7 @@ export function GET() {
     status: "research only, no hands-on testing",
     researchDate,
     regionAssumption: "NL/EU (open)",
-    note: "Prices are dated snapshots. Edges carry an evidence tag: documented, inferred or rumor.",
+    note: "Graph only. Edges carry an evidence tag (documented, inferred, rumor or unsourced) and the source IDs behind them. Prices, claims and sources are in data/compute/ in the repository.",
     graph
   });
 }

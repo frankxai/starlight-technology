@@ -339,7 +339,7 @@
     {
       "model": "hardware resale margin",
       "typicalEconomics": "Hardware resale gross margin about 30-40% (one source), about 16% in more recent channel data (another); search summaries, not primary. Minisforum wholesale needs 10+ units and discount percentages are unpublished.",
-      "evidence": "documented",
+      "evidence": "search-summary",
       "sourceIds": [
         "partners-s20",
         "partners-s24"
@@ -348,7 +348,7 @@
     {
       "model": "managed service retainer",
       "typicalEconomics": "Managed services gross margin 50-60% typical; SMB up to 20 staff $2,000-3,000/month fully managed IT; per-seat $150-200 (search summaries of MSP pricing guides). Those are IT-MSP figures, not AI-fleet figures.",
-      "evidence": "documented",
+      "evidence": "search-summary",
       "sourceIds": [
         "partners-s24"
       ]
@@ -364,7 +364,7 @@
     {
       "model": "affiliate",
       "typicalEconomics": "Maker programmes found pay about 2% (Minisforum), 1-5% (Framework, directory), 5-10% (Beelink, directory); Amazon 3-6% depending on read. At a 2% rate a EUR 600 mini PC earns EUR 12; Apple hardware is not in its program.",
-      "evidence": "documented",
+      "evidence": "search-summary",
       "sourceIds": [
         "partners-s05",
         "partners-s06",

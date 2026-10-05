@@ -4,9 +4,9 @@ Status: research only, 2026-10-05. No machine here was tested hands-on. Buyer re
 
 ## What the research found
 
-1. A 128 GB Strix Halo machine now costs between EUR 3,215 ex VAT (HP Z2 Mini G1a at a Dutch reseller) and EUR 4,450 incl. VAT (GMKtec EVO-X2 at an Estonian shop). A 128 GB DDR5 kit went from USD 329 to USD 3,399 by 18 August 2026, and TrendForce expects DRAM up another 10-15% in Q4 2026. Framework's 128 GB mainboard alone is EUR 3,539 incl. VAT, while a complete Bosgame M5 128 GB/2 TB was EUR 2,439.95 on 24 June.
-2. Token speed follows memory bandwidth. Strix Halo has 256 GB/s theoretical. On it, 30-35B mixture-of-experts models run at 43-86 tokens/s and 70B dense models at 3.7-5.3. Apple's M5 Max reaches 614 GB/s and the M5 Ultra 1.2 TB/s. A Mac Studio M5 Max with 64 GB is reported at EUR 3,689 (EveryMac; Apple's NL pages show no prices). No independent Apple tokens/s figure was verified.
-3. Most Chinese Strix Halo machines share one board. A community wiki puts the Sixunited platform at about 90% of them, including GMKtec, Bosgame, Corsair, FEVM and NIMO. Minisforum designs its own board. Framework names its partners: FSP for power, Cooler Master and Noctua for cooling.
+1. In the page-read data a 128 GB Strix Halo machine costs EUR 3,499.99 (GMKtec EVO-X3, EU store, tax not stated) to EUR 4,450.20 incl. VAT (GMKtec EVO-X2, Estonian shop). The lowest VAT-inclusive Dutch listing is the HP Z2 Mini G1a at EUR 3,890.15 (EUR 3,215 ex VAT) from a business reseller that ships when available. A 128 GB DDR5 kit went from USD 329 to USD 3,399 by 18 August 2026, and TrendForce expects DRAM up another 10-15% in Q4 2026. Framework's 128 GB mainboard alone is EUR 3,539 incl. VAT, while a complete Bosgame M5 128 GB/2 TB was EUR 2,439.95 on 24 June.
+2. Token speed follows memory bandwidth. Strix Halo has 256 GB/s theoretical. On it, independent tests show 30-35B mixture-of-experts models at 43-86 tokens/s and 70B dense models at 3.7-5.3 (Q4_K_M and Q6_K runs on different machines); one secondary source reports 8-12 at Q4. Apple's M5 Max reaches 614 GB/s and the M5 Ultra 1.2 TB/s. A Mac Studio M5 Max with 64 GB is reported at EUR 3,689 (EveryMac; Apple's NL pages show no prices). No independent Apple tokens/s figure was verified.
+3. Most Chinese Strix Halo machines share one board. A community wiki (no counting method stated) estimates the Sixunited platform at about 90% of them, including GMKtec, Bosgame, Corsair, FEVM and NIMO; its hardware page lists the EVO-X2 with the Sixunited board. Minisforum designs its own board. Framework names its partners: FSP for power, Cooler Master and Noctua for cooling.
 4. Windows runs this hardware. Lemonade supports Windows 11 with Vulkan, ROCm and NPU backends and an OpenAI-compatible API. Linux is reported to address about 124 GB as GPU memory (the ROCm documentation shows a 100 GB example on a 125.65 GB system), and a Windows cap of 96 GB is reported but unconfirmed from a primary source.
 5. Direct sourcing from Alibaba showed no price edge for a single unit. The one Strix Halo 128 GB listing (a search snippet) was USD 3,027-3,107 at MOQ 1.
 
@@ -15,7 +15,7 @@ Status: research only, 2026-10-05. No machine here was tested hands-on. Buyer re
 | Role | Runs | Memory | Basis |
 |---|---|---|---|
 | Cockpit | Interactive sessions, headed browser | Existing laptop or desktop | n/a |
-| Agent node | Background coding agents, headless browsers, builds | 32 GB for 10 sessions, 64 GB for 20 | Estimate: 1.0-1.5 GB per session plus 8-12 GB for build bursts, from one 30-minute profile of a 31 GB machine |
+| Agent node | Background coding agents, headless browsers, builds | 32 GB for 10 sessions, 64 GB for 20 | Estimate: 1.0-1.5 GB per session plus 8-12 GB for build bursts, from one unpublished 30-minute profile of a 31 GB Windows machine. Replicate it with the method below before buying |
 | Local model node | 30-35B mixture-of-experts, occasional 70B | 128 GB class | Size arithmetic: 25 GB and 46 GB including KV cache, plus 24 GB for the OS and 10 agent sessions |
 | GPU box | Image and video generation | VRAM, not system RAM | Rent first |
 
@@ -29,13 +29,13 @@ For the local model node, capacity alone gives:
 | 96 GB (Mac Studio M5 Ultra) | yes | yes | no |
 | 128 GB class | yes | yes | yes |
 
-Speed is a separate question: every 256-273 GB/s machine in the data stays at single-digit tokens/s on 70B dense. A 70B model is a batch tool there, not an interactive one.
+Speed is a separate question: independent tests of 70B dense models on 256 GB/s class memory gave about 4-5 tokens/s. That makes a 70B model a batch tool there, not an interactive one.
 
 ## When to buy
 
-- Agent node: sample RAM and CPU every 5 seconds for 30 minutes on the machine you use now. Buy a node when median free RAM sits below your floor (4 GB is a reasonable one for Windows) during normal work.
+- Agent node: sample RAM and CPU every 5 seconds for 30 minutes on the machine you use now. Buy a node when median free RAM sits below your floor (4 GB is a reasonable one for Windows) during normal work, and when the same period shows the cost: longer task completion times, queue waits, retries or timeouts. Free RAM alone does not show that another machine will help.
 - Local model node: buy when the monthly API cost of the tasks you would move is higher than the machine's monthly cost. The data holds no usage figures, so this trigger is open for each buyer.
-- GPU box: rent until daily use justifies owning. At EUR 5,499 for an RTX 5090 against RunPod at USD 0.69-0.99 per hour, break-even is roughly 1.9-2.7 years of 8-hour days, before power and host costs. That arithmetic ignores the USD/EUR rate.
+- GPU box: rent until daily use justifies owning. At EUR 5,499 for an RTX 5090 against RunPod at USD 0.69-0.99 per hour, break-even is roughly 1.9-2.7 years of 8-hour days, before power and host costs. That arithmetic ignores the USD/EUR rate, whether a rented GPU gives equivalent results, how fully you would use an owned card, and the admin and recovery time an owned machine costs.
 
 ## Windows, Linux and Mac
 
@@ -55,14 +55,14 @@ Remote access: Tailscale and OpenSSH Server. Monitoring: Uptime Kuma, Beszel, Ne
 
 | Channel | Finding | Verdict |
 |---|---|---|
-| Brand EU stores | GMKtec ships from Bremen with 2-year warranty, 7-day return and a 15% restocking fee. Minisforum lists sale and regular prices with tax not stated. | Compare against a VAT-stated reseller before ordering |
-| Framework | VAT-inclusive, named suppliers, serviceable, out of stock on the day read | Best support story, highest price for 128 GB |
+| Brand EU stores | GMKtec ships from Bremen with a 24-month warranty on its EU store (its US store states 12), a 7-day return and a 15% restocking fee. Minisforum lists sale and regular prices with tax not stated. | Compare against a VAT-stated reseller before ordering |
+| Framework | VAT-inclusive, named suppliers, serviceable, out of stock on the day read. Support and warranty terms were not read. | Highest price for 128 GB among the complete options seen; confirm support terms first |
 | B2B reseller | HP Z2 Mini G1a EUR 3,890.15 incl. VAT, ships when available | Cheapest verified in-NL 128 GB with VAT stated; confirm the SKU |
-| Alibaba | No price edge for one unit | Use for samples and ODM talks |
+| Alibaba | One Strix Halo 128 GB listing seen (a search snippet) at USD 3,027-3,107, MOQ 1; no landed quote obtained | No price edge shown for one unit; use for samples and ODM talks |
 | Refurbished business mini PCs | EUR 164-495 on refurbed.nl, 4-16 GB base RAM | Light agent nodes only |
 | Used Mac Studio, used GPUs | Marktplaats, Tweakers V&A and Back Market NL blocked; used RTX 3090 EUR 660-1,039 from four snippets | Unverified |
 
-Import facts, with their sources in the data: from 1 July 2026 until 1 July 2028 a EUR 3 duty applies per item category on parcels up to EUR 150, which does not touch a 128 GB machine. Duty on heading 8471 is reported as 0% and import VAT in the Netherlands as 21%, both from search summaries rather than Douane or TARIC pages. EU consumers get a 2-year legal guarantee, which exceeds GMKtec's stated 365 days. GMKtec's EU shipping policy summary mentions declaring a lower commodity value. Customs undervaluation is a compliance risk and must not be used.
+Import facts, with their sources in the data: from 1 July 2026 until 1 July 2028 a EUR 3 duty applies per item category on parcels up to EUR 150, which does not touch a 128 GB machine. Duty on heading 8471 is reported as 0% and import VAT in the Netherlands as 21%, both from search summaries rather than Douane or TARIC pages. EU consumers get a 2-year legal guarantee from the seller regardless of a shorter brand warranty (GMKtec's US store states 12 months, its EU store 24). GMKtec's EU shipping policy summary mentions declaring a lower commodity value. Customs undervaluation is a compliance risk and must not be used.
 
 ## Building machines or partnering
 
@@ -75,11 +75,11 @@ A sensible order is reseller or integrator first, then a co-branded case, then a
 
 ## Revenue routes
 
-Affiliate programs found: Minisforum 2% on Awin, 30-day cookie (page also says 7 days). Beelink 5-10% and Framework 1-5% are directory claims. GMKtec is on Awin with terms behind signup. Amazon's NL and DE fee pages conflict (6% and 5% for electronics). Apple's program covers digital content only. At 2%, a EUR 4,000 machine earns EUR 80.
+Affiliate programs found: Minisforum 2% on Awin, 30-day cookie (page also says 7 days). Beelink 5-10% and Framework 1-5% are directory claims. GMKtec is on Awin with terms behind signup. Amazon's NL and DE fee pages conflict (6% and 5% for electronics). Apple's program covers digital content only. Minisforum's terms apply 2% to the price excluding VAT and postage, so a EUR 4,000 machine incl. 21% VAT earns about EUR 66 before reversals.
 
 Disclosure: Awin requires #Ad or #sponsorship style labels, which is stricter than a footer note. The Dutch advertising code requires recognisable advertising. UK specifics were not verified.
 
-Fleet offer: hardware resale margins appear as about 30-40% in one source and about 16% in another (both search summaries). Managed IT services show gross margins of 50-60% and USD 2,000-3,000 per month for a fully managed team of up to 20, all for conventional IT, not AI fleets. No sourced price exists for an AI-agent fleet setup fee or retainer. Adjacent offers: Puget Systems from USD 4,812.73, tinygrad tinybox, Framework Desktop (no managed agent layer) and the Dutch AiBitches.nl (software modules, no price). This blueprint makes no revenue forecast.
+Fleet offer: hardware resale margins appear as about 30-40% in one source and about 16% in another (both search summaries). Managed IT services show gross margins of 50-60% and USD 2,000-3,000 per month for a fully managed team of up to 20, from search summaries and for conventional IT, not AI fleets. No sourced price exists for an AI-agent fleet setup fee or retainer. Adjacent offers: Puget Systems from USD 4,812.73, tinygrad tinybox, Framework Desktop (no managed agent layer) and the Dutch AiBitches.nl (software modules, no price). This blueprint makes no revenue forecast.
 
 ## Research programme
 

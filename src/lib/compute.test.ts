@@ -20,6 +20,10 @@ describe("compute data layer", () => {
     const mac = rows.find((r) => r.id === "apple-mac-studio-m5max-64");
     expect(mac?.evidence).toBe("reported");
     expect(rows.find((r) => r.id === "gmktec-evo-x2-128")?.evidence).toBe("page-read");
+    const hp = rows.find((r) => r.id === "hp-z2-mini-g1a-128");
+    expect(hp?.amountEur).toBe(3890.15);
+    expect(hp?.tax).toBe("incl. VAT");
+    expect(rows.find((r) => r.id === "gmktec-evo-x2-128")?.sourceUrl).toMatch(/^https:\/\/geizhals\.at\//);
     expect(rows.every((r) => r.verifiedOn === "2026-10-05")).toBe(true);
   });
 
@@ -27,8 +31,9 @@ describe("compute data layer", () => {
     const groups = ladderGroups(64);
     expect(groups.map((g) => g.memoryGb)).toEqual([64, 96, 128, 192]);
     const g128 = groups.find((g) => g.memoryGb === 128)!;
-    expect(g128.low).toBe(3215);
+    expect(g128.low).toBe(3499.99);
     expect(g128.high).toBe(3999);
+    expect(g128.rows.some((r) => r.boardOnly)).toBe(true);
     expect(g128.rangeIsPageRead).toBe(true);
     expect(groups.find((g) => g.memoryGb === 96)!.rangeIsPageRead).toBe(false);
     expect(g128.rows.every((r) => r.memoryGb === 128)).toBe(true);

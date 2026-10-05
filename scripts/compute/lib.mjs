@@ -4,8 +4,17 @@ import { join } from "node:path";
 
 export const FILES = ["sources", "silicon", "machines", "brands", "suppliers", "channels", "builds", "partners", "stack", "claims", "gaps", "supply", "workloads"];
 export const PRICE_EVIDENCE = ["page-read", "reported", "forum", "derived", "snippet"];
-export const CLAIM_TYPES = ["manufacturer-assertion", "independent-measurement", "inference", "market-data"];
+export const CLAIM_TYPES = ["manufacturer-assertion", "independent-measurement", "community-report", "inference", "market-data"];
 export const EDGE_EVIDENCE = ["documented", "inferred", "rumor"];
+
+const hostOf = (url) => {
+  try { return new URL(url).host.replace(/^www\./, "").toLowerCase(); } catch { return ""; }
+};
+export const isRealDate = (s, now = new Date()) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s ?? "")) return false;
+  const d = new Date(s + "T00:00:00Z");
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s && d <= now;
+};
 export const FRESH_DAYS = 30;
 
 export function loadData(dir) {
@@ -59,19 +68,30 @@ export function validate(data, { now = new Date() } = {}) {
     if (!ids.brands.has(m.brandId)) err(`machine ${m.id}: unknown brand ${m.brandId}`);
     if (m.siliconId && !ids.silicon.has(m.siliconId)) err(`machine ${m.id}: unknown silicon ${m.siliconId}`);
     if (!m.siliconId) warnings.push(`machine ${m.id}: no silicon mapped`);
+    const si = data.silicon.find((s) => s.id === m.siliconId);
+    if (si && m.memory.bandwidthGBs != null && si.memoryBandwidthGBs != null && m.memory.bandwidthGBs !== si.memoryBandwidthGBs) err(`machine ${m.id}: bandwidth ${m.memory.bandwidthGBs} GB/s disagrees with silicon ${si.id} (${si.memoryBandwidthGBs} GB/s)`);
+    if (si && m.memory.gb != null && si.maxMemoryGb != null && m.memory.gb > si.maxMemoryGb) err(`machine ${m.id}: ${m.memory.gb} GB exceeds the ${si.maxMemoryGb} GB maximum of silicon ${si.id}`);
     checkSources(`machine ${m.id}`, m.sourceIds);
     for (const l of m.llmEvidence) checkSources(`machine ${m.id} llm`, l.sourceIds);
     for (const p of m.prices) {
       const w = `machine ${m.id} price ${p.amount} ${p.currency}`;
       if (typeof p.amount !== "number" || p.amount <= 0) err(`${w}: amount must be a positive number`);
       if (!p.currency) err(`${w}: currency missing`);
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(p.verifiedOn ?? "")) err(`${w}: verifiedOn missing (a price without a date cannot be published)`);
+      if (!isRealDate(p.verifiedOn, now)) err(`${w}: verifiedOn must be a real past or present YYYY-MM-DD date (a price without a date cannot be published)`);
       if (!PRICE_EVIDENCE.includes(p.evidence)) err(`${w}: evidence must be one of ${PRICE_EVIDENCE.join(", ")}`);
-      const variantGb = /(\d+)\s?GB/i.exec(p.variant ?? "")?.[1];
+      const variantGb = /(\d+)\s?(?:GB|GiB)/i.exec(p.variant ?? "")?.[1];
       if (variantGb && m.memory.gb && Number(variantGb) !== m.memory.gb) err(`${w}: variant "${p.variant}" disagrees with the machine memory (${m.memory.gb} GB)`);
-      if (/amazon/i.test(p.merchant ?? "")) err(`${w}: Amazon prices are not stored (Associates terms limit how long they may be shown)`);
-      if (p.evidence === "page-read" && (!p.merchant || !p.region)) err(`${w}: page-read price needs merchant and region`);
-      if (p.evidence === "page-read" && !m.sourceIds.some((id) => sourceById.get(id)?.access === "opened")) err(`${w}: page-read price but no opened source on the machine`);
+      const priceSource = p.sourceId ? sourceById.get(p.sourceId) : null;
+      if (p.sourceId && !priceSource) err(`${w}: unresolved price source ${p.sourceId}`);
+      if (/amazon/i.test(p.merchant ?? "") || /amazon/i.test(p.merchantHost ?? "") || /amazon\./i.test(priceSource?.url ?? "")) err(`${w}: Amazon prices are not stored (Associates terms limit how long they may be shown)`);
+      if (p.evidence === "page-read") {
+        if (!p.merchant || !p.region) err(`${w}: page-read price needs merchant and region`);
+        if (!p.sourceId || !p.merchantHost) err(`${w}: page-read price needs its own sourceId and merchantHost`);
+        else if (priceSource) {
+          if (priceSource.access !== "opened") err(`${w}: page-read price cites ${p.sourceId}, which was not opened (access: ${priceSource.access})`);
+          if (!hostOf(priceSource.url).endsWith(p.merchantHost.toLowerCase())) err(`${w}: price source host ${hostOf(priceSource.url)} does not match merchantHost ${p.merchantHost}`);
+        }
+      }
       const age = (now - new Date(p.verifiedOn)) / 86400000;
       if (age > FRESH_DAYS) warnings.push(`${w}: ${Math.floor(age)} days old (over ${FRESH_DAYS})`);
     }
@@ -111,10 +131,14 @@ export function validate(data, { now = new Date() } = {}) {
 }
 
 // price helpers -------------------------------------------------------------
+// Tax basis first: a VAT-inclusive price is preferred over a tax-unknown one, which is
+// preferred over an ex-tax one, so one machine never headlines at its ex-VAT price.
+const taxRank = (p) => (p.includesTax === true ? 0 : p.includesTax === null ? 1 : 2);
 export function headlinePrice(machine, currency = "EUR") {
   const pool = machine.prices.filter((p) => p.evidence === "page-read" && p.currency === currency);
   if (!pool.length) return null;
-  return pool.reduce((a, b) => (b.amount < a.amount ? b : a));
+  const best = Math.min(...pool.map(taxRank));
+  return pool.filter((p) => taxRank(p) === best).reduce((a, b) => (b.amount < a.amount ? b : a));
 }
 
 export function fits(machine, workload) {
@@ -143,25 +167,28 @@ export function buildGraph(data, hash) {
   for (const o of ["windows", "linux", "macos"]) add("os", o, o);
   for (const w of data.workloads) add("workload", w.id, w.name, { kind: w.kind });
   const edge = (from, to, rel, evidence, extra = {}) => edges.push({ from, to, rel, evidence, ...extra });
-  const brandSilicon = new Set();
+  const brandSilicon = new Map();
+  // An edge is only "documented" when its machine or brand record cites a source; otherwise "unsourced".
+  const proof = (ids) => ((ids ?? []).length ? "documented" : "unsourced");
   for (const m of data.machines) {
-    edge(`machine:${m.id}`, `brand:${m.brandId}`, "made-by", "documented");
+    const ev = proof(m.sourceIds);
+    edge(`machine:${m.id}`, `brand:${m.brandId}`, "made-by", ev, { sourceIds: m.sourceIds });
     if (m.siliconId) {
-      edge(`machine:${m.id}`, `silicon:${m.siliconId}`, "uses", "documented");
-      brandSilicon.add(`${m.brandId}|${m.siliconId}`);
+      edge(`machine:${m.id}`, `silicon:${m.siliconId}`, "uses", ev, { sourceIds: m.sourceIds });
+      brandSilicon.set(`${m.brandId}|${m.siliconId}`, m.sourceIds);
     }
-    for (const os of m.os) edge(`machine:${m.id}`, `os:${os}`, "runs", "documented");
+    for (const os of m.os) edge(`machine:${m.id}`, `os:${os}`, "runs", "inferred", { sourceIds: [] });
     for (const w of data.workloads) {
       const f = fits(m, w);
-      if (f) edge(`machine:${m.id}`, `workload:${w.id}`, "fits-capacity", "inferred");
+      if (f) edge(`machine:${m.id}`, `workload:${w.id}`, "fits-capacity", "inferred", { sourceIds: w.sourceIds });
     }
   }
-  for (const key of brandSilicon) {
+  for (const [key, ids] of brandSilicon) {
     const [b, s] = key.split("|");
-    edge(`brand:${b}`, `silicon:${s}`, "ships", "documented");
+    edge(`brand:${b}`, `silicon:${s}`, "ships", proof(ids), { sourceIds: ids });
   }
-  for (const b of data.brands) for (const c of b.channels) edge(`brand:${b.id}`, `channel:${c}`, "sold-via", "documented");
-  for (const e of data.supply) edge(`${e.fromType}:${e.fromId}`, `supplier:${e.supplierId}`, e.part, e.evidence, { note: e.note });
+  for (const b of data.brands) for (const c of b.channels) edge(`brand:${b.id}`, `channel:${c}`, "sold-via", proof(data.channels.find((x) => x.id === c)?.sourceIds), { sourceIds: data.channels.find((x) => x.id === c)?.sourceIds ?? [] });
+  for (const e of data.supply) edge(`${e.fromType}:${e.fromId}`, `supplier:${e.supplierId}`, e.part, e.evidence, { note: e.note, sourceIds: e.sourceIds });
   const nodeIds = new Set(nodes.map((n) => n.id));
   for (const e of edges) if (!nodeIds.has(e.from) || !nodeIds.has(e.to)) throw new Error(`graph edge endpoint missing: ${e.from} -> ${e.to}`);
   return { schemaVersion: 1, dataHash: hash, nodeCount: nodes.length, edgeCount: edges.length, nodes, edges };
@@ -184,11 +211,13 @@ export function renderIndex(data, graph) {
   L.push("");
   L.push("| Tag | Meaning |");
   L.push("|---|---|");
-  L.push("| documented | A page we opened states it (manufacturer page, teardown, review, community wiki where named) |");
+  L.push("| documented | A record cites an opened source that states it (manufacturer page, teardown, review, or a community wiki where named) |");
   L.push("| inferred | Our reasoning from documented facts |");
   L.push("| rumor | Reported, not confirmed by an opened primary source |");
-  L.push("| page-read price | Read from a merchant or manufacturer page on the date shown |");
+  L.push("| unsourced | A graph edge whose record cites no source |");
+  L.push("| page-read price | Read from a merchant, manufacturer or price-comparison listing page whose host matches the merchant, opened on the date shown; the price record names that page |");
   L.push("| reported / forum / derived / snippet price | Not shown as a headline price: second-hand, forum post, arithmetic, or search-result text |");
+  L.push("| community-report claim | A community wiki, forum or aggregate; it is attributed, not treated as an independent measurement |");
   L.push("");
   L.push("## Supply lineage");
   L.push("");
@@ -250,7 +279,7 @@ export function renderIndex(data, graph) {
       .map((l) => `${l.model}${l.quant && !/unspecified|not stated/.test(l.quant) ? " " + l.quant : ""} ${l.tokensPerSecond} t/s${l.source === "manufacturer" ? " [mfr]" : ""}`)
       .join("; ") || "none verified";
     const eurGb = p && gb && p.currency === "EUR" ? Math.round(p.amount / gb) : "n/v";
-    L.push(`| ${m.model} | ${mem} | ${bw} | ${p ? `${money(p)}${p.kind === "promo" ? " sale" : ""} (${taxLabel(p)}, ${p.merchant}, ${p.verifiedOn})` : "none page-read"} | ${eurGb} | ${rep} | ${llm} |`);
+    L.push(`| ${m.model}${m.kind === "board" ? " (board only)" : ""} | ${mem} | ${bw} | ${p ? `${money(p)}${p.kind === "promo" ? " sale" : ""} (${taxLabel(p)}, ${p.merchant}, ${p.verifiedOn})` : "none page-read"} | ${eurGb} | ${rep} | ${llm} |`);
   }
   L.push("");
   L.push("Price notes: `n/v` means not verified. A price on this page is a snapshot from the named merchant on the named date, never a current offer. Amazon prices are not stored. EUR per GB uses the cheapest page-read EUR price for the stated memory size; sale prices are marked. Variant and memory must agree or the record fails validation.");
@@ -263,7 +292,7 @@ export function renderIndex(data, graph) {
   L.push(`| Machine | ${wl.map((w) => w.id).join(" | ")} |`);
   L.push(`|---|${wl.map(() => "---").join("|")}|`);
   for (const m of sold) {
-    L.push(`| ${m.model} | ${wl.map((w) => { const f = fits(m, w); return f === null ? "n/v" : f ? "yes" : "no"; }).join(" | ")} |`);
+    L.push(`| ${m.model}${m.kind === "board" ? " (board only)" : ""} | ${wl.map((w) => { const f = fits(m, w); return f === null ? "n/v" : f ? "yes" : "no"; }).join(" | ")} |`);
   }
   L.push("");
   L.push("## Channels");
