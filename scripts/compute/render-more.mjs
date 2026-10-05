@@ -1,3 +1,5 @@
+import { planAll, NODE_CLASSES } from "./plan.mjs";
+
 const HEADER = (title, hash, blurb) => [
   `# ${title}`,
   "",
@@ -153,9 +155,37 @@ export function renderExpansion(data, hash) {
   return L.join("\n");
 }
 
+
+export function renderStackPlan(data, hash) {
+  const L = HEADER("Stack planner: memory, VRAM and nodes for each stage", hash, "Resource totals for four stages of growth, from the constants in `workload-model.json` and the scenarios in `scenarios.json`. Each line says whether its basis is documented, measured, derived or an estimate. The estimates dominate; replace them with a node's own heartbeat data after a week. Fit means memory capacity only: speed, thermals and software support are separate (see the other documents).");
+  const money = (p) => (p ? `EUR ${p.amount.toLocaleString("en-US", { maximumFractionDigits: 2 })} (${p.model}, ${p.tax})` : "no page-read price");
+  for (const p of planAll(data)) {
+    L.push(`## ${p.name}`, "", p.description, "");
+    L.push("| Item | Count | Low GB | High GB | Basis |", "|---|---|---|---|---|");
+    for (const l of p.lines) L.push(`| ${l.item} | ${l.count} | ${l.low} | ${l.high} | ${l.basis} |`);
+    L.push(`| Operating system and services | 1 | ${p.osAndServices} | ${p.osAndServices} | measured |`, `| Free-RAM floor | 1 | ${p.floorGb} | ${p.floorGb} | policy |`);
+    L.push("", `One node needs ${p.oneNode.low} to ${p.oneNode.high} GB including the floor.`, "");
+    L.push("| Memory class | Fits at the low estimate | Fits at the high estimate | Cheapest page-read system | Cheapest with 256 GB/s or more (model-capable) |", "|---|---|---|---|---|");
+    for (const f of p.fits) L.push(`| ${f.classGb} GB | ${f.fitsLow ? "yes" : "no"} | ${f.fitsHigh ? "yes" : "no"} | ${money(f.cheapestPageRead)} | ${money(f.cheapestModelCapable)} |`);
+    if (p.split) {
+      L.push("", `Two nodes: agents and business apps need ${p.split.nodeA.low}-${p.split.nodeA.high} GB (${p.split.nodeA.classGb ?? "more than 192"} GB class); the model and RAG node needs ${p.split.nodeB.low}-${p.split.nodeB.high} GB (${p.split.nodeB.classGb ?? "more than 192"} GB class). Cheapest page-read for the agent node: ${money(p.split.nodeA.cheapestPageRead)}. Cheapest model-capable (256 GB/s or more) for the model node: ${money(p.split.nodeB.cheapestPageRead)}.`);
+    }
+    if (p.gpu.jobs.length) {
+      L.push("", "GPU queue (jobs run one at a time, so the card must hold the largest):", "");
+      for (const j of p.gpu.jobs) L.push(`- ${j.name}: ${j.gb} GB (${j.basis})`);
+      L.push("", `Required VRAM: ${p.gpu.vramRequired} GB, which points to a ${p.gpu.tier}.`);
+      if (p.gpu.candidates.length) L.push("", "Cards with enough VRAM in the research (EU prices are unverified unless stated):", "", ...p.gpu.candidates.map((g) => `- ${g.id}: ${g.vramGb} GB, ${g.bandwidthGBs ?? "bandwidth not found"} GB/s, ${g.tdpWatts ?? "TGP not found"} W, EU price verified: ${g.euPriceVerified ? "yes" : "no"}`));
+    }
+    L.push("");
+  }
+  L.push("## Reading these numbers", "", "- Unified-memory machines share one pool between the system and the model, so system and model memory add up.", "- A memory class that fits only at the low estimate is a risk, not a plan.", "- Langfuse's documented 16 GiB is the largest single line; running it on another small node or using a hosted option changes the result.", "- GPU jobs are sized by VRAM only. A card that fits a job can still be slow.", "- Estimates come from one profile of a laptop and must be replaced by the node's own measurements.", "");
+  return L.join("\n");
+}
+
 export const EXTRA_DOCS = [
   ["COMPANY-FUNDAMENTALS.md", renderCompanies],
   ["REVIEWS.md", renderReviews],
   ["VERIFICATION-LOG.md", renderVerification],
-  ["EXPANSION-PATHS.md", renderExpansion]
+  ["EXPANSION-PATHS.md", renderExpansion],
+  ["STACK-PLANNER.md", renderStackPlan]
 ];

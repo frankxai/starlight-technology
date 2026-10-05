@@ -2,7 +2,8 @@ import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 
-export const FILES = ["sources", "silicon", "machines", "brands", "suppliers", "channels", "builds", "partners", "stack", "claims", "gaps", "supply", "workloads", "fundamentals", "reviews", "expansion", "verification"];
+export const FILES = ["sources", "silicon", "machines", "brands", "suppliers", "channels", "builds", "partners", "stack", "claims", "gaps", "supply", "workloads", "fundamentals", "reviews", "expansion", "verification", "research", "workload-model", "scenarios"];
+export const MODEL_BASIS = ["documented", "measured", "derived", "estimate", "policy"];
 export const VERIFY_STATUS = ["verified", "partially-verified", "refuted", "unverifiable"];
 export const GAP_STATUS = ["open", "partial", "closed"];
 export const UNIT_SOURCE = ["bought", "loaned by maker", "unknown"];
@@ -205,6 +206,30 @@ export function validate(data, { now = new Date() } = {}) {
     for (const id of c.sourceIds ?? []) if (!allowed.has(id)) err(`consensus ${k}: cites ${id}, which is not a review or owner report of ${k}`);
   }
   walkSources("expansion", data.expansion);
+  walkSources("research", data.research);
+  const wm = data["workload-model"];
+  const checkUnit = (where, u) => {
+    if (!MODEL_BASIS.includes(u.basis ?? "")) err(`workload model ${where}: basis must be one of ${MODEL_BASIS.join(", ")}`);
+    if (u.low != null && u.high != null && !(u.low <= u.high)) err(`workload model ${where}: low must not exceed high`);
+    if (u.basis === "documented") {
+      if (!(u.sourceIds ?? []).some((id) => sourceById.get(id)?.access === "opened")) err(`workload model ${where}: a documented constant needs an opened source`);
+    }
+    checkSources(`workload model ${where}`, u.sourceIds);
+  };
+  for (const [k, u] of Object.entries(wm.ram)) checkUnit(k, u);
+  for (const [k, u] of Object.entries(wm.vramJobs)) checkUnit(k, { ...u, low: u.gb, high: u.gb });
+  checkUnit("odoo", wm.odoo);
+  const modelIds = new Set(data.workloads.filter((w) => w.kind === "local-llm").map((w) => w.id));
+  const scIds = new Set();
+  for (const s of data.scenarios.scenarios) {
+    if (scIds.has(s.id)) err(`scenario ${s.id}: duplicate id`);
+    scIds.add(s.id);
+    if (s.localModel && !modelIds.has(s.localModel)) err(`scenario ${s.id}: unknown local model ${s.localModel}`);
+    for (const j of s.gpuJobs ?? []) if (!wm.vramJobs[j]) err(`scenario ${s.id}: unknown GPU job ${j}`);
+    for (const k of ["agentSessions", "headlessBrowsers", "linuxDesktops", "windowsVms", "concurrentBuilds", "odooUsers", "ragMillionChunks"]) if (!(Number.isFinite(s[k]) && s[k] >= 0)) err(`scenario ${s.id}: ${k} must be a non-negative number`);
+    if (!["none", "same-node", "elsewhere"].includes(s.langfuse)) err(`scenario ${s.id}: langfuse must be none, same-node or elsewhere`);
+  }
+  for (const [name, topic] of Object.entries(data.research.topics ?? {})) if ("sources" in topic) err(`research ${name}: sources belong in sources.json, not inside the topic`);
 
   // ---- verification log
   const itemIds = new Set();

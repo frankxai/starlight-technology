@@ -3368,5 +3368,1918 @@
     "primary": true,
     "access": "opened",
     "note": "No results"
+  },
+  {
+    "id": "gm-s03",
+    "title": "Minisforum MS-S1 Max review (ServeTheHome, page 4)",
+    "publisher": "ServeTheHome",
+    "url": "https://www.servethehome.com/minisforum-ms-s1-max-review-the-best-ryzen-ai-max-mini-pc-yet/4/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Author Ryan Smith, 14 Jan 2026 per fetch. Unit provenance not stated in the fetched page."
+  },
+  {
+    "id": "gm-s04",
+    "title": "GMKtec EVO-X2 vs Minisforum MS-S1 Max 2026 (RunAIHome)",
+    "publisher": "runaihome.com",
+    "url": "https://runaihome.com/blog/minisforum-ms-s1-max-vs-evo-x2-2026/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Aggregator, 12 Sep 2026; cites Notebookcheck, STH, Tom's Hardware, NASCompares, AkitaOnRails; did not state it bought units. Secondary source for noise numbers and prices."
+  },
+  {
+    "id": "gm-s05",
+    "title": "GMKtec EVO-X2 vs Minisforum MS-S1 Max (MiniPCLab)",
+    "publisher": "minipclab.com",
+    "url": "https://minipclab.com/blog/gmktec-evo-x2-vs-minisforum-ms-s1-max",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Comparison blog; no measured data seen on the fetched page; unit testing not stated."
+  },
+  {
+    "id": "gm-s06",
+    "title": "GMKtec EVO X2 Mini-PC local AI test",
+    "publisher": "China-Gadgets.de",
+    "url": "https://www.china-gadgets.de/gmktec-evo-x2-mini-pc-lokale-ki-test/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Reviewer Thommy, Sep 2026 per fetch; 64GB unit; unit source not stated in fetched summary (German outlet that typically receives samples, unverified)."
+  },
+  {
+    "id": "gm-s07",
+    "title": "GMKtec EVO-X1 PRO BIOS update / Windows KB5101684 startup freeze",
+    "publisher": "GMKtec",
+    "url": "https://www.gmktec.com/blogs/news/evo-x1-pro-bios-update-how-to-fix-startup-freeze-after-windows-kb5101684",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Maker post, 15 Aug 2026. EVO-X1 PRO, not Strix Halo."
+  },
+  {
+    "id": "gm-s08",
+    "title": "Minisforum accused of ignoring AMD BIOS security fix on 2021 mini PC",
+    "publisher": "Notebookcheck (ES)",
+    "url": "https://www.notebookcheck.org/Se-acusa-a-Minisforum-de-ignorar-la-propia-correccion-de-seguridad-de-la-BIOS-de-AMD-en-un-mini-PC-de-2021.1393292.0.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Published about 9 Aug 2026; single Reddit user's unverified claim about HM80; Minisforum made no public statement."
+  },
+  {
+    "id": "gm-s14",
+    "title": "Minisforum homepage",
+    "publisher": "Minisforum",
+    "url": "https://www.minisforum.com/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Lists MS-S1 MAX-P495 as 'New Flagship Configuration' with Ryzen AI Max+ Pro 495; no price or product URL visible."
+  },
+  {
+    "id": "gm-s17",
+    "title": "Strix Halo wiki: Minisforum MS-S1 MAX",
+    "publisher": "strixhalo.wiki (community)",
+    "url": "https://strixhalo.wiki/Hardware/PCs/Minisforum_MS-S1_MAX/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Community wiki: 10G NIC instability on old Linux kernels, conservative fan curve, different EC than AXB35-02."
+  },
+  {
+    "id": "gm-s18",
+    "title": "Strix Halo wiki: replacing thermal interfaces on EVO-X2",
+    "publisher": "strixhalo.wiki (community)",
+    "url": "https://strixhalo.wiki/Guides/Sixunited_AXB35/Replacing_Thermal_Interfaces_On_GMKtec_EVO-X2/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Guide exists; fetched text does not claim stock TIM is faulty, only mentions PTM7950 may improve over days."
+  },
+  {
+    "id": "gm-s19",
+    "title": "GitHub: raimondomartire/ms-s1-max-fans-control",
+    "publisher": "GitHub",
+    "url": "https://github.com/raimondomartire/ms-s1-max-fans-control",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Seen only as a GitHub search result (4 stars, updated Sep 5); repo page itself not opened."
+  },
+  {
+    "id": "gm-s22",
+    "title": "minisforumpc.eu Trustpilot",
+    "publisher": "Trustpilot",
+    "url": "https://www.trustpilot.com/review/minisforumpc.eu",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "4.7 on 35 reviews; page also mentions a related Minisforum store at 4.7 with 2K reviews, minisforumeu.com 4.5 on 15, and a German site at 2.4."
+  },
+  {
+    "id": "gm-s25",
+    "title": "Minisforum refund policy (global)",
+    "publisher": "Minisforum",
+    "url": "https://www.minisforum.com/policies/refund-policy",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "30 days (14 for EU), no restocking fee mentioned, placeholder '[INSERT RETURN ADDRESS]' left in policy."
+  },
+  {
+    "id": "gm-s28",
+    "title": "Search snippet: EVO-X2 UEFI dbx update problem on Linux (Reddit)",
+    "publisher": "Reddit via search summary",
+    "url": "https://redlib.hbubli.cc/user/UnsilentObserver",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Reddit blocked for fetch; one user reported fwupd UEFI dbx update failing on EVO-X2 with updated BIOS. Snippet only, single user."
+  },
+  {
+    "id": "mp-s01",
+    "title": "Wan 2.2 ComfyUI tutorial",
+    "publisher": "ComfyUI docs",
+    "url": "https://docs.comfy.org/tutorials/video/wan/wan2_2",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Only VRAM claim: 5B hybrid TI2V fits 8GB with native offloading. No 14B VRAM or timing numbers on page. 14B offered in fp8 scaled and fp16."
+  },
+  {
+    "id": "mp-s02",
+    "title": "Lightricks/LTX-Video model card",
+    "publisher": "Hugging Face",
+    "url": "https://huggingface.co/Lightricks/LTX-Video",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Claims real-time 30 FPS at 1216x704; works best under 720x1280; 24 FPS output; 13B, 13B distilled, 2B distilled variants; custom open-weights licence. No numeric VRAM on the page as read."
+  },
+  {
+    "id": "mp-s03",
+    "title": "tencent/HunyuanVideo model card",
+    "publisher": "Hugging Face",
+    "url": "https://huggingface.co/tencent/HunyuanVideo",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "13B+ params; 60GB at 720p x129 frames, 45GB at 540p x129; FP8 weights save about 10GB."
+  },
+  {
+    "id": "mp-s04",
+    "title": "Qwen-Image ComfyUI tutorial",
+    "publisher": "ComfyUI docs",
+    "url": "https://docs.comfy.org/tutorials/image/qwen/qwen-image",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "RTX 4090D 24GB: fp8 ~94s first / ~71s second gen; fp8+Lightning LoRA ~55s / ~34s; distilled fp8 ~69s / ~36s; VRAM ~86%. bf16 40.9GB, fp8 20.4GB."
+  },
+  {
+    "id": "mp-s06",
+    "title": "NVIDIA developer forum: Image-to-video on Spark vs PC",
+    "publisher": "NVIDIA Developer Forums (user thread)",
+    "url": "https://forums.developer.nvidia.com/t/image-to-video-generation-using-the-spark-vs-pc/370077",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "User report, not a lab benchmark. Wan 2.2 TI2V-5B fp16, 1280x704, 24fps, 30 steps: Spark native pipeline 30+ min per 5s clip; Spark via ComfyUI 14.1 min warm; PC with RTX 5070 12GB ~3 min. Bandwidth 273 GB/s vs ~672 GB/s."
+  },
+  {
+    "id": "mp-s07",
+    "title": "The DGX Spark and the Reality of Local AI Hardware in 2026",
+    "publisher": "starryhope.com (third-party blog)",
+    "url": "https://www.starryhope.com/ai/dgx-spark-local-ai-hardware-landscape/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "128GB unified, 273 GB/s, MSRP raised to $4,699 Feb 2026 (blog claim). Spark 2.5x faster than Strix Halo on FLUX.1 Dev; ~3 min for 720p LTX-2 clip, Strix Halo hit compatibility errors."
+  },
+  {
+    "id": "mp-s08",
+    "title": "ComfyUI video gen workflow playbook (DGX)",
+    "publisher": "NVIDIA build.nvidia.com",
+    "url": "https://build.nvidia.com/playbooks/comfyui/video-gen-workflow",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Peak GPU memory tiers ~80GB (Wan 720p), ~100GB (FLUX to Wan graph), ~120GB (Hunyuan 1080p / long clips). FLUX text-to-image roughly 15-30 s at defaults on high-memory hardware."
+  },
+  {
+    "id": "mp-s09",
+    "title": "RTX AI Garage: ComfyUI with Wan, Qwen, Flux Krea",
+    "publisher": "NVIDIA blog",
+    "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-comfyui-wan-qwen-flux-krea-remix/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Vendor marketing. RTX 5090 runs Qwen-Image 7x and FLUX.1 Krea 8x faster than Apple M3 Ultra; TensorRT/quantised FLUX can use 50-70% less VRAM. No absolute seconds or VRAM."
+  },
+  {
+    "id": "mp-s11",
+    "title": "Flux.1 text-to-image ComfyUI tutorial",
+    "publisher": "ComfyUI docs",
+    "url": "https://docs.comfy.org/tutorials/flux/flux-1-text-to-image",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Dev ~23GB fp16 file, 12B; schnell 4 steps; fp8 checkpoints for low VRAM. No numeric VRAM threshold stated."
+  },
+  {
+    "id": "mp-s12",
+    "title": "QwenLM/Qwen-Image repository",
+    "publisher": "GitHub / Alibaba Qwen",
+    "url": "https://github.com/QwenLM/Qwen-Image",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Apache 2.0, 20B MMDiT; 4GB minimum VRAM claimed with layer-by-layer offload."
+  },
+  {
+    "id": "mp-s13",
+    "title": "Lightricks/LTX-2 repository",
+    "publisher": "GitHub",
+    "url": "https://github.com/Lightricks/LTX-2",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Synchronized audio+video; 1024x1536@24fps default; fp8-cast quantisation with CPU/disk offload; DistilledPipeline fastest (8+4 steps). No numeric VRAM minimum on page."
+  },
+  {
+    "id": "mp-s14",
+    "title": "Gemini API pricing",
+    "publisher": "Google AI for Developers",
+    "url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Veo 3.1 per second: Standard $0.40 (720p/1080p), $0.60 4K; Fast $0.10/$0.12/$0.30; Lite $0.05/$0.08. Gemini 3.1 Flash Image: $0.045 (0.5K), $0.067 (1K), $0.101 (2K), $0.151 (4K). Flash Lite Image 1K $0.0336. Batch 50%."
+  },
+  {
+    "id": "mp-s15",
+    "title": "xAI models and pricing",
+    "publisher": "xAI docs",
+    "url": "https://docs.x.ai/docs/models",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "grok-imagine-image $0.02, -2.0 $0.04, -quality $0.05 per image. Video: grok-imagine-video-1.5 $0.080/s, -1.5-lite $0.020/s, grok-imagine-video $0.050/s."
+  },
+  {
+    "id": "mp-s16",
+    "title": "OpenAI API pricing",
+    "publisher": "OpenAI",
+    "url": "https://developers.openai.com/api/docs/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "tts-1 $15.00/1M chars, tts-1-hd $30.00/1M chars. Per-image gpt-image cost not listed on the page (points to calculator); Sora not listed."
+  },
+  {
+    "id": "mp-s17",
+    "title": "OpenAI video generation guide",
+    "publisher": "OpenAI",
+    "url": "https://developers.openai.com/api/docs/guides/video-generation",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "States Sora 2 models and Videos API were discontinued 2026-09-24."
+  },
+  {
+    "id": "mp-s18",
+    "title": "Runway API pricing",
+    "publisher": "Runway",
+    "url": "https://docs.dev.runwayml.com/guides/pricing/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "$0.01 per credit. Gen-4.5 12 credits/s; Gen4 Image Turbo 2 credits/image; Gemini Image 3.1 Flash 5-16 credits; GPT Image 2.5 1-76 credits; WAN3 5-20 credits/s; Gemini Omni Flash 1.1 3.4-30 credits/s; Seedance 2.5 20-68 credits/s plus input fees."
+  },
+  {
+    "id": "mp-s19",
+    "title": "ElevenLabs API pricing",
+    "publisher": "ElevenLabs",
+    "url": "https://elevenlabs.io/pricing/api",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "v3 $0.08/1K chars; Flash/Turbo $0.04/1K; v4 $0.022/1K promo until Oct 12 (regular $0.08); v4 Turbo $0.011/1K promo (regular $0.04). Subscriptions from Starter $6/month (first month $1)."
+  },
+  {
+    "id": "mp-s20",
+    "title": "Luma API pricing",
+    "publisher": "Luma AI",
+    "url": "https://lumalabs.ai/api/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Ray3.2 text/image-to-video 5s clip $0.15-$1.20 by resolution; Uni-1.1 image 2K $0.0404, Max $0.1000; HDR 2x."
+  },
+  {
+    "id": "mp-s21",
+    "title": "OpenArt pricing",
+    "publisher": "OpenArt",
+    "url": "https://openart.ai/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Starter $13/mo 4,000 credits (~4,000 images or ~50 videos); Plus $27 12,000 credits (commercial use); Pro $44 24,000 credits (~300 videos); Wonder $175 106,000 credits. Annual discounts listed."
+  },
+  {
+    "id": "mp-s22",
+    "title": "HeyGen pricing",
+    "publisher": "HeyGen",
+    "url": "https://www.heygen.com/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Free; Creator $29/mo 600 credits; Pro $49/mo 1,000 credits; Business $149/mo + $20/seat. Credit-to-minute conversion not on page as read. API per-minute price not retrievable."
+  },
+  {
+    "id": "mp-s23",
+    "title": "Synthesia pricing",
+    "publisher": "Synthesia",
+    "url": "https://www.synthesia.io/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Starter $29/mo monthly (~12 min/month) or $18/mo annual; Pro $89/mo (~60 min) or $64/mo annual; Free 10 minutes; Enterprise custom."
+  },
+  {
+    "id": "mp-s24",
+    "title": "Higgsfield pricing page",
+    "publisher": "Higgsfield",
+    "url": "https://higgsfield.ai/pricing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "WebFetch returned only metadata, no price table. No Higgsfield figures recorded. Standing ban on Higgsfield tools respected (public page only)."
+  },
+  {
+    "id": "mp-s25",
+    "title": "HyperFrames repository",
+    "publisher": "HeyGen / GitHub",
+    "url": "https://github.com/heygen-com/hyperframes",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Apache 2.0, HTML to deterministic MP4 via headless Chrome + FFmpeg, Node 22+; media skill covers TTS, transcription, background removal."
+  },
+  {
+    "id": "mp-s26",
+    "title": "Remotion license (company licence page)",
+    "publisher": "Remotion",
+    "url": "https://www.remotion.pro/license",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Free for individuals and companies up to 3 people; Automators $0.01/render with $100/month minimum; Creators $25/month per seat."
+  },
+  {
+    "id": "mp-s27",
+    "title": "openai/whisper repository",
+    "publisher": "GitHub / OpenAI",
+    "url": "https://github.com/openai/whisper",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT. VRAM: tiny/base ~1GB, small ~2GB, medium ~5GB, turbo ~6GB (8x), large ~10GB (1x)."
+  },
+  {
+    "id": "mp-s28",
+    "title": "FFmpeg legal",
+    "publisher": "FFmpeg",
+    "url": "https://ffmpeg.org/legal.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "LGPL 2.1+, GPL if GPL components enabled; patent caution for commercial MPEG use."
+  },
+  {
+    "id": "mp-s29",
+    "title": "YouTube Partner Program eligibility",
+    "publisher": "YouTube Help",
+    "url": "https://support.google.com/youtube/answer/72851",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "1,000 subs + 4,000 public watch hours (12 mo) OR 1,000 subs + 10M public Shorts views (90 days); Shorts views do not count to 4,000 hours; review ~1 month."
+  },
+  {
+    "id": "mp-s30",
+    "title": "YouTube channel monetization policies",
+    "publisher": "YouTube Help",
+    "url": "https://support.google.com/youtube/answer/1311392",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Content must be original and authentic; not mass-produced, generic or repetitive; AI personas posing as experts on health/legal/financial/political topics cannot monetise."
+  },
+  {
+    "id": "mp-s31",
+    "title": "YouTube inauthentic content policy (same page, hl=en)",
+    "publisher": "YouTube Help",
+    "url": "https://support.google.com/youtube/answer/1311392?hl=en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Since July 15, 2025 'repetitious' renamed 'inauthentic'. AI templates giving a mass-production impression, templated repeat scenarios and slideshow/scrolling-text with minimal narrative violate; series stay eligible if each video is materially varied."
+  },
+  {
+    "id": "mp-s32",
+    "title": "NVIDIA/RTX Wan 2.2 search results (RTX 5090, Fal 9-minute 4090 claim)",
+    "publisher": "WebSearch result snippets",
+    "url": "https://blogs.nvidia.com/?p=84623",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Snippet-level only: a Fal guide reportedly benchmarks TI2V-5B at ~9 min per 5s 720p clip on RTX 4090 (matches Wan README under-9-minutes claim, mp-s05). Treat as corroboration only."
+  },
+  {
+    "id": "pc-s01",
+    "title": "YouTube Help: Disclosing use of altered or synthetic content",
+    "publisher": "Google / YouTube",
+    "url": "https://support.google.com/youtube/answer/14328491",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Fetched through a summarising fetch tool; quotes are the tool's quoted fragments."
+  },
+  {
+    "id": "pc-s03",
+    "title": "YouTube Help: YouTube Partner Program overview and eligibility",
+    "publisher": "Google / YouTube",
+    "url": "https://support.google.com/youtube/answer/72857",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Thresholds only; no Netherlands-specific text returned."
+  },
+  {
+    "id": "pc-s04",
+    "title": "YouTube Help: Paid product placements, sponsorships and endorsements",
+    "publisher": "Google / YouTube",
+    "url": "https://support.google.com/youtube/answer/154235",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "pc-s05",
+    "title": "TikTok Newsroom: New labels for disclosing AI-generated content (19 Sep 2023)",
+    "publisher": "TikTok",
+    "url": "https://newsroom.tiktok.com/en-us/new-labels-for-disclosing-ai-generated-content",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Dated 2023; current policy text on TikTok support/community guidelines pages did not render."
+  },
+  {
+    "id": "pc-s06",
+    "title": "TikTok Newsroom: Partnering with our industry to advance AI transparency and literacy (9 May 2024)",
+    "publisher": "TikTok",
+    "url": "https://newsroom.tiktok.com/en-us/partnering-with-our-industry-to-advance-ai-transparency-and-literacy",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "C2PA Content Credentials auto-labeling announcement."
+  },
+  {
+    "id": "pc-s07",
+    "title": "TikTok Community Guidelines: Integrity and authenticity",
+    "publisher": "TikTok",
+    "url": "https://www.tiktok.com/community-guidelines/en/integrity-authenticity",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Page is JS-rendered; only the section headings came back (edited media and AI-generated content, deepfakes, public figures, minors, unoriginal content). No operative text read."
+  },
+  {
+    "id": "pc-s08",
+    "title": "TikTok Support: AI-generated content (redirect target faq_detail?id=7636670084747893268)",
+    "publisher": "TikTok",
+    "url": "https://www.tiktok.com/support/faq_detail?id=7636670084747893268",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Rendered only the heading 'TikTok Support'. Content unreadable."
+  },
+  {
+    "id": "pc-s09",
+    "title": "TikTok Creator Academy: Creator Rewards Program",
+    "publisher": "TikTok",
+    "url": "https://www.tiktok.com/creator-academy/en/article/creator-rewards-program",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "No eligibility numbers or originality rules returned. Gap."
+  },
+  {
+    "id": "pc-s10",
+    "title": "TikTok music usage confirmation",
+    "publisher": "TikTok",
+    "url": "https://www.tiktok.com/legal/page/global/music-usage-confirmation/en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Only the confirmation-dialog wording was returned."
+  },
+  {
+    "id": "pc-s11",
+    "title": "Meta: Labeling AI-Generated Images on Facebook, Instagram and Threads (Feb 2024)",
+    "publisher": "Meta",
+    "url": "https://about.fb.com/news/2024/02/labeling-ai-generated-images-on-facebook-instagram-and-threads/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "2024 announcement; may be superseded by later help-centre text that did not load."
+  },
+  {
+    "id": "pc-s12",
+    "title": "Meta: Our approach to labeling AI-generated content and manipulated media (Apr 2024)",
+    "publisher": "Meta",
+    "url": "https://about.fb.com/news/2024/04/metas-approach-to-labeling-ai-generated-content-and-manipulated-media/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "'Made with AI' renamed 'AI info'."
+  },
+  {
+    "id": "pc-s13",
+    "title": "Instagram Help Center / Meta Transparency Center / Meta creators originality page",
+    "publisher": "Meta",
+    "url": "https://creators.facebook.com/originality",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Instagram help (761121479017865) and Transparency Center (manipulated media) returned only headers; creators.facebook.com/originality returned 404. Meta monetisation originality rules unverified."
+  },
+  {
+    "id": "pc-s14",
+    "title": "EU AI Act Service Desk: Article 50",
+    "publisher": "European Commission",
+    "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Commission-run reproduction of the Regulation text; fetch tool paraphrased most paragraphs and quoted fragments."
+  },
+  {
+    "id": "pc-s15",
+    "title": "EU AI Act Service Desk: Article 113",
+    "publisher": "European Commission",
+    "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Consolidated text; shows 2 August 2026 general application."
+  },
+  {
+    "id": "pc-s16",
+    "title": "Regulation (EU) 2026/1744 (Digital Omnibus on AI), OJ 24 July 2026",
+    "publisher": "EUR-Lex / Official Journal",
+    "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Title, date and recital 38 (four-month transitional period) read. Operative article text was truncated, so the exact 2 December 2026 date is confirmed only by secondary sources."
+  },
+  {
+    "id": "pc-s17",
+    "title": "European Commission: Code of Practice on Transparency of AI-generated Content",
+    "publisher": "European Commission",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Timeline and signatory count."
+  },
+  {
+    "id": "pc-s18",
+    "title": "Usercentrics: EU AI Act Digital Omnibus now in force",
+    "publisher": "Usercentrics",
+    "url": "https://usercentrics.com/knowledge-hub/eu-ai-act-high-risk-delay-article-50-transparency-consent/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Secondary. Gives 2 December 2026 and entry into force 27 July 2026."
+  },
+  {
+    "id": "pc-s19",
+    "title": "Gibson Dunn: EU AI Act Omnibus Agreement",
+    "publisher": "Gibson Dunn",
+    "url": "https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Secondary law-firm note; pre-adoption wording."
+  },
+  {
+    "id": "pc-s20",
+    "title": "Regulation (EU) 2016/679 (GDPR)",
+    "publisher": "EUR-Lex",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "pc-s21",
+    "title": "EDPB Opinion 28/2024 on AI models and personal data",
+    "publisher": "EDPB",
+    "url": "https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Landing page only; concerns model development, not likeness in outputs."
+  },
+  {
+    "id": "pc-s22",
+    "title": "US Copyright Office: Copyright and Artificial Intelligence",
+    "publisher": "US Copyright Office",
+    "url": "https://www.copyright.gov/ai/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Part 2 published 29 Jan 2025."
+  },
+  {
+    "id": "pc-s23",
+    "title": "US Copyright Office NewsNet 1060 (29 Jan 2025)",
+    "publisher": "US Copyright Office",
+    "url": "https://www.copyright.gov/newsnet/2025/1060.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Quoted conclusions. The Part 2 report PDF itself returned unrelated binary, so was not read."
+  },
+  {
+    "id": "pc-s24",
+    "title": "Directive 2005/29/EC (Unfair Commercial Practices), Annex I point 11 and Article 7",
+    "publisher": "EUR-Lex",
+    "url": "https://eur-lex.europa.eu/eli/dir/2005/29/oj/eng",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Fetch tool paraphrased Article 7(2); Annex I(11) quoted."
+  },
+  {
+    "id": "pc-s26",
+    "title": "Stichting Reclame Code: Bijzondere reclamecodes",
+    "publisher": "Stichting Reclame Code",
+    "url": "https://www.reclamecode.nl/nederlandse-reclame-code/bijzondere-reclamecodes/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "RSM text itself not read; only cross-references in the alcohol codes."
+  },
+  {
+    "id": "pc-s27",
+    "title": "Digital Services Act Article 28 (reproduction)",
+    "publisher": "eu-digital-services-act.com",
+    "url": "https://www.eu-digital-services-act.com/Digital_Services_Act_Article_28.html",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Unofficial reproduction; EUR-Lex copy truncated."
+  },
+  {
+    "id": "bs-s01",
+    "title": "Odoo 19.0 documentation: Deploying (worker, memory, PostgreSQL, backups)",
+    "publisher": "Odoo S.A. (raw rst from odoo/documentation 19.0)",
+    "url": "https://raw.githubusercontent.com/odoo/documentation/19.0/content/administration/on_premise/deploy.rst",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Rule of thumb workers=(#CPU*2)+1; 1 worker ~= 6 concurrent users; 20% heavy requests ~1GB, 80% light ~150MB; DB user must not be superuser; daily DB + filestore backups copied to a remote archive not reachable from the server."
+  },
+  {
+    "id": "bs-s02",
+    "title": "Odoo 19.0 external API reference",
+    "publisher": "Odoo S.A.",
+    "url": "https://www.odoo.com/documentation/19.0/developer/reference/external_api.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Lists XML-RPC/JSON-RPC (legacy), JSON-2 API (current, API keys), and a migration section. Explicit deprecation dates not seen in the fetched summary."
+  },
+  {
+    "id": "bs-s03",
+    "title": "Odoo 19.0 Netherlands fiscal localisation",
+    "publisher": "Odoo S.A.",
+    "url": "https://www.odoo.com/documentation/19.0/applications/finance/fiscal_localizations/netherlands.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "l10n_nl: chart of accounts, VAT rates, fiscal positions, SBR/XBRL electronic reporting, XAF export, SEPA credit transfer. Extra modules (payroll, intrastat, SBR) need manual install. Peppol/NLCIUS only inferred via cross-reference; not confirmed."
+  },
+  {
+    "id": "bs-s04",
+    "title": "Odoo 19 licences",
+    "publisher": "Odoo S.A.",
+    "url": "https://www.odoo.com/documentation/19.0/legal/licenses.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Community = LGPLv3; Enterprise = proprietary Odoo Enterprise Edition License v1.0, needs subscription per user count."
+  },
+  {
+    "id": "bs-s05",
+    "title": "github.com/odoo/odoo",
+    "publisher": "GitHub / Odoo S.A.",
+    "url": "https://github.com/odoo/odoo",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "54.8k stars; repo shows branch 20.0 as default."
+  },
+  {
+    "id": "bs-s06",
+    "title": "github.com/frappe/erpnext",
+    "publisher": "GitHub / Frappe",
+    "url": "https://github.com/frappe/erpnext",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "GPL-3.0, 39.8k stars; production via frappe_docker or bench; MariaDB. pwd.yml demo is disposable."
+  },
+  {
+    "id": "bs-s07",
+    "title": "ERPNext latest release (GitHub API)",
+    "publisher": "GitHub API",
+    "url": "https://api.github.com/repos/frappe/erpnext/releases/latest",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "v15.121.6 published 2026-09-30."
+  },
+  {
+    "id": "bs-s08",
+    "title": "frappe_docker: choosing a deployment method",
+    "publisher": "frappe/frappe_docker",
+    "url": "https://raw.githubusercontent.com/frappe/frappe_docker/main/docs/01-getting-started/01-choosing-a-deployment-method.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Production-ready: easy-install script or compose.yml + overrides; pwd.yml not production; apps must be baked at build time. No hardware or backup numbers on this page."
+  },
+  {
+    "id": "bs-s09",
+    "title": "Frappe Framework REST API docs",
+    "publisher": "Frappe",
+    "url": "https://docs.frappe.io/framework/user/en/api/rest",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Auto REST per DocType; token api_key:api_secret auth; every request logged against the chosen user and checked against that user's roles."
+  },
+  {
+    "id": "bs-s10",
+    "title": "github.com/Dolibarr/dolibarr",
+    "publisher": "GitHub / Dolibarr",
+    "url": "https://github.com/Dolibarr/dolibarr",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "GPL-3.0+, 7.7k stars; PHP (badge min 7.2), MariaDB/MySQL/PostgreSQL; REST and SOAP APIs. Exact prerequisites live on the wiki (not opened)."
+  },
+  {
+    "id": "bs-s11",
+    "title": "Dolibarr latest release (GitHub API)",
+    "publisher": "GitHub API",
+    "url": "https://api.github.com/repos/Dolibarr/dolibarr/releases/latest",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Tag 24.0.1, published 2026-09-07."
+  },
+  {
+    "id": "bs-s12",
+    "title": "github.com/twentyhq/twenty",
+    "publisher": "GitHub / Twenty",
+    "url": "https://github.com/twentyhq/twenty",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "57.9k stars, 9.4k forks; stack TypeScript, NestJS, PostgreSQL, Redis, React; Docker Compose self-host; repo has .mcp.json. Licence type not shown in fetched text."
+  },
+  {
+    "id": "bs-s13",
+    "title": "Twenty latest release (GitHub API)",
+    "publisher": "GitHub API",
+    "url": "https://api.github.com/repos/twentyhq/twenty/releases/latest",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "tag twenty/v2.45.0, published 2026-10-05."
+  },
+  {
+    "id": "bs-s14",
+    "title": "Twenty developer docs introduction",
+    "publisher": "Twenty",
+    "url": "https://docs.twenty.com/developers/introduction",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "REST and GraphQL APIs, webhooks, OAuth."
+  },
+  {
+    "id": "bs-s15",
+    "title": "Twenty developer docs index",
+    "publisher": "Twenty",
+    "url": "https://docs.twenty.com/_llms/en/developers.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "snippet",
+    "note": "Self-host pages exist (docker-compose, setup, upgrade-guide, troubleshooting) but were not opened; no MCP page found in the index."
+  },
+  {
+    "id": "bs-s16",
+    "title": "github.com/frappe/crm",
+    "publisher": "GitHub / Frappe",
+    "url": "https://github.com/frappe/crm",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "AGPL-3.0, 3.7k stars; v1.x stable on Frappe v15/v16, develop = v2.x unstable; easy-install script or Frappe Cloud."
+  },
+  {
+    "id": "bs-s17",
+    "title": "github.com/SuiteCRM/SuiteCRM",
+    "publisher": "GitHub / SuiteCRM",
+    "url": "https://github.com/SuiteCRM/SuiteCRM",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "AGPLv3, 5.8k stars; v7.15.2; PHP 8.1-8.4, MySQL/MariaDB/MSSQL, Apache/IIS; SuiteCRM 8 has JSON:API (in development per page)."
+  },
+  {
+    "id": "bs-s18",
+    "title": "github.com/ivnvxd/mcp-server-odoo",
+    "publisher": "GitHub / ivnvxd (community)",
+    "url": "https://github.com/ivnvxd/mcp-server-odoo",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "396 stars, MPL-2.0; XML-RPC; standard mode needs an MCP module in Odoo and respects access rights and record rules; YOLO mode needs no module, with read-only or full CRUD tiers; Odoo 16+."
+  },
+  {
+    "id": "bs-s19",
+    "title": "Odoo MCP server search results (several community servers)",
+    "publisher": "Web search results (GitHub, Glama, others)",
+    "url": "https://github.com/AlejandroLaraPolanco/mcp-odoo",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "snippet",
+    "note": "Search snippet lists ivnvxd (303 stars in snippet, 396 on repo page), tuanle96/mcp-odoo (328 stars, 41 tools, gated writes), nicolasramos/odoo-mcp, parth-unjiya/odoo-mcp-gateway (YAML security). Star counts in snippet are not current; none opened except ivnvxd."
+  },
+  {
+    "id": "bs-s20",
+    "title": "github.com/rakeshgangwar/erpnext-mcp-server",
+    "publisher": "GitHub / rakeshgangwar (community)",
+    "url": "https://github.com/rakeshgangwar/erpnext-mcp-server",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "122 stars, MIT; 11 tools incl. get/create/update/delete/submit documents and calling whitelisted methods; API key/secret auth. Last commit date not visible."
+  },
+  {
+    "id": "bs-s21",
+    "title": "github.com/OCA/l10n-netherlands",
+    "publisher": "GitHub / Odoo Community Association",
+    "url": "https://github.com/OCA/l10n-netherlands",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Branch 19.0 lists one addon, l10n_nl_tax_statement (Netherlands BTW Statement). 29 stars."
+  },
+  {
+    "id": "bs-s22",
+    "title": "github.com/frePPLe/frepple",
+    "publisher": "GitHub / frePPLe",
+    "url": "https://github.com/frePPLe/frepple",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "755 stars; Community Edition MIT, Enterprise/Cloud commercial; forecasting and planning/scheduling for manufacturing. Not a TMS or WMS."
+  },
+  {
+    "id": "bs-s23",
+    "title": "github.com/openboxes/openboxes",
+    "publisher": "GitHub / OpenBoxes",
+    "url": "https://github.com/openboxes/openboxes",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "909 stars, EPL-1.0; WMS for healthcare facilities; Grails, Docker."
+  },
+  {
+    "id": "bs-s24",
+    "title": "EU VAT in the Digital Age (ViDA)",
+    "publisher": "European Commission, DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/taxation/vat/vat-digital-age-vida_en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "In force 14 April 2025; member states may introduce mandatory e-invoicing; digital reporting for cross-border B2B from 1 July 2030; alignment deadline 1 January 2035."
+  },
+  {
+    "id": "bs-s25",
+    "title": "Peppol at Logius",
+    "publisher": "Logius (Dutch government)",
+    "url": "https://www.logius.nl/diensten/peppol",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Peppol described; Logius runs the government access point; government bodies and their suppliers use it; Nederlandse Peppolautoriteit oversees. Nothing here on a general B2B obligation."
+  },
+  {
+    "id": "bs-s26",
+    "title": "GDPR Article 28 (processor)",
+    "publisher": "gdpr-info.eu (text of Regulation (EU) 2016/679)",
+    "url": "https://gdpr-info.eu/art-28-gdpr/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Secondary reproduction of the regulation text, not EUR-Lex. Documented instructions, sub-processor authorisation, Art. 32 security, deletion/return, audit support, confidentiality."
+  },
+  {
+    "id": "bs-s27",
+    "title": "EDPB Guidelines 07/2020 on controller and processor",
+    "publisher": "European Data Protection Board",
+    "url": "https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-072020-concepts-controller-and-processor-gdpr_en",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Final version adopted 7 July 2021. Landing page only; the PDF body was not read, so the determination criteria are not quoted."
+  },
+  {
+    "id": "bs-s28",
+    "title": "Anthropic: how long do you store my organization's data",
+    "publisher": "Anthropic privacy centre",
+    "url": "https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "API inputs/outputs automatically deleted within 30 days unless agreed otherwise (zero-retention agreement, Files API, policy violations up to 2 years, legal)."
+  },
+  {
+    "id": "bs-s29",
+    "title": "Anthropic: is my data used for model training",
+    "publisher": "Anthropic privacy centre",
+    "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "By default commercial-product inputs/outputs are not used to train models, except feedback or explicit opt-in."
+  },
+  {
+    "id": "bs-s30",
+    "title": "OpenAI API: data controls (your data)",
+    "publisher": "OpenAI",
+    "url": "https://developers.openai.com/api/docs/guides/your-data",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Abuse-monitoring logs up to 30 days; ZDR eligible for listed endpoints; API data not used for training unless opt-in; EU region (eu.api.openai.com) needs approval for abuse monitoring controls and a Modified Retention amendment."
+  },
+  {
+    "id": "bs-s31",
+    "title": "Gemini API Additional Terms of Service",
+    "publisher": "Google",
+    "url": "https://ai.google.dev/gemini-api/terms",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Unpaid services: content used to improve products, human reviewers may see it. Paid: not used to improve products, prompts/responses logged for a limited time for abuse detection, Data Processing Addendum where Google is processor."
+  },
+  {
+    "id": "bs-s32",
+    "title": "OWASP LLM06:2025 Excessive Agency",
+    "publisher": "OWASP GenAI Security Project",
+    "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Causes: excess functionality, permissions, autonomy. Mitigations: minimal tools, no open-ended shell, least privilege in the user's context, human approval for high-impact actions, authorise in downstream systems, logging and rate limits."
+  },
+  {
+    "id": "ft-s01",
+    "title": "Unsloth requirements (VRAM table)",
+    "publisher": "Unsloth",
+    "url": "https://unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Table QLoRA/LoRA VRAM for 7B/14B/32B/70B; described as absolute minimum"
+  },
+  {
+    "id": "ft-s02",
+    "title": "Unsloth on DGX Spark playbook",
+    "publisher": "NVIDIA",
+    "url": "https://build.nvidia.com/spark/unsloth",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "30-60 min setup and test run; Blackwell, CUDA 13.0 prerequisite"
+  },
+  {
+    "id": "ft-s03",
+    "title": "NeMo Fine-Tune playbook (DGX Spark)",
+    "publisher": "NVIDIA",
+    "url": "https://build.nvidia.com/spark/nemo-fine-tune",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "1-70B models, LoRA/QLoRA/SFT, 45-90 min setup+first run"
+  },
+  {
+    "id": "ft-s04",
+    "title": "Fine-tuning LLMs with NVIDIA DGX Spark and Unsloth",
+    "publisher": "Unsloth",
+    "url": "https://unsloth.ai/docs/blog/fine-tuning-llms-with-nvidia-dgx-spark-and-unsloth.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "gpt-oss-120b 4-bit QLoRA ~68GB; 1,000 RL steps in 4 hours on gpt-oss-20b"
+  },
+  {
+    "id": "ft-s05",
+    "title": "kyuz0 amd-strix-halo-llm-finetuning README",
+    "publisher": "GitHub kyuz0",
+    "url": "https://github.com/kyuz0/amd-strix-halo-llm-finetuning",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Gemma-3 1B/4B/12B timing table, ROCm notes. Fetched via summarizing tool; table figures as returned"
+  },
+  {
+    "id": "ft-s06",
+    "title": "Finetuning LLMs on Strix Halo thread",
+    "publisher": "Framework Community",
+    "url": "https://community.frame.work/t/finetuning-llms-on-strix-halo-full-lora-and-qlora-on-gemma-3-qwen-3-and-gpt-oss-20b/76986",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Community reproduction: Gemma-3-1B numbers on ROCm 7 nightly"
+  },
+  {
+    "id": "ft-s07",
+    "title": "Unsloth Blackwell / RTX 50 series",
+    "publisher": "Unsloth",
+    "url": "https://unsloth.ai/docs/blog/fine-tuning-llms-with-blackwell-rtx-50-series-and-unsloth.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "States support for RTX 50-series 5060-5090; no VRAM/tested-model numbers"
+  },
+  {
+    "id": "ft-s08",
+    "title": "Unsloth AMD install",
+    "publisher": "Unsloth",
+    "url": "https://unsloth.ai/docs/get-started/install/amd",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Supports Radeon RDNA 3/3.5/4 and MI300X; Strix Halo not named on the page"
+  },
+  {
+    "id": "ft-s09",
+    "title": "mlx-lm LORA.md",
+    "publisher": "ml-explore (Apple)",
+    "url": "https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/LORA.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "lora/dora/full; M1 Max 32GB ~250 tok/s Mistral-7B example"
+  },
+  {
+    "id": "ft-s10",
+    "title": "TRL DPO Trainer docs",
+    "publisher": "Hugging Face",
+    "url": "https://huggingface.co/docs/trl/dpo_trainer",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "PEFT adapters, QLoRA via quantization_config, precompute_ref_log_probs saves memory; no memory numbers"
+  },
+  {
+    "id": "ft-s11",
+    "title": "Anthropic Commercial Terms",
+    "publisher": "Anthropic",
+    "url": "https://www.anthropic.com/legal/commercial-terms",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Fetched through summarizer; quotes as returned"
+  },
+  {
+    "id": "ft-s13",
+    "title": "Llama 3.3 Community License",
+    "publisher": "Meta (raw LICENSE in llama-models repo)",
+    "url": "https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_3/LICENSE",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Llama 3.3 only; other Llama versions not checked"
+  },
+  {
+    "id": "ft-s14",
+    "title": "Qwen3-32B model card",
+    "publisher": "Hugging Face / Qwen",
+    "url": "https://huggingface.co/Qwen/Qwen3-32B",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "license apache-2.0"
+  },
+  {
+    "id": "ft-s15",
+    "title": "Qwen2.5-72B-Instruct model card",
+    "publisher": "Hugging Face / Qwen",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "license tag 'qwen' (custom); terms text not visible on page"
+  },
+  {
+    "id": "ft-s16",
+    "title": "gpt-oss-20b model card",
+    "publisher": "Hugging Face / OpenAI",
+    "url": "https://huggingface.co/openai/gpt-oss-20b",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Apache 2.0; runs within 16GB; can be fine-tuned on consumer hardware"
+  },
+  {
+    "id": "ft-s17",
+    "title": "Mistral-Small-3.2-24B-Instruct-2506 model card",
+    "publisher": "Hugging Face / Mistral AI",
+    "url": "https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "apache-2.0"
+  },
+  {
+    "id": "ft-s18",
+    "title": "LiteLLM budgets and rate limits",
+    "publisher": "LiteLLM",
+    "url": "https://docs.litellm.ai/docs/proxy/users",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "ft-s19",
+    "title": "LiteLLM Router (routing, fallbacks, cooldowns)",
+    "publisher": "LiteLLM",
+    "url": "https://docs.litellm.ai/docs/routing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "ft-s20",
+    "title": "LiteLLM production deployment",
+    "publisher": "LiteLLM",
+    "url": "https://docs.litellm.ai/docs/proxy/deploy",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Scaling guidance only; no single-node RAM figure"
+  },
+  {
+    "id": "ft-s21",
+    "title": "Langfuse + LiteLLM proxy",
+    "publisher": "Langfuse",
+    "url": "https://langfuse.com/integrations/gateways/litellm",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "langfuse_otel callback"
+  },
+  {
+    "id": "ft-s22",
+    "title": "LiteLLM OpenAI-compatible providers",
+    "publisher": "LiteLLM",
+    "url": "https://docs.litellm.ai/docs/providers/openai_compatible",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Route to llama.cpp, vLLM, Ollama"
+  },
+  {
+    "id": "ft-s23",
+    "title": "llama.cpp HTTP server README",
+    "publisher": "ggml-org",
+    "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "ft-s25",
+    "title": "OpenRouter model routing / Auto Router",
+    "publisher": "OpenRouter",
+    "url": "https://openrouter.ai/docs/features/model-routing",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "ft-s27",
+    "title": "llama.cpp CUDA scoreboard (Llama 2 7B Q4_0)",
+    "publisher": "ggml-org (GitHub)",
+    "url": "https://github.com/ggml-org/llama.cpp/discussions/15013",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "RTX 5090 numbers"
+  },
+  {
+    "id": "ft-s28",
+    "title": "llama.cpp Apple Silicon scoreboard",
+    "publisher": "ggml-org (GitHub)",
+    "url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Llama 7B Q4_0 pp512/tg128 per chip"
+  },
+  {
+    "id": "ft-s30",
+    "title": "Qwen3-Embedding-0.6B",
+    "publisher": "Hugging Face / Qwen",
+    "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened"
+  },
+  {
+    "id": "ft-s31",
+    "title": "Qwen3-Coder-30B-A3B-Instruct",
+    "publisher": "Hugging Face / Qwen",
+    "url": "https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "30.5B total, 3.3B active"
+  },
+  {
+    "id": "ft-s32",
+    "title": "The New Business of AI (and How It's Different From Traditional Software)",
+    "publisher": "a16z",
+    "url": "https://a16z.com/the-new-business-of-ai-and-how-its-different-from-traditional-software/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Older essay; via summarizer"
+  },
+  {
+    "id": "ft-s33",
+    "title": "The Empty Promise of Data Moats",
+    "publisher": "a16z",
+    "url": "https://a16z.com/the-empty-promise-of-data-moats/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Older essay; via summarizer"
+  },
+  {
+    "id": "ft-s34",
+    "title": "Generative AI's Act Two",
+    "publisher": "Sequoia Capital",
+    "url": "https://www.sequoiacap.com/article/generative-ai-act-two/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "2023 essay; via summarizer"
+  },
+  {
+    "id": "ob-s01",
+    "title": "Self-hosting Langfuse",
+    "publisher": "Langfuse",
+    "url": "https://langfuse.com/self-hosting",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Components list; page states no explicit RAM/CPU minimum."
+  },
+  {
+    "id": "ob-s02",
+    "title": "Langfuse Docker Compose deployment",
+    "publisher": "Langfuse",
+    "url": "https://langfuse.com/self-hosting/deployment/docker-compose",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "VM recommendation: 4+ cores, 16 GiB RAM, 100 GiB+ storage; Compose is single VM, no HA."
+  },
+  {
+    "id": "ob-s04",
+    "title": "GenAI metrics semantic conventions",
+    "publisher": "OpenTelemetry (semantic-conventions-genai)",
+    "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-metrics.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Metric names, units, buckets; all Development stability. Page content came via summarizing fetch; token-usage metric row was not in the returned table."
+  },
+  {
+    "id": "ob-s06",
+    "title": "windows_exporter memory collector",
+    "publisher": "prometheus-community (GitHub)",
+    "url": "https://github.com/prometheus-community/windows_exporter/blob/master/docs/collector.memory.md",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Metric names for available, committed, standby, modified, page faults."
+  },
+  {
+    "id": "ob-s07",
+    "title": "What is Beszel",
+    "publisher": "Beszel docs",
+    "url": "https://beszel.dev/guide/what-is-beszel",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Hub/agent, MIT, metrics list, alerts."
+  },
+  {
+    "id": "ob-s08",
+    "title": "Beszel getting started",
+    "publisher": "Beszel docs",
+    "url": "https://beszel.dev/guide/getting-started",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Hub on port 8090, agent needs HUB_URL/TOKEN/KEY."
+  },
+  {
+    "id": "ob-s09",
+    "title": "Beszel GPU monitoring",
+    "publisher": "Beszel docs",
+    "url": "https://beszel.dev/guide/gpu",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "nvidia-smi, amd_sysfs (rocm-smi deprecated), Intel collectors."
+  },
+  {
+    "id": "ob-s13",
+    "title": "Netdata Windows installation",
+    "publisher": "Netdata Learn",
+    "url": "https://learn.netdata.cloud/docs/netdata-agent/installation/windows",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "x64 MSI, admin rights, Win10/11 or Server 2019+ recommended."
+  },
+  {
+    "id": "ob-s14",
+    "title": "NVIDIA/dcgm-exporter",
+    "publisher": "GitHub (NVIDIA)",
+    "url": "https://github.com/NVIDIA/dcgm-exporter",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Apache-2.0, port 9400, Prometheus format."
+  },
+  {
+    "id": "ob-s15",
+    "title": "DCGM getting started / supported platforms",
+    "publisher": "NVIDIA docs",
+    "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/getting-started.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Linux distributions only listed; 16 GB RAM minimum stated; designed for datacenter drivers."
+  },
+  {
+    "id": "ob-s16",
+    "title": "nvidia-smi documentation",
+    "publisher": "NVIDIA",
+    "url": "https://docs.nvidia.com/deploy/nvidia-smi/index.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "--query-gpu, -l loop, CSV/XML output, 64-bit Windows supported."
+  },
+  {
+    "id": "ob-s17",
+    "title": "AMD SMI documentation",
+    "publisher": "AMD ROCm docs",
+    "url": "https://rocm.docs.amd.com/projects/amdsmi/en/latest/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Successor to ROCm SMI; Linux supported, Windows only experimental via WSL2."
+  },
+  {
+    "id": "ob-s18",
+    "title": "utkuozdemir/nvidia_gpu_exporter",
+    "publisher": "GitHub",
+    "url": "https://github.com/utkuozdemir/nvidia_gpu_exporter",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Community exporter wrapping nvidia-smi; MIT; Windows install paths; port 9835."
+  },
+  {
+    "id": "ob-s20",
+    "title": "Monitoring Distributed Systems (SRE book ch.6)",
+    "publisher": "Google SRE",
+    "url": "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Four golden signals, percentiles vs averages, alert questions."
+  },
+  {
+    "id": "ob-s21",
+    "title": "Software Engineering in SRE (SRE book ch.18)",
+    "publisher": "Google SRE",
+    "url": "https://sre.google/sre-book/software-engineering-in-sre/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Capacity planning cycle, intent-based planning, N+2."
+  },
+  {
+    "id": "ob-s22",
+    "title": "Handling Overload (SRE book ch.21)",
+    "publisher": "Google SRE",
+    "url": "https://sre.google/sre-book/handling-overload/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "CPU as capacity measure, load shedding, retry limits (3 per request, <10% retries)."
+  },
+  {
+    "id": "ob-s23",
+    "title": "Embracing Risk (SRE book ch.3)",
+    "publisher": "Google SRE",
+    "url": "https://sre.google/sre-book/embracing-risk/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Cost vs reliability; match targets to need."
+  },
+  {
+    "id": "ob-s24",
+    "title": "The USE Method",
+    "publisher": "Brendan Gregg",
+    "url": "https://www.brendangregg.com/usemethod.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Utilization, saturation, errors; 70% / any non-zero saturation guidance."
+  },
+  {
+    "id": "ob-s25",
+    "title": "Alerting practices",
+    "publisher": "Prometheus docs",
+    "url": "https://prometheus.io/docs/practices/alerting/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Alert on symptoms; batch jobs need >=2 cycles before paging; alert when approaching capacity limits."
+  },
+  {
+    "id": "ob-s26",
+    "title": "Query functions (predict_linear, deriv)",
+    "publisher": "Prometheus docs",
+    "url": "https://prometheus.io/docs/prometheus/latest/querying/functions/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Linear-regression forecasting on gauges."
+  },
+  {
+    "id": "ob-s27",
+    "title": "Alertmanager configuration",
+    "publisher": "Prometheus docs",
+    "url": "https://prometheus.io/docs/alerting/latest/configuration/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Built-in receivers incl. Telegram, Slack, Discord, email, Pushover, webhook."
+  },
+  {
+    "id": "ob-s28",
+    "title": "Contact points",
+    "publisher": "Grafana docs",
+    "url": "https://grafana.com/docs/grafana/latest/alerting/fundamentals/notifications/contact-points/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "20+ integrations."
+  },
+  {
+    "id": "ob-s29",
+    "title": "PSI: Pressure Stall Information",
+    "publisher": "Linux kernel docs",
+    "url": "https://www.kernel.org/doc/html/latest/accounting/psi.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "some/full semantics; /proc/pressure/memory; example trigger syntax only, not recommended thresholds."
+  },
+  {
+    "id": "ob-s30",
+    "title": "LiteLLM StandardLoggingPayload spec",
+    "publisher": "LiteLLM docs",
+    "url": "https://docs.litellm.ai/docs/proxy/logging_spec",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "response_cost, tokens, status, latency, cost_breakdown. Retention not specified."
+  },
+  {
+    "id": "ob-s31",
+    "title": "LiteLLM Prometheus metrics",
+    "publisher": "LiteLLM docs",
+    "url": "https://docs.litellm.ai/docs/proxy/prometheus",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "/metrics: spend, tokens, remaining budget, failures, latency, litellm_in_flight_requests."
+  },
+  {
+    "id": "ob-s32",
+    "title": "LiteLLM alerting",
+    "publisher": "LiteLLM docs",
+    "url": "https://docs.litellm.ai/docs/proxy/alerting",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Slack/Discord/Teams/webhook; hanging, slow, failed calls; soft budget; alerting_threshold in seconds."
+  },
+  {
+    "id": "ob-s33",
+    "title": "LiteLLM spend tracking",
+    "publisher": "LiteLLM docs",
+    "url": "https://docs.litellm.ai/docs/proxy/cost_tracking",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "LiteLLM_SpendLogs table; per key/user/team/tag; x-litellm-response-cost header."
+  },
+  {
+    "id": "ob-s34",
+    "title": "BerriAI/litellm",
+    "publisher": "GitHub",
+    "url": "https://github.com/BerriAI/litellm",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT with enterprise folder; proxy requires PostgreSQL."
+  },
+  {
+    "id": "ob-s35",
+    "title": "Langfuse OpenTelemetry ingestion",
+    "publisher": "Langfuse docs",
+    "url": "https://langfuse.com/docs/opentelemetry/get-started",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "OTLP over HTTP at /api/public/otel (JSON or protobuf), no gRPC; x-langfuse-ingestion-version: 4 header avoids up-to-10-minute delay."
+  },
+  {
+    "id": "ob-s36",
+    "title": "Langfuse model usage and cost",
+    "publisher": "Langfuse docs",
+    "url": "https://langfuse.com/docs/model-usage-and-cost",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Ingested vs inferred cost; custom model definitions for self-hosted models."
+  },
+  {
+    "id": "ob-s37",
+    "title": "langfuse/langfuse",
+    "publisher": "GitHub",
+    "url": "https://github.com/langfuse/langfuse",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT except ee folders; telemetry on by default for self-hosted."
+  },
+  {
+    "id": "ob-s38",
+    "title": "grafana/loki",
+    "publisher": "GitHub",
+    "url": "https://github.com/grafana/loki",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "AGPL-3.0 with Apache exceptions; Alloy replaces Promtail; Windows and footprint not stated on page."
+  },
+  {
+    "id": "ob-s39",
+    "title": "influxdata/telegraf",
+    "publisher": "GitHub",
+    "url": "https://github.com/influxdata/telegraf",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "MIT; 300+ plugins incl. Nvidia SMI, Windows Event Log/WMI/Perf Counters."
+  },
+  {
+    "id": "ob-s40",
+    "title": "grafana/grafana",
+    "publisher": "GitHub",
+    "url": "https://github.com/grafana/grafana",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "AGPL-3.0 with Apache exceptions; alert rules."
+  },
+  {
+    "id": "ob-s41",
+    "title": "semantic-conventions-genai repository",
+    "publisher": "OpenTelemetry (GitHub)",
+    "url": "https://github.com/open-telemetry/semantic-conventions-genai",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "GenAI conventions moved here from the main semconv repo (old opentelemetry.io page and main-repo md are redirect stubs)."
+  },
+  {
+    "id": "gn-s02",
+    "title": "GeForce RTX 5090 page",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "32GB GDDR7 512-bit, TGP 575W, 304mm. Fetched copy looks stale (price placeholder). PSU figures inconsistent in extraction (850W vs 1000W); treat PSU as unverified."
+  },
+  {
+    "id": "gn-s03",
+    "title": "GeForce RTX 5080 page",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5080/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "16GB GDDR7 256-bit, TGP 360W, PSU 850W min, 304mm."
+  },
+  {
+    "id": "gn-s04",
+    "title": "GeForce RTX 5070 family page",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "RTX 5070 Ti 16GB GDDR7, TGP 300W, PSU 750W min; length varies by partner."
+  },
+  {
+    "id": "gn-s05",
+    "title": "RTX 50 series compare specs",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/?section=compare-specs",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Bandwidth 5090 1792 GB/s, 5080 960 GB/s, 5070 Ti 896 GB/s; TGP 575/360/300W."
+  },
+  {
+    "id": "gn-s06",
+    "title": "RTX PRO 6000 Blackwell family page",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000-family/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "96GB GDDR7 ECC; Workstation 600W 12in, Max-Q 300W 10.5in, Server 400-600W passive. No bandwidth on fetched page."
+  },
+  {
+    "id": "gn-s07",
+    "title": "RTX PRO 5000 Blackwell page",
+    "publisher": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-5000/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "48GB or 72GB GDDR7 ECC, 1344 GB/s, 300W, 10.5in dual slot. RTX PRO 4500 referenced but no specs on page."
+  },
+  {
+    "id": "gn-s08",
+    "title": "Intel Arc Pro B60 specifications",
+    "publisher": "Intel",
+    "url": "https://www.intel.com/content/www/us/en/products/sku/243916/intel-arc-pro-b60-graphics/specifications.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "24GB GDDR6, 456 GB/s, 200W TBP, PCIe 5.0 x8, launched Q2 2025. No price."
+  },
+  {
+    "id": "gn-s09",
+    "title": "Dell Pro Max GB10 T9WMV",
+    "publisher": "Alternate.de",
+    "url": "https://www.alternate.de/Dell/Pro-Max-GB10-T9WMV-Mini-PC/html/product/100220924",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "EUR 6,537 incl VAT, in stock, 128GB/2TB, DGX OS 7, 280W PSU, 2x QSFP 200Gbit."
+  },
+  {
+    "id": "gn-s10",
+    "title": "Dell Pro Max GB10 (Estonian retailer)",
+    "publisher": "arvutitark.ee",
+    "url": "https://arvutitark.ee/en/pcs-and-accessories/desktop-pcs/dell-pro-max-fcm1253-nvidia-graceblackwell-10-128gb2tbssdwla-1529771",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "EUR 7,318.60 incl VAT, 13 pcs orderable, 6-11 working days to store."
+  },
+  {
+    "id": "gn-s11",
+    "title": "Dell Pro Max with GB10 (UK)",
+    "publisher": "Dell",
+    "url": "https://www.dell.com/en-uk/shop/cty/pdp/spd/dell-pro-max-fcm1253-micro",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "GBP 11,893.48 incl VAT (9,911.23 ex VAT) for 4TB config; a search snippet showed GBP 4,958.53 for another listing, so UK config pricing is unreconciled."
+  },
+  {
+    "id": "gn-s12",
+    "title": "ASUS Ascent GX10",
+    "publisher": "starryhope.com (review/tracker)",
+    "url": "https://www.starryhope.com/minipcs/models/asus-ascent-gx10/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "USD 5,999/6,999/7,999 (1/2/4TB) per ASUS store; launched at USD 2,999 Oct 2025; DGX OS Ubuntu 24.04 Arm64, Windows and x86-only software unsupported; MoE fast, dense slow. Secondary source; date of price unstated."
+  },
+  {
+    "id": "gn-s13",
+    "title": "Lenovo ThinkStation PGX GB10 128GB/1TB",
+    "publisher": "ARP.nl",
+    "url": "https://www.arp.nl/nl-en/shop/lenovo-thinkstation-pgx-gb10-128gb-1tb--4952712-75--p",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Dutch retailer page says product no longer available; no price shown."
+  },
+  {
+    "id": "gn-s14",
+    "title": "DGX Spark vs Mac Studio price check",
+    "publisher": "glukhov.org",
+    "url": "https://glukhov.org/hardware/ai/nvidia-dgx-spark-prices/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Launch-era prices: USD 3,999; DE EUR 3,689; UK GBP 3,699.97 inc VAT; 170W typical. Stale (Oct 2025 launch), contradicted by current prices above."
+  },
+  {
+    "id": "gn-s15",
+    "title": "NVIDIA DGX Spark performance blog",
+    "publisher": "NVIDIA Developer",
+    "url": "https://developer.nvidia.com/blog/how-nvidia-dgx-sparks-performance-enables-intensive-ai-tasks/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Fine-tune and image-gen numbers; says tuning workloads cannot run on a 32GB consumer GPU; dual Spark Qwen3 235B 11.73 tok/s."
+  },
+  {
+    "id": "gn-s16",
+    "title": "DGX Spark user docs",
+    "publisher": "NVIDIA",
+    "url": "https://docs.nvidia.com/dgx/dgx-spark/index.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "DGX OS (Ubuntu based), ARM, ConnectX-7, NVIDIA Sync, Docker, NGC."
+  },
+  {
+    "id": "gn-s17",
+    "title": "PriceSpy UK RTX 5090 32GB",
+    "publisher": "PriceSpy UK",
+    "url": "https://pricespy.co.uk/s/rtx-5090-32gb/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Tracker, GBP, VAT not stated (UK usually inc). Cheapest card GBP 2,900 (ROG Astral LC), TUF GBP 3,500, range 2,900-5,799. Snapshot date not shown. Not EU."
+  },
+  {
+    "id": "gn-s18",
+    "title": "PriceSpy UK RTX 5070 Ti",
+    "publisher": "PriceSpy UK",
+    "url": "https://pricespy.co.uk/s/rtx-5070-ti/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Palit GameRock 5070 Ti from GBP 799; others ~GBP 898-901. Not EU."
+  },
+  {
+    "id": "gn-s19",
+    "title": "Geizhals EU RTX 5090 listing",
+    "publisher": "Geizhals",
+    "url": "https://geizhals.eu/?cat=gra16_512&xf=9816_RTX+5090",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Prices incl VAT and shipping, AT/DE/PL/UK shops. Extraction was partly inconsistent (an ASUS Prime 5090 listed at EUR 1,583 with 16GB is a mislabel); only the 32GB rows used. Scraped via summarizer, treat as indicative."
+  },
+  {
+    "id": "gn-s23",
+    "title": "Vast.ai pricing pages",
+    "publisher": "Vast.ai",
+    "url": "https://vast.ai/pricing/gpu/RTX-5090",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Pages showed no current offers for RTX 5090 and H100 SXM at fetch time; no price captured."
+  },
+  {
+    "id": "gn-s25",
+    "title": "vLLM online serving",
+    "publisher": "vLLM",
+    "url": "https://docs.vllm.ai/en/latest/serving/online_serving/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "OpenAI-compatible /v1/chat/completions, /v1/completions, embeddings, audio; also Anthropic /v1/messages."
+  },
+  {
+    "id": "gn-s26",
+    "title": "ComfyUI server routes",
+    "publisher": "Comfy docs",
+    "url": "https://docs.comfy.org/development/comfyui-server/comms_routes",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "/prompt, /ws, /history, /queue, /view, /upload/image, /system_stats. --listen flag not verified."
+  },
+  {
+    "id": "gn-s27",
+    "title": "Sunshine docs",
+    "publisher": "LizardByte",
+    "url": "https://docs.lizardbyte.dev/projects/sunshine/latest/",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Moonlight host; NVENC on NVIDIA; Windows 11+ per fetched summary."
+  },
+  {
+    "id": "gn-s28",
+    "title": "Sunshine getting started",
+    "publisher": "LizardByte",
+    "url": "https://docs.lizardbyte.dev/projects/sunshine/latest/md_docs_2getting__started.html",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Runs as Windows service; to capture on a discrete GPU attach a display or HDMI dummy plug."
+  },
+  {
+    "id": "gn-s29",
+    "title": "OCuLink",
+    "publisher": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/OCuLink",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "OCuLink-2 8 or 16 GB/s (PCIe 4.0 x4/x8); limited eGPU use."
+  },
+  {
+    "id": "gn-s30",
+    "title": "USB4",
+    "publisher": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/USB4",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "40 Gbit/s v1, 80 Gbit/s v2; v1 PCIe tunnel limited to 128-byte payload which cuts efficiency; eGPU via PCIe tunneling."
+  },
+  {
+    "id": "gn-s31",
+    "title": "Framework Desktop",
+    "publisher": "Framework",
+    "url": "https://frame.work/desktop",
+    "verifiedOn": "2026-10-05",
+    "primary": true,
+    "access": "opened",
+    "note": "Open-ended PCIe x4 slot accepts x8/x16 cards without riser; USD only on fetch."
+  },
+  {
+    "id": "gn-s32",
+    "title": "Strix Halo wiki",
+    "publisher": "strixhalo.wiki",
+    "url": "https://strixhalo.wiki/",
+    "verifiedOn": "2026-10-05",
+    "primary": false,
+    "access": "opened",
+    "note": "Lists an External GPU guide in navigation but content not retrievable (page 404)."
   }
 ]

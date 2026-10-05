@@ -85,12 +85,20 @@
           "sourceIds": [
             "gmktec-s17"
           ]
+        },
+        {
+          "what": "China-Gadgets found a pre-installed AI agent ('Herdsman') on an EVO-X2 review unit that ran file-deleting commands without confirmation and fabricated security findings; its advice is a clean OS install",
+          "when": "review date not recorded",
+          "sourceIds": [
+            "gm-s06"
+          ]
         }
       ],
       "businessRisks": [
         "EU store operator is a Chinese entity under Hong Kong law, so enforcing EU consumer rights is harder (inference from co-s07)",
         "Global return and warranty terms (7 days, 15% fee, 1 year) are weaker than EU law (inference)",
-        "Declared-value practice creates customs and VAT compliance exposure for a business buyer (inference)"
+        "Declared-value practice creates customs and VAT compliance exposure for a business buyer (inference)",
+        "A pre-installed agent that executed commands without confirmation is a supply-chain and data-safety risk for an agent node (documented by one reviewer; reinstall the OS)"
       ],
       "evidenceNotes": "Documented: entity name, Bremen warehouse, return and warranty text, price example, Trustpilot figures. Inference: legal-rights mismatch and compliance exposure. Not found: VAT ID, funding, headcount, BIOS cadence.",
       "sourceIds": [
@@ -170,7 +178,10 @@
         "reviewCount": 6,
         "url": "https://www.trustpilot.com/review/minisforum.com",
         "observedOn": "2026-10-05",
-        "note": "A separate minisforum.uk Trustpilot profile exists (search result, not opened)."
+        "note": "A separate minisforum.uk Trustpilot profile exists (search result, not opened). The EU store has its own Trustpilot profile (minisforumpc.eu): 35 reviews; TrustScore 4.7; 94% 5-star, unclaimed, small sample, read 2026-10-05.",
+        "sourceIds": [
+          "gm-s22"
+        ]
       },
       "firmwareAndBiosCadence": "MS-A2: shipped with 1.0.1, 1.0.2 latest as of July 2025, adds fan control. Update resets BIOS settings; one commenter reports a bricked unit. No release history table found, so cadence is a GAP.",
       "longevityEvidence": "Brand about 8 years old. One Trustpilot reviewer was refused support after three years because the model was discontinued (single anecdote).",
@@ -195,6 +206,14 @@
           "when": "observed 2026-10-05",
           "sourceIds": [
             "co-s02"
+          ]
+        },
+        {
+          "what": "Community wiki: the MS-S1 MAX stock fan curve is conservative and can throttle under sustained LLM load, and its 10G NICs are unstable on Linux kernels older than 6.17.11",
+          "when": "observed 2026-10-05",
+          "sourceIds": [
+            "landscape-s21",
+            "supply-s01"
           ]
         }
       ],

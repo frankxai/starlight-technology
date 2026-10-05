@@ -142,7 +142,8 @@
       "Case/interior access criticised",
       "Dense 70B is memory-bandwidth bound at single-digit t/s",
       "Price spread EUR 1,999.99 (EU official 64GB) to 4,450 (EE retailer 128GB) indicates volatile pricing",
-      "Windows: AMD states up to 96 GB of GPU memory via Variable Graphics Memory (Adrenalin 25.8.1+); open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set. Linux: about 124 GB is a community setting (kyuz0 guide), not an AMD-published cap."
+      "Windows: AMD states up to 96 GB of GPU memory via Variable Graphics Memory (Adrenalin 25.8.1+); open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set. Linux: about 124 GB is a community setting (kyuz0 guide), not an AMD-published cap.",
+      "China-Gadgets measured 82-83 C sustained, 92 C peak and about 44 dB at 30 cm on one EVO-X2, and found a pre-installed AI agent that ran file-deleting commands without confirmation; reinstall the OS."
     ],
     "sourceIds": [
       "gmktec-s01",
@@ -153,7 +154,8 @@
       "gmktec-s21",
       "gmktec-s25",
       "gmktec-s26",
-      "pn-s04"
+      "pn-s04",
+      "gm-s06"
     ],
     "specs": {
       "ports": "Same as the 64GB model: 2x USB4, one 2.5GbE, no OCuLink listed.",
@@ -235,13 +237,15 @@
     ],
     "llmEvidence": [],
     "issues": [
-      "64GB cannot hold 70B Q4 plus 20 agent sessions comfortably"
+      "64GB cannot hold 70B Q4 plus 20 agent sessions comfortably",
+      "Same thermal and pre-installed-agent findings as the 128GB model (one reviewer's unit)."
     ],
     "sourceIds": [
       "gmktec-s01",
       "gmktec-s09",
       "pn-s04",
-      "rv-s02"
+      "rv-s02",
+      "gm-s06"
     ],
     "specs": {
       "ports": "Front: 2x USB-A 3.2 Gen2, 1x USB4 (40 Gbps), SD 4.0, audio. Rear: DP 1.4, HDMI 2.1, 1x USB-A 3.2 Gen2, 2x USB-A 2.0, 1x USB4, audio, DC in, 1x 2.5GbE (Realtek 8125BG). No OCuLink in the spec table.",
@@ -796,7 +800,8 @@
       "PCIe x16 slot is x4 electrical",
       "HDMI only, no DisplayPort",
       "BF16 models do not run at full context on Strix Halo; Vulkan more stable than ROCm at long context (Level1Techs)",
-      "Windows: AMD states up to 96 GB of GPU memory via Variable Graphics Memory (Adrenalin 25.8.1+); open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set. Linux: about 124 GB is a community setting (kyuz0 guide), not an AMD-published cap."
+      "Windows: AMD states up to 96 GB of GPU memory via Variable Graphics Memory (Adrenalin 25.8.1+); open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set. Linux: about 124 GB is a community setting (kyuz0 guide), not an AMD-published cap.",
+      "Community wiki: conservative stock fan curve can throttle under sustained LLM load; the 10G NICs are unstable on Linux kernels older than 6.17.11."
     ],
     "sourceIds": [
       "minisforum-s01",
@@ -808,7 +813,8 @@
       "minisforum-s08",
       "minisforum-s09",
       "minisforum-s10",
-      "minisforum-s18"
+      "minisforum-s18",
+      "landscape-s21"
     ],
     "specs": {
       "ports": "Rear: 2x USB4 v2 (80 Gbps), 2x 10GbE (Realtek RTL8127). Front: 2x USB4 (40 Gbps). Also USB 3.2 Gen2, USB 2.0, HDMI 2.1, dual M.2, PCIe x16 slot running at PCIe 4.0 x4.",
@@ -1388,8 +1394,7 @@
         "includesTax": false,
         "verifiedOn": "2026-10-05",
         "url": "https://www.notebookcheck.org/Corsair-confirma-el-nuevo-precio-del-mini-PC-AMD-Strix-Halo-con-hasta-96-GB-de-VRAM.1269374.0.html",
-        "evidence": "reported",
-        "sourceId": null
+        "evidence": "reported"
       }
     ],
     "llmEvidence": [],

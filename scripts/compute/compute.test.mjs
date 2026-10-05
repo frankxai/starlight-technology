@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { loadData, dataHash, validate, buildGraph, renderIndex, headlinePrice, fits, normalizeText } from "./lib.mjs";
 import { EXTRA_DOCS } from "./render-more.mjs";
+import { planAll } from "./plan.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const dir = join(root, "data", "compute");
@@ -310,4 +311,34 @@ test("Bosgame is a thin profile, and DIY totals are labelled incomplete estimate
   const d = loadData(dir);
   assert.equal(d.fundamentals.companies.find((c) => c.brandId === "bosgame").depth, "thin");
   assert.ok(d.builds.diy.every((b) => b.status === "incomplete-estimate" && b.missingParts.includes("shipping")));
+});
+
+test("planner: hand-computed totals for the four scenarios", () => {
+  const plans = Object.fromEntries(planAll(loadData(dir)).map((p) => [p.id, p]));
+  const s1 = plans["s1-agents-one-node"];
+  assert.equal(s1.oneNode.low, 49);
+  assert.equal(s1.oneNode.high, 59);
+  assert.equal(s1.oneNode.smallestClassGb, 64);
+  const s2 = plans["s2-businesses-desktops-local-model"];
+  assert.equal(s2.oneNode.low, 106.2);
+  assert.equal(s2.oneNode.high, 128.2);
+  assert.equal(s2.split.nodeA.classGb, 128);
+  assert.equal(s2.split.nodeB.classGb, 64);
+  assert.deepEqual([s2.split.nodeA.low, s2.split.nodeA.high, s2.split.nodeB.low, s2.split.nodeB.high], [77.2, 97.2, 41, 43]);
+  const s3 = plans["s3-plus-family-erp-and-70b"];
+  assert.equal(s3.oneNode.low, 145.6);
+  assert.equal(s3.oneNode.high, 176.6);
+  assert.equal(s3.oneNode.smallestClassGb, 192);
+  const odoo = s3.lines.find((l) => l.item.startsWith("Odoo"));
+  assert.equal(odoo.count, 3);
+  const s4 = plans["s4-plus-media-and-finetune-gpu"];
+  assert.equal(s4.gpu.vramRequired, 26);
+  assert.match(s4.gpu.tier, /RTX 5090/);
+});
+
+test("planner: a model node only offers machines with 256 GB/s or more", () => {
+  const data = loadData(dir);
+  const s2 = planAll(data).find((p) => p.id === "s2-businesses-desktops-local-model");
+  const pick = data.machines.find((m) => m.id === s2.split.nodeB.cheapestPageRead.machineId);
+  assert.ok(pick.memory.bandwidthGBs >= 256);
 });
