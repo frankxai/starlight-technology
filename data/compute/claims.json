@@ -764,5 +764,160 @@
       "minisforum-s07"
     ],
     "asOf": "2026-10-05"
+  },
+  {
+    "id": "vl-c01",
+    "text": "The 2026 Combined Nomenclature (Implementing Regulation 2025/1926) shows 'Free' in the conventional duty column for CN 8471 30 00, 41 00, 49 00 and 50 00. Live TARIC measures for Chinese origin were not retrievable.",
+    "type": "legal-text",
+    "sourceIds": [
+      "vl-s01",
+      "vl-s31",
+      "vl-s32"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vl-c02",
+    "text": "Douane says Dutch import VAT is usually 21%; the Belastingdienst article 23 permit lets an entrepreneur defer import VAT to the next VAT return.",
+    "type": "legal-text",
+    "sourceIds": [
+      "vl-s04",
+      "vl-s05",
+      "vl-s06"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vl-c03",
+    "text": "Council Regulation 2026/382 Article 2 sets a EUR 3 duty per item for consignments with an intrinsic value up to EUR 150, from 1 July 2026 to 1 July 2028.",
+    "type": "legal-text",
+    "sourceIds": [
+      "vl-s02",
+      "vl-s03",
+      "vl-s04"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vl-c04",
+    "text": "Directive 2011/83/EU gives a consumer 14 days to withdraw from a distance contract, defines a consumer as acting outside trade or business, and bars waiver; Your Europe says the rules do not apply when selling to other businesses.",
+    "type": "legal-text",
+    "sourceIds": [
+      "vl-s07",
+      "vl-s08",
+      "vl-s09"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vl-c05",
+    "text": "GMKtec's German shipping policy says: 'Um die Zollkosten zu reduzieren, deklarieren wir in der Regel einen niedrigeren Warenwert' (to reduce customs costs we generally declare a lower goods value), for shipments from China; it describes shipping from the German warehouse as avoiding extra EU taxes.",
+    "type": "manufacturer-assertion",
+    "sourceIds": [
+      "vl-s27",
+      "vl-s28"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vl-c06",
+    "text": "GMKtec's FAQ states a 60-calendar-day return window from shipment and a 15% restocking fee on non-fault returns; the warranty is stated as two years (German page). Other GMKtec pages in the research stated 7 days and 1 year, so its own terms conflict.",
+    "type": "manufacturer-assertion",
+    "sourceIds": [
+      "vl-s29",
+      "vl-s30",
+      "gmktec-s15",
+      "gmktec-s16"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vt-c01",
+    "text": "AMD states Variable Graphics Memory allows up to 96 GB of GPU memory on a 128GB Ryzen AI Max+ 395 under Windows (Adrenalin 25.8.1+); seen as a search excerpt and a secondary article. Open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set.",
+    "type": "manufacturer-assertion",
+    "sourceIds": [
+      "stack-s07",
+      "vt-s02",
+      "vt-s17",
+      "vt-s18"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vt-c02",
+    "text": "Microsoft Learn: Windows 11 Home cannot install the Hyper-V role and cannot host incoming Remote Desktop connections; BitLocker enablement is listed for Pro, Enterprise and Education.",
+    "type": "manufacturer-assertion",
+    "sourceIds": [
+      "vt-s05",
+      "gaps-s16",
+      "vt-s07",
+      "stack-s09"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vt-c03",
+    "text": "Microsoft Store NL lists Windows 11 Home at EUR 145.00 and Pro at EUR 259.00 (USB, Dutch); the pages do not state VAT.",
+    "type": "market-data",
+    "sourceIds": [
+      "pn-s01",
+      "pn-s02"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "vt-c04",
+    "text": "Minisforum's product page lists two USB4 v2 ports at 80 Gbps (rear) and two USB4 ports at 40 Gbps (front), two 10GbE ports, a PCIe x16 slot running at PCIe 4.0 x4 and a built-in 320 W PSU.",
+    "type": "manufacturer-assertion",
+    "sourceIds": [
+      "ex-s01"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "rv-c01",
+    "text": "Notebookcheck's review of the 64GB EVO-X2 says its iGPU can take up to 48 GB and leave 16 GB for the system. ServeTheHome's 70B Q6_K test needed over 50 GB of GPU memory on the 128GB unit. No independent LLM speed test of the 64GB EVO-X2 was found.",
+    "type": "community-report",
+    "sourceIds": [
+      "rv-s02",
+      "gmktec-s19"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "rv-c02",
+    "text": "Reported EVO-X2 noise under load ranges from 41-43 dBA (ServeTheHome, 128GB) to about 50 dBA (a snippet of a 3DTested review) and 'annoying' at high TDP (Wccftech); the conflict is unresolved.",
+    "type": "community-report",
+    "sourceIds": [
+      "gmktec-s19",
+      "rv-s03",
+      "rv-s05"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "ex-c01",
+    "text": "OCuLink is PCIe 4.0 x4 (about 8 GB/s theoretical, 6.6-6.7 GB/s measured in gaming tests); an RTX 5080 over OCuLink ran about 3x the iGPU on models that fit its VRAM and 1.6 tok/s when the model overflowed; a split between an RTX Pro 6000 and the iGPU ran 37-38 tok/s against 121 tok/s on the GPU alone (secondary blog).",
+    "type": "community-report",
+    "sourceIds": [
+      "ex-s15",
+      "ex-s19",
+      "ex-s20",
+      "ex-s03",
+      "ex-s28"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "ex-c02",
+    "text": "Two-node llama.cpp RPC over direct USB4 (about 9.4 Gbps, Linux) gave 15.35 tok/s on a 139B model and 12.6 tok/s on a 397B model; a four-node test on 5GbE gave no speedup and its author recommends scaling vertically. Clustering fits larger models; it does not make a model faster.",
+    "type": "community-report",
+    "sourceIds": [
+      "ex-s12",
+      "rv-s23",
+      "ex-s08",
+      "ex-s11"
+    ],
+    "asOf": "2026-10-05"
   }
 ]

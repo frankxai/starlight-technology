@@ -2,9 +2,13 @@ import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 
-export const FILES = ["sources", "silicon", "machines", "brands", "suppliers", "channels", "builds", "partners", "stack", "claims", "gaps", "supply", "workloads"];
+export const FILES = ["sources", "silicon", "machines", "brands", "suppliers", "channels", "builds", "partners", "stack", "claims", "gaps", "supply", "workloads", "fundamentals", "reviews", "expansion", "verification"];
+export const VERIFY_STATUS = ["verified", "partially-verified", "refuted", "unverifiable"];
+export const GAP_STATUS = ["open", "partial", "closed"];
+export const UNIT_SOURCE = ["bought", "loaned by maker", "unknown"];
+export const OWNER_SEVERITY = ["minor", "major", "dead-on-arrival", "firmware"];
 export const PRICE_EVIDENCE = ["page-read", "reported", "forum", "derived", "snippet"];
-export const CLAIM_TYPES = ["manufacturer-assertion", "independent-measurement", "community-report", "inference", "market-data"];
+export const CLAIM_TYPES = ["manufacturer-assertion", "independent-measurement", "community-report", "legal-text", "inference", "market-data"];
 export const EDGE_EVIDENCE = ["documented", "inferred", "rumor"];
 
 const hostOf = (url) => {
@@ -126,6 +130,78 @@ export function validate(data, { now = new Date() } = {}) {
     if (c.type === "independent-measurement" && c.sourceIds.length && c.sourceIds.every((id) => sourceById.get(id)?.access === "snippet")) {
       err(`claim ${c.id}: independent-measurement rests only on search snippets; downgrade to inference or open the source`);
     }
+  }
+  // ---- company fundamentals
+  const walkSources = (where, v) => {
+    if (Array.isArray(v)) return v.forEach((x) => walkSources(where, x));
+    if (v && typeof v === "object") {
+      for (const [k, x] of Object.entries(v)) {
+        if (k === "sourceIds" && Array.isArray(x)) checkSources(where, x);
+        else if (k === "sourceId" && typeof x === "string") checkSources(where, [x]);
+        else walkSources(where, x);
+      }
+    }
+  };
+  for (const c of data.fundamentals.companies) {
+    const w = `fundamentals ${c.brandId}`;
+    if (!ids.brands.has(c.brandId)) err(`${w}: unknown brand`);
+    walkSources(w, c);
+    if (!["full", "stub"].includes(c.depth)) err(`${w}: depth must be full or stub`);
+    if (c.depth === "full" && !c.sourceIds.length) err(`${w}: a full profile needs sources`);
+    if (c.depth === "stub" && !/snippet|not researched|nothing opened/i.test(c.evidenceNotes ?? "")) err(`${w}: a stub must say it is snippet-only or not researched`);
+    if (![true, false, null].includes(c.euLegalEntity)) err(`${w}: euLegalEntity must be true, false or null`);
+    if (c.euLegalEntity === true && !(c.euVatId?.value && c.euVatId.status === "documented")) err(`${w}: an EU legal entity needs a documented VAT ID`);
+    if (c.trustpilot?.score != null || c.trustpilot?.reviewCount != null) {
+      if (!isRealDate(c.trustpilot.observedOn, now)) err(`${w}: Trustpilot figures need a real observedOn date`);
+      if (!/^https:\/\/www\.trustpilot\.com\//.test(c.trustpilot.url ?? "")) err(`${w}: Trustpilot url must be a trustpilot.com page`);
+    }
+  }
+
+  // ---- reviews and owner reports
+  const machineKeys = new Set(data.reviews.reviews.map((r) => r.machineKey));
+  const reviewIds = new Set();
+  for (const r of data.reviews.reviews) {
+    const w = `review ${r.id}`;
+    if (reviewIds.has(r.id)) err(`${w}: duplicate id`);
+    reviewIds.add(r.id);
+    if (r.machineId && !ids.machines.has(r.machineId)) err(`${w}: unknown machine ${r.machineId}`);
+    checkSources(w, [r.sourceId]);
+    if (!UNIT_SOURCE.includes(r.unitSource)) err(`${w}: unitSource must be one of ${UNIT_SOURCE.join(", ")}`);
+    if (r.sponsored && r.independent) err(`${w}: a sponsored review cannot be marked independent`);
+    const rs = sourceById.get(r.sourceId);
+    const hasNumbers = (r.measured?.tokensPerSecond ?? []).length > 0 || r.measured?.idleWatts != null || r.measured?.loadWatts != null || r.measured?.noiseDbA != null;
+    if (rs?.access === "snippet" && hasNumbers) err(`${w}: measurements cannot come from a snippet-only source (${r.sourceId})`);
+  }
+  for (const o of data.reviews.ownerReports) {
+    const w = `owner report ${o.machineKey}`;
+    if (!OWNER_SEVERITY.includes(o.severity)) err(`${w}: severity must be one of ${OWNER_SEVERITY.join(", ")}`);
+    if (o.sourceId) checkSources(w, [o.sourceId]);
+    if (!isRealDate(o.observedOn, now)) err(`${w}: observedOn must be a real date`);
+  }
+  for (const [k, c] of Object.entries(data.reviews.consensus)) {
+    if (!machineKeys.has(k)) warnings.push(`consensus ${k}: no review records for this machine key`);
+    checkSources(`consensus ${k}`, c.sourceIds);
+  }
+  walkSources("expansion", data.expansion);
+
+  // ---- verification log
+  const itemIds = new Set();
+  for (const i of data.verification.items) {
+    const w = `verification ${i.id}`;
+    if (itemIds.has(i.id)) err(`${w}: duplicate id`);
+    itemIds.add(i.id);
+    if (!VERIFY_STATUS.includes(i.status)) err(`${w}: status must be one of ${VERIFY_STATUS.join(", ")}`);
+    if (i.status === "unverifiable" && !(i.caveat ?? "").trim()) err(`${w}: unverifiable needs a note saying what was tried`);
+    if (i.status === "verified" && !(i.sourceIds ?? []).some((id) => sourceById.get(id)?.access === "opened")) err(`${w}: verified needs an opened source`);
+    checkSources(w, i.sourceIds);
+  }
+  for (const p of data.verification.programme) {
+    if (!VERIFY_STATUS.includes(p.status)) err(`programme ${p.id}: bad status ${p.status}`);
+    for (const x of p.items ?? []) if (!itemIds.has(x)) err(`programme ${p.id}: unknown item ${x}`);
+  }
+  for (const g of data.gaps) if (!GAP_STATUS.includes(g.status)) err(`gap "${String(g.text).slice(0, 40)}": status must be one of ${GAP_STATUS.join(", ")}`);
+  for (const c of data.claims) {
+    if (c.type === "legal-text" && !c.sourceIds.some((id) => sourceById.get(id)?.access === "opened" && sourceById.get(id)?.primary)) err(`claim ${c.id}: legal-text needs an opened primary source`);
   }
   return { errors, warnings };
 }
@@ -299,9 +375,16 @@ export function renderIndex(data, graph) {
   L.push("");
   for (const c of data.channels) L.push(`- **${c.name}** (${c.type}, ${c.region}): ${c.note}`);
   L.push("");
-  L.push("## Open gaps");
+  const gapCount = (s) => data.gaps.filter((g) => g.status === s).length;
+  L.push("## Companion documents and open gaps");
   L.push("");
-  L.push(`${data.gaps.length} open items are recorded in \`data/compute/gaps.json\`. The ones that block a purchase decision are listed in \`docs/compute/FLEET-BLUEPRINT.md\`.`);
+  L.push("- [Company fundamentals](COMPANY-FUNDAMENTALS.md): legal entity, EU presence, terms as written, support, incidents");
+  L.push("- [Reviews and owner reports](REVIEWS.md)");
+  L.push("- [Verification log](VERIFICATION-LOG.md): what was unverified and where it stands now");
+  L.push("- [Expansion paths](EXPANSION-PATHS.md): eGPU, clusters, racks, RAG");
+  L.push("- [Founder buying guide](FOUNDER-BUYING-GUIDE.md) and [fleet blueprint](FLEET-BLUEPRINT.md)");
+  L.push("");
+  L.push(`Gaps in \`data/compute/gaps.json\`: ${gapCount("open")} open, ${gapCount("partial")} partly closed, ${gapCount("closed")} closed (${data.gaps.length} total).`);
   L.push("");
   return L.join("\n");
 }

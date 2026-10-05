@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { loadData, dataHash, validate, buildGraph, renderIndex, headlinePrice, fits, normalizeText } from "./lib.mjs";
+import { EXTRA_DOCS } from "./render-more.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const dir = join(root, "data", "compute");
@@ -160,4 +161,82 @@ test("capacity rule: 64 GB cannot host a 70B Q4 beside agent sessions, 128 GB ca
 test("data hash does not depend on line endings", () => {
   assert.equal(normalizeText("a\r\nb\r\n"), normalizeText("a\nb\n"));
   assert.match(dataHash(dir), /^[0-9a-f]{16}$/);
+});
+
+test("generated companion documents match the records", () => {
+  const data = loadData(dir);
+  const hash = dataHash(dir);
+  for (const [name, render] of EXTRA_DOCS) {
+    assert.equal(readFileSync(join(root, "docs", "compute", name), "utf8"), render(data, hash), name);
+  }
+});
+
+test("gate: a snippet-only review cannot carry measurements", () => {
+  const d = fresh();
+  const r = d.reviews.reviews.find((x) => x.snippetOnly === true) ?? d.reviews.reviews[0];
+  d.sources.find((s) => s.id === r.sourceId).access = "snippet";
+  r.measured = { noiseDbA: 50, tokensPerSecond: [] };
+  assert.ok(firstError(d).some((e) => e.includes("cannot come from a snippet-only source")));
+});
+
+test("gate: a sponsored review cannot be marked independent", () => {
+  const d = fresh();
+  d.reviews.reviews[0].sponsored = true;
+  d.reviews.reviews[0].independent = true;
+  assert.ok(firstError(d).some((e) => e.includes("sponsored review cannot be marked independent")));
+});
+
+test("gate: an EU legal entity needs a documented VAT ID", () => {
+  const d = fresh();
+  const c = d.fundamentals.companies.find((x) => x.brandId === "gmktec");
+  c.euLegalEntity = true;
+  assert.ok(firstError(d).some((e) => e.includes("needs a documented VAT ID")));
+});
+
+test("gate: Trustpilot figures need a real date and a trustpilot.com page", () => {
+  const d = fresh();
+  const c = d.fundamentals.companies.find((x) => x.brandId === "framework");
+  c.trustpilot.observedOn = "2026-02-30";
+  assert.ok(firstError(d).some((e) => e.includes("real observedOn date")));
+  const d2 = fresh();
+  d2.fundamentals.companies.find((x) => x.brandId === "framework").trustpilot.url = "https://example.com/reviews";
+  assert.ok(firstError(d2).some((e) => e.includes("trustpilot.com")));
+});
+
+test("gate: verification items need evidence for their status", () => {
+  const d = fresh();
+  const v = d.verification.items.find((x) => x.status === "verified");
+  for (const id of v.sourceIds) d.sources.find((s) => s.id === id).access = "snippet";
+  assert.ok(firstError(d).some((e) => e.includes("verified needs an opened source")));
+  const d2 = fresh();
+  d2.verification.items.push({ id: "t99", area: "technical", question: "q", status: "unverifiable", finding: "f", caveat: "", sourceIds: [] });
+  assert.ok(firstError(d2).some((e) => e.includes("unverifiable needs a note")));
+});
+
+test("gate: legal-text claims need an opened primary source and unknown machines are rejected", () => {
+  const d = fresh();
+  const c = d.claims.find((x) => x.type === "legal-text");
+  for (const id of c.sourceIds) d.sources.find((s) => s.id === id).primary = false;
+  assert.ok(firstError(d).some((e) => e.includes("legal-text needs an opened primary source")));
+  const d2 = fresh();
+  d2.reviews.reviews[0].machineId = "no-such-machine";
+  d2.gaps[0].status = "maybe";
+  const errors = firstError(d2);
+  assert.ok(errors.some((e) => e.includes("unknown machine no-such-machine")));
+  assert.ok(errors.some((e) => e.includes("status must be one of open, partial, closed")));
+});
+
+test("batch 2 facts are in the records with their evidence", () => {
+  const d = loadData(dir);
+  assert.deepEqual(d.fundamentals.companies.filter((c) => c.euLegalEntity === true).map((c) => c.brandId), ["framework"]);
+  const quote = d.claims.find((c) => c.id === "vl-c05");
+  assert.ok(quote.text.includes("deklarieren wir in der Regel einen niedrigeren Warenwert"));
+  const tw = machine(d, "gmktec-evo-x2-64").prices.find((p) => p.merchantHost === "tweakers.net");
+  assert.equal(tw.amount, 2139);
+  assert.equal(tw.evidence, "page-read");
+  for (const b of d.builds.diy) {
+    const sum = Math.round(b.pricedParts.reduce((a, p) => a + p.amount, 0) * 100) / 100;
+    assert.equal(b.totalEur, sum);
+  }
+  assert.equal(d.verification.items.filter((i) => i.area === "legal").length, 10);
 });

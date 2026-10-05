@@ -2,60 +2,120 @@
   "diy": [
     {
       "id": "diy-agent-node",
-      "goal": "16-core / 64GB always-on agent node",
-      "status": "incomplete",
+      "goal": "64GB always-on agent node",
+      "status": "indicative",
       "pricedParts": [
         {
-          "part": "Framework Desktop mainboard, Ryzen AI Max+ 395 64GB",
+          "part": "Framework Desktop mainboard, Ryzen AI Max+ 395, 64GB",
           "amount": 1859,
           "currency": "EUR",
           "merchant": "Framework NL",
+          "merchantHost": "frame.work",
           "includesTax": true,
           "verifiedOn": "2026-10-05",
-          "sourceIds": [
-            "supply-s04"
-          ]
+          "sourceId": "supply-s04"
+        },
+        {
+          "part": "DeepCool CH170 Digital mini-ITX case (SFX)",
+          "amount": 79.9,
+          "currency": "EUR",
+          "merchant": "Alternate.nl",
+          "merchantHost": "alternate.nl",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceId": "pn-s09"
+        },
+        {
+          "part": "Lian Li SP750 V2 SFX 750W PSU",
+          "amount": 124.99,
+          "currency": "EUR",
+          "merchant": "Alternate.nl",
+          "merchantHost": "alternate.nl",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceId": "pn-s10"
+        },
+        {
+          "part": "Kingston NV3 2TB NVMe SSD",
+          "amount": 258,
+          "currency": "EUR",
+          "merchant": "Alternate.nl",
+          "merchantHost": "alternate.nl",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceId": "pn-s08"
         }
       ],
       "missingParts": [
-        "case",
-        "PSU (Framework uses FSP 400 W Flex ATX)",
-        "cooler",
-        "SSD"
+        "cooler (not verified whether the mainboard ships with one)",
+        "compatibility of the case, PSU and cooler with the Framework mainboard"
       ],
-      "totalEur": null,
-      "compareToBuilt": "No complete total: case, PSU and SSD prices were not retrievable. An AM5 alternative (Ryzen 9 9950X) was seen only in a search snippet.",
+      "totalEur": 2321.89,
+      "compareToBuilt": "Indicative lower bound EUR 2321.89 incl. VAT against GMKtec EVO-X2 64GB/1TB at EUR 1,999.99 (EU official, tax not stated) and Framework Desktop DIY 64GB at EUR 2,209 plus a EUR 258 SSD (EUR 2,467, out of stock on the day read). The mainboard route costs more than the complete machines and carries compatibility risk.",
       "sourceIds": [
-        "supply-s04"
+        "supply-s04",
+        "pn-s08",
+        "pn-s09",
+        "pn-s10"
       ]
     },
     {
       "id": "diy-llm-box",
-      "goal": "128GB LLM box",
-      "status": "incomplete",
+      "goal": "128GB local-model box",
+      "status": "indicative",
       "pricedParts": [
         {
-          "part": "Framework Desktop mainboard, Ryzen AI Max+ 395 128GB",
+          "part": "Framework Desktop mainboard, Ryzen AI Max+ 395, 128GB",
           "amount": 3539,
           "currency": "EUR",
           "merchant": "Framework NL",
+          "merchantHost": "frame.work",
           "includesTax": true,
           "verifiedOn": "2026-10-05",
-          "sourceIds": [
-            "supply-s04"
-          ]
+          "sourceId": "supply-s04"
+        },
+        {
+          "part": "DeepCool CH170 Digital mini-ITX case (SFX)",
+          "amount": 79.9,
+          "currency": "EUR",
+          "merchant": "Alternate.nl",
+          "merchantHost": "alternate.nl",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceId": "pn-s09"
+        },
+        {
+          "part": "Lian Li SP750 V2 SFX 750W PSU",
+          "amount": 124.99,
+          "currency": "EUR",
+          "merchant": "Alternate.nl",
+          "merchantHost": "alternate.nl",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceId": "pn-s10"
+        },
+        {
+          "part": "Kingston NV3 2TB NVMe SSD",
+          "amount": 258,
+          "currency": "EUR",
+          "merchant": "Alternate.nl",
+          "merchantHost": "alternate.nl",
+          "includesTax": true,
+          "verifiedOn": "2026-10-05",
+          "sourceId": "pn-s08"
         }
       ],
       "missingParts": [
-        "case",
-        "PSU",
-        "SSD"
+        "cooler (not verified whether the mainboard ships with one)",
+        "compatibility of the case, PSU and cooler with the Framework mainboard"
       ],
-      "totalEur": null,
-      "compareToBuilt": "Board alone is about EUR 1,100 above a complete Bosgame M5 128GB/2TB seen at EUR 2,439.95 on 24 June 2026. DIY buys serviceability and named suppliers, not savings.",
+      "totalEur": 4001.89,
+      "compareToBuilt": "Indicative lower bound EUR 4001.89 incl. VAT against Minisforum MS-S1 MAX 128GB/2TB at EUR 3,999 (sale, tax not stated) and Framework Desktop DIY 128GB at EUR 3,889 plus a EUR 258 SSD (EUR 4,147, out of stock on the day read). Building from the mainboard saves nothing; its value is an EU counterparty (Framework Computer B.V.), not the price.",
       "sourceIds": [
         "supply-s04",
-        "supply-s08"
+        "pn-s08",
+        "pn-s09",
+        "pn-s10"
       ]
     }
   ],

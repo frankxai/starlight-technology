@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import styles from "@/components/compute/compute.module.css";
-import { BrandCards, CapacityTable, EvidencePanel, PriceLadder } from "@/components/compute/compute-sections";
+import { BrandCards, CapacityTable, CompanyTable, EvidencePanel, ExpansionNotes, PriceLadder } from "@/components/compute/compute-sections";
 import { researchDate } from "@/lib/compute";
 
 export const metadata: Metadata = {
@@ -48,6 +48,22 @@ export default function ComputePage() {
           <p>Dots show evidence: filled green is documented, amber is inferred, hollow is rumor; inferred and rumor chips also say so in words.</p>
         </div>
         <BrandCards />
+      </section>
+
+      <section className={styles.block} aria-labelledby="company">
+        <div className={styles.blockHead}>
+          <h2 id="company">Who you are buying from</h2>
+          <p>Legal entity, VAT number, return and warranty terms and review sentiment, as documented, because terms you cannot enforce change what a machine costs.</p>
+        </div>
+        <CompanyTable />
+      </section>
+
+      <section className={styles.block} aria-labelledby="growth">
+        <div className={styles.blockHead}>
+          <h2 id="growth">Growing past one box</h2>
+          <p>What the evidence says about clusters, external GPUs and scaling up. Figures from blogs and forums are secondary; none was measured here.</p>
+        </div>
+        <ExpansionNotes />
       </section>
 
       <section className={styles.block} aria-labelledby="evidence">

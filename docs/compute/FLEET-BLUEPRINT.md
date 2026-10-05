@@ -1,13 +1,13 @@
 # AI agent fleet blueprint: mini PCs, Windows first
 
-Status: research only, 2026-10-05. No machine here was tested hands-on. Buyer region is assumed to be the Netherlands/EU, which is still open. Every number below comes from `data/compute/` and carries its source there. The generated companion is `ENGINEERING-INDEX.md`.
+Status: research only, 2026-10-05. No machine here was tested hands-on. Buyer region is assumed to be the Netherlands/EU, which is still open. Every number below comes from `data/compute/` and carries its source there. Generated companions: `ENGINEERING-INDEX.md`, `COMPANY-FUNDAMENTALS.md`, `REVIEWS.md`, `VERIFICATION-LOG.md` and `EXPANSION-PATHS.md`. The reusable decision guide for other founders is `FOUNDER-BUYING-GUIDE.md`.
 
 ## What the research found
 
 1. In the page-read data a 128 GB Strix Halo machine costs EUR 3,499.99 (GMKtec EVO-X3, EU store, tax not stated) to EUR 4,450.20 incl. VAT (GMKtec EVO-X2, Estonian shop). The lowest VAT-inclusive Dutch listing is the HP Z2 Mini G1a at EUR 3,890.15 (EUR 3,215 ex VAT) from a business reseller that ships when available. A 128 GB DDR5 kit went from USD 329 to USD 3,399 by 18 August 2026, and TrendForce expects DRAM up another 10-15% in Q4 2026. Framework's 128 GB mainboard alone is EUR 3,539 incl. VAT, while a complete Bosgame M5 128 GB/2 TB was EUR 2,439.95 on 24 June.
 2. Token speed follows memory bandwidth. Strix Halo has 256 GB/s theoretical. On it, independent tests show 30-35B mixture-of-experts models at 43-86 tokens/s and 70B dense models at 3.7-5.3 (Q4_K_M and Q6_K runs on different machines); one secondary source reports 8-12 at Q4. Apple's M5 Max reaches 614 GB/s and the M5 Ultra 1.2 TB/s. A Mac Studio M5 Max with 64 GB is reported at EUR 3,689 (EveryMac; Apple's NL pages show no prices). No independent Apple tokens/s figure was verified.
 3. Most Chinese Strix Halo machines share one board. A community wiki (no counting method stated) estimates the Sixunited platform at about 90% of them, including GMKtec, Bosgame, Corsair, FEVM and NIMO; its hardware page lists the EVO-X2 with the Sixunited board. Minisforum designs its own board. Framework names its partners: FSP for power, Cooler Master and Noctua for cooling.
-4. Windows runs this hardware. Lemonade supports Windows 11 with Vulkan, ROCm and NPU backends and an OpenAI-compatible API. Linux is reported to address about 124 GB as GPU memory (the ROCm documentation shows a 100 GB example on a 125.65 GB system), and a Windows cap of 96 GB is reported but unconfirmed from a primary source.
+4. Windows runs this hardware. Lemonade supports Windows 11 with Vulkan, ROCm and NPU backends and an OpenAI-compatible API. On Windows, AMD states up to 96 GB of GPU memory on a 128 GB machine through Variable Graphics Memory (Adrenalin 25.8.1 and later), but open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set, and the AMD pages themselves would not load for the verification pass. Linux addresses about 124 GB through a community kernel setting (AMD documents a default of about half of RAM). On a 64 GB EVO-X2 the iGPU can take up to 48 GB (Notebookcheck).
 5. Direct sourcing from Alibaba showed no price edge for a single unit. The one Strix Halo 128 GB listing (a search snippet) was USD 3,027-3,107 at MOQ 1.
 
 ## Roles in a fleet
@@ -49,20 +49,25 @@ Mixing them needs one network layer. Tailscale's free Personal plan covers 6 use
 
 ## Operating stack (all free or open source in the sources read)
 
-Remote access: Tailscale and OpenSSH Server. Monitoring: Uptime Kuma, Beszel, Netdata or windows_exporter, all with Windows support. Backup: restic or Kopia to Backblaze B2 at USD 6.95 per TB per month. Secrets: Infisical (MIT, self-hostable) or 1Password service accounts. Windows licence prices were not verified because Microsoft's pages timed out.
+Remote access: Tailscale and OpenSSH Server. Monitoring: Uptime Kuma, Beszel, Netdata or windows_exporter, all with Windows support. Backup: restic or Kopia to Backblaze B2 at USD 6.95 per TB per month. Secrets: Infisical (MIT, self-hostable) or 1Password service accounts. Microsoft Store NL lists Windows 11 Home at EUR 145.00 and Pro at EUR 259.00 (VAT not stated on the page); Pro is needed for Hyper-V and incoming Remote Desktop.
 
 ## Sourcing playbook
 
 | Channel | Finding | Verdict |
 |---|---|---|
-| Brand EU stores | GMKtec ships from Bremen with a 24-month warranty on its EU store (its US store states 12), a 7-day return and a 15% restocking fee. Minisforum lists sale and regular prices with tax not stated. | Compare against a VAT-stated reseller before ordering |
-| Framework | VAT-inclusive, named suppliers, serviceable, out of stock on the day read. Support and warranty terms were not read. | Highest price for 128 GB among the complete options seen; confirm support terms first |
+| GMKtec EU store | Operator is Shenzhen GMK Technology under Hong Kong law, shipping from a Bremen warehouse. Its own pages disagree on returns (60 days in the FAQ, 7 days elsewhere) with a 15% restocking fee, and a German page states a two-year warranty. | Ask for the written EU terms and an invoice with a VAT ID before paying |
+| Minisforum EU store | Seller is Micro Computer (HK) Tech Limited. 30 days from delivery for unopened items, customer pays return shipping unless the item is defective or wrong, 24-month warranty (36 months for EU orders from 2026-03-09). Sale and regular prices, tax not stated. | Clear written terms; no EU VAT ID found |
+| Framework | Framework Computer B.V., Eindhoven (VAT NL864030204B01), ships from the Netherlands, 30-day return, 2-year guarantee, prices include taxes. Out of stock on the day read. Trustpilot 2.5 from 53 reviews; a customer-data breach in August 2026 is reported from search snippets. | The only maker here with a documented EU entity; highest price for 128 GB among the complete options |
 | B2B reseller | HP Z2 Mini G1a EUR 3,890.15 incl. VAT, ships when available | Cheapest verified in-NL 128 GB with VAT stated; confirm the SKU |
 | Alibaba | One Strix Halo 128 GB listing seen (a search snippet) at USD 3,027-3,107, MOQ 1; no landed quote obtained | No price edge shown for one unit; use for samples and ODM talks |
 | Refurbished business mini PCs | EUR 164-495 on refurbed.nl, 4-16 GB base RAM | Light agent nodes only |
 | Used Mac Studio, used GPUs | Marktplaats, Tweakers V&A and Back Market NL blocked; used RTX 3090 EUR 660-1,039 from four snippets | Unverified |
 
-Import facts, with their sources in the data: from 1 July 2026 until 1 July 2028 a EUR 3 duty applies per item category on parcels up to EUR 150, which does not touch a 128 GB machine. Duty on heading 8471 is reported as 0% and import VAT in the Netherlands as 21%, both from search summaries rather than Douane or TARIC pages. EU consumers get a 2-year legal guarantee from the seller regardless of a shorter brand warranty (GMKtec's US store states 12 months, its EU store 24). GMKtec's EU shipping policy summary mentions declaring a lower commodity value. Customs undervaluation is a compliance risk and must not be used.
+Import facts, with their sources in the data: from 1 July 2026 until 1 July 2028 a EUR 3 duty applies per item category on parcels up to EUR 150, which does not touch a 128 GB machine. The 2026 EU tariff schedule shows duty-free for computers under 8471 30, 41, 49 and 50, and Douane says import VAT is usually 21% (live TARIC measures for Chinese origin were not retrievable). EU consumers get a 14-day withdrawal right and a 2-year legal guarantee that a store policy cannot waive; neither applies to business purchases, and Dutch rules on business-to-business limits were not read. GMKtec's German shipping policy says that for shipments from China it generally declares a lower goods value to reduce customs costs, and no page names the importer of record. Customs undervaluation is a compliance risk for the buyer and must not be used.
+
+## Growing past one box
+
+The evidence in `EXPANSION-PATHS.md` points one way for each goal. More agents mean more independent nodes, because agents do not need to be clustered. A bigger local model means more memory in one machine: two-node llama.cpp over direct USB4 (Linux) ran a 139B model at 15.35 tokens/s, and a four-node test over 5GbE gave no speedup, so clustering fits larger models but does not make them faster. An external GPU over OCuLink (PCIe 4.0 x4, about 6.6 GB/s measured) ran about 3 times the iGPU when the model fit its VRAM and 1.6 tokens/s when it spilled; a Level1Techs thread reports Windows 11 instability and 35-40% slowdowns with iGPU plus dGPU. No measured image or video generation numbers over OCuLink exist in the data, so rent first. RAG fits comfortably: 1M chunks need about 4-6 GB of vector memory.
 
 ## Building machines or partnering
 
@@ -85,17 +90,17 @@ Fleet offer: hardware resale margins appear as about 30-40% in one source and ab
 
 Re-verify each price before it is used for a decision, and treat anything older than 30 days as stale. The validator warns on that and refuses a price without a date, an Amazon price, a variant that disagrees with the machine's memory, or a measurement claim that rests only on search snippets.
 
-Open items that block a purchase decision:
+`VERIFICATION-LOG.md` records what each earlier "not verified" statement became. Still open and relevant to a purchase:
 
-1. NL merchant prices (Tweakers Pricewatch, Coolblue, Megekko, Azerty and others returned 403 to plain fetches; a browser session is needed).
-2. EU official price for EVO-X2 128 GB, and a live Bosgame M5 price.
-3. Windows 96 GB GPU-memory cap on 128 GB Strix Halo machines, from AMD or Microsoft.
-4. Independent Windows benchmarks, and any Mac Studio tokens/s.
-5. Mac Studio M5 Max 128 GB and Ultra 128-512 GB prices in EUR.
-6. Complete DIY totals (case, PSU, SSD) for the 64 GB and 128 GB builds.
-7. Dutch used-market prices for Mac Studio, mini PCs and GPUs.
-8. Sixunited MOQ, NRE and certification costs.
-9. Primary pages for Douane, TARIC, ACM and EU consumer rules.
-10. Microsoft licence prices, and the EU price of any machine that reaches a short list.
+1. Coolblue, Megekko and Azerty prices, and Tweakers listings for the MS-S1 MAX, Bosgame M5 and Framework Desktop (Tweakers had none).
+2. Independent LLM speed tests of the 64 GB EVO-X2 and any independent noise, power or LLM data for the EVO-X3.
+3. A primary AMD or Microsoft page for the Windows 96 GB figure (the AMD pages never loaded), and a fix or confirmation for Vulkan loads near 64 GB.
+4. Mac Studio M5 Max 128 GB and M5 Ultra configured prices in EUR, and any independent Apple tokens/s.
+5. Dutch used-market prices (Marktplaats blocked the browser).
+6. Compatibility of the DIY parts with the Framework mainboard; the DIY totals are indicative.
+7. Live TARIC measures for Chinese origin, the CE directives that apply to a mini PC, who is importer of record on a GMKtec German-store order, and Dutch business-to-business warranty rules.
+8. VAT ID or OSS registration for GMKtec, Minisforum, Beelink and Bosgame, and Bosgame's legal entity and terms.
+9. Sixunited MOQ, NRE and certification costs.
+10. GMKtec's affiliate commission (behind Awin signup) and Minisforum's wholesale terms (behind a form): owner actions.
 
 Only the owner applies to affiliate programs, contacts makers for wholesale or ODM terms, or makes a purchase.

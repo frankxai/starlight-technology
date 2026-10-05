@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandSupply, capacityTable, fits, headlinePrice, ladderGroups, ladderRows, machines, stats, workloads } from "./compute";
+import { brandSupply, capacityTable, companies, expansionFindings, fits, headlinePrice, ladderGroups, ladderRows, machines, stats, workloads } from "./compute";
 
 describe("compute data layer", () => {
   it("matches the validated .mjs rules on every machine and workload", async () => {
@@ -67,6 +67,22 @@ describe("compute data layer", () => {
     expect(framework.map((s) => s.supplier)).toEqual(expect.arrayContaining(["FSP Group", "Cooler Master", "Noctua"]));
     expect(framework.every((s) => s.evidence === "documented")).toBe(true);
     expect(brandSupply("gmktec").some((s) => s.supplier === "Sixunited")).toBe(true);
+  });
+
+  it("lists only full company profiles and marks Framework as the one EU entity", () => {
+    expect(companies.every((c) => c.depth === "full")).toBe(true);
+    expect(companies.filter((c) => c.euLegalEntity === true).map((c) => c.brandId)).toEqual(["framework"]);
+    expect(companies.some((c) => c.brandId === "hp")).toBe(false);
+  });
+
+  it("summarises expansion evidence in short findings", () => {
+    expect(expansionFindings.length).toBeGreaterThan(0);
+    expect(expansionFindings.every((f) => f.length <= 280)).toBe(true);
+  });
+
+  it("counts open gaps separately from the total", () => {
+    expect(stats.gaps).toBeLessThan(stats.gapsTotal);
+    expect(stats.gaps).toBeGreaterThan(0);
   });
 
   it("reports counts that match the records", () => {

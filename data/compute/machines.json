@@ -66,6 +66,20 @@
         "note": "24% VAT; EUR 3,588.87 ex-VAT",
         "merchantHost": "datafox.ee",
         "sourceId": "gmktec-s26"
+      },
+      {
+        "kind": "merchant",
+        "amount": 4319,
+        "currency": "EUR",
+        "merchant": "Tweakers Pricewatch (lowest listed)",
+        "region": "NL",
+        "variant": "128GB/2TB with Windows 11 Pro",
+        "includesTax": null,
+        "verifiedOn": "2026-10-05",
+        "evidence": "page-read",
+        "sourceId": "pn-s04",
+        "merchantHost": "tweakers.net",
+        "note": "Lowest of the shops listed on Tweakers; merchant not named; tax status not stated on the page."
       }
     ],
     "llmEvidence": [
@@ -127,7 +141,8 @@
       "External PSU",
       "Case/interior access criticised",
       "Dense 70B is memory-bandwidth bound at single-digit t/s",
-      "Price spread EUR 1,999.99 (EU official 64GB) to 4,450 (EE retailer 128GB) indicates volatile pricing"
+      "Price spread EUR 1,999.99 (EU official 64GB) to 4,450 (EE retailer 128GB) indicates volatile pricing",
+      "Windows: AMD states up to 96 GB of GPU memory via Variable Graphics Memory (Adrenalin 25.8.1+); open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set. Linux: about 124 GB is a community setting (kyuz0 guide), not an AMD-published cap."
     ],
     "sourceIds": [
       "gmktec-s01",
@@ -137,8 +152,18 @@
       "gmktec-s20",
       "gmktec-s21",
       "gmktec-s25",
-      "gmktec-s26"
-    ]
+      "gmktec-s26",
+      "pn-s04"
+    ],
+    "specs": {
+      "ports": "Same as the 64GB model: 2x USB4, one 2.5GbE, no OCuLink listed.",
+      "power": "230 W external adapter",
+      "dimensions": "193 x 185.8 x 77 mm",
+      "storage": "Dual M.2 2280; 128GB variants ship with 1TB or 2TB",
+      "sourceIds": [
+        "gmktec-s01"
+      ]
+    }
   },
   {
     "id": "gmktec-evo-x2-64",
@@ -155,7 +180,7 @@
       "soldered": true,
       "upgradable": false,
       "bandwidthGBs": 256,
-      "gpuAddressable": null,
+      "gpuAddressable": "up to 48 GB, leaving 16 GB for the system (Notebookcheck, Spanish edition)",
       "maxGb": null
     },
     "os": [
@@ -192,6 +217,20 @@
         "note": "same price as 128GB variants on the page, suggests sale pricing",
         "merchantHost": "gmktec.com",
         "sourceId": "gmktec-s01"
+      },
+      {
+        "kind": "merchant",
+        "amount": 2139,
+        "currency": "EUR",
+        "merchant": "Tweakers Pricewatch (lowest listed)",
+        "region": "NL",
+        "variant": "64GB/1TB",
+        "includesTax": null,
+        "verifiedOn": "2026-10-05",
+        "evidence": "page-read",
+        "sourceId": "pn-s04",
+        "merchantHost": "tweakers.net",
+        "note": "Lowest of the shops listed on Tweakers; merchant not named; tax status not stated on the page."
       }
     ],
     "llmEvidence": [],
@@ -200,8 +239,19 @@
     ],
     "sourceIds": [
       "gmktec-s01",
-      "gmktec-s09"
-    ]
+      "gmktec-s09",
+      "pn-s04",
+      "rv-s02"
+    ],
+    "specs": {
+      "ports": "Front: 2x USB-A 3.2 Gen2, 1x USB4 (40 Gbps), SD 4.0, audio. Rear: DP 1.4, HDMI 2.1, 1x USB-A 3.2 Gen2, 2x USB-A 2.0, 1x USB4, audio, DC in, 1x 2.5GbE (Realtek 8125BG). No OCuLink in the spec table.",
+      "power": "230 W external adapter (19.5 V, 11.8 A); sustained 120 W per the vendor",
+      "dimensions": "193 x 185.8 x 77 mm",
+      "storage": "Dual M.2 2280; the 64GB variant ships with 1TB",
+      "sourceIds": [
+        "gmktec-s01"
+      ]
+    }
   },
   {
     "id": "gmktec-evo-x3-128",
@@ -269,7 +319,18 @@
       "gmktec-s23",
       "gmktec-s24",
       "gmktec-s30"
-    ]
+    ],
+    "specs": {
+      "ports": "1x USB4 (40 Gbps), 1x OCuLink (PCIe 4.0 x4), single 2.5GbE, HDMI 2.1, USB-A ports (secondary source).",
+      "power": "External DC input, wattage not stated",
+      "dimensions": "353 x 186 x 41 mm, triple fans, 2 M.2 slots (secondary source)",
+      "storage": "2 M.2 slots",
+      "sourceIds": [
+        "vt-s21",
+        "vt-s22"
+      ],
+      "note": "Vendor page not reachable; specs come from Liliputing. Launch date 2026-07-06 from a search excerpt only."
+    }
   },
   {
     "id": "gmktec-evo-x5-pro-192",
@@ -734,7 +795,8 @@
       "USB4v2 ports via discrete controller; commenters question real bandwidth given PCIe lane limits",
       "PCIe x16 slot is x4 electrical",
       "HDMI only, no DisplayPort",
-      "BF16 models do not run at full context on Strix Halo; Vulkan more stable than ROCm at long context (Level1Techs)"
+      "BF16 models do not run at full context on Strix Halo; Vulkan more stable than ROCm at long context (Level1Techs)",
+      "Windows: AMD states up to 96 GB of GPU memory via Variable Graphics Memory (Adrenalin 25.8.1+); open LM Studio and llama.cpp issues report Vulkan loads failing or stalling near 64 GB with 96 GB set. Linux: about 124 GB is a community setting (kyuz0 guide), not an AMD-published cap."
     ],
     "sourceIds": [
       "minisforum-s01",
@@ -747,7 +809,17 @@
       "minisforum-s09",
       "minisforum-s10",
       "minisforum-s18"
-    ]
+    ],
+    "specs": {
+      "ports": "Rear: 2x USB4 v2 (80 Gbps), 2x 10GbE (Realtek RTL8127). Front: 2x USB4 (40 Gbps). Also USB 3.2 Gen2, USB 2.0, HDMI 2.1, dual M.2, PCIe x16 slot running at PCIe 4.0 x4.",
+      "power": "Built-in 320 W PSU",
+      "dimensions": "Not on the vendor page",
+      "storage": "Dual M.2",
+      "sourceIds": [
+        "ex-s01"
+      ],
+      "note": "Minisforum's page confirms two 80 Gbps ports (ServeTheHome is right; Liliputing's one 80 plus two 40 is not what the page shows)."
+    }
   },
   {
     "id": "minisforum-ms-s1-max-64",
@@ -809,7 +881,14 @@
     "sourceIds": [
       "minisforum-s01",
       "minisforum-s03"
-    ]
+    ],
+    "specs": {
+      "ports": "Same chassis as the 128GB model (assumed; not separately verified)",
+      "power": "Built-in 320 W PSU (assumed)",
+      "sourceIds": [
+        "ex-s01"
+      ]
+    }
   },
   {
     "id": "minisforum-ms-s1-max-p495",

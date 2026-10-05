@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { loadData, dataHash, validate, buildGraph, renderIndex } from "./lib.mjs";
+import { EXTRA_DOCS } from "./render-more.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const dir = join(root, "data", "compute");
@@ -19,11 +20,13 @@ if (errors.length) {
 const graph = buildGraph(data, dataHash(dir));
 const graphText = JSON.stringify(graph, null, 2) + "\n";
 const indexText = renderIndex(data, graph);
+const extras = EXTRA_DOCS.map(([name, render]) => [join(root, "docs", "compute", name), render(data, graph.dataHash)]);
 
 if (check) {
   const stale = [];
   if (!existsSync(graphPath) || readFileSync(graphPath, "utf8") !== graphText) stale.push("data/compute/graph.json");
   if (!existsSync(indexPath) || readFileSync(indexPath, "utf8") !== indexText) stale.push("docs/compute/ENGINEERING-INDEX.md");
+  for (const [p, text] of extras) if (!existsSync(p) || readFileSync(p, "utf8") !== text) stale.push(p.slice(root.length + 1).replaceAll("\\", "/"));
   if (stale.length) {
     console.error(`generated files are stale: ${stale.join(", ")}. Run: node scripts/compute/build.mjs`);
     process.exit(1);
@@ -32,5 +35,6 @@ if (check) {
 } else {
   writeFileSync(graphPath, graphText);
   writeFileSync(indexPath, indexText);
-  console.log(`wrote graph.json (${graph.nodeCount} nodes, ${graph.edgeCount} edges) and ENGINEERING-INDEX.md; ${warnings.length} warnings`);
+  for (const [p, text] of extras) writeFileSync(p, text);
+  console.log(`wrote graph.json (${graph.nodeCount} nodes, ${graph.edgeCount} edges), ENGINEERING-INDEX.md and ${extras.length} companion documents; ${warnings.length} warnings`);
 }

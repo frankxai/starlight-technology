@@ -1,5 +1,5 @@
 import styles from "./compute.module.css";
-import { brandSilicon, brandSupply, brands, capacityClasses, capacityTable, ladderGroups, stats, type EdgeEvidence } from "@/lib/compute";
+import { brandSilicon, brandSupply, brands, capacityClasses, capacityTable, companies, expansionFindings, ladderGroups, stats, type EdgeEvidence } from "@/lib/compute";
 
 const eur = (n: number) => `€${n.toLocaleString("en-US", { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 })}`;
 
@@ -136,6 +136,48 @@ export function BrandCards() {
   );
 }
 
+const brandName = (id: string) => brands.find((b) => b.id === id)?.name ?? id;
+const clip = (s: string | undefined, n: number) => {
+  const t = (s ?? "not recorded").replace(/\s+/g, " ").trim();
+  return t.length > n ? `${t.slice(0, n - 1)}…` : t;
+};
+
+export function CompanyTable() {
+  return (
+    <div className={styles.tableWrap} role="region" aria-label="Who stands behind each machine, scrolls sideways on small screens" tabIndex={0}>
+      <table className={`${styles.table} ${styles.wideTable}`}>
+        <caption>Facts read from each company&apos;s own pages and from Trustpilot on 2026-10-05. A missing entry means it was not found, not that it does not exist.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">EU legal entity</th>
+            <th scope="col">Return and warranty as written</th>
+            <th scope="col">Trustpilot</th>
+          </tr>
+        </thead>
+        <tbody>
+          {companies.map((c) => (
+            <tr key={c.brandId}>
+              <th scope="row">{brandName(c.brandId)}<small>{c.euLegalEntity === true ? `EU entity, VAT ${c.euVatId.value}` : c.euLegalEntity === false ? "operator outside the EU" : "EU entity not established"}</small></th>
+              <td className={styles.left}>{clip(c.euPresence.euStoreEntity, 150)}</td>
+              <td className={styles.left}>{clip(c.euPresence.returnAndWarrantyAsWritten, 230)}</td>
+              <td className={styles.left}>{c.trustpilot.reviewCount != null ? `${c.trustpilot.score ?? "score withheld"} from ${c.trustpilot.reviewCount}` : "not read"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export function ExpansionNotes() {
+  return (
+    <ul className={styles.notesList}>
+      {expansionFindings.map((f) => <li key={f}>{f}</li>)}
+    </ul>
+  );
+}
+
 export function EvidencePanel() {
   return (
     <>
@@ -144,7 +186,7 @@ export function EvidencePanel() {
         <div><dt>Claims</dt><dd>{stats.claims}</dd></div>
         <div><dt>Machines</dt><dd>{stats.machines}</dd></div>
         <div><dt>Graph edges</dt><dd>{stats.edges}</dd></div>
-        <div><dt>Open gaps</dt><dd>{stats.gaps}</dd></div>
+        <div><dt>Open gaps</dt><dd>{stats.gaps}<small> of {stats.gapsTotal}</small></dd></div>
       </dl>
       <p className={styles.notes}>
         Agents can read the same graph at <a href="/api/compute/graph">/api/compute/graph</a>. Each ladder price links to the page it was read from, with the date. Claims and graph edges list their source IDs in the data files. No affiliate links are used on this page, and Amazon prices are not stored. Machines were not tested hands-on.

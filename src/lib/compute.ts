@@ -8,6 +8,8 @@ import sourcesJson from "../../data/compute/sources.json";
 import claimsJson from "../../data/compute/claims.json";
 import gapsJson from "../../data/compute/gaps.json";
 import graphJson from "../../data/compute/graph.json";
+import fundamentalsJson from "../../data/compute/fundamentals.json";
+import expansionJson from "../../data/compute/expansion.json";
 
 export type PriceEvidence = "page-read" | "reported" | "forum" | "derived" | "snippet";
 export type EdgeEvidence = "documented" | "inferred" | "rumor";
@@ -70,6 +72,18 @@ export interface SupplyEdge { fromType: "machine" | "brand" | "silicon"; fromId:
 export interface Supplier { id: string; name: string; role: string; country: string | null }
 export interface Silicon { id: string; name: string; memoryBandwidthGBs: number | null }
 
+export interface Company {
+  brandId: string;
+  depth: "full" | "stub";
+  legalEntities: { name: string; country: string }[];
+  euLegalEntity: boolean | null;
+  euVatId: { value: string | null; status: string };
+  euPresence: { warehouses?: string; euStoreEntity?: string; returnAndWarrantyAsWritten?: string };
+  trustpilot: { score: number | null; reviewCount: number | null; url: string; observedOn: string };
+  businessRisks: string[];
+  sourceIds: string[];
+}
+
 export const machines = machinesJson as unknown as Machine[];
 export const brands = brandsJson as unknown as Brand[];
 export const workloads = workloadsJson as unknown as Workload[];
@@ -81,7 +95,8 @@ export const researchDate = "2026-10-05";
 export const stats = {
   sources: sourcesJson.length,
   claims: claimsJson.length,
-  gaps: gapsJson.length,
+  gaps: gapsJson.filter((g) => g.status === "open").length,
+  gapsTotal: gapsJson.length,
   nodes: graphJson.nodeCount,
   edges: graphJson.edgeCount,
   machines: machines.length,
@@ -216,3 +231,8 @@ export function brandSilicon(brandId: string) {
 }
 
 export const graph = graphJson;
+
+export const companies = (fundamentalsJson.companies as unknown as Company[]).filter((c) => c.depth === "full");
+
+const clipText = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
+export const expansionFindings = (expansionJson.scaleUpVsScaleOut.findings as string[]).slice(0, 3).map((f) => clipText(f, 280));
