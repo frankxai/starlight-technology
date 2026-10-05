@@ -1,39 +1,48 @@
 import styles from "./compute.module.css";
-import { brandSilicon, brandSupply, brands, capacityClasses, capacityTable, ladderRows, stats, type EdgeEvidence } from "@/lib/compute";
+import { brandSilicon, brandSupply, brands, capacityClasses, capacityTable, ladderGroups, stats, type EdgeEvidence } from "@/lib/compute";
 
 const eur = (n: number) => `€${n.toLocaleString("en-US", { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 })}`;
 
 export function PriceLadder() {
-  const rows = ladderRows(64);
-  const max = Math.max(...rows.map((r) => r.amountEur));
+  const groups = ladderGroups(64);
+  const max = Math.max(...groups.map((g) => g.high));
   return (
     <>
-      <ol className={styles.ladder} aria-label="Machines with 64 GB or more memory, cheapest first">
-        {rows.map((r) => (
-          <li className={styles.rung} key={r.id}>
-            <div>
-              <p className={styles.rungName}>
-                {r.name}
-                {r.evidence === "reported" && <span className={`${styles.tag} ${styles.tagReported}`}>reported</span>}
-                {r.sale && <span className={styles.tag}>sale</span>}
-              </p>
-              <span className={styles.rungMeta}>
-                {r.memoryGb} GB · {r.bandwidth ? `${r.bandwidth} GB/s` : "bandwidth not verified"} · {eur(r.eurPerGb)} per GB
-                {r.speed ? ` · ${r.speed}` : ""}
-              </span>
-            </div>
-            <div className={styles.trackCell}>
-              <div className={styles.track} aria-hidden="true">
-                <span className={`${styles.fill} ${r.evidence === "reported" ? styles.fillReported : ""}`} style={{ width: `${Math.max(6, (r.amountEur / max) * 100)}%` }} />
-              </div>
-            </div>
-            <div className={styles.price}>
-              <strong>{eur(r.amountEur)}</strong>
-              <small>{r.tax} · {r.source} · {r.verifiedOn}</small>
-            </div>
-          </li>
-        ))}
-      </ol>
+      {groups.map((g) => (
+        <section className={styles.group} key={g.memoryGb} aria-labelledby={`class-${g.memoryGb}`}>
+          <h3 className={styles.groupHead} id={`class-${g.memoryGb}`}>
+            {g.label}
+            <span>{g.rows.length === 1 ? eur(g.low) : `${eur(g.low)} to ${eur(g.high)}`}</span>
+          </h3>
+          <ol className={styles.ladder}>
+            {g.rows.map((r) => (
+              <li className={styles.rung} key={r.id}>
+                <div className={styles.rungText}>
+                  <p className={styles.rungName}>
+                    {r.name}
+                    {r.evidence === "reported" && <span className={`${styles.tag} ${styles.tagReported}`}>reported</span>}
+                    {r.sale && <span className={styles.tag}>sale</span>}
+                  </p>
+                  <span className={styles.rungMeta}>
+                    {r.bandwidth ? `${r.bandwidth} GB/s` : "bandwidth not verified"} · {eur(r.eurPerGb)} per GB
+                    {r.speed ? ` · ${r.speed}` : ""}
+                  </span>
+                </div>
+                <div className={styles.trackCell}>
+                  <div className={styles.track} aria-hidden="true">
+                    <span className={`${styles.fill} ${r.evidence === "reported" ? styles.fillReported : ""}`} style={{ width: `${Math.max(6, (r.amountEur / max) * 100)}%` }} />
+                  </div>
+                </div>
+                <div className={styles.price}>
+                  <strong>{eur(r.amountEur)}</strong>
+                  <small>{r.tax} · {r.source}</small>
+                  <small className={styles.date}>{r.verifiedOn}</small>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
       <p className={styles.legend}>
         <span><i className={`${styles.swatch}`} /> Read from a merchant or manufacturer page on the date shown</span>
         <span><i className={`${styles.swatch} ${styles.swatchReported}`} /> Reported by a third party, not read from a merchant page</span>
@@ -41,11 +50,10 @@ export function PriceLadder() {
     </>
   );
 }
-
 export function CapacityTable() {
   const rows = capacityTable();
   return (
-    <div className={styles.tableWrap}>
+    <div className={styles.tableWrap} role="region" aria-label="Workload fit by memory class, scrolls sideways on small screens" tabIndex={0}>
       <table className={styles.table}>
         <caption>Capacity only. Bandwidth, software support and thermals decide the speed. Sizes are model weights plus KV cache; headroom for the OS and 10 agent sessions is an estimate (see workloads.json).</caption>
         <thead>

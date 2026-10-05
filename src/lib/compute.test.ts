@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandSupply, capacityTable, fits, headlinePrice, ladderRows, machines, stats, workloads } from "./compute";
+import { brandSupply, capacityTable, fits, headlinePrice, ladderGroups, ladderRows, machines, stats, workloads } from "./compute";
 
 describe("compute data layer", () => {
   it("matches the validated .mjs rules on every machine and workload", async () => {
@@ -21,6 +21,22 @@ describe("compute data layer", () => {
     expect(mac?.evidence).toBe("reported");
     expect(rows.find((r) => r.id === "gmktec-evo-x2-128")?.evidence).toBe("page-read");
     expect(rows.every((r) => r.verifiedOn === "2026-10-05")).toBe(true);
+  });
+
+  it("groups the ladder by memory size with a price range per group", () => {
+    const groups = ladderGroups(64);
+    expect(groups.map((g) => g.memoryGb)).toEqual([64, 96, 128, 192]);
+    const g128 = groups.find((g) => g.memoryGb === 128)!;
+    expect(g128.low).toBe(3215);
+    expect(g128.rows.every((r) => r.memoryGb === 128)).toBe(true);
+    expect(g128.rows.every((r, i) => i === 0 || g128.rows[i - 1].amountEur <= r.amountEur)).toBe(true);
+    expect(groups.find((g) => g.memoryGb === 64)!.rows.some((r) => r.evidence === "reported")).toBe(true);
+  });
+
+  it("shortens long model names without losing the variant", () => {
+    const names = ladderRows(64).map((r) => r.name);
+    expect(names).toContain("HP Z2 Mini G1a 128GB/1TB");
+    expect(names.every((n) => !/Ryzen AI Max/.test(n))).toBe(true);
   });
 
   it("never prices a machine from a forum post or a search snippet", () => {

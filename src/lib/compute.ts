@@ -123,9 +123,11 @@ export interface LadderRow {
 const shortName = (m: Machine) =>
   m.model
     .replace(/\s*\(.*?\)/g, "")
+    .replace(/,?\s*Ryzen AI Max\+?(?: PRO)?\s*\d+,?/gi, "")
     .replace(/Desktop DIY /, "Framework Desktop ")
     .replace(/^Desktop /, "Framework Desktop ")
     .replace(/^Z2 Mini/, "HP Z2 Mini")
+    .replace(/\s{2,}/g, " ")
     .trim();
 
 export function ladderRows(minGb = 64): LadderRow[] {
@@ -153,6 +155,17 @@ export function ladderRows(minGb = 64): LadderRow[] {
     });
   }
   return rows.sort((a, b) => a.amountEur - b.amountEur);
+}
+
+export interface LadderGroup { memoryGb: number; label: string; low: number; high: number; rows: LadderRow[] }
+
+export function ladderGroups(minGb = 64): LadderGroup[] {
+  const rows = ladderRows(minGb);
+  const sizes = [...new Set(rows.map((r) => r.memoryGb))].sort((a, b) => a - b);
+  return sizes.map((gb) => {
+    const group = rows.filter((r) => r.memoryGb === gb);
+    return { memoryGb: gb, label: `${gb} GB class`, low: group[0].amountEur, high: group[group.length - 1].amountEur, rows: group };
+  });
 }
 
 export const capacityClasses = [32, 64, 96, 128, 192] as const;

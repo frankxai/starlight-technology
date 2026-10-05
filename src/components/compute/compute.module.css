@@ -1,17 +1,21 @@
-.page { padding-block: clamp(56px, 8vw, 112px); }
-.hero { max-width: 960px; margin-bottom: clamp(40px, 6vw, 72px); }
-.title { margin: 0; max-width: 18ch; font-size: clamp(2.3rem, 5.4vw, 4.6rem); line-height: .98; letter-spacing: -.05em; font-weight: 680; text-wrap: balance; }
-.lede { max-width: 680px; margin: 1.4rem 0 0; color: var(--muted); font-size: clamp(1.02rem, 1.6vw, 1.2rem); }
-.status { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 1.6rem 0 0; padding: 0; list-style: none; color: var(--muted); font: .72rem/1.3 ui-monospace, "Cascadia Code", monospace; letter-spacing: .06em; text-transform: uppercase; }
+.page { padding-block: clamp(36px, 5vw, 72px) clamp(56px, 8vw, 112px); }
+.hero { max-width: 960px; margin-bottom: clamp(28px, 4vw, 44px); }
+.title { margin: 0; max-width: 18ch; font-size: clamp(2rem, 4.4vw, 3.5rem); line-height: 1; letter-spacing: -.045em; font-weight: 680; text-wrap: balance; }
+.lede { max-width: 680px; margin: 1rem 0 0; color: var(--muted); font-size: clamp(1.02rem, 1.6vw, 1.2rem); }
+.status { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 1.1rem 0 0; padding: 0; list-style: none; color: var(--muted); font: .72rem/1.3 ui-monospace, "Cascadia Code", monospace; letter-spacing: .06em; text-transform: uppercase; }
 .status li { display: inline-flex; align-items: center; gap: 8px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
 
-.block { margin-top: clamp(56px, 8vw, 104px); }
+.block { margin-top: clamp(40px, 6vw, 80px); }
 .blockHead { max-width: 760px; margin-bottom: 28px; }
 .blockHead h2 { margin: 0 0 .6rem; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.05; letter-spacing: -.04em; }
 .blockHead p { margin: 0; color: var(--muted); }
 
+.group + .group { margin-top: 28px; }
+.groupHead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0; padding: 0 0 10px; font: 800 .72rem/1.3 ui-monospace, "Cascadia Code", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
+.groupHead span { color: var(--paper); letter-spacing: .02em; text-transform: none; font-size: .9rem; font-variant-numeric: tabular-nums; }
 .ladder { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-bright); }
+.rung > * { min-width: 0; }
 .rung { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1fr); gap: 8px 28px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .rungName { margin: 0; font-weight: 700; letter-spacing: -.01em; }
 .rungMeta { display: block; margin-top: 2px; color: var(--muted); font-size: .76rem; }
@@ -21,6 +25,7 @@
 .price { text-align: right; font-variant-numeric: tabular-nums; }
 .price strong { display: block; font-size: 1.15rem; letter-spacing: -.02em; }
 .price small { display: block; color: var(--muted); font-size: .7rem; line-height: 1.35; }
+.price .date { white-space: nowrap; }
 .tag { display: inline-block; margin-left: 8px; padding: 1px 6px; border: 1px solid var(--line-bright); color: var(--muted); font: 700 .62rem/1.4 ui-monospace, "Cascadia Code", monospace; letter-spacing: .08em; text-transform: uppercase; vertical-align: middle; }
 .tagReported { color: var(--amber); border-color: var(--amber); }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 16px 0 0; color: var(--muted); font-size: .76rem; }
@@ -28,7 +33,8 @@
 .swatch { width: 22px; height: 10px; background: var(--signal); }
 .swatchReported { background: repeating-linear-gradient(135deg, var(--amber) 0 4px, transparent 4px 8px); }
 
-.tableWrap { overflow-x: auto; border: 1px solid var(--line-bright); }
+.tableWrap { position: relative; overflow-x: auto; border: 1px solid var(--line-bright); }
+.tableWrap:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
 .table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: .9rem; }
 .table caption { padding: 12px 16px; text-align: left; color: var(--muted); font-size: .76rem; caption-side: bottom; border-top: 1px solid var(--line); }
 .table th, .table td { padding: 12px 16px; border-bottom: 1px solid var(--line); text-align: center; }
@@ -63,7 +69,7 @@
 .notes a { color: var(--paper); }
 
 @media (max-width: 760px) {
-  .rung { grid-template-columns: 1fr auto; }
+  .rung { grid-template-columns: minmax(0, 1fr) minmax(0, 9.5rem); }
   .rung .trackCell { grid-column: 1 / -1; order: 3; }
   .price strong { font-size: 1.05rem; }
   .brand { padding: 20px; }

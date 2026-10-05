@@ -29,7 +29,7 @@ export default function ComputePage() {
       <section className={styles.block} aria-labelledby="ladder">
         <div className={styles.blockHead}>
           <h2 id="ladder">Memory price ladder</h2>
-          <p>Machines with 64 GB or more, cheapest first. A bar is the cheapest EUR price read from a page. Tax status is stated where the page states it.</p>
+          <p>Machines with 64 GB or more, grouped by memory size and cheapest first within each group. A bar is the cheapest EUR price read from a page. Tax status is stated where the page states it.</p>
         </div>
         <PriceLadder />
       </section>
