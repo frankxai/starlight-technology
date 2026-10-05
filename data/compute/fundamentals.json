@@ -103,6 +103,10 @@
         "co-s11",
         "vl-s27",
         "vl-s29"
+      ],
+      "officialHosts": [
+        "gmktec.com",
+        "de.gmktec.com"
       ]
     },
     {
@@ -208,6 +212,11 @@
         "co-s15",
         "co-s16",
         "co-s17"
+      ],
+      "officialHosts": [
+        "minisforumpc.eu",
+        "minisforum.com",
+        "minisforum.uk"
       ]
     },
     {
@@ -244,7 +253,13 @@
       "euLegalEntity": true,
       "euVatId": {
         "value": "NL864030204B01",
-        "status": "documented"
+        "status": "documented",
+        "sourceIds": [
+          "co-s19",
+          "co-s20",
+          "co-s21",
+          "co-s22"
+        ]
       },
       "euPresence": {
         "warehouses": "Ships from the Netherlands for EU and Norway (mainland France only for France).",
@@ -308,6 +323,9 @@
         "co-s22",
         "co-s23",
         "supply-s10"
+      ],
+      "officialHosts": [
+        "frame.work"
       ]
     },
     {
@@ -396,11 +414,15 @@
         "co-s27",
         "co-s28",
         "co-s29"
+      ],
+      "officialHosts": [
+        "bee-link.com",
+        "eu.bee-link.com"
       ]
     },
     {
       "brandId": "bosgame",
-      "depth": "full",
+      "depth": "thin",
       "legalEntities": [
         {
           "name": "Shenzhen Weikesen Electronic Technology Co., Ltd (trademark owner per search snippet)",
@@ -473,6 +495,9 @@
         "co-s30",
         "co-s31",
         "co-s32"
+      ],
+      "officialHosts": [
+        "bosgamepc.com"
       ]
     },
     {
@@ -517,6 +542,9 @@
       "evidenceNotes": "Snippet-only; no page opened.",
       "sourceIds": [
         "co-s34"
+      ],
+      "officialHosts": [
+        "hp.com"
       ]
     },
     {
@@ -561,6 +589,9 @@
       "evidenceNotes": "Snippet-only; verify before citing.",
       "sourceIds": [
         "co-s34"
+      ],
+      "officialHosts": [
+        "corsair.com"
       ]
     }
   ],

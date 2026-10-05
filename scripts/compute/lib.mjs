@@ -7,7 +7,9 @@ export const VERIFY_STATUS = ["verified", "partially-verified", "refuted", "unve
 export const GAP_STATUS = ["open", "partial", "closed"];
 export const UNIT_SOURCE = ["bought", "loaned by maker", "unknown"];
 export const OWNER_SEVERITY = ["minor", "major", "dead-on-arrival", "firmware"];
-export const PRICE_EVIDENCE = ["page-read", "reported", "forum", "derived", "snippet"];
+export const PRICE_EVIDENCE = ["page-read", "listing", "reported", "forum", "derived", "snippet"];
+export const REVIEW_MACHINE = { "evo-x2-64": "gmktec-evo-x2-64", "evo-x2-128": "gmktec-evo-x2-128", "evo-x3": "gmktec-evo-x3-128", "ms-s1-max-64": "minisforum-ms-s1-max-64", "ms-s1-max-128": "minisforum-ms-s1-max-128", "bosgame-m5": "bosgame-m5", "beelink-gtr9-pro": "beelink-gtr9-pro" };
+export const FAMILY_KEYS = ["framework-desktop"];
 export const CLAIM_TYPES = ["manufacturer-assertion", "independent-measurement", "community-report", "legal-text", "inference", "market-data"];
 export const EDGE_EVIDENCE = ["documented", "inferred", "rumor"];
 
@@ -88,7 +90,7 @@ export function validate(data, { now = new Date() } = {}) {
       const priceSource = p.sourceId ? sourceById.get(p.sourceId) : null;
       if (p.sourceId && !priceSource) err(`${w}: unresolved price source ${p.sourceId}`);
       if (/amazon/i.test(p.merchant ?? "") || /amazon/i.test(p.merchantHost ?? "") || /amazon\./i.test(priceSource?.url ?? "")) err(`${w}: Amazon prices are not stored (Associates terms limit how long they may be shown)`);
-      if (p.evidence === "page-read") {
+      if (p.evidence === "page-read" || p.evidence === "listing") {
         if (!p.merchant || !p.region) err(`${w}: page-read price needs merchant and region`);
         if (!p.sourceId || !p.merchantHost) err(`${w}: page-read price needs its own sourceId and merchantHost`);
         else if (priceSource) {
@@ -146,14 +148,27 @@ export function validate(data, { now = new Date() } = {}) {
     const w = `fundamentals ${c.brandId}`;
     if (!ids.brands.has(c.brandId)) err(`${w}: unknown brand`);
     walkSources(w, c);
-    if (!["full", "stub"].includes(c.depth)) err(`${w}: depth must be full or stub`);
-    if (c.depth === "full" && !c.sourceIds.length) err(`${w}: a full profile needs sources`);
+    if (!["full", "thin", "stub"].includes(c.depth)) err(`${w}: depth must be full, thin or stub`);
+    if (c.depth === "full") {
+      const opened = c.legalEntities.some((l) => (l.sourceIds ?? []).some((id) => sourceById.get(id)?.access === "opened"));
+      if (!opened) err(`${w}: a full profile needs a legal entity backed by an opened source`);
+      if (!(c.euPresence?.returnAndWarrantyAsWritten ?? "").trim() || /^GAP/i.test(c.euPresence.returnAndWarrantyAsWritten)) err(`${w}: a full profile needs the return and warranty terms as written`);
+    }
+    if (c.depth === "thin" && !c.sourceIds.length) err(`${w}: a thin profile still needs sources`);
     if (c.depth === "stub" && !/snippet|not researched|nothing opened/i.test(c.evidenceNotes ?? "")) err(`${w}: a stub must say it is snippet-only or not researched`);
     if (![true, false, null].includes(c.euLegalEntity)) err(`${w}: euLegalEntity must be true, false or null`);
-    if (c.euLegalEntity === true && !(c.euVatId?.value && c.euVatId.status === "documented")) err(`${w}: an EU legal entity needs a documented VAT ID`);
+    if (c.euLegalEntity === true) {
+      if (!(c.euVatId?.value && c.euVatId.status === "documented")) err(`${w}: an EU legal entity needs a documented VAT ID`);
+      const vs = c.euVatId?.sourceIds ?? [];
+      if (!vs.length) err(`${w}: the VAT ID needs a source`);
+      for (const id of vs) {
+        const s = sourceById.get(id);
+        if (s && (s.access !== "opened" || !(c.officialHosts ?? []).some((h) => hostOf(s.url).endsWith(h)))) err(`${w}: VAT ID source ${id} must be an opened page on the company's own host`);
+      }
+    }
     if (c.trustpilot?.score != null || c.trustpilot?.reviewCount != null) {
       if (!isRealDate(c.trustpilot.observedOn, now)) err(`${w}: Trustpilot figures need a real observedOn date`);
-      if (!/^https:\/\/www\.trustpilot\.com\//.test(c.trustpilot.url ?? "")) err(`${w}: Trustpilot url must be a trustpilot.com page`);
+      if (!/^https:\/\//.test(c.trustpilot.url ?? "") || hostOf(c.trustpilot.url ?? "") !== "trustpilot.com") err(`${w}: Trustpilot url must be a trustpilot.com page`);
     }
   }
 
@@ -165,6 +180,11 @@ export function validate(data, { now = new Date() } = {}) {
     if (reviewIds.has(r.id)) err(`${w}: duplicate id`);
     reviewIds.add(r.id);
     if (r.machineId && !ids.machines.has(r.machineId)) err(`${w}: unknown machine ${r.machineId}`);
+    if (FAMILY_KEYS.includes(r.machineKey)) { if (r.machineId) err(`${w}: ${r.machineKey} is a family-level review and must not map to one machine`); }
+    else if (REVIEW_MACHINE[r.machineKey] !== r.machineId) err(`${w}: machineKey ${r.machineKey} must map to ${REVIEW_MACHINE[r.machineKey] ?? "a known machine"}, not ${r.machineId}`);
+    const outletToken = (r.outlet ?? "").toLowerCase().match(/[a-z0-9]{4,}/)?.[0];
+    const rsrc = sourceById.get(r.sourceId);
+    if (outletToken && rsrc && !`${rsrc.publisher} ${rsrc.title} ${hostOf(rsrc.url)}`.toLowerCase().includes(outletToken)) err(`${w}: source ${r.sourceId} does not look like the outlet ${r.outlet}`);
     checkSources(w, [r.sourceId]);
     if (!UNIT_SOURCE.includes(r.unitSource)) err(`${w}: unitSource must be one of ${UNIT_SOURCE.join(", ")}`);
     if (r.sponsored && r.independent) err(`${w}: a sponsored review cannot be marked independent`);
@@ -181,6 +201,8 @@ export function validate(data, { now = new Date() } = {}) {
   for (const [k, c] of Object.entries(data.reviews.consensus)) {
     if (!machineKeys.has(k)) warnings.push(`consensus ${k}: no review records for this machine key`);
     checkSources(`consensus ${k}`, c.sourceIds);
+    const allowed = new Set([...data.reviews.reviews.filter((r) => r.machineKey === k).map((r) => r.sourceId), ...data.reviews.ownerReports.filter((o) => o.machineKey === k && o.sourceId).map((o) => o.sourceId)]);
+    for (const id of c.sourceIds ?? []) if (!allowed.has(id)) err(`consensus ${k}: cites ${id}, which is not a review or owner report of ${k}`);
   }
   walkSources("expansion", data.expansion);
 
@@ -192,7 +214,7 @@ export function validate(data, { now = new Date() } = {}) {
     itemIds.add(i.id);
     if (!VERIFY_STATUS.includes(i.status)) err(`${w}: status must be one of ${VERIFY_STATUS.join(", ")}`);
     if (i.status === "unverifiable" && !(i.caveat ?? "").trim()) err(`${w}: unverifiable needs a note saying what was tried`);
-    if (i.status === "verified" && !(i.sourceIds ?? []).some((id) => sourceById.get(id)?.access === "opened")) err(`${w}: verified needs an opened source`);
+    if (i.status === "verified" && !(i.sourceIds ?? []).some((id) => sourceById.get(id)?.access === "opened" && sourceById.get(id)?.primary)) err(`${w}: verified needs an opened primary source`);
     checkSources(w, i.sourceIds);
   }
   for (const p of data.verification.programme) {
@@ -291,7 +313,8 @@ export function renderIndex(data, graph) {
   L.push("| inferred | Our reasoning from documented facts |");
   L.push("| rumor | Reported, not confirmed by an opened primary source |");
   L.push("| unsourced | A graph edge whose record cites no source |");
-  L.push("| page-read price | Read from a merchant, manufacturer or price-comparison listing page whose host matches the merchant, opened on the date shown; the price record names that page |");
+  L.push("| page-read price | Read from a merchant, manufacturer or price-comparison listing page whose host matches the named merchant, opened on the date shown; the price record names that page |");
+  L.push("| listing price | The lowest price on a comparison site that does not name the selling shop (for example Tweakers Pricewatch); checked like a page-read price but never used as a headline |");
   L.push("| reported / forum / derived / snippet price | Not shown as a headline price: second-hand, forum post, arithmetic, or search-result text |");
   L.push("| community-report claim | A community wiki, forum or aggregate; it is attributed, not treated as an independent measurement |");
   L.push("");

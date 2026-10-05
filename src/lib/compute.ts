@@ -11,7 +11,7 @@ import graphJson from "../../data/compute/graph.json";
 import fundamentalsJson from "../../data/compute/fundamentals.json";
 import expansionJson from "../../data/compute/expansion.json";
 
-export type PriceEvidence = "page-read" | "reported" | "forum" | "derived" | "snippet";
+export type PriceEvidence = "page-read" | "listing" | "reported" | "forum" | "derived" | "snippet";
 export type EdgeEvidence = "documented" | "inferred" | "rumor";
 
 export interface Price {
@@ -74,7 +74,7 @@ export interface Silicon { id: string; name: string; memoryBandwidthGBs: number 
 
 export interface Company {
   brandId: string;
-  depth: "full" | "stub";
+  depth: "full" | "thin" | "stub";
   legalEntities: { name: string; country: string }[];
   euLegalEntity: boolean | null;
   euVatId: { value: string | null; status: string };
@@ -232,7 +232,7 @@ export function brandSilicon(brandId: string) {
 
 export const graph = graphJson;
 
-export const companies = (fundamentalsJson.companies as unknown as Company[]).filter((c) => c.depth === "full");
+export const companies = (fundamentalsJson.companies as unknown as Company[]).filter((c) => c.depth !== "stub");
 
 const clipText = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
 export const expansionFindings = (expansionJson.scaleUpVsScaleOut.findings as string[]).slice(0, 3).map((f) => clipText(f, 280));

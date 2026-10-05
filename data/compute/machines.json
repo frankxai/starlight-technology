@@ -76,10 +76,10 @@
         "variant": "128GB/2TB with Windows 11 Pro",
         "includesTax": null,
         "verifiedOn": "2026-10-05",
-        "evidence": "page-read",
+        "evidence": "listing",
         "sourceId": "pn-s04",
         "merchantHost": "tweakers.net",
-        "note": "Lowest of the shops listed on Tweakers; merchant not named; tax status not stated on the page."
+        "note": "Lowest listed price on Tweakers Pricewatch; the selling shop is not named and tax status is not stated. Not used as a headline price."
       }
     ],
     "llmEvidence": [
@@ -227,10 +227,10 @@
         "variant": "64GB/1TB",
         "includesTax": null,
         "verifiedOn": "2026-10-05",
-        "evidence": "page-read",
+        "evidence": "listing",
         "sourceId": "pn-s04",
         "merchantHost": "tweakers.net",
-        "note": "Lowest of the shops listed on Tweakers; merchant not named; tax status not stated on the page."
+        "note": "Lowest listed price on Tweakers Pricewatch; the selling shop is not named and tax status is not stated. Not used as a headline price."
       }
     ],
     "llmEvidence": [],

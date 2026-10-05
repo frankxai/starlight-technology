@@ -11,13 +11,13 @@
   "checks": {
     "typecheck": "passed",
     "lint": "passed (0 warnings after removing one unused variable)",
-    "vitest": "23 passed across 5 files, including a parity test between src/lib/compute.ts and scripts/compute/lib.mjs",
-    "computeDataTests": "14 passed (node --test scripts/compute/compute.test.mjs); each validator rule is proven to fail on bad input; hash is line-ending independent",
+    "vitest": "26 passed across 5 files, including a parity test between src/lib/compute.ts and scripts/compute/lib.mjs",
+    "computeDataTests": "37 passed (node --test scripts/compute/compute.test.mjs); each validator rule is proven to fail on bad input, including the batch-2 gates for reviews, company fundamentals, verification items and legal-text claims; hash is line-ending independent",
     "generatedFilesDrift": "node scripts/compute/build.mjs --check passed",
     "editorialPlannerTests": "11 passed (unchanged)",
     "build": "passed on CI (GitHub verify job) and on the Vercel preview deployment. Not run locally: pp preflight held the build workload (RAM 3-5 GB free, 8 GB required).",
     "browserLayout": "Desktop inspected on the Vercel preview (about 1100 px wide). A 390 px iframe pass found a 609 px document in a 375 px viewport, caused by visually hidden labels leaking past the table scroll wrapper; fixed with a positioned, focusable scroll region. Also fixed from the review: ladder grouped by memory class, long names and dates wrapping, hero too tall. After the fixes a script measure showed the first ladder row at 660 px in a 975 px viewport. The post-fix 390 px re-measure and screenshots are pending: the browser renderer stalled under RAM pressure and browser checks were stopped.",
-    "independentReview": "Codex (a different provider) reviewed b7586a3 read-only on 2026-10-05: verdict CHANGES REQUESTED, 1 blocker and 13 major or minor findings. Fixed in 201b92a: per-price sources and host matching, tax-basis headline, claim relabelling, edge provenance, blueprint scoping, VAT-aware affiliate maths, visible evidence labels. Not yet re-reviewed: a second pass should confirm the fixes and the remaining items (a price-comparison listing counts as page-read; claim-level splitting is partial)."
+    "independentReview": "Codex (a different provider) reviewed b7586a3 read-only on 2026-10-05: verdict CHANGES REQUESTED, 1 blocker and 13 major or minor findings. Fixed in 201b92a: per-price sources and host matching, tax-basis headline, claim relabelling, edge provenance, blueprint scoping, VAT-aware affiliate maths, visible evidence labels. A second Codex review of batch 2 (dbf7c60, 2026-10-05) returned CHANGES REQUESTED (1 blocker, 8 major, 1 minor); fixes landed in the commit after dbf7c60: EU-entity wording, consumer-only legal wording, eGPU and cluster claims split by setup, comparison-site prices relabelled listing, validator checks for host boundaries, VAT-ID source, outlet match, machine mapping, consensus sources and full-profile substance. Not yet re-reviewed after those fixes."
   },
   "designScore": null,
   "productionEligible": false,

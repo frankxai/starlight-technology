@@ -3,7 +3,7 @@
     {
       "id": "diy-agent-node",
       "goal": "64GB always-on agent node",
-      "status": "indicative",
+      "status": "incomplete-estimate",
       "pricedParts": [
         {
           "part": "Framework Desktop mainboard, Ryzen AI Max+ 395, 64GB",
@@ -48,10 +48,12 @@
       ],
       "missingParts": [
         "cooler (not verified whether the mainboard ships with one)",
-        "compatibility of the case, PSU and cooler with the Framework mainboard"
+        "compatibility of the case, PSU and cooler with the Framework mainboard",
+        "shipping",
+        "exact component listings (prices come from Alternate category or search pages, not product pages)"
       ],
       "totalEur": 2321.89,
-      "compareToBuilt": "Indicative lower bound EUR 2321.89 incl. VAT against GMKtec EVO-X2 64GB/1TB at EUR 1,999.99 (EU official, tax not stated) and Framework Desktop DIY 64GB at EUR 2,209 plus a EUR 258 SSD (EUR 2,467, out of stock on the day read). The mainboard route costs more than the complete machines and carries compatibility risk.",
+      "compareToBuilt": "Incomplete estimate, a lower bound that omits the cooler and shipping, EUR 2321.89 incl. VAT against GMKtec EVO-X2 64GB/1TB at EUR 1,999.99 (EU official, tax not stated) and Framework Desktop DIY 64GB at EUR 2,209 plus a EUR 258 SSD (EUR 2,467, out of stock on the day read). The mainboard route costs more than the complete machines and carries compatibility risk.",
       "sourceIds": [
         "supply-s04",
         "pn-s08",
@@ -62,7 +64,7 @@
     {
       "id": "diy-llm-box",
       "goal": "128GB local-model box",
-      "status": "indicative",
+      "status": "incomplete-estimate",
       "pricedParts": [
         {
           "part": "Framework Desktop mainboard, Ryzen AI Max+ 395, 128GB",
@@ -107,10 +109,12 @@
       ],
       "missingParts": [
         "cooler (not verified whether the mainboard ships with one)",
-        "compatibility of the case, PSU and cooler with the Framework mainboard"
+        "compatibility of the case, PSU and cooler with the Framework mainboard",
+        "shipping",
+        "exact component listings (prices come from Alternate category or search pages, not product pages)"
       ],
       "totalEur": 4001.89,
-      "compareToBuilt": "Indicative lower bound EUR 4001.89 incl. VAT against Minisforum MS-S1 MAX 128GB/2TB at EUR 3,999 (sale, tax not stated) and Framework Desktop DIY 128GB at EUR 3,889 plus a EUR 258 SSD (EUR 4,147, out of stock on the day read). Building from the mainboard saves nothing; its value is an EU counterparty (Framework Computer B.V.), not the price.",
+      "compareToBuilt": "Incomplete estimate, a lower bound that omits the cooler and shipping, EUR 4001.89 incl. VAT against Minisforum MS-S1 MAX 128GB/2TB at EUR 3,999 (sale, tax not stated) and Framework Desktop DIY 128GB at EUR 3,889 plus a EUR 258 SSD (EUR 4,147, out of stock on the day read). Building from the mainboard saves nothing; its value is an EU counterparty (Framework Computer B.V.), not the price.",
       "sourceIds": [
         "supply-s04",
         "pn-s08",

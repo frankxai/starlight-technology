@@ -207,7 +207,7 @@ test("gate: verification items need evidence for their status", () => {
   const d = fresh();
   const v = d.verification.items.find((x) => x.status === "verified");
   for (const id of v.sourceIds) d.sources.find((s) => s.id === id).access = "snippet";
-  assert.ok(firstError(d).some((e) => e.includes("verified needs an opened source")));
+  assert.ok(firstError(d).some((e) => e.includes("verified needs an opened primary source")));
   const d2 = fresh();
   d2.verification.items.push({ id: "t99", area: "technical", question: "q", status: "unverifiable", finding: "f", caveat: "", sourceIds: [] });
   assert.ok(firstError(d2).some((e) => e.includes("unverifiable needs a note")));
@@ -233,10 +233,81 @@ test("batch 2 facts are in the records with their evidence", () => {
   assert.ok(quote.text.includes("deklarieren wir in der Regel einen niedrigeren Warenwert"));
   const tw = machine(d, "gmktec-evo-x2-64").prices.find((p) => p.merchantHost === "tweakers.net");
   assert.equal(tw.amount, 2139);
-  assert.equal(tw.evidence, "page-read");
+  assert.equal(tw.evidence, "listing");
   for (const b of d.builds.diy) {
     const sum = Math.round(b.pricedParts.reduce((a, p) => a + p.amount, 0) * 100) / 100;
     assert.equal(b.totalEur, sum);
   }
   assert.equal(d.verification.items.filter((i) => i.area === "legal").length, 10);
+});
+test("gate: a Trustpilot lookalike host is rejected", () => {
+  const d = fresh();
+  d.fundamentals.companies.find((x) => x.brandId === "framework").trustpilot.url = "https://trustpilot.com.evil.example/review/frame.work";
+  assert.ok(firstError(d).some((e) => e.includes("trustpilot.com")));
+});
+
+test("gate: a VAT ID must come from an opened page on the company's own host", () => {
+  const d = fresh();
+  const c = d.fundamentals.companies.find((x) => x.brandId === "framework");
+  const other = d.sources.find((s) => s.access === "opened" && !s.url.includes("frame.work"));
+  c.euVatId.sourceIds = [other.id];
+  assert.ok(firstError(d).some((e) => e.includes("must be an opened page on the company's own host")));
+  const d2 = fresh();
+  d2.fundamentals.companies.find((x) => x.brandId === "framework").euVatId.sourceIds = [];
+  assert.ok(firstError(d2).some((e) => e.includes("the VAT ID needs a source")));
+});
+
+test("gate: verified items need an opened primary source", () => {
+  const d = fresh();
+  const v = d.verification.items.find((x) => x.status === "verified");
+  for (const id of v.sourceIds) d.sources.find((s) => s.id === id).primary = false;
+  assert.ok(firstError(d).some((e) => e.includes("verified needs an opened primary source")));
+});
+
+test("gate: a review source must look like its outlet", () => {
+  const d = fresh();
+  const r = d.reviews.reviews.find((x) => x.outlet === "ServeTheHome");
+  r.sourceId = d.sources.find((s) => s.publisher === "Notebookcheck" || /notebookcheck/i.test(s.url)).id;
+  assert.ok(firstError(d).some((e) => e.includes("does not look like the outlet")));
+});
+
+test("gate: review machine keys must map to the right machine and family reviews to none", () => {
+  const d = fresh();
+  d.reviews.reviews.find((x) => x.machineKey === "evo-x2-64").machineId = "gmktec-evo-x2-128";
+  assert.ok(firstError(d).some((e) => e.includes("must map to gmktec-evo-x2-64")));
+  const d2 = fresh();
+  d2.reviews.reviews.find((x) => x.machineKey === "framework-desktop").machineId = "framework-desktop-395-128";
+  assert.ok(firstError(d2).some((e) => e.includes("family-level review")));
+});
+
+test("gate: consensus may cite only reviews or owner reports of its own machine", () => {
+  const d = fresh();
+  d.reviews.consensus["evo-x2-64"].sourceIds.push(d.reviews.reviews.find((x) => x.machineKey === "evo-x2-128").sourceId);
+  assert.ok(firstError(d).some((e) => e.includes("is not a review or owner report of evo-x2-64")));
+});
+
+test("gate: a full company profile needs an opened legal-entity source and written terms", () => {
+  const d = fresh();
+  const c = d.fundamentals.companies.find((x) => x.brandId === "framework");
+  for (const l of c.legalEntities) for (const id of l.sourceIds ?? []) d.sources.find((s) => s.id === id).access = "snippet";
+  assert.ok(firstError(d).some((e) => e.includes("needs a legal entity backed by an opened source")));
+  const d2 = fresh();
+  d2.fundamentals.companies.find((x) => x.brandId === "framework").euPresence.returnAndWarrantyAsWritten = "";
+  assert.ok(firstError(d2).some((e) => e.includes("needs the return and warranty terms as written")));
+});
+
+test("comparison-site listings are checked like page-read prices but never headline", () => {
+  const d = fresh();
+  const m = machine(d, "gmktec-evo-x2-64");
+  const tw = m.prices.find((p) => p.merchantHost === "tweakers.net");
+  assert.equal(tw.evidence, "listing");
+  assert.equal(headlinePrice(m).amount, 1999.99);
+  tw.merchantHost = "coolblue.nl";
+  assert.ok(firstError(d).some((e) => e.includes("does not match merchantHost")));
+});
+
+test("Bosgame is a thin profile, and DIY totals are labelled incomplete estimates", () => {
+  const d = loadData(dir);
+  assert.equal(d.fundamentals.companies.find((c) => c.brandId === "bosgame").depth, "thin");
+  assert.ok(d.builds.diy.every((b) => b.status === "incomplete-estimate" && b.missingParts.includes("shipping")));
 });

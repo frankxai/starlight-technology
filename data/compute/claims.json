@@ -896,26 +896,47 @@
     "asOf": "2026-10-05"
   },
   {
-    "id": "ex-c01",
-    "text": "OCuLink is PCIe 4.0 x4 (about 8 GB/s theoretical, 6.6-6.7 GB/s measured in gaming tests); an RTX 5080 over OCuLink ran about 3x the iGPU on models that fit its VRAM and 1.6 tok/s when the model overflowed; a split between an RTX Pro 6000 and the iGPU ran 37-38 tok/s against 121 tok/s on the GPU alone (secondary blog).",
+    "id": "ex-c01a",
+    "text": "OCuLink is PCIe 4.0 x4 (about 8 GB/s theoretical). A gaming-test comparison (Guru3D citing Try Some Tech) measured about 6.7 GB/s over OCuLink and about 5.8 GB/s over Thunderbolt 5; this is gaming data, not AI inference.",
     "type": "community-report",
     "sourceIds": [
-      "ex-s15",
-      "ex-s19",
-      "ex-s20",
-      "ex-s03",
-      "ex-s28"
+      "ex-s20"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "ex-c01b",
+    "text": "One reported setup (MindStudio blog, secondary): an RTX 5080 16GB over OCuLink on a Strix Halo mini PC, Vulkan in LM Studio, ran about 3 times the iGPU on models that fit in 16GB and 1.6 tok/s when the model exceeded VRAM. The post states no model names or test conditions beyond that.",
+    "type": "community-report",
+    "sourceIds": [
+      "ex-s14"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "ex-c01c",
+    "text": "The same blog reports an RTX Pro 6000 96GB over OCuLink at 69 tok/s on a 32B dense model and 121 tok/s on a 122B mixture-of-experts model, and 37-38 tok/s when the 122B model was split across the GPU and the iGPU, which it attributes to the OCuLink link.",
+    "type": "community-report",
+    "sourceIds": [
+      "ex-s14"
+    ],
+    "asOf": "2026-10-05"
+  },
+  {
+    "id": "ex-c01d",
+    "text": "Level1Techs forum reports on Windows 11 Pro with a Strix Halo iGPU plus a dGPU describe instability and 35-40% slowdowns, LM Studio 0.3.16 missing the iGPU when a dGPU was present, and an improvement after capping iGPU VRAM at 512MB in the BIOS. These are forum reports.",
+    "type": "community-report",
+    "sourceIds": [
+      "ex-s03"
     ],
     "asOf": "2026-10-05"
   },
   {
     "id": "ex-c02",
-    "text": "Two-node llama.cpp RPC over direct USB4 (about 9.4 Gbps, Linux) gave 15.35 tok/s on a 139B model and 12.6 tok/s on a 397B model; a four-node test on 5GbE gave no speedup and its author recommends scaling vertically. Clustering fits larger models; it does not make a model faster.",
+    "text": "In the reported runs, two-node llama.cpp RPC over direct USB4 (about 9.4 Gbps, Linux) gave 15.35 tok/s on MiniMax-M2.5-REAP-139B and 12.6 tok/s on Qwen3.5-397B (owner benchmarks), against single-node results of 42.7 tok/s on an 80B-A3B and 86.1 tok/s on a 30B-A3B model. A four-node Framework test over 5GbE by Jeff Geerling reached about 8.25 tok/s on DeepSeek R1 Q2_K_M, the same as one node, and its author recommends scaling vertically; the method is described as experimental, with segfaults on some quants. These runs differ in model, quantisation and setup, so they do not establish a general rule.",
     "type": "community-report",
     "sourceIds": [
-      "ex-s12",
       "rv-s23",
-      "ex-s08",
       "ex-s11"
     ],
     "asOf": "2026-10-05"

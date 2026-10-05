@@ -594,7 +594,7 @@
     {
       "id": "rv-r16",
       "machineKey": "framework-desktop",
-      "machineId": "framework-desktop-395-128",
+      "machineId": null,
       "outlet": "PCWorld",
       "author": "Mark Hachman",
       "publishedAt": "2025-08-07",
@@ -643,7 +643,7 @@
     {
       "id": "rv-r17",
       "machineKey": "framework-desktop",
-      "machineId": "framework-desktop-395-128",
+      "machineId": null,
       "outlet": "Phoronix (snippet)",
       "author": "not confirmed",
       "publishedAt": "not stated",
@@ -698,7 +698,7 @@
       "url": "https://community.frame.work/t/strix-halo-gfx1151-gfx-ring-timeout-under-mundane-gl-load/82310",
       "observedOn": "2026-10-05",
       "machineKey": "framework-desktop",
-      "machineId": "framework-desktop-395-128",
+      "machineId": null,
       "issue": "gfx ring timeout freeze/blackout under light GL load (Ubuntu kernel 7.0.0-15.15, BIOS 3.0.3). amdgpu.gpu_recovery=1 only enables recovery.",
       "severity": "major",
       "resolved": "no",
@@ -709,7 +709,7 @@
       "url": "https://community.frame.work/t/attn-critical-bugs-in-amdgpu-driver-included-with-kernel-6-18-x-6-19-x/79221",
       "observedOn": "2026-10-05",
       "machineKey": "framework-desktop",
-      "machineId": "framework-desktop-395-128",
+      "machineId": null,
       "issue": "Kernel 6.18.x/6.19.x amdgpu hangs, GPU reset loops and freezes; workaround amdgpu.cwsr_enable=0 or kernel 6.15-6.17. Mostly laptops (gfx1150); applies to Strix Halo hardware only by inference.",
       "severity": "firmware",
       "resolved": "no",
@@ -720,7 +720,7 @@
       "url": "https://community.frame.work/t/ryzen-ai-max-not-so-much/77999",
       "observedOn": "2026-10-05",
       "machineKey": "framework-desktop",
-      "machineId": "framework-desktop-395-128",
+      "machineId": null,
       "issue": "Owners report gpt-oss-20B 22 t/s (LM Studio) vs 77 t/s (Vulkan); 70B dense 5-7 t/s; gpt-oss-120B 22 t/s at Q4 with 30k ctx by one user, 50-60 t/s by others; 215 GB/s bandwidth cited as the limit.",
       "severity": "minor",
       "resolved": "unknown",
@@ -729,7 +729,7 @@
   ],
   "consensus": {
     "evo-x2-64": {
-      "summary": "Three reviews cover the 64GB unit or the family (Notebookcheck 64GB, Wccftech 64GB, 3DTested snippet). Memory is soldered; GPU can take up to 48GB, 16GB stays with the system (Notebookcheck ES). The ServeTheHome 70B Q6_K test needed 50GB+ VRAM and was run on 128GB, so it would not fit. No independent LLM tok/s measurement exists for 64GB in what I opened. Noise ranges from 41-43 dBA (STH, 128GB) to 'annoying' at high TDP (Wccftech) to 50 dBA (3DTested snippet), not reconciled. Temps exceed 85C at full load (Wccftech) vs 'cool and quiet' (Notebookcheck).",
+      "summary": "Three entries cover the 64GB unit or the family: Notebookcheck (64GB unit), Wccftech (64GB) and a snippet-only 3DTested note. Memory is soldered; the iGPU can take up to 48GB and 16GB stays with the system (Notebookcheck, Spanish edition). No independent LLM tokens/s measurement of a 64GB unit was found. Noise: Wccftech calls the fan 'annoying' at high TDP and a snippet says up to 50 dBA; the 41-43 dBA figure is ServeTheHome's test of the 128GB unit (see evo-x2-128), which would not carry over automatically. Temperatures: Wccftech reports over 85C at full load, Notebookcheck 'cool and quiet'; unreconciled.",
       "reviewCount": 3,
       "commonIssues": [
         "Fan noise at high TDP modes",
@@ -741,9 +741,7 @@
       "sourceIds": [
         "rv-s02",
         "rv-s03",
-        "rv-s05",
-        "rv-s06",
-        "gmktec-s19"
+        "rv-s05"
       ]
     },
     "evo-x2-128": {
@@ -767,8 +765,7 @@
       ],
       "sourceIds": [
         "rv-s07",
-        "rv-s08",
-        "rv-s09"
+        "rv-s08"
       ]
     },
     "ms-s1-max-64": {
@@ -795,8 +792,7 @@
         "rv-s10",
         "rv-s11",
         "minisforum-s08",
-        "rv-s13",
-        "minisforum-s07"
+        "rv-s13"
       ]
     },
     "bosgame-m5": {

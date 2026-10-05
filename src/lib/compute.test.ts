@@ -69,8 +69,9 @@ describe("compute data layer", () => {
     expect(brandSupply("gmktec").some((s) => s.supplier === "Sixunited")).toBe(true);
   });
 
-  it("lists only full company profiles and marks Framework as the one EU entity", () => {
-    expect(companies.every((c) => c.depth === "full")).toBe(true);
+  it("lists non-stub company profiles and marks Framework as the one documented EU entity", () => {
+    expect(companies.every((c) => c.depth !== "stub")).toBe(true);
+    expect(companies.find((c) => c.brandId === "bosgame")?.depth).toBe("thin");
     expect(companies.filter((c) => c.euLegalEntity === true).map((c) => c.brandId)).toEqual(["framework"]);
     expect(companies.some((c) => c.brandId === "hp")).toBe(false);
   });
