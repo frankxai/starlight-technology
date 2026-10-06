@@ -1,6 +1,6 @@
 {
   "feature": "Creator Studio visual system explorer",
-  "status": "User rejected generic-first media at f5721e0 on 2026-10-06; official-media refinement implemented; current rendered and buyer acceptance pending",
+  "status": "Real official Framework photograph and compact product-first refinement rendered at 53ed8b4; lead assessment provisional; independent and buyer acceptance pending; production not activated",
   "branch": "agent/codex/creator-studio-factory-20261003",
   "baseRevision": "4588a2409588b62cb394dc370ff52a46819ba346",
   "previousAssessment": {
@@ -441,7 +441,7 @@
   "productFirstRefinement": {
     "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
     "at": "2026-10-06T12:05:44.200265+00:00",
-    "status": "implemented; rendered acceptance pending",
+    "status": "Implemented and actual cloud renders inspected; independent rendered and buyer acceptance pending",
     "rejectedRevision": "1c1196c571cc46fa279fc1758d2202ce0100a2e9",
     "reason": "Frank rejects image-free initial composition, oversized heading and text cards; asks for authentic official imagery and the quality of leading competitor sites.",
     "references": [
@@ -465,7 +465,7 @@
       "selected": "Emil design engineering",
       "read": true,
       "applied": "Compact hierarchy, reserved photo geometry, native controls, immediate keyboard state; press feedback only on fine-pointer active states; no autoplay or new entry animation.",
-      "verified": "Local media boundary tests and syntax passed; fresh cloud render/behavior inspection pending."
+      "verified": "Actual Chromium at 375/390/768/1440: real photograph in first viewport, 44px targets, keyboard focus, normal/reduced motion, rapid selection, failed-image recovery and save/reload/export/import/interrupted recovery. 48 checks pass; physical-device and independent acceptance pending."
     },
     "initialInspection": "Starts with the first displayed alternative without saving a preference or changing the engine recommendation. A saved candidate retains priority.",
     "image": {
@@ -476,7 +476,8 @@
       "license": "CC BY-SA 3.0",
       "changes": "Unchanged 800x600 official guide photograph; no generative replacement or retouching.",
       "sha256": "269ffc0c0a9258a59a2161be1af0732b6b26edc307c4043efaa885df0ee223ef",
-      "provenance": "Adjacent sidecar and both append-only ledgers recorded; public schema validation/memory sync pending."
+      "provenance": "Adjacent sidecar and both append-only ledgers recorded; public schema validation/memory sync pending.",
+      "permissionEvidence": "Official guide fetched today; publisher licensing search index says CC BY-SA3.0 but its crawl is1.3years old and direct licensing page returned404. Current independent rights/commercial disposition pending."
     },
     "beforeAfter": [
       {
@@ -500,13 +501,66 @@
         "why": "A passing build cannot establish the requested design quality."
       }
     ],
-    "score": null,
-    "gates": {
-      "renderedDesktopMobile": "pending fresh cloud evidence",
-      "independentProviderSecurityPrivacyLicenceCommercial": "pending exact revision",
-      "renderedDesignBuyerAcceptance": "pending exact revision",
-      "production": "PR34 remains draft; production activation not established"
+    "score": {
+      "source": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+      "decisionObject": 4,
+      "hierarchy": 4,
+      "craft": 4,
+      "responsive": 4,
+      "accessibility": 5,
+      "restraint": 5,
+      "total": 26,
+      "scale": 30,
+      "authority": "Codex lead provisional assessment of current actual source-equivalent cloud captures. This does not override Frank's rejection or grant independent/buyer release acceptance.",
+      "limitations": [
+        "Only Framework and the existing credited Mac image have inline photo coverage; GMKtec/NVIDIA official players and galleries remain",
+        "Phone photo is visible in the initial viewport; costs and full attribution continue below it",
+        "Framework guide photo depicts the original kit rather than the current 495 generation",
+        "NVIDIA comparative screenshots remain obstructed by the native consent dialog; full comparator inspection is incomplete"
+      ]
     },
-    "remainingMediaCoverage": "Framework has official licensed inline photography; Mac uses existing credited CC BY photograph. GMKtec and NVIDIA retain official request-only players/gallery links; manufacturer photo republication rights remain unresolved."
+    "gates": {
+      "renderedDesktopMobile": "Lead actual inspection and 48 browser checks passed at source53ed8b4; physical-device/independent acceptance pending",
+      "independentProviderSecurityPrivacyLicenceCommercial": "Pending exact revision; effect-time RAM2277MiB below4096MiB floor. No new provider request started.",
+      "renderedDesignBuyerAcceptance": "Prior27/30 rejected by Frank. Current26/30 is provisional lead evidence. Fresh preview direction requested; no reply/acceptance inferred.",
+      "production": "PR34 remains draft; actual starlight.technology binds bbad55b90cbf5c8e0a6b1bf5599fbdd383745341; Studio404; no release or rollback executed"
+    },
+    "remainingMediaCoverage": "Framework has official licensed inline photography; Mac uses existing credited CC BY photograph. GMKtec and NVIDIA retain official request-only players/gallery links; manufacturer photo republication rights remain unresolved.",
+    "renderedEvidence": {
+      "inspectedAt": "2026-10-06T23:16:00Z",
+      "sourceHead": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+      "testedMerge": "ce0b415a43059a63b08732d1d1701a64d142a497",
+      "equalGitTree": "75536f781ad087730483f745b59b8184bca0371b",
+      "ciRun": 37544657908,
+      "ciUrl": "https://github.com/frankxai/starlight-technology/actions/runs/37544657908",
+      "checks": {
+        "unit": 182,
+        "editorial": 11,
+        "builtPages": 51,
+        "browser": 48
+      },
+      "captureCount": 32,
+      "capturesHashVerified": true,
+      "bothVisualLedgersUpdated": true,
+      "inspectedCaptures": [
+        "desktop-initial-product.png",
+        "mobile-initial-product.png",
+        "375-composition.png",
+        "768-comparison.png"
+      ],
+      "references": {
+        "apple": "Actual 1440/390 source-page captures inspected. Prominent real product and concise action are the applicable composition lesson, not permission to copy its imagery.",
+        "nvidia": "Actual 1440/390 captures inspected; native consent overlay obstructs the page. The large hardware visual is visible behind it, but full comparison remains incomplete.",
+        "framework": "Official product page returned HTTP408 at both widths; guide photograph and exact source were independently fetched, not a successful rendered product-page comparison."
+      },
+      "failedIterations": [
+        "CI37461033657: initial-selection assertion executed after a selection; test ordering corrected",
+        "CI37543871447: native photo-width assertion used a desktop threshold on phone; corrected to rendered pixel density",
+        "CI37544165159: actual mobile photograph started below viewport; phone hierarchy/status/privacy repetition were repaired"
+      ],
+      "serverExited": true,
+      "browserClosed": true,
+      "publicExamples": "Only synthetic browser fixtures; no private creator notes published"
+    }
   }
 }

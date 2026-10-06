@@ -80,21 +80,26 @@
   "dependencyDisposition": {
     "brace-expansion": "Locked 1.1.21 with official registry integrity; GHSA-q2hr-2g5m-vwhr",
     "js-yaml": "Locked 4.3.2 with official registry integrity; GHSA-2883-xcg3-v3hh and GHSA-5p4m-2wfm-xmqj",
-    "scope": "Development dependencies. Frozen cloud install and full checks pending.",
-    "verification": "Frozen pnpm cloud install, lint/types, 176 units, editorial/full build and 42 browser checks passed in CI37406329782 at b43ed28. Default-branch alerts stay open until a permitted merge."
+    "scope": "Development dependencies fixed in branch. Default-branch alerts remain pending permitted merge.",
+    "verification": "Frozen cloud install, lint/types,182units,11editorial,51page build and48browser checks pass in CI37544657908 at53ed8b4; source/tested merge share75536f78tree."
   },
   "currentRenderedProof": {
-    "sourceHead": "b43ed28a95d6ee675da3292e1c182893c4bad142",
-    "ciRun": 37406329782,
-    "captureCount": 26,
+    "sourceHead": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+    "testedMerge": "ce0b415a43059a63b08732d1d1701a64d142a497",
+    "equalGitTree": "75536f781ad087730483f745b59b8184bca0371b",
+    "ciRun": 37544657908,
+    "captureCount": 32,
+    "hashVerified": true,
+    "bothVisualLedgersRecorded": true,
+    "officialPhoto": "Framework guide photograph local, unchanged,800x600,50155bytes with credit/licence/source",
     "officialPublishers": [
       "GMKtec",
       "Framework",
       "NVIDIA GeForce"
     ],
-    "posterInspected": true,
-    "playbackAccepted": false,
-    "copiedManufacturerPhotos": false,
+    "nativePlayerRender": true,
+    "actualPlaybackAccepted": false,
+    "playerProbe": "All four native probes render a poster/player; media did not advance within15seconds. No login/bypass; immediate YouTube fallback remains.",
     "macPhoto": "Existing credited CC BY photograph is not official Apple imagery.",
     "publicRelease": false
   },
@@ -108,7 +113,7 @@
     "permission": "https://guides.frame.work/Info/Licensing",
     "method": "Unchanged local 800x600 JPEG, 50155 bytes, credit/license/source beside photograph. No claim that pictured optional parts or memory/storage match the generated purchase list.",
     "scope": "Physical original Desktop DIY kit; current 495 store generation remains separately disclosed.",
-    "rightsReview": "Publisher licensing page declares all content CC BY-SA 3.0; independent exact-revision licence/commercial review remains pending."
+    "rightsReview": "Primary guide fetched again2026-10-07; licensing search result declares all content CC BY-SA3.0, cached1.3years ago. Direct licensing page is unavailable404. Independent exact-revision licence/commercial review must resolve this qualification."
   },
   "photoRightsResearch": [
     {
@@ -121,5 +126,32 @@
       "reviewedAt": "2026-10-06",
       "result": "No public-commercial photo republication licence established. Exact EVO-X2 official gallery and request-only unboxing remain; no copied image."
     }
-  ]
+  ],
+  "previousRenderedProofs": [
+    {
+      "sourceHead": "b43ed28a95d6ee675da3292e1c182893c4bad142",
+      "ciRun": 37406329782,
+      "captureCount": 26,
+      "officialPublishers": [
+        "GMKtec",
+        "Framework",
+        "NVIDIA GeForce"
+      ],
+      "posterInspected": true,
+      "playbackAccepted": false,
+      "copiedManufacturerPhotos": false,
+      "macPhoto": "Existing credited CC BY photograph is not official Apple imagery.",
+      "publicRelease": false
+    }
+  ],
+  "ctaInspection": {
+    "source": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+    "scope": "Lead source plus actual native Git preview HTTP read; independent commercial and production acceptance pending",
+    "pricingStatus": 200,
+    "pricingPromise": "Price/release unannounced; orders not open; purchase help retains earlier receipt path",
+    "candidateAccessStatus": 200,
+    "candidatePromise": "Prepare a local release-request draft; user sends email. No payment/subscription/submission confirmation is claimed.",
+    "paymentLinkPresent": false,
+    "sourceApprovalRegistry": "Empty trusted release approvals; old SKU IDs do not authorize new orders."
+  }
 }
