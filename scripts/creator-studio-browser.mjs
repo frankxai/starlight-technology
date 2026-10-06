@@ -375,7 +375,7 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
 }
 async function inspectOfficialMedia(width) {
   const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
-  const allowed = new Set(['www.youtube-nocookie.com', 'www.youtube.com', 'i.ytimg.com', 's.ytimg.com', 'yt3.ggpht.com', 'www.gstatic.com', 'www.google.com']);
+  const allowed = new Set(['www.youtube-nocookie.com', 'www.youtube.com', 'i.ytimg.com', 's.ytimg.com', 'yt3.ggpht.com', 'www.gstatic.com', 'fonts.gstatic.com', 'www.google.com']);
   const evidence = { width, privateFixture: false, status: 'pending', playbackExercised: false, blockedRequests: 0, blockedRoutes: [] };
   receipt.officialMedia ??= [];
   receipt.officialMedia.push(evidence);
@@ -385,6 +385,8 @@ async function inspectOfficialMedia(width) {
     // The unmodified official player uses POST to read its playback metadata.
     // This clean context contains no private fixture; model, payment and write APIs remain blocked.
     if (req.method() === 'POST' && url.protocol === 'https:' && ['www.youtube-nocookie.com', 'www.youtube.com'].includes(url.host) && url.pathname === '/youtubei/v1/player') return route.continue();
+    // Allow the official iframe's observed playback-integrity request; never call it directly.
+    if (req.method() === 'POST' && url.protocol === 'https:' && url.host === 'jnn-pa.googleapis.com' && url.pathname === '/$rpc/google.internal.waa.v1.Waa/GenerateIT') return route.continue();
     evidence.blockedRequests++;
     if (evidence.blockedRoutes.length < 12) evidence.blockedRoutes.push({ host: url.host, path: url.pathname, method: req.method() });
     return route.abort();
