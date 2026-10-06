@@ -34,8 +34,7 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
     const video = visual.video;
     const watchUrl = video ? `https://www.youtube.com/watch?v=${video.id}` : undefined;
     return <figure className={styles.productMedia} data-product-media={primary.nodeId}>
-      <p className={styles.kicker}>See the actual product</p>
-      <h4>{primary.label}</h4>
+      <p className={styles.kicker}>{video?.publisher ?? "Product photograph"} · Product media</p>
       {video?.embed ? <>
         <div className={styles.mediaWindow}>
           {videoLoaded ? <iframe
@@ -45,7 +44,7 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
             allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen
           /> : <div className={styles.mediaIntro}>
             <span className={styles.playMark} aria-hidden="true">▶</span>
-            <strong>{video.title}</strong><span>{video.publisher} · YouTube</span>
+            <strong>{primary.label}</strong><span>{video.title}</span>
           </div>}
         </div>
         <button type="button" className={styles.mediaButton} aria-expanded={videoLoaded}
@@ -99,16 +98,15 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   const selected = output.systems.find((system) => system.archetypeId === plan.selectedArchetypeId);
   const featured = selected ?? output.systems.find((system) => system.tier === "recommended") ?? output.systems[0];
   const workloads = plan.input.workloadIds.map((id) => graph.get(id)?.label ?? id);
-  return <section className={styles.explorer} aria-label="Current system alternatives">
+  const specs = featured && configuratorArchetypes.find((item) => item.id === featured.archetypeId);
+  return <section className={styles.explorer} id="studio-systems" aria-label="Current system alternatives">
     <div className={styles.heading}>
-      <div><p className={styles.kicker}>Your system, assembled</p><h3>{output.systems.length ? "Compare your system candidates." : "No candidate fits these constraints."}</h3></div>
+      <div><p className={styles.kicker}>01 · Choose your foundation</p><h3>{output.systems.length ? "Different systems. Different strengths." : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>For {workloads.join(" · ") || "the work you choose"}</p></div>
       <a href="#studio-requirements" className={styles.textLink}>Change the work <span aria-hidden="true">↗</span></a>
     </div>
-    <div className={styles.comparison}>
-    {featured && <ProductFigure key={featured.archetypeId} system={featured} />}
     <div className={styles.candidates}>
       {output.systems.map((system) => {
-        const active = plan.selectedArchetypeId === system.archetypeId;
+        const active = featured?.archetypeId === system.archetypeId;
         const specs = configuratorArchetypes.find((item) => item.id === system.archetypeId);
         const freshness = assessFreshness(system, { now: new Date().toISOString().slice(0, 10) });
         const dates = [...new Set(system.lines.flatMap((line) => {
@@ -118,33 +116,43 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
         return <button type="button" key={system.tier} data-archetype-id={system.archetypeId} aria-pressed={active} aria-label={`Use ${system.label} (${system.tier.replaceAll("-", " ")})`} className={`${styles.candidate} ${active ? styles.selected : ""}`} onClick={() => onSelect(system.archetypeId)}>
           <span className={styles.tier}>{system.tier.replaceAll("-", " ")}</span>
           <strong>{system.label}</strong>
-          <span>{specs?.systemRamGb} GB RAM · {specs?.fastStorageTb} TB base storage</span>
+          <span>{specs?.systemRamGb} GB RAM · {specs?.fastStorageTb} TB storage</span>
           <span className={styles.price}>{Object.entries(system.cost.pricedTotalsMinor).map(([currency, minor]) => `${currency} ${(minor / 100).toLocaleString("en", { maximumFractionDigits: 2 })}`).join(" + ") || "Part prices unknown"}</span>
-          <span>{dates.length ? `Parts observed ${dates.join(", ")}` : "No dated prices"}. {system.cost.unpricedLines.length ? `${system.cost.unpricedLines.length} unpriced lines. ` : ""}Delivered total unknown.</span>
+          <span className={styles.priceBasis}>{dates.length ? `Parts: ${dates.join(", ")}` : "No dated prices"} · Delivered total unknown{system.cost.unpricedLines.length ? ` · ${system.cost.unpricedLines.length} unpriced lines` : ""}</span>
           {!freshness.valid && <span className={styles.expired}>Evidence needs refresh before buying.</span>}
-          <span className={styles.selection}>{active ? "✓ Selected in your plan" : "Choose this candidate →"}</span>
+          <span className={styles.selection}>{active ? selected ? "✓ Saved choice" : "Recommended · Choose to save →" : "Explore this system →"}</span>
         </button>;
       })}
-    </div>
     </div>
     <p className={styles.status} role="status">{selected ? `Selected: ${selected.label}.` : featured ? `Inspecting ${featured.label}. Choose a candidate to save a preference.` : "Change a requirement to explore alternatives."} Selection does not place an order.</p>
     {featured && <>
       <div className={styles.system}>
+        <ProductFigure key={featured.archetypeId} system={featured} />
         <div className={styles.assembly}>
-          <div className={styles.assemblyHeading}><h4>{featured.label}</h4><a className={styles.textLink} href={`#${comparisonId}`}>Full comparison ↓</a></div>
+          <p className={styles.kicker}>{featured.tier.replaceAll("-", " ")} · Planning candidate</p>
+          <div className={styles.assemblyHeading}><h4>{featured.label}</h4></div>
+          <dl className={styles.specGrid}>
+            <div><dt>System memory</dt><dd>{specs?.systemRamGb}<small> GB</small></dd></div>
+            <div><dt>Model allocation</dt><dd>{specs?.usableVramGb}<small> GB</small></dd></div>
+            <div><dt>Base storage</dt><dd>{specs?.fastStorageTb}<small> TB</small></dd></div>
+          </dl>
           <Capacity system={featured} output={output} />
+          <p className={styles.tradeoff}><strong>First bottleneck</strong>{featured.bottleneck.explanation}</p>
+          <a className={styles.textLink} href={`#${comparisonId}`} onClick={() => {
+            const comparison = document.getElementById(comparisonId);
+            if (comparison instanceof HTMLDetailsElement) comparison.open = true;
+          }}>Inspect parts and purchase checks ↓</a>
           {productVisualFor(featured.lines[0].nodeId)?.notice && <p className={styles.notice}>{productVisualFor(featured.lines[0].nodeId)!.notice}</p>}
-          <ul className={styles.parts}>{featured.lines.map((line) => {
+          <details className={styles.sourceDetails}><summary>Sources and assembly · {featured.lines.length} parts</summary><ul className={styles.parts}>{featured.lines.map((line) => {
             const link = resolveOutboundLink(decisionGraph, line.nodeId, officialUrl(line.nodeId));
             const visual = productVisualFor(line.nodeId);
             return <li key={line.nodeId}><div><span>{line.role}{line.quantity > 1 ? ` × ${line.quantity}` : ""}</span><a href={link.href} rel={link.rel} target="_blank">{line.label} <span aria-hidden="true">↗</span></a></div>
               <details><summary>Why this part and where the link goes</summary><p>{line.justification}</p><p>{link.disclosure}</p>{visual?.notice && <p>{visual.notice}</p>}{visual?.atlasSlug && <Link href={`/shop/${visual.atlasSlug}`}>Explore the product in the Technology Atlas →</Link>}</details>
             </li>;
-          })}</ul>
-          <p className={styles.hint}>Explore official product media above, then check the sourced parts here. Manufacturer demos describe their configurations; they do not verify this plan. Photo credits stay with the image.</p>
+          })}</ul></details>
         </div>
       </div>
-      <details className={styles.workflow} open>
+      <details className={styles.workflow}>
         <summary>How this system works</summary>
         <ol className={styles.steps}>
           <li><span className={styles.number}>01</span><h4>Your work</h4><p>{workloads.join(" · ") || "Choose a workload"}</p><a href="#studio-requirements">Change requirements →</a></li>

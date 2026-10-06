@@ -19,7 +19,7 @@ describe("Public catalog media boundaries", () => {
     expect(productVisualFor("private-user-note")).toBeUndefined();
   });
   it("limits embeds to verified official publishers and keeps unavailable embeds as links", () => {
-    const publishers = ["Framework", "NVIDIA GeForce", "Apple UK"];
+    const publishers = ["Framework", "GMKtec", "NVIDIA GeForce", "Apple UK"];
     for (const item of productVisuals) {
       if (!item.video) continue;
       expect(item.video.id).toMatch(/^[A-Za-z0-9_-]{11}$/);

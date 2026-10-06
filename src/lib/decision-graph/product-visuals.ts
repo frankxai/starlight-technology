@@ -35,6 +35,13 @@ export const productVisuals: readonly ProductVisual[] = [
     nodeId: "dev-gmktec-evox2-128-2tb",
     officialUrl: "https://de.gmktec.com/en/products/gmktec-evo-x2-amd-ryzen%E2%84%A2-ai-max-395-mini-pc-1?variant=51610049380536",
     gallery: { url: "https://de.gmktec.com/en/products/gmktec-evo-x2-amd-ryzen%E2%84%A2-ai-max-395-mini-pc-1?variant=51610049380536", label: "GMKtec's EVO-X2 product gallery" },
+    video: {
+      id: "goPySD6_eXc", title: "Unboxing the GMKtec EVO-X2",
+      publisher: "GMKtec", channelUrl: "https://www.youtube.com/@gmk782",
+      sourceUrl: "https://www.gmktec.com/pages/drivers-and-software",
+      embed: true, reviewedAt: "2026-10-06",
+      scope: "GMKtec's official EVO-X2 unboxing, linked in its support center. Inspect the enclosure and ports; this demonstration does not establish the 128 GB / 2 TB configuration, delivered price or measured inference performance.",
+    },
     notice: "Check the 128 GB / 2 TB variant and Netherlands delivery terms on the official listing. A listing price is not a delivered quote.",
   },
   {
@@ -58,7 +65,7 @@ export const productVisuals: readonly ProductVisual[] = [
       publisher: "Apple UK", channelUrl: "https://www.youtube.com/@AppleUK",
       sourceUrl: "https://www.apple.com/newsroom/2024/10/apples-new-mac-mini-is-more-mighty-more-mini-and-built-for-apple-intelligence/",
       embed: false, reviewedAt: "2026-10-06",
-      scope: "Apple's M4 and M4 Pro introduction. The video does not identify your selected memory/storage configuration. Open on YouTube; embedding was refused during review.",
+      scope: "Apple's M4 and M4 Pro introduction. The video does not identify your selected memory/storage configuration. Open on YouTube; the embed metadata request returned HTTP 403 during review, so in-page playback remains unverified.",
     },
     image: {
       src: "/images/products/mac-mini-m4.jpg", width: 960, height: 806,

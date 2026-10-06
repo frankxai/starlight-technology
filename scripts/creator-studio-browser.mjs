@@ -115,17 +115,21 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       const transitions = await explorer.getByRole('button').first().evaluate((node) => getComputedStyle(node).transitionDuration);
       assert.equal(transitions, '0s');
-      assert.ok(await explorer.getByRole('link', { name: /Framework Desktop/ }).count());
+      assert.ok(await explorer.getByRole('link', { name: /Framework.s 395 launch gallery/ }).count());
       const links = await explorer.getByRole('link').evaluateAll((nodes) => nodes.map((node) => ({ href: node.getAttribute('href'), rel: node.rel })));
       assert.ok(links.every((link) => !link.href.includes('Synthetic') && !link.href.includes('My%20creator')));
       assert.ok(links.filter((link) => link.href.startsWith('https:')).every((link) => link.rel.includes('noopener')));
       const targets = await explorer.locator('button, a, summary').evaluateAll((nodes) => nodes.filter((node) => node.getClientRects().length).map((node) => node.getBoundingClientRect().height));
       assert.ok(targets.every((height) => height >= 44));
       await page.evaluate(() => { scrollTo(0, 0); return new Promise(requestAnimationFrame); });
-      const artifactInViewport = await explorer.locator('[data-product-media]').evaluate((node) => {
-        const bounds = node.getBoundingClientRect(); return bounds.y >= 0 && bounds.y + 160 <= innerHeight;
+      const artifactInViewport = await choices.first().evaluate((node) => {
+        const bounds = node.getBoundingClientRect(); return bounds.y >= 0 && bounds.y + 100 <= innerHeight;
       });
-      assert.equal(artifactInViewport, true, 'The product media and decision object must begin in the first viewport.');
+      assert.equal(artifactInViewport, true, 'The real system decision must begin in the first viewport.');
+      await explorer.getByRole('link', { name: 'Inspect parts and purchase checks ↓', exact: true }).click();
+      assert.equal(await page.locator('details').filter({ has: page.getByText('Detailed comparison and purchase checks', { exact: true }) }).evaluate((node) => node.open), true);
+      await page.getByText('Detailed comparison and purchase checks', { exact: true }).click();
+      await page.evaluate(() => scrollTo(0, 0));
       await capture(page, `${tag}-visual-studio.png`, width);
       await capture(explorer, `${tag}-system-explorer.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
     });
@@ -373,43 +377,79 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
     });
   } finally { await context.close(); }
 }
-async function inspectOfficialMedia(width) {
+async function inspectComposition(width, testOrigin = origin) {
+  const context = await browser.newContext({ viewport: { width, height: 900 }, isMobile: width < 760, hasTouch: width < 760, reducedMotion: 'reduce' });
+  await context.route('**/*', route => new URL(route.request().url()).origin === testOrigin ? route.continue() : route.abort());
+  const page = await context.newPage();
+  try {
+    await page.goto(testOrigin + '/studio');
+    await saved(page, 'My creator system');
+    await check(`${width}: composition, touch targets and section navigation`, async () => {
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+      const nav = page.getByRole('navigation', { name: 'Studio sections', exact: true });
+      for (const link of await nav.getByRole('link').all()) {
+        assert.ok((await link.boundingBox()).height >= 44);
+        const href = await link.getAttribute('href');
+        assert.equal(await page.locator(href).count(), 1);
+      }
+      const first = page.locator('button[data-archetype-id]').first();
+      assert.ok((await first.boundingBox()).y + 100 <= 900);
+      if (width < 760) await first.tap(); else await first.click();
+      assert.equal(await first.getAttribute('aria-pressed'), 'true');
+      const choices = page.locator('button[data-archetype-id]');
+      for (let n=0;n<4;n++) await choices.nth(n % await choices.count()).click();
+      await page.getByRole('button', { name: 'Load official video', exact: true }).click();
+      await page.getByRole('button', { name: 'Close official video', exact: true }).click();
+      assert.equal(await page.locator('iframe').count(), 0);
+    });
+    await page.evaluate(() => scrollTo(0, 0));
+    await capture(page, `${width}-composition.png`, width);
+    await capture(page.getByRole('region', { name: 'Current system alternatives', exact: true }), `${width}-comparison.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+  } finally { await context.close(); }
+}
+async function inspectOfficialMedia(width, product = 'GMKtec', testOrigin = origin) {
   const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
   const allowed = new Set(['www.youtube-nocookie.com', 'www.youtube.com', 'i.ytimg.com', 's.ytimg.com', 'yt3.ggpht.com', 'www.gstatic.com', 'fonts.gstatic.com', 'www.google.com']);
-  const evidence = { width, privateFixture: false, status: 'pending', playbackExercised: false, blockedRequests: 0, blockedRoutes: [] };
-  receipt.officialMedia ??= [];
-  receipt.officialMedia.push(evidence);
+  const evidence = { width, product, origin: testOrigin, privateFixture: false, status: 'pending', playbackExercised: false, blockedRequests: 0, blockedRoutes: [] };
+  receipt.officialMedia ??= []; receipt.officialMedia.push(evidence);
   await context.route('**/*', (route) => {
     const req = route.request(), url = new URL(req.url());
-    if (['GET', 'HEAD'].includes(req.method()) && (url.origin === origin || (url.protocol === 'https:' && allowed.has(url.host)))) return route.continue();
-    // The unmodified official player uses POST to read its playback metadata.
-    // This clean context contains no private fixture; model, payment and write APIs remain blocked.
+    if (['GET', 'HEAD'].includes(req.method()) && (url.origin === testOrigin || (url.protocol === 'https:' && (allowed.has(url.host) || url.host.endsWith('.googlevideo.com'))))) return route.continue();
     if (req.method() === 'POST' && url.protocol === 'https:' && ['www.youtube-nocookie.com', 'www.youtube.com'].includes(url.host) && url.pathname === '/youtubei/v1/player') return route.continue();
-    // Allow the official iframe's observed playback-integrity request; never call it directly.
     if (req.method() === 'POST' && url.protocol === 'https:' && url.host === 'jnn-pa.googleapis.com' && url.pathname === '/$rpc/google.internal.waa.v1.Waa/GenerateIT') return route.continue();
     evidence.blockedRequests++;
     if (evidence.blockedRoutes.length < 12) evidence.blockedRoutes.push({ host: url.host, path: url.pathname, method: req.method() });
     return route.abort();
   });
-  const page = await context.newPage();
-  page.setDefaultTimeout(10000);
+  const page = await context.newPage(); page.setDefaultTimeout(10000);
   try {
-    await page.goto(origin + '/studio');
+    await page.goto(testOrigin + '/studio');
     const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
-    await explorer.getByRole('button', { name: /Use Framework Desktop/ }).click();
+    await explorer.getByRole('button', { name: new RegExp('Use ' + product) }).click();
     await explorer.getByRole('button', { name: 'Load official video', exact: true }).click();
-    const iframe = explorer.locator('iframe');
-    await iframe.waitFor();
-    evidence.src = await iframe.getAttribute('src');
-    await page.frameLocator('[data-product-media] iframe').locator('.ytp-cued-thumbnail-overlay-image').waitFor({ state: 'visible', timeout: 15000 });
-    evidence.status = 'official-player-poster-rendered';
-    await capture(explorer, `${width}-official-product-player.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+    evidence.src = await explorer.locator('iframe').getAttribute('src');
+    const frame = page.frameLocator('[data-product-media] iframe');
+    // Inspect the actual unmodified player and its video element; no mocked response here.
+    await frame.locator('video').waitFor({ state: 'attached', timeout: 15000 });
+    evidence.status = 'official-player-rendered';
+    await capture(explorer, `${width}-${product}-official-player.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+    await frame.getByRole('button', { name: /Play/i }).first().click({ timeout: 10000 });
+    await frame.locator('video').evaluate(video => {
+      return new Promise((resolve, reject) => {
+        const deadline = setTimeout(() => reject(Error('Actual media did not advance within 15 seconds')), 15000);
+        const start = video.currentTime;
+        const tick = () => { if (!video.paused && video.currentTime > start + .25) { clearTimeout(deadline); video.removeEventListener('timeupdate', tick); resolve(true); } };
+        video.addEventListener('timeupdate', tick); tick();
+      });
+    });
+    evidence.playbackExercised = true; evidence.status = 'actual-playback-advanced';
+    await explorer.getByRole('button', { name: 'Close official video', exact: true }).click();
+    assert.equal(await explorer.locator('iframe').count(), 0);
   } catch (error) {
     evidence.reason = error.message;
-    try { await capture(page.getByRole('region', { name: 'Current system alternatives', exact: true }), `${width}-official-product-player-pending.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }'); }
+    try { await capture(page.getByRole('region', { name: 'Current system alternatives', exact: true }), `${width}-${product}-official-player-pending.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }'); }
     catch (captureError) { evidence.captureError = captureError.message; }
-  }
-  finally { await context.close(); }
+  } finally { await context.close(); }
 }
 (async () => {
   let failure;
@@ -423,9 +463,9 @@ async function inspectOfficialMedia(width) {
     assert.ok(ready, 'Owned Next server must become ready');
     browser = await chromium.launch({ headless: true }); receipt.browserVersion = browser.version();
     await exercise(1440); await exercise(390);
-    // Separate read-only official-player inspection; no private fixture or live playback.
-    // A blocked player is recorded as pending and cannot establish rendered media acceptance.
+    await inspectComposition(375); await inspectComposition(768);
     await inspectOfficialMedia(1440); await inspectOfficialMedia(390);
+    await inspectOfficialMedia(1440, "Framework Desktop"); await inspectOfficialMedia(1440, "RTX 5090");
     // This is the existing public main-push verification, not a deployment path.
     // Anonymous fresh contexts change only their local browser storage/downloads.
     if (process.env.GITHUB_EVENT_NAME === 'push' && process.env.GITHUB_REF === 'refs/heads/main') {
@@ -449,6 +489,8 @@ async function inspectOfficialMedia(width) {
       assert.equal(servingRevision, receipt.testedCommit, 'Production must serve the actual merged SHA before recovery verification.');
       await exercise(1440, productionOrigin, receipt.testedCommit);
       await exercise(390, productionOrigin, receipt.testedCommit);
+      await inspectComposition(375, productionOrigin); await inspectComposition(768, productionOrigin);
+      await inspectOfficialMedia(390, "GMKtec", productionOrigin);
       receipt.production.verified = true;
     }
   } catch (error) { failure = error; receipt.error = error.stack; }

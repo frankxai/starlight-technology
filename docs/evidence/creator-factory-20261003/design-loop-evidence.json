@@ -365,5 +365,41 @@
       "motion": "No new animation/autoplay",
       "currentConfirmLook": "pending final cloud run"
     }
+  },
+  "modernStudioPass": {
+    "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+    "requestedAt": "2026-10-06",
+    "status": "implemented-awaiting-rendered-review",
+    "design": "Restrained dark Technology palette, editorial heading, compact three-way comparison, product media and capacity together, explicit section navigation, purchase evidence in native disclosure, requirements before private notes. No new animation or autoplay.",
+    "skill": {
+      "selected": "Emil design engineering",
+      "read": true,
+      "applied": true,
+      "verified": "Local lint/types/media tests; cloud reduced motion, focus, touch, recovery and rendered inspection pending"
+    },
+    "motionVerdict": "Candidate changes are immediate. Native disclosure and video disconnect are interruptible; no new transitions. Current cloud confirmation pending.",
+    "score": null,
+    "beforeAfter": [
+      {
+        "before": "Default GMKtec candidate had only a gallery link",
+        "after": "Official GMKtec unboxing supplied by its support center, enabled on request",
+        "why": "Inspect real enclosure and ports in the decision flow"
+      },
+      {
+        "before": "Mobile candidate comparison followed a long media panel",
+        "after": "Compact alternatives first, selected media and capacity together",
+        "why": "Make the decision and its tradeoffs easier to scan"
+      },
+      {
+        "before": "Full purchase panels repeated the quick comparison",
+        "after": "Native disclosure opens from the selected system",
+        "why": "Preserve dated evidence without overwhelming initial planning"
+      },
+      {
+        "before": "Private notes appeared before workload controls",
+        "after": "Requirements lead into notes and saved-copy controls",
+        "why": "Explain how requirements change the system before asking for context"
+      }
+    ]
   }
 }

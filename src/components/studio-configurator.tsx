@@ -317,31 +317,6 @@ export function StudioConfigurator() {
 
       <StudioSystemExplorer output={output} plan={plan} comparisonId={comparisonId} onSelect={(selectedArchetypeId) => setPlan((current) => ({ ...current, selectedArchetypeId }))} />
 
-      <fieldset className="dg-plan">
-        <legend>Your editable plan</legend>
-        <label>Plan title<input maxLength={120} value={plan.title} onChange={(event) => setPlan((current) => ({ ...current, title: event.target.value }))} /></label>
-        <label><span id={contextLabelId}>Existing equipment and intended work</span><textarea aria-labelledby={contextLabelId} rows={4} maxLength={4000} value={plan.privateContext} onChange={(event) => setPlan((current) => ({ ...current, privateContext: event.target.value }))} placeholder="Keep private repo names and equipment notes on this device. Describe the work this system must finish." /></label>
-        <div className="dg-plan-actions">
-          <button type="button" className="button button-quiet" onClick={exportPlan}>Export editable plan</button>
-          <label className="button button-quiet dg-plan-import">Import editable plan<input type="file" accept="application/json,.json" onChange={(event) => { void importPlan(event.target.files?.[0]); event.target.value = ""; }} /></label>
-          <button type="button" className="button button-quiet" onClick={resetPlan}>Reset plan</button>
-          {persistence === "unavailable" && <button type="button" className="button button-quiet" onClick={() => setPlan((current) => ({ ...current }))}>Retry saving</button>}
-          {recovery !== null && <button type="button" className="button button-quiet" onClick={() => download("starlight-plan-recovery.txt", recovery, "text/plain")}>Export recovery copy</button>}
-        </div>
-        <p role={persistence === "blocked" || persistence === "unavailable" || persistence === "conflict" ? "alert" : undefined}>{persistence === "saved" ? "Autosaved on this device." : persistence === "conflict" ? "Autosave paused to preserve another saved copy. Your draft stays in memory; export it before leaving." : persistence === "blocked" ? "Unreadable saved data is kept unchanged. Edits remain in memory; export a recovery copy before replacement." : persistence === "unavailable" ? "Safe browser saving is unavailable or busy. Edits remain in memory for this session; export a backup before leaving." : "Restoring your private plan."} Editable exports contain your context. No plan data is sent to a server.</p>
-        <p role="status">{notice}</p>
-        {conflict !== null && <section aria-label="Plan save conflict">
-          <p role="alert">The saved plan changed in another tab or was removed. Autosave is paused; edits in this tab and the other saved copy are kept separately. Export both before choosing which to keep.</p>
-          <div className="dg-plan-actions">
-            <button type="button" className="button button-quiet" onClick={exportOtherCopy}>Export other saved copy</button>
-            <button type="button" className="button button-quiet" onClick={useSavedPlan}>Load saved plan</button>
-            <button type="button" className="button button-quiet" onClick={keepCurrentDraft}>Save this draft instead</button>
-          </div>
-        </section>}
-        {assessment.catalogChanged && <p className="dg-plan-warning">The catalog changed since this plan was saved. Systems have been recalculated; refresh dated evidence before buying. <button type="button" onClick={() => setPlan((current) => ({ ...current, catalogHash: stableHash(decisionGraph) }))}>Acknowledge current catalog</button></p>}
-        {assessment.selectionInvalidated && <p className="dg-plan-warning">Your previous selected system no longer satisfies these requirements. Choose an eligible alternative or revise the constraints.</p>}
-      </fieldset>
-
       <div className="dg-inputs" id="studio-requirements" tabIndex={-1}>
         <fieldset>
           <legend>Workloads</legend>
@@ -419,12 +394,42 @@ export function StudioConfigurator() {
         </div>
       )}
 
-      <div className="dg-systems" id={comparisonId}>
+      <fieldset className="dg-plan">
+        <legend>Your editable plan</legend>
+        <label>Plan title<input maxLength={120} value={plan.title} onChange={(event) => setPlan((current) => ({ ...current, title: event.target.value }))} /></label>
+        <label><span id={contextLabelId}>Existing equipment and intended work</span><textarea aria-labelledby={contextLabelId} rows={4} maxLength={4000} value={plan.privateContext} onChange={(event) => setPlan((current) => ({ ...current, privateContext: event.target.value }))} placeholder="Keep private repo names and equipment notes on this device. Describe the work this system must finish." /></label>
+        <div className="dg-plan-actions">
+          <button type="button" className="button button-quiet" onClick={exportPlan}>Export editable plan</button>
+          <label className="button button-quiet dg-plan-import">Import editable plan<input type="file" accept="application/json,.json" onChange={(event) => { void importPlan(event.target.files?.[0]); event.target.value = ""; }} /></label>
+          <button type="button" className="button button-quiet" onClick={resetPlan}>Reset plan</button>
+          {persistence === "unavailable" && <button type="button" className="button button-quiet" onClick={() => setPlan((current) => ({ ...current }))}>Retry saving</button>}
+          {recovery !== null && <button type="button" className="button button-quiet" onClick={() => download("starlight-plan-recovery.txt", recovery, "text/plain")}>Export recovery copy</button>}
+        </div>
+        <p role={persistence === "blocked" || persistence === "unavailable" || persistence === "conflict" ? "alert" : undefined}>{persistence === "saved" ? "Autosaved on this device." : persistence === "conflict" ? "Autosave paused to preserve another saved copy. Your draft stays in memory; export it before leaving." : persistence === "blocked" ? "Unreadable saved data is kept unchanged. Edits remain in memory; export a recovery copy before replacement." : persistence === "unavailable" ? "Safe browser saving is unavailable or busy. Edits remain in memory for this session; export a backup before leaving." : "Restoring your private plan."} Editable exports contain your context. No plan data is sent to a server.</p>
+        <p role="status">{notice}</p>
+        {conflict !== null && <section aria-label="Plan save conflict">
+          <p role="alert">The saved plan changed in another tab or was removed. Autosave is paused; edits in this tab and the other saved copy are kept separately. Export both before choosing which to keep.</p>
+          <div className="dg-plan-actions">
+            <button type="button" className="button button-quiet" onClick={exportOtherCopy}>Export other saved copy</button>
+            <button type="button" className="button button-quiet" onClick={useSavedPlan}>Load saved plan</button>
+            <button type="button" className="button button-quiet" onClick={keepCurrentDraft}>Save this draft instead</button>
+          </div>
+        </section>}
+        {assessment.catalogChanged && <p className="dg-plan-warning">The catalog changed since this plan was saved. Systems have been recalculated; refresh dated evidence before buying. <button type="button" onClick={() => setPlan((current) => ({ ...current, catalogHash: stableHash(decisionGraph) }))}>Acknowledge current catalog</button></p>}
+        {assessment.selectionInvalidated && <p className="dg-plan-warning">Your previous selected system no longer satisfies these requirements. Choose an eligible alternative or revise the constraints.</p>}
+      </fieldset>
+
+      <details className={explorerStyles.fullComparison} id={comparisonId}>
+        <summary>Detailed comparison and purchase checks</summary>
+        <div className="dg-systems">
         {output.systems.map((system) => (
           <SystemPanel key={system.tier} system={system} input={input} selected={plan.selectedArchetypeId === system.archetypeId} onSelect={() => setPlan((current) => ({ ...current, selectedArchetypeId: system.archetypeId }))} />
         ))}
       </div>
 
+      </details>
+
+      <div id="studio-costs" tabIndex={-1}>
       {plan.factory === null ? <p><button type="button" className="button button-quiet" onClick={() => setPlan((current) => ({ ...current, factory: newFactoryScenario() }))}>Estimate agent operating costs</button></p> : <>
         <FactoryCostEditor value={plan.factory} onChange={(factory) => setPlan((current) => ({ ...current, factory }))} />
         <p><button type="button" className="button button-quiet" onClick={() => { if (window.confirm("Remove the agent cost scenario? Export your editable plan first to retain these assumptions.")) setPlan((current) => ({ ...current, factory: null })); }}>Remove agent cost scenario</button></p>
@@ -442,6 +447,8 @@ export function StudioConfigurator() {
         </div>
         <p aria-live="polite">Electricity: {monthly.electricityMinor === null ? "unknown" : `EUR ${(monthly.electricityMinor / 100).toFixed(2)}/month`}. Total recurring scenario: {monthly.totalMinor === null ? "incomplete assumptions" : `EUR ${(monthly.totalMinor / 100).toFixed(2)}/month`}. Hardware cost and financing remain separate.</p>
       </fieldset>
+
+      </div>
 
       {output.disqualified.length > 0 && (
         <section className="dg-ruled-out">

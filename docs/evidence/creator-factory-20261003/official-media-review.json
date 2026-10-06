@@ -66,5 +66,20 @@
     "privateLifecycle": "Prepared browser check uses an explicit isolated player fixture, not live playback",
     "actualMedia": "Separate read-only runner context prepared; blocked media records pending, never acceptance"
   },
-  "publicRelease": false
+  "publicRelease": false,
+  "gmktecUnboxing": {
+    "id": "goPySD6_eXc",
+    "publisher": "GMKtec",
+    "channel": "https://www.youtube.com/@gmk782",
+    "officialDiscovery": "https://www.gmktec.com/pages/drivers-and-software",
+    "oEmbed": "Verified title, author and publisher on 2026-10-06",
+    "representation": "Native unmodified privacy-enhanced player, explicit activation, no thumbnail or video copied, no autoplay",
+    "scope": "Enclosure/ports, not configuration certification or throughput benchmark",
+    "actualPlayback": "pending current cloud run"
+  },
+  "dependencyDisposition": {
+    "brace-expansion": "Locked 1.1.21 with official registry integrity; GHSA-q2hr-2g5m-vwhr",
+    "js-yaml": "Locked 4.3.2 with official registry integrity; GHSA-2883-xcg3-v3hh and GHSA-5p4m-2wfm-xmqj",
+    "scope": "Development dependencies. Frozen cloud install and full checks pending."
+  }
 }
