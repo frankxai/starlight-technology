@@ -385,9 +385,11 @@ async function inspectOfficialMedia(width) {
     evidence.blockedRequests++; return route.abort();
   });
   const page = await context.newPage();
+  page.setDefaultTimeout(10000);
   try {
     await page.goto(origin + '/studio');
     const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
+    await explorer.getByRole('button', { name: /Use Framework Desktop/ }).click();
     await explorer.getByRole('button', { name: 'Load official video', exact: true }).click();
     const iframe = explorer.locator('iframe');
     await iframe.waitFor();
