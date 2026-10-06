@@ -307,7 +307,7 @@ export function StudioConfigurator() {
   return (
     <section className="dg" aria-labelledby="dg-title">
       <div className={`finder-head ${explorerStyles.privateHeading}`}>
-        <span>AI creator studio configurator</span>
+        <span>Private planning workspace</span>
         <span>Your private plan stays in this browser</span>
       </div>
 

@@ -99,9 +99,13 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   const featured = selected ?? output.systems.find((system) => system.tier === "recommended") ?? output.systems[0];
   const workloads = plan.input.workloadIds.map((id) => graph.get(id)?.label ?? id);
   const specs = featured && configuratorArchetypes.find((item) => item.id === featured.archetypeId);
+  const selectedPriceDates = [...new Set(featured?.lines.flatMap((line) => {
+    const price = line.priceObservationId ? graph.get(line.priceObservationId) : undefined;
+    return price?.kind === "PriceObservation" ? [price.observedAt] : [];
+  }) ?? [])];
   return <section className={styles.explorer} id="studio-systems" aria-label="Current system alternatives">
     <div className={styles.heading}>
-      <div><p className={styles.kicker}>01 · Choose your foundation</p><h3>{output.systems.length ? "Different systems. Different strengths." : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>For {workloads.join(" · ") || "the work you choose"}</p></div>
+      <div><p className={styles.kicker}>01 · Choose your foundation</p><h3>{output.systems.length ? "Compare your systems." : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>Work: {workloads.join(" · ") || "Choose your requirements"}</p></div>
       <a href="#studio-requirements" className={styles.textLink}>Change the work <span aria-hidden="true">↗</span></a>
     </div>
     <div className={styles.candidates}>
@@ -131,6 +135,11 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
         <div className={styles.assembly}>
           <p className={styles.kicker}>{featured.tier.replaceAll("-", " ")} · Planning candidate</p>
           <div className={styles.assemblyHeading}><h4>{featured.label}</h4></div>
+          <p className={styles.selectedPrice}>Cited part costs
+            <strong>{Object.entries(featured.cost.pricedTotalsMinor).map(([currency, minor]) => `${currency} ${(minor / 100).toLocaleString("en", { maximumFractionDigits: 2 })}`).join(" + ") || "Part prices unknown"}</strong>
+            {selectedPriceDates.length ? `Parts observed ${selectedPriceDates.join(", ")}. ` : "No dated prices. "}
+            {featured.cost.unpricedLines.length ? `${featured.cost.unpricedLines.length} unpriced lines. ` : ""}Delivered total unknown. Refresh price and delivery evidence before buying.
+          </p>
           <dl className={styles.specGrid}>
             <div><dt>System memory</dt><dd>{specs?.systemRamGb}<small> GB</small></dd></div>
             <div><dt>Model allocation</dt><dd>{specs?.usableVramGb}<small> GB</small></dd></div>
