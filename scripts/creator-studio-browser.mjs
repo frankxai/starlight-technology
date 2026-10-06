@@ -425,7 +425,7 @@ async function inspectOfficialMedia(width, product = 'GMKtec', testOrigin = orig
   try {
     await page.goto(testOrigin + '/studio');
     const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
-    await explorer.getByRole('button', { name: new RegExp('Use ' + product) }).click();
+    await explorer.getByRole('button', { name: new RegExp('Use .*' + product) }).click();
     await explorer.getByRole('button', { name: 'Load official video', exact: true }).click();
     evidence.src = await explorer.locator('iframe').getAttribute('src');
     const frame = page.frameLocator('[data-product-media] iframe');
@@ -436,7 +436,7 @@ async function inspectOfficialMedia(width, product = 'GMKtec', testOrigin = orig
     await frame.getByRole('button', { name: /Play/i }).first().click({ timeout: 10000 });
     await frame.locator('video').evaluate(video => {
       return new Promise((resolve, reject) => {
-        const deadline = setTimeout(() => reject(Error('Actual media did not advance within 15 seconds')), 15000);
+        const deadline = setTimeout(() => { video.removeEventListener('timeupdate', tick); reject(Error('Actual media did not advance within 15 seconds')); }, 15000);
         const start = video.currentTime;
         const tick = () => { if (!video.paused && video.currentTime > start + .25) { clearTimeout(deadline); video.removeEventListener('timeupdate', tick); resolve(true); } };
         video.addEventListener('timeupdate', tick); tick();
@@ -447,6 +447,10 @@ async function inspectOfficialMedia(width, product = 'GMKtec', testOrigin = orig
     assert.equal(await explorer.locator('iframe').count(), 0);
   } catch (error) {
     evidence.reason = error.message;
+    try {
+      const actual = await page.frameLocator('[data-product-media] iframe').locator('body').innerText({ timeout: 2000 });
+      if (/confirm you.?re not a bot/i.test(actual)) { evidence.status = 'publisher-sign-in-required'; evidence.reason = 'The actual YouTube player requires sign-in on this anonymous cloud runner. No login or bypass attempted; the external fallback remains available.'; }
+    } catch { /* Retain raw failure if no player is available. */ }
     try { await capture(page.getByRole('region', { name: 'Current system alternatives', exact: true }), `${width}-${product}-official-player-pending.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }'); }
     catch (captureError) { evidence.captureError = captureError.message; }
   } finally { await context.close(); }

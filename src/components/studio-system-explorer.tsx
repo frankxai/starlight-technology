@@ -49,7 +49,7 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
         </div>
         <button type="button" className={styles.mediaButton} aria-expanded={videoLoaded}
           onClick={() => setVideoLoaded(!videoLoaded)}>{videoLoaded ? "Close official video" : "Load official video"}</button>
-        <p className={styles.mediaPrivacy}>Loads YouTube on request. Your plan is not sent. No autoplay.</p>
+        <p className={styles.mediaPrivacy}>Loads YouTube on request. Your plan is not sent. No autoplay. <a href={watchUrl} target="_blank" rel="noopener noreferrer">Playback blocked? Open on YouTube ↗</a></p>
         <details className={styles.mediaDetails}><summary>About this demonstration</summary><p>{video.scope}</p><p>Close the video to disconnect the player. If playback is unavailable, use Watch on YouTube.</p><a href={video.channelUrl} target="_blank" rel="noopener noreferrer">{video.publisher} channel ↗</a></details>
       </> : image && !failed ? <>
         <a href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge photograph of ${primary.label}`}>
