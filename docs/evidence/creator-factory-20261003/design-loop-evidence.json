@@ -369,7 +369,7 @@
   "modernStudioPass": {
     "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
     "requestedAt": "2026-10-06",
-    "status": "cloud-verified-release-held",
+    "status": "rejected-by-founder; preserved as historical verification only",
     "design": "Restrained dark Technology palette, editorial heading, compact three-way comparison, product media and capacity together, explicit section navigation, purchase evidence in native disclosure, requirements before private notes. No new animation or autoplay.",
     "skill": {
       "selected": "Emil design engineering",
@@ -388,7 +388,8 @@
       "total": 27,
       "scale": 30,
       "authority": "Fresh lead provisional assessment of the actual corrected composition, product posters and cloud behaviors. Does not grant independent rendered or buyer acceptance.",
-      "rationale": "Actual system alternatives and chosen capacity visible; Technology typography and 1200px layout; compact mobile controls with dated cost evidence in selected view; native 44px targets/focus/recovery; no new animation. Official videos are opt-in and playback unverified, and full inline manufacturer-photo coverage remains incomplete."
+      "rationale": "Actual system alternatives and chosen capacity visible; Technology typography and 1200px layout; compact mobile controls with dated cost evidence in selected view; native 44px targets/focus/recovery; no new animation. Official videos are opt-in and playback unverified, and full inline manufacturer-photo coverage remains incomplete.",
+      "acceptance": "Rejected by Frank on 2026-10-06; tests and the provisional 27/30 score cannot overturn the rejection."
     },
     "beforeAfter": [
       {
@@ -436,5 +437,76 @@
       "actualVideoPlayback": "not accepted; actual posters render but time did not advance; prior cloud player required sign-in",
       "localAdmission": "RAM below 4 GiB floor. PP incorrectly printed ALLOW with 3977 MiB free against 6144 MiB required; measured numbers override label. No reviewer/browser/full build launched."
     }
+  },
+  "productFirstRefinement": {
+    "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+    "at": "2026-10-06T12:05:44.200265+00:00",
+    "status": "implemented; rendered acceptance pending",
+    "rejectedRevision": "1c1196c571cc46fa279fc1758d2202ce0100a2e9",
+    "reason": "Frank rejects image-free initial composition, oversized heading and text cards; asks for authentic official imagery and the quality of leading competitor sites.",
+    "references": [
+      {
+        "name": "Apple Mac mini",
+        "url": "https://www.apple.com/mac-mini/",
+        "lesson": "Prominent real hardware, concise hierarchy and configuration nearby; actual cloud comparative capture prepared."
+      },
+      {
+        "name": "Framework Desktop",
+        "url": "https://frame.work/desktop",
+        "lesson": "Real modular hardware and assembly images explain the choice. The current 495 store remains separate from the 395 plan."
+      },
+      {
+        "name": "NVIDIA RTX 5090",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+        "lesson": "Make the real decision object visually primary; distinguish the card from a complete workstation."
+      }
+    ],
+    "skill": {
+      "selected": "Emil design engineering",
+      "read": true,
+      "applied": "Compact hierarchy, reserved photo geometry, native controls, immediate keyboard state; press feedback only on fine-pointer active states; no autoplay or new entry animation.",
+      "verified": "Local media boundary tests and syntax passed; fresh cloud render/behavior inspection pending."
+    },
+    "initialInspection": "Starts with the first displayed alternative without saving a preference or changing the engine recommendation. A saved candidate retains priority.",
+    "image": {
+      "path": "public/images/products/framework-desktop-395.jpg",
+      "source": "https://guides.frame.work/Guide/Framework+Desktop+DIY+Edition+Quick+Start+Guide/464?lang=en",
+      "publisher": "Iroh / Framework team",
+      "permission": "https://guides.frame.work/Info/Licensing",
+      "license": "CC BY-SA 3.0",
+      "changes": "Unchanged 800x600 official guide photograph; no generative replacement or retouching.",
+      "sha256": "269ffc0c0a9258a59a2161be1af0732b6b26edc307c4043efaa885df0ee223ef",
+      "provenance": "Adjacent sidecar and both append-only ledgers recorded; public schema validation/memory sync pending."
+    },
+    "beforeAfter": [
+      {
+        "before": "Large two-line headline and three verbose cards before a blank video panel",
+        "after": "Shorter heading, compact selection and real official Framework kit photograph in the initial decision view",
+        "why": "Users can see the system while comparing candidates."
+      },
+      {
+        "before": "Photos and videos were mutually exclusive, so an embeddable video hid any local photograph",
+        "after": "The photograph displays immediately; the official player replaces it only after explicit activation",
+        "why": "Real imagery is visible while retaining privacy and playback recovery."
+      },
+      {
+        "before": "Hardware cost evidence appeared only in mobile selected view",
+        "after": "Dated cited costs and unpriced/delivery status accompany the selected configuration at every width",
+        "why": "The buyer can understand the price basis near the decision."
+      },
+      {
+        "before": "Provisional 27/30 was still the latest score despite user rejection",
+        "after": "Prior score explicitly rejected; fresh cloud photo, failure, responsive and reference evidence required",
+        "why": "A passing build cannot establish the requested design quality."
+      }
+    ],
+    "score": null,
+    "gates": {
+      "renderedDesktopMobile": "pending fresh cloud evidence",
+      "independentProviderSecurityPrivacyLicenceCommercial": "pending exact revision",
+      "renderedDesignBuyerAcceptance": "pending exact revision",
+      "production": "PR34 remains draft; production activation not established"
+    },
+    "remainingMediaCoverage": "Framework has official licensed inline photography; Mac uses existing credited CC BY photograph. GMKtec and NVIDIA retain official request-only players/gallery links; manufacturer photo republication rights remain unresolved."
   }
 }

@@ -36,7 +36,8 @@ describe("Public catalog media boundaries", () => {
     const item = productVisualFor("dev-framework-desktop-395")!;
     expect(item.officialUrl).toContain("introducing-the-framework-desktop");
     expect(item.notice).toContain("495");
-    expect(item.image).toBeUndefined();
+    expect(item.image?.official).toBe(true);
+    expect(item.image?.permissionUrl).toBe("https://guides.frame.work/Info/Licensing");
   });
   it("ships only local licensed photographs with matching provenance and bytes", () => {
     for (const item of productVisuals) {
@@ -44,7 +45,7 @@ describe("Public catalog media boundaries", () => {
       const image = item.image;
       expect(image.src).toMatch(/^\/images\/products\/[a-z0-9-]+\.jpg$/);
       expect(image.author).not.toBe("");
-      expect(image.license).toBe("CC BY 4.0");
+      expect(["CC BY 4.0", "CC BY-SA 3.0"]).toContain(image.license);
       expect(new URL(image.licenseUrl).protocol).toBe("https:");
       const file = resolve("public", `.${image.src}`);
       expect(existsSync(file)).toBe(true);

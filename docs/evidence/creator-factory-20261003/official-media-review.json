@@ -97,5 +97,29 @@
     "copiedManufacturerPhotos": false,
     "macPhoto": "Existing credited CC BY photograph is not official Apple imagery.",
     "publicRelease": false
-  }
+  },
+  "frameworkPhotoDiscovery": {
+    "reviewedAt": "2026-10-06",
+    "source": "https://guides.frame.work/Guide/Framework+Desktop+DIY+Edition+Quick+Start+Guide/464?lang=en",
+    "guideRelease": "1.03, updated 2026-03-02",
+    "author": "Iroh, Framework team",
+    "asset": "https://d3t0tbmlie281e.cloudfront.net/igi/framework/giPSYNRMLOCJvXnB.large",
+    "licence": "CC BY-SA 3.0",
+    "permission": "https://guides.frame.work/Info/Licensing",
+    "method": "Unchanged local 800x600 JPEG, 50155 bytes, credit/license/source beside photograph. No claim that pictured optional parts or memory/storage match the generated purchase list.",
+    "scope": "Physical original Desktop DIY kit; current 495 store generation remains separately disclosed.",
+    "rightsReview": "Publisher licensing page declares all content CC BY-SA 3.0; independent exact-revision licence/commercial review remains pending."
+  },
+  "photoRightsResearch": [
+    {
+      "url": "https://www.nvidia.com/en-us/about-nvidia/terms-of-service/",
+      "reviewedAt": "2026-10-06",
+      "result": "The general materials licence restricts public/commercial reuse absent an individual licence. Newsroom download alone does not establish republication permission; no official NVIDIA photograph copied."
+    },
+    {
+      "url": "https://www.gmktec.com/pages/terms-conditions",
+      "reviewedAt": "2026-10-06",
+      "result": "No public-commercial photo republication licence established. Exact EVO-X2 official gallery and request-only unboxing remain; no copied image."
+    }
+  ]
 }

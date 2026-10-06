@@ -29,8 +29,8 @@ export default function StudioPage() {
     <div className={`shell page-header dg-page ${styles.page}`} data-source-revision={sourceRevision}>
       <header className={styles.intro}>
         <div><p className={styles.kicker}>AI creator studio</p>
-        <h1>Your next<br /><span>creator system.</span></h1></div>
-        <p className="lede">Compare real hardware. Understand capacity and running costs. Leave with a private, editable plan.</p>
+        <h1>Build around <span>your work.</span></h1></div>
+        <p className="lede">Find the hardware, capacity and running costs for your next creative system.</p>
       </header>
       <nav className={styles.planNav} aria-label="Studio sections">
         <a href="#studio-systems">01 <span>Systems</span></a>

@@ -50,7 +50,7 @@ async function saved(page, title) {
     try { return JSON.parse(localStorage.getItem(storageKey)).title === expected; } catch { return false; }
   }, [key, title], { timeout: 10000 });
 }
-async function capture(target, name, viewport, style) {
+async function capture(target, name, viewport, style, referenceUrl = null) {
   const file = path.join(output, name), createdAt = new Date().toISOString();
   await target.screenshot({ path: file, animations: 'disabled', style });
   const sha256 = createHash('sha256').update(fs.readFileSync(file)).digest('hex');
@@ -58,7 +58,8 @@ async function capture(target, name, viewport, style) {
     created_at: createdAt, brand: 'starlight-technology', agent_session: '01a101b1-9d38-7fa1-b1f0-dec923631d7f',
     model: 'none (render capture)', provider: 'GitHub Actions / Playwright Chromium', seed: null,
     method: 'Actual rendered product screenshot; no image-generation model or image editing',
-    prompt: `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Capture-only CSS: ${style ?? 'none'}. The isolated component capture makes global navigation non-sticky and hides the global skip link so neither can cover the component; page captures retain normal navigation and skip-link behavior. Preserve the rendered component as evidence; do not grant design or release acceptance.`,
+    prompt: referenceUrl ? `Capture the visible official product page ${referenceUrl} at ${viewport} CSS pixels, in an isolated anonymous cloud browser context containing no Studio plan. Comparative design review only; no copied product asset or marketing reuse permission. No capture-only CSS.` : `Capture ${name} from the actual Creator Studio source ${receipt.testedCommit}, viewport ${viewport} CSS pixels, reduced motion, synthetic private notes. Capture-only CSS: ${style ?? 'none'}. The isolated component capture makes global navigation non-sticky and hides the global skip link so neither can cover the component; page captures retain normal navigation and skip-link behavior. Preserve the rendered component as evidence; do not grant design or release acceptance.`,
+    source_url: referenceUrl,
     capture_css: style ?? null,
     sha256, source_commit: receipt.testedCommit, viewport_width: viewport, private: false, public_release: false,
     schema_validation: { status: 'not-validated', reason: 'Referenced schema was unavailable; provenance fields recorded.' } };
@@ -135,6 +136,31 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
     });
     await check(`${tag}: Studio does not mount public-page telemetry collectors`, async () => {
       assert.equal(await page.locator('script[src*="/_vercel/insights"], script[src*="/_vercel/speed-insights"], script[src*="vercel-insights.com"]').count(), 0);
+    });
+    await check(`${tag}: a failed product image preserves the plan and retains official media routes`, async () => {
+      const before = await page.evaluate(storageKey => localStorage.getItem(storageKey), key);
+      await page.route('**/_next/image*', route => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Explicit image-failure fixture' }));
+      await page.reload();
+      await page.getByText('Photograph unavailable. You can still load the official demonstration or open the product gallery.', { exact: true }).waitFor();
+      assert.equal(await page.locator('[data-product-media] img').count(), 0);
+      assert.equal(await page.locator('[data-product-media] iframe').count(), 0);
+      assert.equal(await page.evaluate(storageKey => localStorage.getItem(storageKey), key), before);
+      assert.equal(await page.getByRole('link', { name: "Framework's 395 launch gallery ↗", exact: true }).count(), 1);
+      await page.unroute('**/_next/image*'); await page.reload();
+      const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
+      await photo.waitFor(); await photo.evaluate(image => image.decode());
+      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
+    });
+    await check(`${tag}: actual official photograph loads in the first viewport before external media`, async () => {
+      const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
+      await photo.waitFor();
+      await photo.evaluate(image => image.decode());
+      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
+      const bounds = await photo.boundingBox();
+      assert.ok(bounds && bounds.width >= 250 && bounds.height >= 180);
+      assert.ok(bounds.y >= 0 && bounds.y + Math.min(bounds.height, 180) <= (width === 390 ? 844 : 1000), 'The real photograph must be visible before scrolling.');
+      assert.equal(await page.locator('iframe').count(), 0);
+      assert.equal(await page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key), null, 'Initial inspection must not save a purchase preference.');
     });
     await check(`${tag}: official video requires activation and disconnects without changing the plan`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
@@ -404,11 +430,39 @@ async function inspectComposition(width, testOrigin = origin) {
       await page.getByRole('button', { name: 'Load official video', exact: true }).click();
       await page.getByRole('button', { name: 'Close official video', exact: true }).click();
       assert.equal(await page.locator('iframe').count(), 0);
+      const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
+      await photo.waitFor(); await photo.evaluate(image => image.decode());
+      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
     });
     await page.evaluate(() => scrollTo(0, 0));
     await capture(page, `${width}-composition.png`, width);
     await capture(page.getByRole('region', { name: 'Current system alternatives', exact: true }), `${width}-comparison.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
   } finally { await context.close(); }
+}
+async function inspectProductReferences() {
+  receipt.productReferences = [];
+  for (const [name, url] of [
+    ['framework', 'https://frame.work/desktop'],
+    ['apple', 'https://www.apple.com/mac-mini/'],
+    ['nvidia', 'https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/'],
+  ]) {
+    for (const width of [1440, 390]) {
+      const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
+      const evidence = { name, url, width, containsStudioInputs: false, status: 'pending', reusePermission: 'Comparative review capture only, not a product asset licence' };
+      receipt.productReferences.push(evidence);
+      const page = await context.newPage();
+      try {
+        const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+        evidence.statusCode = response?.status();
+        if (!response?.ok()) throw Error(`Reference returned HTTP ${response?.status()}`);
+        await page.locator('h1').first().waitFor({ timeout: 5000 });
+        await page.waitForTimeout(1500);
+        await capture(page, `${width}-reference-${name}.png`, width, undefined, url);
+        evidence.status = 'rendered';
+      } catch (error) { evidence.status = 'unavailable'; evidence.reason = error.message; }
+      finally { await context.close(); }
+    }
+  }
 }
 async function inspectOfficialMedia(width, product = 'GMKtec', testOrigin = origin) {
   const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
@@ -473,6 +527,7 @@ async function inspectOfficialMedia(width, product = 'GMKtec', testOrigin = orig
     await inspectComposition(375); await inspectComposition(768);
     await inspectOfficialMedia(1440); await inspectOfficialMedia(390);
     await inspectOfficialMedia(1440, "Framework Desktop"); await inspectOfficialMedia(1440, "RTX 5090");
+    await inspectProductReferences();
     // This is the existing public main-push verification, not a deployment path.
     // Anonymous fresh contexts change only their local browser storage/downloads.
     if (process.env.GITHUB_EVENT_NAME === 'push' && process.env.GITHUB_REF === 'refs/heads/main') {

@@ -12,7 +12,7 @@ export type ProductVisual = {
   image?: {
     src: string; width: number; height: number; alt: string;
     author: string; license: string; licenseUrl: string; sourceUrl: string;
-    reviewedAt: string; changes: string;
+    reviewedAt: string; changes: string; official?: boolean; permissionUrl?: string;
   };
 };
 
@@ -22,6 +22,15 @@ export const productVisuals: readonly ProductVisual[] = [
     officialUrl: "https://frame.work/blog/introducing-the-framework-desktop",
     atlasSlug: "framework-desktop-ryzen-ai-max",
     gallery: { url: "https://frame.work/blog/introducing-the-framework-desktop", label: "Framework's 395 launch gallery" },
+    image: {
+      src: "/images/products/framework-desktop-395.jpg", width: 800, height: 600,
+      alt: "Framework Desktop DIY kit laid out with the open chassis, side panel, cooling fan, front tiles, expansion cards and storage drives",
+      author: "Iroh / Framework", license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+      permissionUrl: "https://guides.frame.work/Info/Licensing",
+      sourceUrl: "https://guides.frame.work/Guide/Framework+Desktop+DIY+Edition+Quick+Start+Guide/464?lang=en",
+      reviewedAt: "2026-10-06", changes: "Unchanged Framework Guides large rendition.", official: true,
+    },
     video: {
       id: "mmntN7zIekU", title: "Local AI on the Framework Desktop: Best Models for 32GB, 64GB, and 128GB",
       publisher: "Framework", channelUrl: "https://www.youtube.com/@FrameworkComputer",

@@ -8,11 +8,19 @@ import { decisionGraph } from "@/lib/decision-graph/dataset";
 import { indexGraph } from "@/lib/decision-graph/graph";
 import { productVisualFor } from "@/lib/decision-graph/product-visuals";
 import { resolveOutboundLink } from "@/lib/decision-graph/partner-links";
-import { assessFreshness } from "@/lib/decision-graph/staleness";
 import type { CreatorPlan } from "@/lib/decision-graph/creator-plan";
 import styles from "./studio-system-explorer.module.css";
 
 const graph = indexGraph(decisionGraph);
+
+function systemTitle(system: ConfiguredSystem) {
+  return ({
+    "dev-framework-desktop-395": "Framework Desktop",
+    "dev-gmktec-evox2-128-2tb": "GMKtec EVO-X2",
+    "cmp-rtx-5090": "RTX 5090 build",
+    "dev-mac-mini-m4": "Mac mini M4",
+  } as Record<string, string>)[system.lines[0].nodeId] ?? system.label;
+}
 
 function officialUrl(nodeId: string) {
   const visual = productVisualFor(nodeId);
@@ -34,8 +42,14 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
     const video = visual.video;
     const watchUrl = video ? `https://www.youtube.com/watch?v=${video.id}` : undefined;
     return <figure className={styles.productMedia} data-product-media={primary.nodeId}>
-      <p className={styles.kicker}>{video?.publisher ?? "Product photograph"} · Product media</p>
-      {video?.embed ? <>
+      <p className={styles.kicker}>{image?.official ? "Official product photograph" : image ? "Product photograph" : `${video?.publisher ?? "Manufacturer"} · Product demonstration`}</p>
+      {image && !failed && !videoLoaded && <>
+        <a className={styles.photo} href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge photograph of ${primary.label}`}>
+          <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 760px) 90vw, 580px" priority onError={() => setFailed(true)} />
+        </a>
+      </>}
+      {video?.embed && <>
+        {(!image || failed || videoLoaded) &&
         <div className={styles.mediaWindow}>
           {videoLoaded ? <iframe
             src={`https://www.youtube-nocookie.com/embed/${video.id}?cc_load_policy=1`}
@@ -44,24 +58,21 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
             allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen
           /> : <div className={styles.mediaIntro}>
             <span className={styles.playMark} aria-hidden="true">▶</span>
-            <strong>{primary.label}</strong><span>{video.title}</span>
+            <strong>{primary.label}</strong><span>{failed ? "Photograph unavailable. You can still load the official demonstration or open the product gallery." : video.title}</span>
           </div>}
-        </div>
+        </div>}
         <button type="button" className={styles.mediaButton} aria-expanded={videoLoaded}
           onClick={() => setVideoLoaded(!videoLoaded)}>{videoLoaded ? "Close official video" : "Load official video"}</button>
         <p className={styles.mediaPrivacy}>Loads YouTube on request. Your plan is not sent. No autoplay. <a href={watchUrl} target="_blank" rel="noopener noreferrer">Playback blocked? Open on YouTube ↗</a></p>
         <details className={styles.mediaDetails}><summary>About this demonstration</summary><p>{video.scope}</p><p>Close the video to disconnect the player. If playback is unavailable, use Watch on YouTube.</p><a href={video.channelUrl} target="_blank" rel="noopener noreferrer">{video.publisher} channel ↗</a></details>
-      </> : image && !failed ? <>
-        <a href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge photograph of ${primary.label}`}>
-          <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 760px) 90vw, 380px" onError={() => setFailed(true)} />
-        </a>
-        <figcaption>Photograph: {image.author} · <a href={image.licenseUrl} target="_blank" rel="noopener noreferrer">{image.license}</a> · <a href={image.sourceUrl} target="_blank" rel="noopener noreferrer">Source</a>. {image.changes} Configuration is not visible.</figcaption>
-      </> : <p className={styles.mediaIntro}>{failed ? "Photo unavailable. " : ""}Open the manufacturer&apos;s gallery to inspect the enclosure, ports and exact model.</p>}
+      </>}
+      {!video?.embed && (!image || failed) && <p className={styles.mediaIntro}>{failed ? "Photo unavailable. " : ""}Open the manufacturer&apos;s gallery to inspect the enclosure, ports and exact model.</p>}
       <div className={styles.mediaLinks}>
         {watchUrl && <a href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>}
         <a href={visual.gallery.url} target="_blank" rel="noopener noreferrer">{visual.gallery.label} ↗</a>
       </div>
       {video && !video.embed && <p className={styles.mediaPrivacy}>{video.scope}</p>}
+      {image && !failed && !videoLoaded && <figcaption>Photo: {image.author} · <a href={image.licenseUrl} target="_blank" rel="noopener noreferrer">{image.license}</a> · <a href={image.sourceUrl} target="_blank" rel="noopener noreferrer">Source ↗</a><span>Enclosure and components shown. Your configuration may differ.</span></figcaption>}
     </figure>;
   }
   return <figure className={styles.diagram}>
@@ -96,7 +107,9 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   output: ConfiguratorOutput; plan: CreatorPlan; comparisonId: string; onSelect: (id: string) => void;
 }) {
   const selected = output.systems.find((system) => system.archetypeId === plan.selectedArchetypeId);
-  const featured = selected ?? output.systems.find((system) => system.tier === "recommended") ?? output.systems[0];
+  // Inspect alternatives in their displayed order. This does not change the engine's
+  // recommendation or save a preference before the user chooses one.
+  const featured = selected ?? output.systems[0];
   const workloads = plan.input.workloadIds.map((id) => graph.get(id)?.label ?? id);
   const specs = featured && configuratorArchetypes.find((item) => item.id === featured.archetypeId);
   const selectedPriceDates = [...new Set(featured?.lines.flatMap((line) => {
@@ -105,26 +118,18 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   }) ?? [])];
   return <section className={styles.explorer} id="studio-systems" aria-label="Current system alternatives">
     <div className={styles.heading}>
-      <div><p className={styles.kicker}>01 · Choose your foundation</p><h3>{output.systems.length ? "Compare your systems." : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>Work: {workloads.join(" · ") || "Choose your requirements"}</p></div>
+      <div><h3>{output.systems.length ? "Choose your foundation" : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>For {workloads.join(" · ") || "your work"}</p></div>
       <a href="#studio-requirements" className={styles.textLink}>Change the work <span aria-hidden="true">↗</span></a>
     </div>
     <div className={styles.candidates}>
       {output.systems.map((system) => {
         const active = featured?.archetypeId === system.archetypeId;
         const specs = configuratorArchetypes.find((item) => item.id === system.archetypeId);
-        const freshness = assessFreshness(system, { now: new Date().toISOString().slice(0, 10) });
-        const dates = [...new Set(system.lines.flatMap((line) => {
-          const price = line.priceObservationId ? graph.get(line.priceObservationId) : undefined;
-          return price?.kind === "PriceObservation" ? [price.observedAt] : [];
-        }))];
         return <button type="button" key={system.tier} data-archetype-id={system.archetypeId} aria-pressed={active} aria-label={`Use ${system.label} (${system.tier.replaceAll("-", " ")})`} className={`${styles.candidate} ${active ? styles.selected : ""}`} onClick={() => onSelect(system.archetypeId)}>
           <span className={styles.tier}>{system.tier.replaceAll("-", " ")}</span>
-          <strong>{system.label}</strong>
-          <span>{specs?.systemRamGb} GB RAM · {specs?.fastStorageTb} TB storage</span>
-          <span className={styles.price}>{Object.entries(system.cost.pricedTotalsMinor).map(([currency, minor]) => `${currency} ${(minor / 100).toLocaleString("en", { maximumFractionDigits: 2 })}`).join(" + ") || "Part prices unknown"}</span>
-          <span className={styles.priceBasis}>{dates.length ? `Parts: ${dates.join(", ")}` : "No dated prices"} · Delivered total unknown{system.cost.unpricedLines.length ? ` · ${system.cost.unpricedLines.length} unpriced lines` : ""}</span>
-          {!freshness.valid && <span className={styles.expired}>Evidence needs refresh before buying.</span>}
-          <span className={styles.selection}>{active ? selected ? "✓ Saved choice" : "Recommended · Choose to save →" : "Explore this system →"}</span>
+          <strong>{systemTitle(system)}</strong>
+          <span>{specs?.systemRamGb} GB RAM</span>
+          <span className={styles.selection}>{active ? selected ? "✓ Saved choice" : "✓ In view" : "Compare →"}</span>
         </button>;
       })}
     </div>
@@ -134,7 +139,8 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
         <ProductFigure key={featured.archetypeId} system={featured} />
         <div className={styles.assembly}>
           <p className={styles.kicker}>{featured.tier.replaceAll("-", " ")} · Planning candidate</p>
-          <div className={styles.assemblyHeading}><h4>{featured.label}</h4></div>
+          <div className={styles.assemblyHeading}><h4>{systemTitle(featured)}</h4></div>
+          <p className={styles.configuration}>{featured.label}</p>
           <p className={styles.selectedPrice}>Cited part costs
             <strong>{Object.entries(featured.cost.pricedTotalsMinor).map(([currency, minor]) => `${currency} ${(minor / 100).toLocaleString("en", { maximumFractionDigits: 2 })}`).join(" + ") || "Part prices unknown"}</strong>
             {selectedPriceDates.length ? `Parts observed ${selectedPriceDates.join(", ")}. ` : "No dated prices. "}
@@ -146,7 +152,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
             <div><dt>Base storage</dt><dd>{specs?.fastStorageTb}<small> TB</small></dd></div>
           </dl>
           <Capacity system={featured} output={output} />
-          <p className={styles.tradeoff}><strong>First bottleneck</strong>{featured.bottleneck.explanation}</p>
+          <details className={styles.tradeoff}><summary>First bottleneck</summary><p>{featured.bottleneck.explanation}</p></details>
           <a className={styles.textLink} href={`#${comparisonId}`} onClick={() => {
             const comparison = document.getElementById(comparisonId);
             if (comparison instanceof HTMLDetailsElement) comparison.open = true;
