@@ -1,6 +1,6 @@
 {
   "feature": "Creator Studio visual system explorer",
-  "status": "Refined runtime passes exact cloud checks and lead rendered score28/30; independent release acceptance pending",
+  "status": "User rejected generic-first media at f5721e0 on 2026-10-06; official-media refinement implemented; current rendered and buyer acceptance pending",
   "branch": "agent/codex/creator-studio-factory-20261003",
   "baseRevision": "4588a2409588b62cb394dc370ff52a46819ba346",
   "previousAssessment": {
@@ -332,5 +332,16 @@
         "why": "Immediate state feedback and recoverable input under interruption"
       }
     ]
+  },
+  "userMediaCorrection": {
+    "at": "2026-10-06T01:48:07.059981+00:00",
+    "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+    "rejectedRevision": "f5721e0611534d1b27505b8bd5397d8bdd511e84",
+    "reason": "Official product images/videos were omitted in favor of generic diagrams. Prior provisional 28/30 does not establish current acceptance.",
+    "implemented": "Official publisher video panels and prominent exact-generation product galleries; no external media request before activation; close disconnects iframe without editing plan; unavailable Mac photo retains manufacturer gallery.",
+    "currentScore": null,
+    "currentRenderedAcceptance": "pending cloud screenshots and independent review",
+    "actualPlayback": "unverified",
+    "mediaReview": "official-media-review.json"
   }
 }

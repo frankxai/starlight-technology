@@ -22,14 +22,21 @@
 .candidate.selected { border-color: var(--signal); box-shadow: inset 3px 0 var(--signal); }
 .status { color: var(--muted); font-size: .8rem; margin: 16px 24px 24px; line-height: 1.6; }
 .system { border-top: 1px solid var(--line); }
-.art, .photo, .diagram { min-width: 0; padding: 24px; margin: 0; align-self: start; }
-.art figure { margin: 0; }
-.art figure > figcaption { position: static; inset: auto; flex-direction: column; gap: 4px; font-size: .72rem; padding: 0 14px 14px; margin-top: 0; }
-.art figure > figcaption > span:last-child { text-align: left; }
-.art svg, .diagram svg { width: 100%; height: auto; display: block; }
-.art figcaption, .photo figcaption, .diagram figcaption { color: var(--muted); font-size: .75rem; line-height: 1.6; margin-top: 12px; }
-.photo img { width: 100%; height: auto; display: block; background: var(--paper); }
-.photo a { text-underline-offset: 3px; min-height: 44px; display: inline-flex; align-items: center; }
+.productMedia, .diagram { min-width: 0; padding: 24px; margin: 0; align-self: start; }
+.productMedia h4 { font-size: 1.2rem; margin: 0 0 16px; line-height: 1.3; }
+.productMedia img, .diagram svg { width: 100%; height: auto; display: block; }
+.productMedia img { background: var(--paper); }
+.productMedia figcaption, .diagram figcaption, .mediaPrivacy { color: var(--muted); font-size: .75rem; line-height: 1.6; margin: 12px 0 0; }
+.productMedia a { text-underline-offset: 3px; min-height: 44px; display: inline-flex; align-items: center; }
+.mediaWindow { aspect-ratio: 16 / 9; background: var(--panel); border: 1px solid var(--line-bright); }
+.mediaWindow iframe { width: 100%; height: 100%; display: block; border: 0; }
+.mediaIntro { display: flex; flex-direction: column; align-items: start; justify-content: center; gap: 12px; padding: 20px; height: 100%; margin: 0; color: var(--muted); font-size: .8rem; line-height: 1.6; box-sizing: border-box; }
+.mediaIntro strong { color: var(--paper); font-size: 1rem; line-height: 1.4; }
+.playMark { color: var(--signal); font-size: 1.5rem; }
+.mediaButton { font: inherit; font-size: .85rem; color: var(--ink); background: var(--signal); border: 1px solid var(--signal); cursor: pointer; min-height: 44px; width: 100%; padding: 10px 16px; margin-top: 12px; }
+.mediaButton:active { background: var(--paper); }
+.mediaLinks { display: flex; flex-direction: column; margin-top: 12px; font-size: .8rem; }
+.mediaLinks a { color: var(--signal); line-height: 1.5; }
 .assembly { padding: 24px; min-width: 0; }
 .assemblyHeading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .assembly h4 { margin: 0; font-size: 1.15rem; }
@@ -74,7 +81,7 @@
   .candidate { padding: 16px; gap: 6px; }
   .status { margin: 16px 20px 20px; }
   .system { grid-template-columns: 1fr; }
-  .art, .photo, .diagram { padding: 20px; }
+  .productMedia, .diagram { padding: 20px; }
   .assembly { padding: 20px; }
   .workflow { padding: 0 20px 20px; }
   .steps { gap: 16px; }

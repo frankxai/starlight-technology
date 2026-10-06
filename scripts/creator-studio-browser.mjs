@@ -100,7 +100,7 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
     });
     await check(`${tag}: visual candidate keyboard selection and interrupted changes survive reload`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
-      const choices = explorer.getByRole('button');
+      const choices = explorer.locator('button[data-archetype-id]');
       await page.emulateMedia({ reducedMotion: 'no-preference' });
       await choices.first().focus(); await page.keyboard.press('Enter');
       assert.equal(await choices.first().getAttribute('aria-pressed'), 'true');
@@ -122,12 +122,41 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       const targets = await explorer.locator('button, a, summary').evaluateAll((nodes) => nodes.filter((node) => node.getClientRects().length).map((node) => node.getBoundingClientRect().height));
       assert.ok(targets.every((height) => height >= 44));
       await page.evaluate(() => { scrollTo(0, 0); return new Promise(requestAnimationFrame); });
-      const artifactInViewport = await explorer.getByRole('img').first().evaluate((node) => {
-        const bounds = node.getBoundingClientRect(); return bounds.y >= 0 && bounds.bottom <= innerHeight;
+      const artifactInViewport = await explorer.locator('[data-product-media]').evaluate((node) => {
+        const bounds = node.getBoundingClientRect(); return bounds.y >= 0 && bounds.y + 160 <= innerHeight;
       });
-      assert.equal(artifactInViewport, true, 'The actual system artifact must fit in the first viewport.');
+      assert.equal(artifactInViewport, true, 'The product media and decision object must begin in the first viewport.');
       await capture(page, `${tag}-visual-studio.png`, width);
       await capture(explorer, `${tag}-system-explorer.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+    });
+    await check(`${tag}: official video requires activation and disconnects without changing the plan`, async () => {
+      const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
+      const before = await page.evaluate((storageKey) => localStorage.getItem(storageKey), key);
+      assert.equal(await explorer.locator('iframe').count(), 0);
+      const requests = [];
+      let resolveRequest;
+      const requested = new Promise((resolve) => { resolveRequest = resolve; });
+      await page.route('https://www.youtube-nocookie.com/embed/**', (route) => {
+        requests.push({ url: route.request().url(), method: route.request().method(), body: route.request().postData() });
+        resolveRequest();
+        return route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>Player lifecycle fixture, not live video</title>' });
+      });
+      const load = explorer.getByRole('button', { name: 'Load official video', exact: true });
+      await load.focus(); await page.keyboard.press('Enter');
+      const frame = explorer.locator('iframe');
+      await frame.waitFor();
+      assert.equal(await frame.getAttribute('src'), 'https://www.youtube-nocookie.com/embed/mmntN7zIekU?cc_load_policy=1');
+      assert.equal(await frame.getAttribute('referrerpolicy'), 'strict-origin-when-cross-origin');
+      await Promise.race([requested, delay(5000).then(() => { throw Error('Official player activation did not request the fixed embed'); })]);
+      await explorer.getByRole('button', { name: 'Close official video', exact: true }).click();
+      assert.equal(await frame.count(), 0);
+      assert.equal(await load.evaluate((node) => node === document.activeElement), true);
+      assert.equal(await page.evaluate((storageKey) => localStorage.getItem(storageKey), key), before);
+      assert.ok(requests.length > 0);
+      assert.ok(requests.every((request) => request.method === 'GET' && !request.body && !request.url.includes('Synthetic') && !request.url.includes('creator%20plan')));
+      await page.unroute('https://www.youtube-nocookie.com/embed/**');
+      await page.reload(); await saved(page, 'My creator system');
+      assert.equal(await explorer.locator('iframe').count(), 0);
     });
     await check(`${tag}: licensed product photograph and failed-image recovery preserve editable inputs`, async () => {
       const original = await page.evaluate((storageKey) => localStorage.getItem(storageKey), key);
@@ -143,7 +172,8 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       const before = await page.evaluate((storageKey) => localStorage.getItem(storageKey), key);
       await page.route('**/_next/image?**', (route) => route.abort());
       await page.reload(); await saved(page, 'My creator system');
-      await explorer.getByRole('img', { name: /Capacity diagram for Mac mini/ }).waitFor();
+      await explorer.getByText('Photo unavailable.', { exact: false }).waitFor();
+      await explorer.getByRole('link', { name: /Apple.s M4 Mac mini gallery/ }).waitFor();
       const afterPlan = await page.evaluate((storageKey) => JSON.parse(localStorage.getItem(storageKey)), key);
       const beforePlan = JSON.parse(before); delete afterPlan.savedAt; delete beforePlan.savedAt;
       assert.deepEqual(afterPlan, beforePlan);
@@ -343,6 +373,31 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
     });
   } finally { await context.close(); }
 }
+async function inspectOfficialMedia(width) {
+  const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
+  const allowed = new Set(['www.youtube-nocookie.com', 'www.youtube.com', 'i.ytimg.com', 's.ytimg.com', 'yt3.ggpht.com']);
+  const evidence = { width, privateFixture: false, status: 'pending', playbackExercised: false, blockedRequests: 0 };
+  receipt.officialMedia ??= [];
+  receipt.officialMedia.push(evidence);
+  await context.route('**/*', (route) => {
+    const req = route.request(), url = new URL(req.url());
+    if (['GET', 'HEAD'].includes(req.method()) && (url.origin === origin || (url.protocol === 'https:' && allowed.has(url.host)))) return route.continue();
+    evidence.blockedRequests++; return route.abort();
+  });
+  const page = await context.newPage();
+  try {
+    await page.goto(origin + '/studio');
+    const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
+    await explorer.getByRole('button', { name: 'Load official video', exact: true }).click();
+    const iframe = explorer.locator('iframe');
+    await iframe.waitFor();
+    evidence.src = await iframe.getAttribute('src');
+    await page.frameLocator('[data-product-media] iframe').locator('.ytp-cued-thumbnail-overlay-image').waitFor({ state: 'visible', timeout: 15000 });
+    evidence.status = 'official-player-poster-rendered';
+    await capture(explorer, `${width}-official-product-player.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
+  } catch (error) { evidence.reason = error.message; }
+  finally { await context.close(); }
+}
 (async () => {
   let failure;
   try {
@@ -355,6 +410,9 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
     assert.ok(ready, 'Owned Next server must become ready');
     browser = await chromium.launch({ headless: true }); receipt.browserVersion = browser.version();
     await exercise(1440); await exercise(390);
+    // Separate read-only official-player inspection; no private fixture or live playback.
+    // A blocked player is recorded as pending and cannot establish rendered media acceptance.
+    await inspectOfficialMedia(1440); await inspectOfficialMedia(390);
     // This is the existing public main-push verification, not a deployment path.
     // Anonymous fresh contexts change only their local browser storage/downloads.
     if (process.env.GITHUB_EVENT_NAME === 'push' && process.env.GITHUB_REF === 'refs/heads/main') {

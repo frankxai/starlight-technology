@@ -1,0 +1,70 @@
+{
+  "schema": "StarlightOfficialMediaReview.v1",
+  "reviewedAt": "2026-10-06T01:48:07.059981+00:00",
+  "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+  "reviewer": "Codex lead; independent exact-revision release review still pending",
+  "decision": "Research official product media before fallback diagrams. Use an allowed official embed or prominent official gallery/video link; do not silently treat missing image-republication permission as missing media.",
+  "privacy": {
+    "load": "Explicit per-product activation; no iframe, remote thumbnail, preconnect or external media request before activation.",
+    "referrer": "strict-origin-when-cross-origin; only the site origin is shared with the external iframe.",
+    "inputs": "Only the fixed reviewed video ID is interpolated; private plan fields never enter the player URL.",
+    "player": "youtube-nocookie.com privacy-enhanced mode, no autoplay; YouTube still receives a connection after activation.",
+    "close": "Unmount iframe; no media selection stored in the private plan.",
+    "cost": "No paid service/API account added."
+  },
+  "sources": [
+    {
+      "product": "Framework Desktop AI Max 395 / 32, 64 and 128 GB",
+      "source": "https://community.frame.work/t/choosing-a-framework-desktop-for-local-ai-32gb-64gb-and-128gb/84573",
+      "video": "https://www.youtube.com/watch?v=mmntN7zIekU",
+      "publisher": "Framework",
+      "channel": "https://www.youtube.com/@FrameworkComputer",
+      "availability": "Official publisher and iframe returned by public YouTube oEmbed; actual player rendering/playback unverified.",
+      "generation": "Keep 395 launch gallery separate from current 495 store generation."
+    },
+    {
+      "product": "RTX 5090",
+      "source": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+      "video": "https://www.youtube.com/watch?v=EZ5UBhEDm-I",
+      "publisher": "NVIDIA GeForce",
+      "channel": "https://www.youtube.com/@NVIDIAGeForce",
+      "availability": "Official publisher and iframe returned by public YouTube oEmbed; actual player rendering/playback unverified.",
+      "scope": "Founders Edition, not a complete selected workstation or a guarantee about partner boards."
+    },
+    {
+      "product": "Mac mini M4",
+      "source": "https://www.apple.com/newsroom/2024/10/apples-new-mac-mini-is-more-mighty-more-mini-and-built-for-apple-intelligence/",
+      "video": "https://www.youtube.com/watch?v=bXNYCpZdXAE",
+      "publisher": "Apple UK",
+      "availability": "Official YouTube search result; tested oEmbed returned HTTP403, so link-only. Newsroom gallery linked, no Apple image copied. Existing CC-BY photograph remains credited."
+    },
+    {
+      "product": "GMKtec EVO-X2",
+      "source": "https://de.gmktec.com/en/products/gmktec-evo-x2-amd-ryzen%E2%84%A2-ai-max-395-mini-pc-1?variant=51610049380536",
+      "availability": "Prominent official product gallery link. Official channel exists; no exact-product official embeddable video established in this review.",
+      "scope": "128 GB / 2 TB variant; delivered quote remains unverified."
+    }
+  ],
+  "terms": [
+    {
+      "url": "https://support.google.com/youtube/answer/171780?hl=en",
+      "used": "Official privacy-enhanced embed, HTTP Referer and captions guidance."
+    },
+    {
+      "url": "https://developers.google.com/youtube/terms/developer-policies",
+      "used": "Unmodified branded player, no downloaded video or cached thumbnail, no paywall or incentives; embed availability can be revoked. Independent commercial/privacy acceptance pending."
+    },
+    {
+      "url": "https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html",
+      "used": "No inferred permission to republish Apple-owned photos; official gallery link and video link stay available."
+    }
+  ],
+  "verification": {
+    "registryTests": "4 passed locally",
+    "syntax": "Browser script node --check passed",
+    "cloudRender": "pending",
+    "privateLifecycle": "Prepared browser check uses an explicit isolated player fixture, not live playback",
+    "actualMedia": "Separate read-only runner context prepared; blocked media records pending, never acceptance"
+  },
+  "publicRelease": false
+}

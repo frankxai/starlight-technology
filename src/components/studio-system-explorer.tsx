@@ -10,8 +10,6 @@ import { productVisualFor } from "@/lib/decision-graph/product-visuals";
 import { resolveOutboundLink } from "@/lib/decision-graph/partner-links";
 import { assessFreshness } from "@/lib/decision-graph/staleness";
 import type { CreatorPlan } from "@/lib/decision-graph/creator-plan";
-import { getTechnology } from "@/lib/technology";
-import { TechnologyArt } from "./technology-art";
 import styles from "./studio-system-explorer.module.css";
 
 const graph = indexGraph(decisionGraph);
@@ -29,18 +27,45 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
   const primary = system.lines[0];
   const visual = productVisualFor(primary.nodeId);
   const [failed, setFailed] = useState(false);
-  const atlas = visual?.atlasSlug ? getTechnology(visual.atlasSlug) : undefined;
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const archetype = configuratorArchetypes.find((item) => item.id === system.archetypeId);
-  if (visual?.image && !failed) {
+  if (visual) {
     const image = visual.image;
-    return <figure className={styles.photo}>
-      <a href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge photograph of ${primary.label}`}>
-        <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 760px) 90vw, 380px" onError={() => setFailed(true)} />
-      </a>
-      <figcaption>Photograph: {image.author} · <a href={image.licenseUrl} target="_blank" rel="noopener noreferrer">{image.license}</a> · <a href={image.sourceUrl} target="_blank" rel="noopener noreferrer">Source</a>. {image.changes} Configuration is not visible.</figcaption>
+    const video = visual.video;
+    const watchUrl = video ? `https://www.youtube.com/watch?v=${video.id}` : undefined;
+    return <figure className={styles.productMedia} data-product-media={primary.nodeId}>
+      <p className={styles.kicker}>See the actual product</p>
+      <h4>{primary.label}</h4>
+      {video?.embed ? <>
+        <div className={styles.mediaWindow}>
+          {videoLoaded ? <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.id}?cc_load_policy=1`}
+            title={`${video.publisher}: ${video.title}`}
+            referrerPolicy="strict-origin-when-cross-origin"
+            allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen
+          /> : <div className={styles.mediaIntro}>
+            <span className={styles.playMark} aria-hidden="true">▶</span>
+            <strong>{video.title}</strong><span>{video.publisher} · YouTube</span>
+          </div>}
+        </div>
+        <button type="button" className={styles.mediaButton} aria-expanded={videoLoaded}
+          onClick={() => setVideoLoaded(!videoLoaded)}>{videoLoaded ? "Close official video" : "Load official video"}</button>
+        <p className={styles.mediaPrivacy}>Loading connects to YouTube. Your notes and plan are not included. No autoplay. Close to disconnect the player.</p>
+        <figcaption>{video.scope} If playback is unavailable, open the video below.</figcaption>
+      </> : image && !failed ? <>
+        <a href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge photograph of ${primary.label}`}>
+          <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 760px) 90vw, 380px" onError={() => setFailed(true)} />
+        </a>
+        <figcaption>Photograph: {image.author} · <a href={image.licenseUrl} target="_blank" rel="noopener noreferrer">{image.license}</a> · <a href={image.sourceUrl} target="_blank" rel="noopener noreferrer">Source</a>. {image.changes} Configuration is not visible.</figcaption>
+      </> : <p className={styles.mediaIntro}>{failed ? "Photo unavailable. " : ""}Open the manufacturer&apos;s gallery to inspect the enclosure, ports and exact model.</p>}
+      <div className={styles.mediaLinks}>
+        {watchUrl && <a href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>}
+        <a href={visual.gallery.url} target="_blank" rel="noopener noreferrer">{visual.gallery.label} ↗</a>
+        {video && <a href={video.channelUrl} target="_blank" rel="noopener noreferrer">{video.publisher} channel ↗</a>}
+      </div>
+      {video && !video.embed && <p className={styles.mediaPrivacy}>{video.scope}</p>}
     </figure>;
   }
-  if (atlas) return <div className={styles.art}><TechnologyArt item={atlas} /></div>;
   return <figure className={styles.diagram}>
     <svg viewBox="0 0 420 230" role="img" aria-label={`Capacity diagram for ${system.label}, not a product photograph`}>
       <rect x="42" y="28" width="336" height="168" rx="16" fill="var(--ink-2)" stroke="var(--line-bright)" strokeWidth="2" />
@@ -117,7 +142,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
               <details><summary>Why this part and where the link goes</summary><p>{line.justification}</p><p>{link.disclosure}</p>{visual?.notice && <p>{visual.notice}</p>}{visual?.atlasSlug && <Link href={`/shop/${visual.atlasSlug}`}>Explore the product in the Technology Atlas →</Link>}</details>
             </li>;
           })}</ul>
-          <p className={styles.hint}>Product links open official specifications and galleries unless a disclosed partner route applies. Diagrams are labeled; photo credits stay with the image.</p>
+          <p className={styles.hint}>Explore official product media above, then check the sourced parts here. Manufacturer demos describe their configurations; they do not verify this plan. Photo credits stay with the image.</p>
         </div>
       </div>
       <details className={styles.workflow} open>
