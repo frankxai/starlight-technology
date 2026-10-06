@@ -37,6 +37,10 @@
 .mediaButton:active { background: var(--paper); }
 .mediaLinks { display: flex; flex-direction: column; margin-top: 12px; font-size: .8rem; }
 .mediaLinks a { color: var(--signal); line-height: 1.5; }
+.mediaDetails { margin-top: 8px; color: var(--muted); font-size: .75rem; line-height: 1.6; }
+.mediaDetails summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.mediaDetails summary::before { content: "+"; color: var(--signal); margin-right: 8px; }
+.mediaDetails[open] summary::before { content: "−"; }
 .assembly { padding: 24px; min-width: 0; }
 .assemblyHeading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .assembly h4 { margin: 0; font-size: 1.15rem; }

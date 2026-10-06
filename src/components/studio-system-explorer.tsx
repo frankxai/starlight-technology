@@ -50,8 +50,8 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
         </div>
         <button type="button" className={styles.mediaButton} aria-expanded={videoLoaded}
           onClick={() => setVideoLoaded(!videoLoaded)}>{videoLoaded ? "Close official video" : "Load official video"}</button>
-        <p className={styles.mediaPrivacy}>Loading connects to YouTube. Your notes and plan are not included. No autoplay. Close to disconnect the player.</p>
-        <figcaption>{video.scope} If playback is unavailable, open the video below.</figcaption>
+        <p className={styles.mediaPrivacy}>Loads YouTube on request. Your plan is not sent. No autoplay.</p>
+        <details className={styles.mediaDetails}><summary>About this demonstration</summary><p>{video.scope}</p><p>Close the video to disconnect the player. If playback is unavailable, use Watch on YouTube.</p><a href={video.channelUrl} target="_blank" rel="noopener noreferrer">{video.publisher} channel ↗</a></details>
       </> : image && !failed ? <>
         <a href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge photograph of ${primary.label}`}>
           <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 760px) 90vw, 380px" onError={() => setFailed(true)} />
@@ -61,7 +61,6 @@ function ProductFigure({ system }: { system: ConfiguredSystem }) {
       <div className={styles.mediaLinks}>
         {watchUrl && <a href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>}
         <a href={visual.gallery.url} target="_blank" rel="noopener noreferrer">{visual.gallery.label} ↗</a>
-        {video && <a href={video.channelUrl} target="_blank" rel="noopener noreferrer">{video.publisher} channel ↗</a>}
       </div>
       {video && !video.embed && <p className={styles.mediaPrivacy}>{video.scope}</p>}
     </figure>;

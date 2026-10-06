@@ -342,6 +342,28 @@
     "currentScore": null,
     "currentRenderedAcceptance": "pending cloud screenshots and independent review",
     "actualPlayback": "unverified",
-    "mediaReview": "official-media-review.json"
+    "mediaReview": "official-media-review.json",
+    "firstCloudCheck": {
+      "sourceHead": "4f6feeee56ec569675e2dfd9c5d4e7abf1af095f",
+      "run": 37401124571,
+      "testedCommit": "690e886c134494052ce132bba4d9d0f509bd878d",
+      "checks": 40,
+      "pass": true,
+      "unitTests": 176,
+      "desktopMobileInspected": true,
+      "actualMedia": "Pending: separate inspection initially targeted recommended GMKtec with no video; fixture verified lifecycle only. Corrected selection in 39b5793.",
+      "finding": "Media panel has excessive explanation before candidate controls on mobile. One finish pass collapses full demo scope/channel into native disclosure.",
+      "score": null,
+      "acceptance": "Founder and independent acceptance open"
+    },
+    "finishPass": {
+      "skill": "Impeccable 4.5.0 polish",
+      "read": true,
+      "applied": "Collapse secondary scope and publisher attribution; retain fixed player geometry and immediate controls.",
+      "runtimeContext": "No installed engine found in three documented exact binary paths; no engine download under bounded storage. Manual skill pass only.",
+      "gesture": "Skipped; none",
+      "motion": "No new animation/autoplay",
+      "currentConfirmLook": "pending final cloud run"
+    }
   }
 }
