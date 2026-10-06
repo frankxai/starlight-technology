@@ -2,9 +2,9 @@
 .page :global(.dg) { border: 0; background: none; padding: 0; }
 .page :global(.dg)::before { display: none; }
 .intro { display: grid; grid-template-columns: 1.65fr 1fr; align-items: end; gap: 32px; padding: 8px 0 24px; }
-.page .intro h1 { font-size: clamp(2rem, 3.8vw, 3.2rem); letter-spacing: -.055em; line-height: 1.12; margin: 0; }
+.page .intro h1 { font-size: clamp(2rem, 3.8vw, 3.2rem); letter-spacing: -.055em; line-height: 1.12; margin: 0; max-width: none; }
 .intro h1 { font-family: var(--font-display), sans-serif; }
-.intro h1 span { color: var(--muted); }
+.page .intro h1 span { color: var(--muted); display: inline; }
 .intro > p { max-width: 38ch; margin: 0 0 4px; font-size: .9rem; line-height: 1.6; }
 .planNav { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); border-block: 1px solid var(--line-bright); margin-bottom: 8px; }
 .planNav a { display: flex; gap: 12px; align-items: center; min-height: 54px; font-size: .75rem; color: var(--signal); text-decoration: none; padding: 8px 12px; }

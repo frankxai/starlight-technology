@@ -118,7 +118,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   }) ?? [])];
   return <section className={styles.explorer} id="studio-systems" aria-label="Current system alternatives">
     <div className={styles.heading}>
-      <div><h3>{output.systems.length ? "Choose your foundation" : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>For {workloads.join(" · ") || "your work"}</p></div>
+      <div><h3>{output.systems.length ? "Compare creator systems" : "No candidate fits these constraints."}</h3><p className={styles.workloadSummary}>Work: {workloads.join(" · ") || "Choose your requirements"}</p></div>
       <a href="#studio-requirements" className={styles.textLink}>Change the work <span aria-hidden="true">↗</span></a>
     </div>
     <div className={styles.candidates}>

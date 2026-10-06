@@ -99,6 +99,17 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
       assert.equal(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), true);
     });
+    await check(`${tag}: actual official photograph loads in the first viewport before external media`, async () => {
+      const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
+      await photo.waitFor();
+      await photo.evaluate(image => image.decode());
+      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
+      const bounds = await photo.boundingBox();
+      assert.ok(bounds && bounds.width >= 250 && bounds.height >= 180);
+      assert.ok(bounds.y >= 0 && bounds.y + Math.min(bounds.height, 180) <= (width === 390 ? 844 : 1000), 'The real photograph must be visible before scrolling.');
+      assert.equal(await page.locator('iframe').count(), 0);
+      assert.equal(await page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key), null, 'Initial inspection must not save a purchase preference.');
+    });
     await check(`${tag}: visual candidate keyboard selection and interrupted changes survive reload`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
       const choices = explorer.locator('button[data-archetype-id]');
@@ -150,17 +161,6 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
       await photo.waitFor(); await photo.evaluate(image => image.decode());
       assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
-    });
-    await check(`${tag}: actual official photograph loads in the first viewport before external media`, async () => {
-      const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
-      await photo.waitFor();
-      await photo.evaluate(image => image.decode());
-      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
-      const bounds = await photo.boundingBox();
-      assert.ok(bounds && bounds.width >= 250 && bounds.height >= 180);
-      assert.ok(bounds.y >= 0 && bounds.y + Math.min(bounds.height, 180) <= (width === 390 ? 844 : 1000), 'The real photograph must be visible before scrolling.');
-      assert.equal(await page.locator('iframe').count(), 0);
-      assert.equal(await page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key), null, 'Initial inspection must not save a purchase preference.');
     });
     await check(`${tag}: official video requires activation and disconnects without changing the plan`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
