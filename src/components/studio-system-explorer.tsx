@@ -8,6 +8,7 @@ import { decisionGraph } from "@/lib/decision-graph/dataset";
 import { indexGraph } from "@/lib/decision-graph/graph";
 import { productVisualFor } from "@/lib/decision-graph/product-visuals";
 import { resolveOutboundLink } from "@/lib/decision-graph/partner-links";
+import { assessFreshness } from "@/lib/decision-graph/staleness";
 import type { CreatorPlan } from "@/lib/decision-graph/creator-plan";
 import styles from "./studio-system-explorer.module.css";
 
@@ -112,6 +113,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
   const featured = selected ?? output.systems[0];
   const workloads = plan.input.workloadIds.map((id) => graph.get(id)?.label ?? id);
   const specs = featured && configuratorArchetypes.find((item) => item.id === featured.archetypeId);
+  const freshness = featured && assessFreshness(featured, { now: new Date().toISOString().slice(0, 10) });
   const selectedPriceDates = [...new Set(featured?.lines.flatMap((line) => {
     const price = line.priceObservationId ? graph.get(line.priceObservationId) : undefined;
     return price?.kind === "PriceObservation" ? [price.observedAt] : [];
@@ -146,6 +148,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
             {selectedPriceDates.length ? `Parts observed ${selectedPriceDates.join(", ")}. ` : "No dated prices. "}
             {featured.cost.unpricedLines.length ? `${featured.cost.unpricedLines.length} unpriced lines. ` : ""}Delivered total unknown. Refresh price and delivery evidence before buying.
           </p>
+          {freshness && !freshness.valid && <p className={styles.notice}>Evidence needs refresh before buying. {freshness.reasons.join(" ")}</p>}
           <dl className={styles.specGrid}>
             <div><dt>System memory</dt><dd>{specs?.systemRamGb}<small> GB</small></dd></div>
             <div><dt>Model allocation</dt><dd>{specs?.usableVramGb}<small> GB</small></dd></div>
