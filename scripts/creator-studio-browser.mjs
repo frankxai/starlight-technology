@@ -133,6 +133,9 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       await capture(page, `${tag}-visual-studio.png`, width);
       await capture(explorer, `${tag}-system-explorer.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
     });
+    await check(`${tag}: Studio does not mount public-page telemetry collectors`, async () => {
+      assert.equal(await page.locator('script[src*="/_vercel/insights"], script[src*="/_vercel/speed-insights"], script[src*="vercel-insights.com"]').count(), 0);
+    });
     await check(`${tag}: official video requires activation and disconnects without changing the plan`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
       const before = await page.evaluate((storageKey) => localStorage.getItem(storageKey), key);
