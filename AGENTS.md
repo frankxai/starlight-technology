@@ -31,6 +31,8 @@ Starlight Technology is the buying-intelligence and complete-system design platf
 
 Apply the Starlight design pack and the estate premium asset gate. The first viewport must show a real decision object or system artifact, not generic gradients, node/orbit imagery, fake dashboards, or decorative glass cards. Use clear hierarchy, restrained motion, reduced-motion support, keyboard focus, and intentional mobile composition.
 
+Research official product galleries, demonstration videos, permitted embeds and press assets before drawing or generating substitutes. Prioritize actual product media in the decision flow. Check exact model/generation, publisher, reuse terms and privacy separately; unavailable photo reuse does not rule out an official video embed or gallery link. Preserve manufacturer attribution and private plan inputs. A generic diagram does not establish media acceptance.
+
 Important visual changes require `design-loop-evidence.json`, desktop/mobile inspection, and a score of at least 26/30.
 
 ## GitOps

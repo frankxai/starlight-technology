@@ -1,0 +1,157 @@
+{
+  "schema": "StarlightOfficialMediaReview.v1",
+  "reviewedAt": "2026-10-06T01:48:07.059981+00:00",
+  "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+  "reviewer": "Codex lead; independent exact-revision release review still pending",
+  "decision": "Research official product media before fallback diagrams. Use an allowed official embed or prominent official gallery/video link; do not silently treat missing image-republication permission as missing media.",
+  "privacy": {
+    "load": "Explicit per-product activation; no iframe, remote thumbnail, preconnect or external media request before activation.",
+    "referrer": "strict-origin-when-cross-origin; only the site origin is shared with the external iframe.",
+    "inputs": "Only the fixed reviewed video ID is interpolated; private plan fields never enter the player URL.",
+    "player": "youtube-nocookie.com privacy-enhanced mode, no autoplay; YouTube still receives a connection after activation.",
+    "close": "Unmount iframe; no media selection stored in the private plan.",
+    "cost": "No paid service/API account added."
+  },
+  "sources": [
+    {
+      "product": "Framework Desktop AI Max 395 / 32, 64 and 128 GB",
+      "source": "https://community.frame.work/t/choosing-a-framework-desktop-for-local-ai-32gb-64gb-and-128gb/84573",
+      "video": "https://www.youtube.com/watch?v=mmntN7zIekU",
+      "publisher": "Framework",
+      "channel": "https://www.youtube.com/@FrameworkComputer",
+      "availability": "Official publisher and iframe returned by public YouTube oEmbed; actual player rendering/playback unverified.",
+      "generation": "Keep 395 launch gallery separate from current 495 store generation."
+    },
+    {
+      "product": "RTX 5090",
+      "source": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+      "video": "https://www.youtube.com/watch?v=EZ5UBhEDm-I",
+      "publisher": "NVIDIA GeForce",
+      "channel": "https://www.youtube.com/@NVIDIAGeForce",
+      "availability": "Official publisher and iframe returned by public YouTube oEmbed; actual player rendering/playback unverified.",
+      "scope": "Founders Edition, not a complete selected workstation or a guarantee about partner boards."
+    },
+    {
+      "product": "Mac mini M4",
+      "source": "https://www.apple.com/newsroom/2024/10/apples-new-mac-mini-is-more-mighty-more-mini-and-built-for-apple-intelligence/",
+      "video": "https://www.youtube.com/watch?v=bXNYCpZdXAE",
+      "publisher": "Apple UK",
+      "availability": "Official YouTube search result; tested oEmbed returned HTTP403, so link-only. Newsroom gallery linked, no Apple image copied. Existing CC-BY photograph remains credited."
+    },
+    {
+      "product": "GMKtec EVO-X2",
+      "source": "https://de.gmktec.com/en/products/gmktec-evo-x2-amd-ryzen%E2%84%A2-ai-max-395-mini-pc-1?variant=51610049380536",
+      "availability": "Prominent official product gallery link. Official channel exists; no exact-product official embeddable video established in this review.",
+      "scope": "128 GB / 2 TB variant; delivered quote remains unverified."
+    }
+  ],
+  "terms": [
+    {
+      "url": "https://support.google.com/youtube/answer/171780?hl=en",
+      "used": "Official privacy-enhanced embed, HTTP Referer and captions guidance."
+    },
+    {
+      "url": "https://developers.google.com/youtube/terms/developer-policies",
+      "used": "Unmodified branded player, no downloaded video or cached thumbnail, no paywall or incentives; embed availability can be revoked. Independent commercial/privacy acceptance pending."
+    },
+    {
+      "url": "https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html",
+      "used": "No inferred permission to republish Apple-owned photos; official gallery link and video link stay available."
+    }
+  ],
+  "verification": {
+    "registryTests": "4 passed locally",
+    "syntax": "Browser script node --check passed",
+    "cloudRender": "pending",
+    "privateLifecycle": "Prepared browser check uses an explicit isolated player fixture, not live playback",
+    "actualMedia": "Separate read-only runner context prepared; blocked media records pending, never acceptance"
+  },
+  "publicRelease": false,
+  "gmktecUnboxing": {
+    "id": "goPySD6_eXc",
+    "publisher": "GMKtec",
+    "channel": "https://www.youtube.com/@gmk782",
+    "officialDiscovery": "https://www.gmktec.com/pages/drivers-and-software",
+    "oEmbed": "Verified title, author and publisher on 2026-10-06",
+    "representation": "Native unmodified privacy-enhanced player, explicit activation, no thumbnail or video copied, no autoplay",
+    "scope": "Enclosure/ports, not configuration certification or throughput benchmark",
+    "actualPlayback": "Current 1440/390 native player poster/publisher visible; actual playback did not advance. Prior anonymous runner showed sign-in requirement. No login/bypass attempted; immediate external fallback remains."
+  },
+  "dependencyDisposition": {
+    "brace-expansion": "Locked 1.1.21 with official registry integrity; GHSA-q2hr-2g5m-vwhr",
+    "js-yaml": "Locked 4.3.2 with official registry integrity; GHSA-2883-xcg3-v3hh and GHSA-5p4m-2wfm-xmqj",
+    "scope": "Development dependencies fixed in branch. Default-branch alerts remain pending permitted merge.",
+    "verification": "Frozen cloud install, lint/types,182units,11editorial,51page build and48browser checks pass in CI37544657908 at53ed8b4; source/tested merge share75536f78tree."
+  },
+  "currentRenderedProof": {
+    "sourceHead": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+    "testedMerge": "ce0b415a43059a63b08732d1d1701a64d142a497",
+    "equalGitTree": "75536f781ad087730483f745b59b8184bca0371b",
+    "ciRun": 37544657908,
+    "captureCount": 32,
+    "hashVerified": true,
+    "bothVisualLedgersRecorded": true,
+    "officialPhoto": "Framework guide photograph local, unchanged,800x600,50155bytes with credit/licence/source",
+    "officialPublishers": [
+      "GMKtec",
+      "Framework",
+      "NVIDIA GeForce"
+    ],
+    "nativePlayerRender": true,
+    "actualPlaybackAccepted": false,
+    "playerProbe": "All four native probes render a poster/player; media did not advance within15seconds. No login/bypass; immediate YouTube fallback remains.",
+    "macPhoto": "Existing credited CC BY photograph is not official Apple imagery.",
+    "publicRelease": false
+  },
+  "frameworkPhotoDiscovery": {
+    "reviewedAt": "2026-10-06",
+    "source": "https://guides.frame.work/Guide/Framework+Desktop+DIY+Edition+Quick+Start+Guide/464?lang=en",
+    "guideRelease": "1.03, updated 2026-03-02",
+    "author": "Iroh, Framework team",
+    "asset": "https://d3t0tbmlie281e.cloudfront.net/igi/framework/giPSYNRMLOCJvXnB.large",
+    "licence": "CC BY-SA 3.0",
+    "permission": "https://guides.frame.work/Info/Licensing",
+    "method": "Unchanged local 800x600 JPEG, 50155 bytes, credit/license/source beside photograph. No claim that pictured optional parts or memory/storage match the generated purchase list.",
+    "scope": "Physical original Desktop DIY kit; current 495 store generation remains separately disclosed.",
+    "rightsReview": "Primary guide fetched again2026-10-07; licensing search result declares all content CC BY-SA3.0, cached1.3years ago. Direct licensing page is unavailable404. Independent exact-revision licence/commercial review must resolve this qualification."
+  },
+  "photoRightsResearch": [
+    {
+      "url": "https://www.nvidia.com/en-us/about-nvidia/terms-of-service/",
+      "reviewedAt": "2026-10-06",
+      "result": "The general materials licence restricts public/commercial reuse absent an individual licence. Newsroom download alone does not establish republication permission; no official NVIDIA photograph copied."
+    },
+    {
+      "url": "https://www.gmktec.com/pages/terms-conditions",
+      "reviewedAt": "2026-10-06",
+      "result": "No public-commercial photo republication licence established. Exact EVO-X2 official gallery and request-only unboxing remain; no copied image."
+    }
+  ],
+  "previousRenderedProofs": [
+    {
+      "sourceHead": "b43ed28a95d6ee675da3292e1c182893c4bad142",
+      "ciRun": 37406329782,
+      "captureCount": 26,
+      "officialPublishers": [
+        "GMKtec",
+        "Framework",
+        "NVIDIA GeForce"
+      ],
+      "posterInspected": true,
+      "playbackAccepted": false,
+      "copiedManufacturerPhotos": false,
+      "macPhoto": "Existing credited CC BY photograph is not official Apple imagery.",
+      "publicRelease": false
+    }
+  ],
+  "ctaInspection": {
+    "source": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+    "scope": "Lead source plus actual native Git preview HTTP read; independent commercial and production acceptance pending",
+    "pricingStatus": 200,
+    "pricingPromise": "Price/release unannounced; orders not open; purchase help retains earlier receipt path",
+    "candidateAccessStatus": 200,
+    "candidatePromise": "Prepare a local release-request draft; user sends email. No payment/subscription/submission confirmation is claimed.",
+    "paymentLinkPresent": false,
+    "sourceApprovalRegistry": "Empty trusted release approvals; old SKU IDs do not authorize new orders."
+  }
+}

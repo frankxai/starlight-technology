@@ -1,0 +1,25 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "starlight-technology-mac-mini-m4-ccby4",
+  "created_at": "2026-10-04T19:56:20.665317+00:00",
+  "brand": "starlight-technology",
+  "agent_session": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+  "model": "none (licensed photograph)",
+  "provider": "Wikimedia Commons / Seasider53",
+  "seed": null,
+  "prompt": "Reuse the unchanged Wikimedia 960-pixel thumbnail of Seasider53 Mac mini 2024 M4 photograph with CC BY 4.0 credit, source and licence beside the image. Do not infer a memory or storage variant from the photograph. No generated image or image editing.",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Mac_mini_2024_M4.jpg",
+  "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Mac_mini_2024_M4.jpg/960px-Mac_mini_2024_M4.jpg",
+  "sha256": "0b8f676a88bbbd26583318f772be0a484d8ef26a7f379702ce100f0eba7c3bd7",
+  "rights": {
+    "author": "Seasider53",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Wikimedia 960-pixel thumbnail, used unchanged.",
+    "endorsement": false
+  },
+  "schema_validation": {
+    "status": "not-validated",
+    "reason": "Referenced public schema unavailable through web tool; fields recorded."
+  }
+}

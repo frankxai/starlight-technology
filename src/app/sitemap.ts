@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { builds, comparisons, guides } from "@/lib/content";
+import { technology } from "@/lib/technology";
 
 const base = "https://starlight.technology";
 const updated = new Date("2026-08-31");
@@ -25,7 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.5 }
   ];
 
+  const addedRoutes = ["/studio", "/shop", "/shop/studio", "/shop/estate"];
   return [
+    ...addedRoutes.map((path) => ({ url: `${base}${path}`, lastModified: new Date("2026-10-03"), changeFrequency: "weekly" as const, priority: path === "/studio" ? 0.9 : 0.7 })),
+    ...technology.map(({ slug, source }) => ({ url: `${base}/shop/${slug}`, lastModified: new Date(source.checked), changeFrequency: "monthly" as const, priority: 0.7 })),
     ...staticRoutes.map(({ path, priority }) => ({
       url: `${base}${path}`,
       lastModified: updated,

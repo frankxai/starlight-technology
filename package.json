@@ -31,5 +31,11 @@
     "eslint-config-next": "16.3.8",
     "typescript": "5.9.3",
     "vitest": "5.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "brace-expansion@<1.1.21": "1.1.21",
+      "js-yaml@<4.3.2": "4.3.2"
+    }
   }
 }

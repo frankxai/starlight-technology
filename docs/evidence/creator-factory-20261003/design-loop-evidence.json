@@ -1,0 +1,566 @@
+{
+  "feature": "Creator Studio visual system explorer",
+  "status": "Real official Framework photograph and compact product-first refinement rendered at 53ed8b4; lead assessment provisional; independent and buyer acceptance pending; production not activated",
+  "branch": "agent/codex/creator-studio-factory-20261003",
+  "baseRevision": "4588a2409588b62cb394dc370ff52a46819ba346",
+  "previousAssessment": {
+    "feature": "Creator Studio operating-cost scenario",
+    "status": "draft; independent design and buyer review pending",
+    "branch": "agent/codex/creator-studio-factory-20261003",
+    "baseRevision": "4588a2409588b62cb394dc370ff52a46819ba346",
+    "runtimeSourceFileCount": 59,
+    "runtimeSourceSetSha256": "efd760e121785e3e924eba96553cdfc5754307a40848fd789b5590cacde383f5",
+    "verifiedAt": "2026-10-03T17:27:00Z",
+    "surface": "/studio in the actual optimized Windows build",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "actualBehavior": {
+      "passedChecks": 15,
+      "pageErrors": 0,
+      "privateSentinelFoundInObservedRequests": false,
+      "observedRequests": 216,
+      "recovery": "Legacy-byte preservation; explicit migration; two-tab and old-writer conflict; export; denied locks; unsafe import preservation; reload",
+      "accessibility": "Actual labeled controls, 37 visible mobile targets at least 44px high, keyboard focus outline, reduced-motion context",
+      "overflow": "Full document remained within the 390px viewport",
+      "lifecycle": "Owned browser workers and SDS server stopped"
+    },
+    "leadInspection": {
+      "decisionObject": 5,
+      "hierarchy": 5,
+      "craft": 4,
+      "responsive": 5,
+      "accessibility": 4,
+      "restraint": 5,
+      "total": 28,
+      "scale": 30,
+      "authority": "Lead provisional assessment from seven inspected actual screenshots; no independent approval"
+    },
+    "refinement": "Preserved the existing dark Technology tokens, responsive one-column controls and separated maker/reviewer assumptions. Added heading-aligned captures after initial screenshots landed mid-section. Product source did not change during capture refinement.",
+    "captureProvenance": "Each of seven private actual-browser screenshots has an adjacent exact-prompt provenance sidecar and entries in image-generation and taste-feedback ledgers. Private evidence remains in the task receipt; writable memory-vault synchronization is pending.",
+    "seriousAlternative": "The existing operating-architecture cost lab on the matched eight-mission scenario and the published Creator Studio without integrated operating costs. Arithmetic matches the source-backed baseline; buyer usefulness and repair/time advantage have not been measured.",
+    "openGates": [
+      "Independent provider review bound to the exact integrated commit",
+      "Independent rendered design and skeptical buyer review",
+      "Exact-commit CI and Vercel preview verification",
+      "Privacy, licence and commercial release acceptance",
+      "Measured accepted work and hardware quote evidence"
+    ],
+    "publicRelease": false
+  },
+  "userDirection": "More visual products, explanation of how technology works, official links and a smoother planning process.",
+  "implementation": [
+    "Actual candidate selection reuses the saved plan and existing comparator",
+    "Original device schematics and workload-sized capacity graphic; no invented product photograph",
+    "Licensed Mac mini M4 photograph with credit, licence and source beside image",
+    "Existing Technology Atlas detail and fixed official product sources",
+    "Work to capacity to maker/reviewer assumptions to portable private plan",
+    "Photo failure falls back without replacing editable inputs"
+  ],
+  "skills": {
+    "selected": [
+      "emil-design-eng",
+      "apple-design",
+      "review-animations"
+    ],
+    "read": true,
+    "applied": [
+      "Familiar native buttons, meter, details and links",
+      "Common decision first; full price/purchase evidence remains available",
+      "44px controls, explicit focus, restrained scoped hover, reduced motion",
+      "No gesture library, moving keyboard selection or faux telemetry"
+    ],
+    "verified": [
+      "Full cloud lint/typecheck/175units/51page build/38 browser checks at5b6edb5",
+      "Actual keyboard focus,44px visible explorer targets,reduced motion,rapid selection persistence and photo failure recovery",
+      "Rendered initial review found two concrete design defects; current refinement remains to be rendered"
+    ],
+    "renderedVerification": "pending cloud runner"
+  },
+  "leadInspection": {
+    "source": "8c919f7d3ea74a233e9e960595cb8e47d374bfe4",
+    "ciRun": 37231435341,
+    "testedCommit": "175184d98b76a9c706a1f5777fe1f1b1dba3b2c9",
+    "decisionObject": 5,
+    "hierarchy": 4,
+    "craft": 4,
+    "responsive": 5,
+    "accessibility": 5,
+    "restraint": 5,
+    "total": 28,
+    "scale": 30,
+    "authority": "Lead provisional review of actual desktop/mobile/photograph screenshots; no independent approval",
+    "captureHeight": {
+      "desktop": 1000,
+      "mobile": 1000
+    },
+    "nextVerification": "Final CI additionally asserts complete artifact in first390x844 viewport."
+  },
+  "independentAcceptance": null,
+  "openGates": [
+    "Independent exact-revision full security/privacy/licence/commercial review; native review admission held",
+    "Independent rendered design and skeptical buyer acceptance; founder question pending",
+    "Native Git merge then actual production SHA/navigation/edit/export/import/recovery checks",
+    "Named security review and exact human approval of a bounded live-factory mission remain separate"
+  ],
+  "publicRelease": false,
+  "renderedIteration": {
+    "source": "5b6edb537bdeea02d73e85c530b330c9b269e3db",
+    "testedMerge": "26361840a2bab95c265e2a912fb8285f3cb922fc",
+    "matchingTree": "f0a632a8027ebed1d44caf6dbdfc81289264dfdb",
+    "ciRun": 37230920351,
+    "checksPassed": 38,
+    "captures": [
+      {
+        "name": "desktop-visual-studio.png",
+        "sha256": "54bde25a0aae961b84390d8c58a45a825cce01d113d455c4382f8410acd0ecd2",
+        "sidecar": "desktop-visual-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:54.542Z"
+      },
+      {
+        "name": "desktop-system-explorer.png",
+        "sha256": "60d11bb7ff515cfcbf0416e69798df5a893ccf12a705a76e6956c982c8aa7da6",
+        "sidecar": "desktop-system-explorer.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:54.610Z"
+      },
+      {
+        "name": "desktop-licensed-product.png",
+        "sha256": "1a74df7b01a5f58b372c0cae7bed12f0690ea700edcc1ca98f6f1917923503f4",
+        "sidecar": "desktop-licensed-product.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:55.183Z"
+      },
+      {
+        "name": "desktop-studio.png",
+        "sha256": "d8729a827475eee294be52d8f95f0c771b79b30fc54b0553a6da04acf4b781f0",
+        "sidecar": "desktop-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:56.075Z"
+      },
+      {
+        "name": "desktop-factory.png",
+        "sha256": "a2ed8b0e2cc32b86f869de1ff346f35b7029e7f8389f6f0b8223618a9bdfa03c",
+        "sidecar": "desktop-factory.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:56.164Z"
+      },
+      {
+        "name": "desktop-runtime.png",
+        "sha256": "e8875407da956c9756d5de384d4b16ca305c1ab2ad3cff7468331aa01a43f117",
+        "sidecar": "desktop-runtime.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:56.945Z"
+      },
+      {
+        "name": "desktop-kimi.png",
+        "sha256": "7a8d1bc47bc4e21dd31f2fb4744ed8f017ef4ae80ddee6c2a29ee1b52c58efbc",
+        "sidecar": "desktop-kimi.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:08:57.960Z"
+      },
+      {
+        "name": "mobile-visual-studio.png",
+        "sha256": "c2cdf2d463be505161be773c143f6e10228ae780178125a8c8d9e163f82de21e",
+        "sidecar": "mobile-visual-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:01.291Z"
+      },
+      {
+        "name": "mobile-system-explorer.png",
+        "sha256": "5f45b1ae13b1b5aef7c8a166b60e5ebb17b88ca5033b5fe0805afba825fa340c",
+        "sidecar": "mobile-system-explorer.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:01.326Z"
+      },
+      {
+        "name": "mobile-licensed-product.png",
+        "sha256": "8ebe05e3a246e84f2fe403ad2fa08b16c653af6a610f60dacb6b7563872c6178",
+        "sidecar": "mobile-licensed-product.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:01.703Z"
+      },
+      {
+        "name": "mobile-studio.png",
+        "sha256": "563eef1c659a7f1f1cb61313011d05308d5d5637cfccc32c4f688e49e457e4d5",
+        "sidecar": "mobile-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:02.477Z"
+      },
+      {
+        "name": "mobile-factory.png",
+        "sha256": "72f736a30b70cb79b7dc533f83d1d814f1e38f8e49806041138cd525870a519d",
+        "sidecar": "mobile-factory.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:02.510Z"
+      },
+      {
+        "name": "mobile-runtime.png",
+        "sha256": "e5c488c5cda5a9d7d2cb0eaf5216e3e01dcf6afb51a893d4222ce12f1a5be634",
+        "sidecar": "mobile-runtime.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:03.212Z"
+      },
+      {
+        "name": "mobile-kimi.png",
+        "sha256": "05a04a8dbf6b1c2613cbc559bdf265929352cc472b3642ad53631b298b80e1bd",
+        "sidecar": "mobile-kimi.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:09:04.225Z"
+      }
+    ],
+    "inspection": [
+      "Actual desktop/mobile full page and complete explorer inspected",
+      "Actual licensed product view inspected at both widths",
+      "Caption overlap and mobile hierarchy failed initial visual acceptance"
+    ],
+    "refinement": [
+      "Static caption outside diagram area",
+      "One visible task heading; details/disclosures remain available below the decision",
+      "Explicit base-storage label, unpriced lines and expired evidence notice"
+    ],
+    "refinedInspection": "Actual8c919f7 desktop/mobile captures inspected; caption overlap repaired and repeated headings removed. Source links, prices/unknown lines and warning remain readable.",
+    "refinedCaptures": [
+      {
+        "name": "desktop-visual-studio.png",
+        "sha256": "8ed03e8c55a64e5e73dc49dd02e0ce47a6aa546b64b17a1e1a63b8b6a76c3ff9",
+        "sidecar": "desktop-visual-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:07.318Z"
+      },
+      {
+        "name": "desktop-system-explorer.png",
+        "sha256": "ede841e5627d43302faab7600293cb0a83755298d2e451af9b15e1f46fbebfaa",
+        "sidecar": "desktop-system-explorer.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:07.387Z"
+      },
+      {
+        "name": "desktop-licensed-product.png",
+        "sha256": "45af6ac0d6820ccf94ae7a93b13ce1e82d6394dfd2fe71741444c67af130c71a",
+        "sidecar": "desktop-licensed-product.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:07.972Z"
+      },
+      {
+        "name": "desktop-studio.png",
+        "sha256": "41e33dbf5eb811b280f5401efa1daf0fbddcc5f1e80ab98cc9f050e467ffa12d",
+        "sidecar": "desktop-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:08.935Z"
+      },
+      {
+        "name": "desktop-factory.png",
+        "sha256": "1776c70560004e65bbe90b4c22ec1d025d9b85bfadada405b7c644868c7984ab",
+        "sidecar": "desktop-factory.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:09.003Z"
+      },
+      {
+        "name": "desktop-runtime.png",
+        "sha256": "c3efc84fbefbdbabc79e67d38f3905fdfbc75bb1f2fd0d3fb970bd2d3ade8cd0",
+        "sidecar": "desktop-runtime.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:09.792Z"
+      },
+      {
+        "name": "desktop-kimi.png",
+        "sha256": "5d85c5c960aed398895492dd70143f2c66eb76f76fd1836858a4ea8c846421e5",
+        "sidecar": "desktop-kimi.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:10.792Z"
+      },
+      {
+        "name": "mobile-visual-studio.png",
+        "sha256": "098e1a68598a1b27e796214111bce2e86e43ea58b683ebc963747bf7b6b0a3c9",
+        "sidecar": "mobile-visual-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:14.252Z"
+      },
+      {
+        "name": "mobile-system-explorer.png",
+        "sha256": "351926942ebce65587dc7114135c0cc43cf0384446c7319960b2eb49185407d6",
+        "sidecar": "mobile-system-explorer.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:14.289Z"
+      },
+      {
+        "name": "mobile-licensed-product.png",
+        "sha256": "6a4026481f6c9a492b01e464dfb18278e98df52fd17a868aaa9b390e2dd97e6a",
+        "sidecar": "mobile-licensed-product.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:14.675Z"
+      },
+      {
+        "name": "mobile-studio.png",
+        "sha256": "83ce7b11228bcefe09c87bcc57cadd223f119130bdc8252bbb0ebeb9469162fe",
+        "sidecar": "mobile-studio.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:15.549Z"
+      },
+      {
+        "name": "mobile-factory.png",
+        "sha256": "6bbc33f1dd4472bfd2d291c8134b1f27d3fcaf6d5e48bc893b627acbca7b1a89",
+        "sidecar": "mobile-factory.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:15.585Z"
+      },
+      {
+        "name": "mobile-runtime.png",
+        "sha256": "0ea9a500938f5d0839be3ef7fde56436b0ec3c7568fb7e015e0c30aa86639b22",
+        "sidecar": "mobile-runtime.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:16.344Z"
+      },
+      {
+        "name": "mobile-kimi.png",
+        "sha256": "b1505aa0f63db9a756c5af719348e3db1a1e7280effc7d1c31a3a2230009eec6",
+        "sidecar": "mobile-kimi.png.vis.provenance.json",
+        "createdAt": "2026-10-04T20:17:17.393Z"
+      }
+    ]
+  },
+  "motionReview": {
+    "verdict": "No blocking motion defect observed in admitted cloud scope; independent review pending",
+    "findings": {
+      "blocking": [],
+      "recommended": [
+        "Keep source/price warnings visible while buyer acceptance is pending"
+      ],
+      "polish": []
+    },
+    "changes": [
+      {
+        "before": "Comparison appeared as a text list below repeated headings",
+        "after": "Actual selected schematic/photo beside native candidate controls",
+        "why": "Make the consequential machine choice visible and editable earlier"
+      },
+      {
+        "before": "Inherited absolute schematic caption overlapped the drawing",
+        "after": "Static caption outside the drawing, still labeled as original schematic",
+        "why": "Keep evidence credit and product geometry readable"
+      },
+      {
+        "before": "No visual media failure path",
+        "after": "Image failure uses an original capacity diagram; saved inputs preserved",
+        "why": "A failed photograph must not block or replace the creator plan"
+      },
+      {
+        "before": "Candidate keyboard and rapid changes were outside the cloud flow",
+        "after": "Native keyboard focus, reduced motion and final saved selection verified",
+        "why": "Immediate state feedback and recoverable input under interruption"
+      }
+    ]
+  },
+  "userMediaCorrection": {
+    "at": "2026-10-06T01:48:07.059981+00:00",
+    "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+    "rejectedRevision": "f5721e0611534d1b27505b8bd5397d8bdd511e84",
+    "reason": "Official product images/videos were omitted in favor of generic diagrams. Prior provisional 28/30 does not establish current acceptance.",
+    "implemented": "Official publisher video panels and prominent exact-generation product galleries; no external media request before activation; close disconnects iframe without editing plan; unavailable Mac photo retains manufacturer gallery.",
+    "currentScore": null,
+    "currentRenderedAcceptance": "pending cloud screenshots and independent review",
+    "actualPlayback": "unverified",
+    "mediaReview": "official-media-review.json",
+    "firstCloudCheck": {
+      "sourceHead": "4f6feeee56ec569675e2dfd9c5d4e7abf1af095f",
+      "run": 37401124571,
+      "testedCommit": "690e886c134494052ce132bba4d9d0f509bd878d",
+      "checks": 40,
+      "pass": true,
+      "unitTests": 176,
+      "desktopMobileInspected": true,
+      "actualMedia": "Pending: separate inspection initially targeted recommended GMKtec with no video; fixture verified lifecycle only. Corrected selection in 39b5793.",
+      "finding": "Media panel has excessive explanation before candidate controls on mobile. One finish pass collapses full demo scope/channel into native disclosure.",
+      "score": null,
+      "acceptance": "Founder and independent acceptance open"
+    },
+    "finishPass": {
+      "skill": "Impeccable 4.5.0 polish",
+      "read": true,
+      "applied": "Collapse secondary scope and publisher attribution; retain fixed player geometry and immediate controls.",
+      "runtimeContext": "No installed engine found in three documented exact binary paths; no engine download under bounded storage. Manual skill pass only.",
+      "gesture": "Skipped; none",
+      "motion": "No new animation/autoplay",
+      "currentConfirmLook": "pending final cloud run"
+    }
+  },
+  "modernStudioPass": {
+    "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+    "requestedAt": "2026-10-06",
+    "status": "rejected-by-founder; preserved as historical verification only",
+    "design": "Restrained dark Technology palette, editorial heading, compact three-way comparison, product media and capacity together, explicit section navigation, purchase evidence in native disclosure, requirements before private notes. No new animation or autoplay.",
+    "skill": {
+      "selected": "Emil design engineering",
+      "read": true,
+      "applied": true,
+      "verified": "Emil guidance applied and verified by actual cloud captures and 42 checks: normal/reduced motion, focus, rapid selection/reload, touch, native disclosure, save conflict, export/import/recovery. Physical handset and independent review are not established."
+    },
+    "motionVerdict": "No blocking motion defect observed in the tested scope. No new animation, autoplay or keyboard transition. Explicit media close disconnects the player and preserves plan bytes/focus. Independent review remains open.",
+    "score": {
+      "decisionObject": 4,
+      "hierarchy": 5,
+      "craft": 4,
+      "responsive": 4,
+      "accessibility": 5,
+      "restraint": 5,
+      "total": 27,
+      "scale": 30,
+      "authority": "Fresh lead provisional assessment of the actual corrected composition, product posters and cloud behaviors. Does not grant independent rendered or buyer acceptance.",
+      "rationale": "Actual system alternatives and chosen capacity visible; Technology typography and 1200px layout; compact mobile controls with dated cost evidence in selected view; native 44px targets/focus/recovery; no new animation. Official videos are opt-in and playback unverified, and full inline manufacturer-photo coverage remains incomplete.",
+      "acceptance": "Rejected by Frank on 2026-10-06; tests and the provisional 27/30 score cannot overturn the rejection."
+    },
+    "beforeAfter": [
+      {
+        "before": "Default GMKtec candidate had only a gallery link",
+        "after": "Official GMKtec unboxing supplied by its support center, enabled on request",
+        "why": "Inspect real enclosure and ports in the decision flow"
+      },
+      {
+        "before": "Mobile candidate comparison followed a long media panel",
+        "after": "Compact alternatives first, selected media and capacity together",
+        "why": "Make the decision and its tradeoffs easier to scan"
+      },
+      {
+        "before": "Full purchase panels repeated the quick comparison",
+        "after": "Native disclosure opens from the selected system",
+        "why": "Preserve dated evidence without overwhelming initial planning"
+      },
+      {
+        "before": "Private notes appeared before workload controls",
+        "after": "Requirements lead into notes and saved-copy controls",
+        "why": "Explain how requirements change the system before asking for context"
+      }
+    ],
+    "sourceHead": "b43ed28a95d6ee675da3292e1c182893c4bad142",
+    "testedCommit": "d1a2f41c182a2900c4103b3dbc5b5591a4b89fe6",
+    "sourceTree": "c697e8b7879c3544e20eda423612d3641d40c3e1",
+    "ciRun": 37406329782,
+    "checks": 42,
+    "unitTests": 176,
+    "preview": "https://starlight-technology-pjeu50xfw-starlight-intelligence.vercel.app/studio",
+    "previewDeployment": "dpl_GmW5RiHB8NLjxriWwZhP2zJFP1iN",
+    "previewServedRevisionVerified": true,
+    "inspectedWidths": [
+      375,
+      390,
+      768,
+      1440
+    ],
+    "captureCount": 26,
+    "releaseGates": {
+      "independentFullSource": "pending; 63-file secret-scanned exact source packet prepared, no provider call under RAM floor",
+      "independentRenderedDesign": "pending",
+      "buyerAcceptance": "requested on exact b43ed28 preview; no reply or approval inferred",
+      "production": "unchanged starlight.technology at 4588a2409588b62cb394dc370ff52a46819ba346; not merged",
+      "actualVideoPlayback": "not accepted; actual posters render but time did not advance; prior cloud player required sign-in",
+      "localAdmission": "RAM below 4 GiB floor. PP incorrectly printed ALLOW with 3977 MiB free against 6144 MiB required; measured numbers override label. No reviewer/browser/full build launched."
+    }
+  },
+  "productFirstRefinement": {
+    "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+    "at": "2026-10-06T12:05:44.200265+00:00",
+    "status": "Implemented and actual cloud renders inspected; independent rendered and buyer acceptance pending",
+    "rejectedRevision": "1c1196c571cc46fa279fc1758d2202ce0100a2e9",
+    "reason": "Frank rejects image-free initial composition, oversized heading and text cards; asks for authentic official imagery and the quality of leading competitor sites.",
+    "references": [
+      {
+        "name": "Apple Mac mini",
+        "url": "https://www.apple.com/mac-mini/",
+        "lesson": "Prominent real hardware, concise hierarchy and configuration nearby; actual cloud comparative capture prepared."
+      },
+      {
+        "name": "Framework Desktop",
+        "url": "https://frame.work/desktop",
+        "lesson": "Real modular hardware and assembly images explain the choice. The current 495 store remains separate from the 395 plan."
+      },
+      {
+        "name": "NVIDIA RTX 5090",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+        "lesson": "Make the real decision object visually primary; distinguish the card from a complete workstation."
+      }
+    ],
+    "skill": {
+      "selected": "Emil design engineering",
+      "read": true,
+      "applied": "Compact hierarchy, reserved photo geometry, native controls, immediate keyboard state; press feedback only on fine-pointer active states; no autoplay or new entry animation.",
+      "verified": "Actual Chromium at 375/390/768/1440: real photograph in first viewport, 44px targets, keyboard focus, normal/reduced motion, rapid selection, failed-image recovery and save/reload/export/import/interrupted recovery. 48 checks pass; physical-device and independent acceptance pending."
+    },
+    "initialInspection": "Starts with the first displayed alternative without saving a preference or changing the engine recommendation. A saved candidate retains priority.",
+    "image": {
+      "path": "public/images/products/framework-desktop-395.jpg",
+      "source": "https://guides.frame.work/Guide/Framework+Desktop+DIY+Edition+Quick+Start+Guide/464?lang=en",
+      "publisher": "Iroh / Framework team",
+      "permission": "https://guides.frame.work/Info/Licensing",
+      "license": "CC BY-SA 3.0",
+      "changes": "Unchanged 800x600 official guide photograph; no generative replacement or retouching.",
+      "sha256": "269ffc0c0a9258a59a2161be1af0732b6b26edc307c4043efaa885df0ee223ef",
+      "provenance": "Adjacent sidecar and both append-only ledgers recorded; public schema validation/memory sync pending.",
+      "permissionEvidence": "Official guide fetched today; publisher licensing search index says CC BY-SA3.0 but its crawl is1.3years old and direct licensing page returned404. Current independent rights/commercial disposition pending."
+    },
+    "beforeAfter": [
+      {
+        "before": "Large two-line headline and three verbose cards before a blank video panel",
+        "after": "Shorter heading, compact selection and real official Framework kit photograph in the initial decision view",
+        "why": "Users can see the system while comparing candidates."
+      },
+      {
+        "before": "Photos and videos were mutually exclusive, so an embeddable video hid any local photograph",
+        "after": "The photograph displays immediately; the official player replaces it only after explicit activation",
+        "why": "Real imagery is visible while retaining privacy and playback recovery."
+      },
+      {
+        "before": "Hardware cost evidence appeared only in mobile selected view",
+        "after": "Dated cited costs and unpriced/delivery status accompany the selected configuration at every width",
+        "why": "The buyer can understand the price basis near the decision."
+      },
+      {
+        "before": "Provisional 27/30 was still the latest score despite user rejection",
+        "after": "Prior score explicitly rejected; fresh cloud photo, failure, responsive and reference evidence required",
+        "why": "A passing build cannot establish the requested design quality."
+      }
+    ],
+    "score": {
+      "source": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+      "decisionObject": 4,
+      "hierarchy": 4,
+      "craft": 4,
+      "responsive": 4,
+      "accessibility": 5,
+      "restraint": 5,
+      "total": 26,
+      "scale": 30,
+      "authority": "Codex lead provisional assessment of current actual source-equivalent cloud captures. This does not override Frank's rejection or grant independent/buyer release acceptance.",
+      "limitations": [
+        "Only Framework and the existing credited Mac image have inline photo coverage; GMKtec/NVIDIA official players and galleries remain",
+        "Phone photo is visible in the initial viewport; costs and full attribution continue below it",
+        "Framework guide photo depicts the original kit rather than the current 495 generation",
+        "NVIDIA comparative screenshots remain obstructed by the native consent dialog; full comparator inspection is incomplete"
+      ]
+    },
+    "gates": {
+      "renderedDesktopMobile": "Lead actual inspection and 48 browser checks passed at source53ed8b4; physical-device/independent acceptance pending",
+      "independentProviderSecurityPrivacyLicenceCommercial": "Pending exact revision; effect-time RAM2277MiB below4096MiB floor. No new provider request started.",
+      "renderedDesignBuyerAcceptance": "Prior27/30 rejected by Frank. Current26/30 is provisional lead evidence. Fresh preview direction requested; no reply/acceptance inferred.",
+      "production": "PR34 remains draft; actual starlight.technology binds bbad55b90cbf5c8e0a6b1bf5599fbdd383745341; Studio404; no release or rollback executed"
+    },
+    "remainingMediaCoverage": "Framework has official licensed inline photography; Mac uses existing credited CC BY photograph. GMKtec and NVIDIA retain official request-only players/gallery links; manufacturer photo republication rights remain unresolved.",
+    "renderedEvidence": {
+      "inspectedAt": "2026-10-06T23:16:00Z",
+      "sourceHead": "53ed8b452f49667fbf5faf9370c2f0414daf79dd",
+      "testedMerge": "ce0b415a43059a63b08732d1d1701a64d142a497",
+      "equalGitTree": "75536f781ad087730483f745b59b8184bca0371b",
+      "ciRun": 37544657908,
+      "ciUrl": "https://github.com/frankxai/starlight-technology/actions/runs/37544657908",
+      "checks": {
+        "unit": 182,
+        "editorial": 11,
+        "builtPages": 51,
+        "browser": 48
+      },
+      "captureCount": 32,
+      "capturesHashVerified": true,
+      "bothVisualLedgersUpdated": true,
+      "inspectedCaptures": [
+        "desktop-initial-product.png",
+        "mobile-initial-product.png",
+        "375-composition.png",
+        "768-comparison.png"
+      ],
+      "references": {
+        "apple": "Actual 1440/390 source-page captures inspected. Prominent real product and concise action are the applicable composition lesson, not permission to copy its imagery.",
+        "nvidia": "Actual 1440/390 captures inspected; native consent overlay obstructs the page. The large hardware visual is visible behind it, but full comparison remains incomplete.",
+        "framework": "Official product page returned HTTP408 at both widths; guide photograph and exact source were independently fetched, not a successful rendered product-page comparison."
+      },
+      "failedIterations": [
+        "CI37461033657: initial-selection assertion executed after a selection; test ordering corrected",
+        "CI37543871447: native photo-width assertion used a desktop threshold on phone; corrected to rendered pixel density",
+        "CI37544165159: actual mobile photograph started below viewport; phone hierarchy/status/privacy repetition were repaired"
+      ],
+      "serverExited": true,
+      "browserClosed": true,
+      "publicExamples": "Only synthetic browser fixtures; no private creator notes published"
+    }
+  }
+}

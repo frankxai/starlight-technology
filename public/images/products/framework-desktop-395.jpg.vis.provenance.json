@@ -1,0 +1,30 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "starlight-technology-framework-desktop-395-official-guide",
+  "created_at": "2026-10-06T11:56:04.508831+00:00",
+  "brand": "starlight-technology",
+  "agent_session": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
+  "model": "none (licensed official photograph)",
+  "provider": "Framework Guides / Iroh (Framework team)",
+  "seed": null,
+  "prompt": "Reuse the unchanged Framework Guides large cover photograph of the Framework Desktop DIY Edition Quick Start Guide, release 1.03 updated 2026-03-02. Display prominently with Framework/Iroh credit, CC BY-SA 3.0 and source/licensing links. Enclosure/tiles shown; do not infer memory, storage or runtime measurements. No image generation, image editing or background removal.",
+  "source_url": "https://guides.frame.work/Guide/Framework+Desktop+DIY+Edition+Quick+Start+Guide/464?lang=en",
+  "download_url": "https://d3t0tbmlie281e.cloudfront.net/igi/framework/giPSYNRMLOCJvXnB.large",
+  "sha256": "269ffc0c0a9258a59a2161be1af0732b6b26edc307c4043efaa885df0ee223ef",
+  "rights": {
+    "author": "Iroh / Framework",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "permission_url": "https://guides.frame.work/Info/Licensing",
+    "changes": "Framework Guides large rendition, reused without edits.",
+    "endorsement": false
+  },
+  "schema_validation": {
+    "status": "not-validated",
+    "reason": "Public schema availability not re-established; provenance fields recorded."
+  },
+  "dimensions": {
+    "width": 800,
+    "height": 600
+  }
+}

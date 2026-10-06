@@ -39,3 +39,20 @@ jobs:
         run: node --test scripts/editorial/plan.test.mjs
       - name: Build
         run: pnpm build
+      - name: Install pinned Chromium tooling in the ephemeral runner
+        env:
+          STARLIGHT_PLAYWRIGHT_DIR: ${{ runner.temp }}/creator-playwright
+        run: |
+          npm install --prefix "$STARLIGHT_PLAYWRIGHT_DIR" --no-save --package-lock=false --ignore-scripts playwright@1.63.0
+          node "$STARLIGHT_PLAYWRIGHT_DIR/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Verify Creator Studio browser recovery
+        env:
+          STARLIGHT_PLAYWRIGHT_DIR: ${{ runner.temp }}/creator-playwright
+        run: node scripts/creator-studio-browser.mjs
+      - name: Preserve browser behavior receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: creator-studio-browser
+          path: ${{ runner.temp }}/creator-studio-browser-results
+          if-no-files-found: ignore

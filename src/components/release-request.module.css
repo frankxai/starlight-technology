@@ -1,0 +1,13 @@
+.request { margin-top: 2rem; max-width: 46rem; }
+.request h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); }
+.request p { line-height: 1.7; }
+.request form, .draft { display: grid; gap: 1rem; margin-top: 1.25rem; }
+.request label { display: grid; gap: .5rem; font-size: .95rem; font-weight: 600; }
+.request textarea, .request select { box-sizing: border-box; width: 100%; min-width: 0; border: 1px solid currentColor; border-radius: .5rem; padding: .8rem; font: inherit; font-weight: 400; color: inherit; background: transparent; }
+.request textarea { resize: vertical; }
+.request textarea:focus-visible, .request select:focus-visible, .request button:focus-visible, .request a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.actions > * { white-space: normal; text-align: center; }
+.notice { min-height: 1.7em; }
+@media (max-width: 480px) { .actions > * { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) { .request * { scroll-behavior: auto; transition: none; animation: none; } }

@@ -13,6 +13,10 @@ export interface ProductSku {
   featured?: boolean;
   checkoutEnvKey?: string;
   productPath: string;
+  edition?: string;
+  artifactSha256?: string;
+  amountCents?: number;
+  currency?: "EUR";
 }
 
 export const saasTiers: ProductSku[] = [
@@ -115,13 +119,26 @@ export const serviceProducts: ProductSku[] = [
   }
 ];
 
-export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts];
+// Earlier SKU IDs remain resolvable for existing receipt/support links.
+// Their presence is not approval to accept new orders or promise fulfillment.
+export const candidateProducts: ProductSku[] = [{
+  id: "creator-studio-kit",
+  name: "AI Creator Studio kit",
+  kind: "digital",
+  billing: "once",
+  priceLabel: "Price not announced",
+  summary: "A self-service kit in development for planning complete systems and repeatable agent workflows with your own tools.",
+  includes: ["Editable system and capacity plans", "Portable workflow skills and evidence records", "Installation, export and recovery guidance"],
+  cta: "Prepare a release request",
+  productPath: "/studio",
+  edition: "development"
+}];
+
+export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts, ...candidateProducts];
 export function getProduct(id: string) { return allProducts.find((p) => p.id === id); }
 export function checkoutHref(sku: ProductSku): string {
   if (sku.billing === "free") return sku.productPath;
-  if (sku.checkoutEnvKey) {
-    const url = process.env[sku.checkoutEnvKey];
-    if (url?.startsWith("http")) return url;
-  }
+  // Every paid CTA passes through the server's release/checkout decision.
+  // A configured public payment URL is not fulfillment or release evidence.
   return `/checkout/${sku.id}`;
 }
