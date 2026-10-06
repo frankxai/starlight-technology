@@ -103,7 +103,7 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
       await photo.waitFor();
       await photo.evaluate(image => image.decode());
-      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
+      assert.ok(await photo.evaluate(image => image.complete && image.naturalWidth >= image.clientWidth));
       const bounds = await photo.boundingBox();
       assert.ok(bounds && bounds.width >= 250 && bounds.height >= 180);
       assert.ok(bounds.y >= 0 && bounds.y + Math.min(bounds.height, 180) <= (width === 390 ? 844 : 1000), 'The real photograph must be visible before scrolling.');
@@ -160,7 +160,7 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       await page.unroute('**/_next/image*'); await page.reload();
       const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
       await photo.waitFor(); await photo.evaluate(image => image.decode());
-      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
+      assert.ok(await photo.evaluate(image => image.complete && image.naturalWidth >= image.clientWidth));
     });
     await check(`${tag}: official video requires activation and disconnects without changing the plan`, async () => {
       const explorer = page.getByRole('region', { name: 'Current system alternatives', exact: true });
@@ -432,7 +432,7 @@ async function inspectComposition(width, testOrigin = origin) {
       assert.equal(await page.locator('iframe').count(), 0);
       const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
       await photo.waitFor(); await photo.evaluate(image => image.decode());
-      assert.ok(await photo.evaluate(image => image.naturalWidth >= 400));
+      assert.ok(await photo.evaluate(image => image.complete && image.naturalWidth >= image.clientWidth));
     });
     await page.evaluate(() => scrollTo(0, 0));
     await capture(page, `${width}-composition.png`, width);
