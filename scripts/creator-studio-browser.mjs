@@ -103,10 +103,11 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
       const photo = page.locator('[data-product-media="dev-framework-desktop-395"] img');
       await photo.waitFor();
       await photo.evaluate(image => image.decode());
+      await capture(page, `${tag}-initial-product.png`, width);
       assert.ok(await photo.evaluate(image => image.complete && image.naturalWidth >= image.clientWidth));
       const bounds = await photo.boundingBox();
       assert.ok(bounds && bounds.width >= 250 && bounds.height >= 180);
-      assert.ok(bounds.y >= 0 && bounds.y + Math.min(bounds.height, 180) <= (width === 390 ? 844 : 1000), 'The real photograph must be visible before scrolling.');
+      assert.ok(bounds.y >= 0 && bounds.y + Math.min(bounds.height, 180) <= (width === 390 ? 844 : 1000), `The real photograph must be visible before scrolling: ${JSON.stringify(bounds)}.`);
       assert.equal(await page.locator('iframe').count(), 0);
       assert.equal(await page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)).selectedArchetypeId, key), null, 'Initial inspection must not save a purchase preference.');
     });

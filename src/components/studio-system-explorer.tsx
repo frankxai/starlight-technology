@@ -133,7 +133,7 @@ export function StudioSystemExplorer({ output, plan, comparisonId, onSelect }: {
         </button>;
       })}
     </div>
-    <p className={styles.status} role="status">{selected ? `Selected: ${selected.label}.` : featured ? `Inspecting ${featured.label}. Choose a candidate to save a preference.` : "Change a requirement to explore alternatives."} Selection does not place an order.</p>
+    <p className={styles.status} role="status">{selected ? `Saved: ${systemTitle(selected)} · Planning only.` : featured ? `Inspecting ${systemTitle(featured)}. Select a system to save.` : "Change a requirement to explore alternatives."}</p>
     {featured && <>
       <div className={styles.system}>
         <ProductFigure key={featured.archetypeId} system={featured} />
