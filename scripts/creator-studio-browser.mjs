@@ -404,7 +404,11 @@ async function inspectOfficialMedia(width) {
     await page.frameLocator('[data-product-media] iframe').locator('.ytp-cued-thumbnail-overlay-image').waitFor({ state: 'visible', timeout: 15000 });
     evidence.status = 'official-player-poster-rendered';
     await capture(explorer, `${width}-official-product-player.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }');
-  } catch (error) { evidence.reason = error.message; }
+  } catch (error) {
+    evidence.reason = error.message;
+    try { await capture(page.getByRole('region', { name: 'Current system alternatives', exact: true }), `${width}-official-product-player-pending.png`, width, '.site-header { position: static !important; } .skip-link { visibility: hidden !important; }'); }
+    catch (captureError) { evidence.captureError = captureError.message; }
+  }
   finally { await context.close(); }
 }
 (async () => {
