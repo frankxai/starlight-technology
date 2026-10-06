@@ -369,16 +369,27 @@
   "modernStudioPass": {
     "sourceTask": "01a101b1-9d38-7fa1-b1f0-dec923631d7f",
     "requestedAt": "2026-10-06",
-    "status": "implemented-awaiting-rendered-review",
+    "status": "cloud-verified-release-held",
     "design": "Restrained dark Technology palette, editorial heading, compact three-way comparison, product media and capacity together, explicit section navigation, purchase evidence in native disclosure, requirements before private notes. No new animation or autoplay.",
     "skill": {
       "selected": "Emil design engineering",
       "read": true,
       "applied": true,
-      "verified": "Local lint/types/media tests; cloud reduced motion, focus, touch, recovery and rendered inspection pending"
+      "verified": "Emil guidance applied and verified by actual cloud captures and 42 checks: normal/reduced motion, focus, rapid selection/reload, touch, native disclosure, save conflict, export/import/recovery. Physical handset and independent review are not established."
     },
-    "motionVerdict": "Candidate changes are immediate. Native disclosure and video disconnect are interruptible; no new transitions. Current cloud confirmation pending.",
-    "score": null,
+    "motionVerdict": "No blocking motion defect observed in the tested scope. No new animation, autoplay or keyboard transition. Explicit media close disconnects the player and preserves plan bytes/focus. Independent review remains open.",
+    "score": {
+      "decisionObject": 4,
+      "hierarchy": 5,
+      "craft": 4,
+      "responsive": 4,
+      "accessibility": 5,
+      "restraint": 5,
+      "total": 27,
+      "scale": 30,
+      "authority": "Fresh lead provisional assessment of the actual corrected composition, product posters and cloud behaviors. Does not grant independent rendered or buyer acceptance.",
+      "rationale": "Actual system alternatives and chosen capacity visible; Technology typography and 1200px layout; compact mobile controls with dated cost evidence in selected view; native 44px targets/focus/recovery; no new animation. Official videos are opt-in and playback unverified, and full inline manufacturer-photo coverage remains incomplete."
+    },
     "beforeAfter": [
       {
         "before": "Default GMKtec candidate had only a gallery link",
@@ -400,6 +411,30 @@
         "after": "Requirements lead into notes and saved-copy controls",
         "why": "Explain how requirements change the system before asking for context"
       }
-    ]
+    ],
+    "sourceHead": "b43ed28a95d6ee675da3292e1c182893c4bad142",
+    "testedCommit": "d1a2f41c182a2900c4103b3dbc5b5591a4b89fe6",
+    "sourceTree": "c697e8b7879c3544e20eda423612d3641d40c3e1",
+    "ciRun": 37406329782,
+    "checks": 42,
+    "unitTests": 176,
+    "preview": "https://starlight-technology-pjeu50xfw-starlight-intelligence.vercel.app/studio",
+    "previewDeployment": "dpl_GmW5RiHB8NLjxriWwZhP2zJFP1iN",
+    "previewServedRevisionVerified": true,
+    "inspectedWidths": [
+      375,
+      390,
+      768,
+      1440
+    ],
+    "captureCount": 26,
+    "releaseGates": {
+      "independentFullSource": "pending; 63-file secret-scanned exact source packet prepared, no provider call under RAM floor",
+      "independentRenderedDesign": "pending",
+      "buyerAcceptance": "requested on exact b43ed28 preview; no reply or approval inferred",
+      "production": "unchanged starlight.technology at 4588a2409588b62cb394dc370ff52a46819ba346; not merged",
+      "actualVideoPlayback": "not accepted; actual posters render but time did not advance; prior cloud player required sign-in",
+      "localAdmission": "RAM below 4 GiB floor. PP incorrectly printed ALLOW with 3977 MiB free against 6144 MiB required; measured numbers override label. No reviewer/browser/full build launched."
+    }
   }
 }

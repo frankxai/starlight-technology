@@ -75,11 +75,27 @@
     "oEmbed": "Verified title, author and publisher on 2026-10-06",
     "representation": "Native unmodified privacy-enhanced player, explicit activation, no thumbnail or video copied, no autoplay",
     "scope": "Enclosure/ports, not configuration certification or throughput benchmark",
-    "actualPlayback": "pending current cloud run"
+    "actualPlayback": "Current 1440/390 native player poster/publisher visible; actual playback did not advance. Prior anonymous runner showed sign-in requirement. No login/bypass attempted; immediate external fallback remains."
   },
   "dependencyDisposition": {
     "brace-expansion": "Locked 1.1.21 with official registry integrity; GHSA-q2hr-2g5m-vwhr",
     "js-yaml": "Locked 4.3.2 with official registry integrity; GHSA-2883-xcg3-v3hh and GHSA-5p4m-2wfm-xmqj",
-    "scope": "Development dependencies. Frozen cloud install and full checks pending."
+    "scope": "Development dependencies. Frozen cloud install and full checks pending.",
+    "verification": "Frozen pnpm cloud install, lint/types, 176 units, editorial/full build and 42 browser checks passed in CI37406329782 at b43ed28. Default-branch alerts stay open until a permitted merge."
+  },
+  "currentRenderedProof": {
+    "sourceHead": "b43ed28a95d6ee675da3292e1c182893c4bad142",
+    "ciRun": 37406329782,
+    "captureCount": 26,
+    "officialPublishers": [
+      "GMKtec",
+      "Framework",
+      "NVIDIA GeForce"
+    ],
+    "posterInspected": true,
+    "playbackAccepted": false,
+    "copiedManufacturerPhotos": false,
+    "macPhoto": "Existing credited CC BY photograph is not official Apple imagery.",
+    "publicRelease": false
   }
 }
