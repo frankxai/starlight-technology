@@ -375,14 +375,19 @@ async function exercise(width, testOrigin = origin, expectedRevision = null) {
 }
 async function inspectOfficialMedia(width) {
   const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
-  const allowed = new Set(['www.youtube-nocookie.com', 'www.youtube.com', 'i.ytimg.com', 's.ytimg.com', 'yt3.ggpht.com']);
-  const evidence = { width, privateFixture: false, status: 'pending', playbackExercised: false, blockedRequests: 0 };
+  const allowed = new Set(['www.youtube-nocookie.com', 'www.youtube.com', 'i.ytimg.com', 's.ytimg.com', 'yt3.ggpht.com', 'www.gstatic.com', 'www.google.com']);
+  const evidence = { width, privateFixture: false, status: 'pending', playbackExercised: false, blockedRequests: 0, blockedRoutes: [] };
   receipt.officialMedia ??= [];
   receipt.officialMedia.push(evidence);
   await context.route('**/*', (route) => {
     const req = route.request(), url = new URL(req.url());
     if (['GET', 'HEAD'].includes(req.method()) && (url.origin === origin || (url.protocol === 'https:' && allowed.has(url.host)))) return route.continue();
-    evidence.blockedRequests++; return route.abort();
+    // The unmodified official player uses POST to read its playback metadata.
+    // This clean context contains no private fixture; model, payment and write APIs remain blocked.
+    if (req.method() === 'POST' && url.protocol === 'https:' && ['www.youtube-nocookie.com', 'www.youtube.com'].includes(url.host) && url.pathname === '/youtubei/v1/player') return route.continue();
+    evidence.blockedRequests++;
+    if (evidence.blockedRoutes.length < 12) evidence.blockedRoutes.push({ host: url.host, path: url.pathname, method: req.method() });
+    return route.abort();
   });
   const page = await context.newPage();
   page.setDefaultTimeout(10000);
