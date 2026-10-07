@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { checkoutHref, digitalProducts, saasTiers, serviceProducts } from "@/lib/products";
+import { checkoutHref, digitalProducts, productActionLabel, saasTiers, serviceProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -19,32 +19,32 @@ export default function PricingPage() {
       <section className="pricing-hero page-header">
         <p className="eyebrow">SaaS + digital + B2B systems</p>
         <h1>Membership for buyers. Blueprints when the decision carries capital.</h1>
-        <p className="lede">Free library forever. Subscribe for decision models and alerts. Commission fixed-scope work when hardware, organisations, contracts or financing must close together.</p>
+        <p className="lede">The public library and AI System Brief Kit are available now. Paid memberships and digital offers below are proposed; payment and member fulfilment are not active. Infrastructure work starts with a scope discussion.</p>
       </section>
       <div className="tier-grid">
         {saasTiers.map((tier) => (
           <article className={`tier-card${tier.featured ? " is-featured" : ""}`} key={tier.id}>
             {tier.featured ? <span className="tier-badge">SaaS</span> : null}
-            <p className="eyebrow">{tier.billing === "free" ? "Free" : "Monthly"}</p>
+            <p className="eyebrow">{tier.billing === "free" ? "Available free" : "Proposed membership · unavailable"}</p>
             <h2>{tier.name}</h2>
-            <p className="tier-price">{tier.priceLabel}{tier.billing === "month" ? <small> / mo</small> : null}</p>
+            <p className="tier-price">{tier.billing === "free" ? "" : "Proposed: "}{tier.priceLabel}{tier.billing === "month" ? <small> / mo</small> : null}</p>
             <p>{tier.summary}</p>
             <ul>{tier.includes.map((i) => <li key={i}>{i}</li>)}</ul>
-            <a className="button button-primary" href={checkoutHref(tier)}>{tier.cta}</a>
+            <a className="button button-primary" href={checkoutHref(tier)}>{productActionLabel(tier)}</a>
           </article>
         ))}
       </div>
       <section className="sku-section">
-        <h2>Digital products</h2>
+        <h2>Proposed digital offers</h2>
         <div className="sku-grid">
           {digitalProducts.map((sku) => (
             <article className="sku-card" key={sku.id}>
-              <div className="sku-meta"><span className="sku-chip digital">Digital</span><span className="sku-chip">One-time</span></div>
+              <div className="sku-meta"><span className="sku-chip digital">Proposed</span><span className="sku-chip">Not available for purchase</span></div>
               <h3>{sku.name}</h3>
-              <p className="tier-price">{sku.priceLabel}</p>
+              <p className="tier-price">Proposed: {sku.priceLabel}</p>
               <p>{sku.summary}</p>
               <ul>{sku.includes.map((i) => <li key={i}>{i}</li>)}</ul>
-              <a className="button button-primary" href={checkoutHref(sku)}>{sku.cta}</a>
+              <a className="button button-primary" href={checkoutHref(sku)}>{productActionLabel(sku)}</a>
             </article>
           ))}
         </div>
@@ -59,7 +59,7 @@ export default function PricingPage() {
               <p className="tier-price">{sku.priceLabel}</p>
               <p>{sku.summary}</p>
               <ul>{sku.includes.map((i) => <li key={i}>{i}</li>)}</ul>
-              <a className="button button-primary" href={checkoutHref(sku)}>{sku.cta}</a>
+              <a className="button button-primary" href={checkoutHref(sku)}>{productActionLabel(sku)}</a>
               <Link className="button" href={sku.productPath}>Inspect system first</Link>
             </article>
           ))}
@@ -68,9 +68,9 @@ export default function PricingPage() {
       <section className="method-callout" style={{ marginTop: "3rem" }}>
         <div>
           <p className="eyebrow">Fulfillment</p>
-          <h2>Polar for self-serve. Commercial invoice and SOW for B2B.</h2>
+          <h2>Delivery before payment. Scope before engagement.</h2>
         </div>
-        <p>Commercial links never rewrite the recommendation. B2B work begins only after scope, entities, evidence access, reliance boundaries and acceptance are explicit.</p>
+        <p>Self-serve payment remains unavailable until delivery and access are verified. B2B work begins only after scope, entities, evidence access, reliance boundaries and acceptance are explicit.</p>
         <Link className="button button-primary" href="/infrastructure">Inspect Infrastructure OS</Link>
       </section>
     </div>

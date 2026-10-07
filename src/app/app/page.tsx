@@ -6,9 +6,9 @@ export const metadata: Metadata = { title: "Member app", robots: { index: false,
 export default function MemberAppPage() {
   return (
     <div className="shell page-header" style={{ paddingBottom: "5rem" }}>
-      <p className="eyebrow">SaaS product surface</p>
+      <p className="eyebrow">Proposed workspace · not active</p>
       <h1>Studio Member workspace</h1>
-      <p className="lede">Shortlists, blueprint history, and alerts unlock after subscription. Free library stays open.</p>
+      <p className="lede">Member accounts, subscription access, history and alerts are not active. The free library and downloadable AI planning kit are available without an account.</p>
       <div className="sku-grid" style={{ marginTop: "1.5rem" }}>
         <article className="sku-card">
           <h2>Free library</h2>
@@ -16,9 +16,9 @@ export default function MemberAppPage() {
           <Link className="button button-primary" href="/builds">Open builds</Link>
         </article>
         <article className="sku-card">
-          <h2>Subscribe</h2>
-          <p>Studio Member and Ops plans.</p>
-          <Link className="button button-primary" href="/pricing">Pricing</Link>
+          <h2>Start with a useful brief</h2>
+          <p>Four editable files and a setup planner, available now.</p>
+          <Link className="button button-primary" href="/ai">Open the AI Shop</Link>
         </article>
       </div>
     </div>
