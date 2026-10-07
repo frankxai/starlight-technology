@@ -44,6 +44,7 @@
 .search input::placeholder { color: var(--muted); opacity: 1; }
 .resultLine { display: flex; justify-content: space-between; gap: 12px; padding: 20px 0 12px; color: var(--muted); font: .65rem var(--font-mono), monospace; }
 .resultLine p { margin: 0; }
+.resultLine a { color: var(--signal); }
 .productGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .productCard { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--shop-line); background: #0b0f0d; }
 .cardTop { display: flex; justify-content: space-between; gap: 12px; padding: 16px 20px; align-items: center; color: var(--muted); font: .65rem var(--font-mono), monospace; }
@@ -68,7 +69,7 @@
 .cardFoot small { width: 100%; color: var(--muted); font-size: .65rem; line-height: 1.5; }
 .empty { padding: 55px 24px; border: 1px solid var(--shop-line); text-align: center; }
 .empty p { color: var(--muted); }
-.comparison { margin-top: 45px; padding: 30px; border: 1px solid var(--shop-line); background: #0e130f; }
+.comparison { margin-top: 45px; padding: 30px; border: 1px solid var(--shop-line); background: #0e130f; scroll-margin-top: 100px; }
 .compareNote { color: var(--muted); font-size: .85rem; }
 .tableWrap { overflow-x: auto; margin-top: 25px; }
 .tableWrap table { border-collapse: collapse; width: 100%; font-size: .8rem; table-layout: fixed; }
