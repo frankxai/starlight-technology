@@ -9,6 +9,7 @@ const updated = new Date("2026-10-07");
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: "", priority: 1 },
+    { path: "/ai", priority: 0.95 },
     { path: "/shop", priority: 0.95 },
     { path: "/partners", priority: 0.7 },
     { path: "/builds", priority: 0.8 },

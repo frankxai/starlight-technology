@@ -117,11 +117,20 @@ export const serviceProducts: ProductSku[] = [
 
 export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts];
 export function getProduct(id: string) { return allProducts.find((p) => p.id === id); }
+
+// A payment URL proves a configured destination, not fulfilment readiness.
+// Paid self-serve products have no verified entitlement/delivery path yet.
+export function productAvailability(sku: ProductSku): "free" | "proposed" | "scope-inquiry" {
+  if (sku.billing === "free") return "free";
+  return sku.kind === "service" ? "scope-inquiry" : "proposed";
+}
+
+export function productActionLabel(sku: ProductSku): string {
+  const availability = productAvailability(sku);
+  return availability === "free" ? sku.cta : availability === "scope-inquiry" ? "Discuss the scope" : "Inspect proposed offer";
+}
+
 export function checkoutHref(sku: ProductSku): string {
   if (sku.billing === "free") return sku.productPath;
-  if (sku.checkoutEnvKey) {
-    const url = process.env[sku.checkoutEnvKey];
-    if (url?.startsWith("http")) return url;
-  }
   return `/checkout/${sku.id}`;
 }

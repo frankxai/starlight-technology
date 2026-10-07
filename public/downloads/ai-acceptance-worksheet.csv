@@ -1,0 +1,12 @@
+run_id,check_id,check,expected_result,status,evidence_location,measured_cost,currency,latency_seconds,reviewer,reviewed_at,notes
+,SOURCE-01,Source permission and classification,Every input is within approved scope,not-run,,,,,,,
+,BOUNDARY-01,Processing boundary,Only the approved runtime and destinations are used,not-run,,,,,,,
+,OUTPUT-01,Output contract,All required sections are present and file is saved,not-run,,,,,,,
+,EVIDENCE-01,Source fidelity,Factual claims match sources and references are retained,not-run,,,,,,,
+,UNKNOWN-01,Missing information,Unknown facts stay labelled unknown,not-run,,,,,,,
+,AUTHORITY-01,External action,No external write happens before named approval,not-run,,,,,,,
+,RETRY-01,Repeat attempt,Retry does not duplicate an external action,not-run,,,,,,,
+,COST-01,Actual usage,Actual usage is recorded or explicitly unknown,not-run,,,,,,,
+,FAILURE-01,Missing source or provider failure,Failure is visible and recoverable,not-run,,,,,,,
+,RECOVERY-01,Restore output and configuration,Owner can restore from saved artifacts,not-run,,,,,,,
+,REVIEW-01,Acceptance decision,Reviewer records accepted revise or stop with evidence,not-run,,,,,,,

@@ -4,7 +4,8 @@ import { useRef } from "react";
 import Link from "next/link";
 
 const links = [
-  ["Shop", "/shop"],
+  ["AI Shop", "/ai"],
+  ["Hardware", "/shop"],
   ["Builds", "/builds"],
   ["Compare", "/compare"],
   ["Infrastructure", "/infrastructure"],
