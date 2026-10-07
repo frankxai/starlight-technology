@@ -44,5 +44,16 @@
     "The public contract structures are issue maps and decision frameworks, not executable legal, tax, credit, insurance or energy-market advice.",
     "Vercel preview deployments are noindex; production-domain indexing is verified separately after merge.",
     "No remote screenshot-capable browser was available; rendered HTML, metadata, responsive source and build output were inspected."
-  ]
+  ],
+  "technologyAtlasFollowOn": {
+    "branch": "feat/technology-atlas-20260928",
+    "routes": ["/shop", "/shop/studio", "/shop/estate", "/shop/[slug]", "/api/technology/catalog", "/api/technology/search", "/api/technology/decision"],
+    "decisionObject": "Searchable source-backed records and a deterministic brief with visible hold conditions; local equipment ledger is labelled unverified.",
+    "responsiveSource": "Featured compute/robotics stage and detail headers switch from split layout to one column at 900px; card gallery and actions reflow at 620px. Six original device-class SVG schematics have text alternatives and are labelled as studies, not product imagery. Mobile navigation is exposed through a keyboard-operable details control.",
+    "visualImplementation": "Evidence Atlas composition: featured sourced compute and robotics decisions, class-level mechanical schematics on six cards and record headers, interface-to-complete-cost strip, restrained material contrast. The schematics are original code artwork; no OEM photography or unverified live telemetry.",
+    "verification": "Lint, typecheck, 23 tests and 50-route build passed locally. Production server returned HTTP 200 for representative UI/API routes and 400 for invalid input.",
+    "visualInspection": "Pending actual desktop and mobile screenshots, keyboard, zoom and interaction review; the host-approved browser is unavailable in this workspace without a browser fallback approval.",
+    "designScore": null,
+    "releaseGate": "Draft only until the current feature receives desktop/mobile inspection and reaches at least 26/30. The earlier 28/30 score above applies to Infrastructure Partnership OS, not this feature."
+  }
 }

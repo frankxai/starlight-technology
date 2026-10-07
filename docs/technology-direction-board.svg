@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 1190" role="img" aria-labelledby="title desc">
+  <title id="title">Starlight Technology: three original design directions</title>
+  <desc id="desc">Desktop and mobile composition studies for Evidence Atlas, Product Gallery and Operations Console, using source-backed Starlight device records and no OEM imagery.</desc>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+    .label { font-size: 24px; font-weight: 700; letter-spacing: -1px; }
+    .micro { font-size: 12px; }
+    .small { font-size: 15px; }
+    .heading { font-size: 34px; font-weight: 700; letter-spacing: -2px; }
+    .big { font-size: 54px; font-weight: 700; letter-spacing: -3px; }
+    .mono { font-family: monospace; letter-spacing: .5px; }
+  </style>
+  <rect width="1360" height="1190" fill="#e7e9e1"/>
+  <text x="40" y="50" class="eyebrow" fill="#4a514b">STARLIGHT TECHNOLOGY / RESEARCH BOARD / 29 SEP 2026</text>
+  <text x="40" y="81" class="label" fill="#151b19">One product truth. Three visual systems.</text>
+  <text x="1020" y="80" class="micro" fill="#4a514b">Original schematics • not live screenshots</text>
+
+  <!-- A: evidence -->
+  <rect x="30" y="110" width="1300" height="330" rx="12" fill="#f7f8f3"/>
+  <text x="52" y="150" class="eyebrow" fill="#49622e">01 / SELECTED</text>
+  <text x="52" y="181" class="label" fill="#121a16">Evidence</text>
+  <text x="52" y="208" class="label" fill="#121a16">Atlas</text>
+  <text x="52" y="240" class="small" fill="#566258">Workload first.</text>
+  <text x="52" y="263" class="small" fill="#566258">Evidence at</text>
+  <text x="52" y="286" class="small" fill="#566258">decision time.</text>
+  <rect x="236" y="130" width="790" height="288" rx="5" fill="#080d0b"/>
+  <text x="260" y="155" class="eyebrow" fill="#c8f36b">STARLIGHT / TECHNOLOGY ATLAS</text>
+  <text x="886" y="155" class="micro" fill="#e8eee3">Studio ↗</text>
+  <line x1="260" y1="168" x2="1002" y2="168" stroke="#3e4b42"/>
+  <text x="260" y="206" class="heading" fill="#f1f4ec">Choose the system.</text>
+  <text x="260" y="239" class="heading" fill="#c8f36b">Then the device.</text>
+  <rect x="260" y="256" width="338" height="32" fill="#111916" stroke="#52634d"/>
+  <text x="273" y="277" class="micro" fill="#cbd6c6">What must your machine do?   ⌕</text>
+  <rect x="610" y="256" width="134" height="32" fill="#c8f36b"/>
+  <text x="626" y="277" class="micro" fill="#071007">Local AI  →</text>
+  <rect x="260" y="301" width="354" height="98" fill="#111715" stroke="#36433b"/>
+  <text x="276" y="321" class="micro mono" fill="#c8f36b">COMPUTE / SOURCE CHECKED 28 SEP</text>
+  <text x="276" y="346" class="small" fill="#f1f4ec" font-weight="700">Framework Desktop</text>
+  <text x="276" y="368" class="micro" fill="#b7c2b4">Shared memory • compact desk</text>
+  <text x="276" y="386" class="micro" fill="#ffbf69">Hold when CUDA is required</text>
+  <rect x="628" y="301" width="374" height="98" fill="#111715" stroke="#36433b"/>
+  <text x="644" y="321" class="micro mono" fill="#c8f36b">SYSTEM BOUNDARY / BEFORE BUYING</text>
+  <text x="644" y="346" class="small" fill="#f1f4ec">Host → display → backup</text>
+  <line x1="647" y1="358" x2="984" y2="358" stroke="#c8f36b" stroke-dasharray="5 5"/>
+  <text x="644" y="383" class="micro" fill="#b7c2b4">Interfaces, cost and source stay visible.</text>
+  <rect x="1044" y="130" width="240" height="288" rx="17" fill="#080d0b" stroke="#52634d"/>
+  <text x="1060" y="155" class="micro mono" fill="#c8f36b">ATLAS   MENU</text>
+  <line x1="1060" y1="168" x2="1268" y2="168" stroke="#3e4b42"/>
+  <text x="1060" y="203" class="label" fill="#f1f4ec">Choose the</text>
+  <text x="1060" y="230" class="label" fill="#c8f36b">system.</text>
+  <rect x="1060" y="246" width="208" height="30" fill="#111916" stroke="#52634d"/>
+  <text x="1072" y="266" class="micro" fill="#b7c2b4">Workload: Local AI  ▾</text>
+  <rect x="1060" y="287" width="208" height="111" fill="#111715" stroke="#36433b"/>
+  <text x="1073" y="309" class="micro mono" fill="#c8f36b">CANDIDATE / SOURCED</text>
+  <text x="1073" y="334" class="small" fill="#f1f4ec" font-weight="700">Framework Desktop</text>
+  <text x="1073" y="355" class="micro" fill="#b7c2b4">Large shared memory</text>
+  <text x="1073" y="379" class="micro" fill="#ffbf69">No CUDA path confirmed</text>
+
+  <!-- B: gallery -->
+  <rect x="30" y="457" width="1300" height="330" rx="12" fill="#faf9f4"/>
+  <text x="52" y="497" class="eyebrow" fill="#2048bd">02 / EDITORIAL</text>
+  <text x="52" y="528" class="label" fill="#171a1b">Product</text>
+  <text x="52" y="555" class="label" fill="#171a1b">Gallery</text>
+  <text x="52" y="587" class="small" fill="#596063">Human scale.</text>
+  <text x="52" y="610" class="small" fill="#596063">Rights-approved</text>
+  <text x="52" y="633" class="small" fill="#596063">media only.</text>
+  <rect x="236" y="477" width="790" height="288" rx="5" fill="#eeede7"/>
+  <text x="260" y="503" class="eyebrow" fill="#2943a9">STARLIGHT / MACHINE NOTES</text>
+  <text x="910" y="503" class="micro" fill="#212727">Compare ↗</text>
+  <line x1="260" y1="516" x2="1002" y2="516" stroke="#bec3c0"/>
+  <text x="260" y="569" class="big" fill="#171a1b">Small footprint.</text>
+  <text x="260" y="619" class="big" fill="#171a1b">Big decision.</text>
+  <text x="260" y="653" class="small" fill="#444e4c">Framework Desktop for a compact local AI desk.</text>
+  <text x="260" y="683" class="micro" fill="#2048bd">Inspect the complete system  ↗</text>
+  <rect x="725" y="535" width="251" height="196" rx="5" fill="#d8ddd8"/>
+  <rect x="795" y="555" width="110" height="120" rx="9" fill="#575f5d"/>
+  <rect x="808" y="568" width="84" height="93" rx="3" fill="#313b39"/>
+  <circle cx="850" cy="699" r="5" fill="#2048bd"/>
+  <text x="738" y="722" class="micro" fill="#4c5550">OWNED SCHEMATIC • NOT DEVICE IMAGE</text>
+  <rect x="1044" y="477" width="240" height="288" rx="17" fill="#eeede7" stroke="#a9b1ae"/>
+  <text x="1060" y="503" class="micro" fill="#2048bd">MACHINE NOTES   MENU</text>
+  <text x="1060" y="549" class="label" fill="#171a1b">Small footprint.</text>
+  <text x="1060" y="577" class="label" fill="#171a1b">Big decision.</text>
+  <rect x="1117" y="592" width="97" height="109" rx="8" fill="#596260"/>
+  <rect x="1127" y="603" width="77" height="85" fill="#303a38"/>
+  <text x="1060" y="725" class="micro" fill="#2048bd">Inspect the system  ↗</text>
+
+  <!-- C: operations -->
+  <rect x="30" y="804" width="1300" height="330" rx="12" fill="#f7f8f3"/>
+  <text x="52" y="844" class="eyebrow" fill="#b4542c">03 / FUTURE PRIVATE</text>
+  <text x="52" y="875" class="label" fill="#17232c">Operations</text>
+  <text x="52" y="902" class="label" fill="#17232c">Console</text>
+  <text x="52" y="934" class="small" fill="#596063">Site, task,</text>
+  <text x="52" y="957" class="small" fill="#596063">operator, stop.</text>
+  <text x="52" y="984" class="micro" fill="#b4542c">No live data yet.</text>
+  <rect x="236" y="824" width="790" height="288" rx="5" fill="#111c24"/>
+  <text x="260" y="850" class="eyebrow" fill="#ff985d">STARLIGHT / CONTROLLED SITE / DEMO STATE</text>
+  <text x="903" y="850" class="micro" fill="#d9e5e8">Read-only</text>
+  <line x1="260" y1="864" x2="1002" y2="864" stroke="#3a505a"/>
+  <text x="260" y="901" class="heading" fill="#edf2ef">Know the operating boundary.</text>
+  <rect x="260" y="923" width="315" height="164" fill="#172630" stroke="#435966"/>
+  <text x="276" y="946" class="micro mono" fill="#ff985d">SITE MAP / NO TELEMETRY CONNECTED</text>
+  <path d="M285 973H546 M285 1016H546 M325 955V1067 M440 955V1067" stroke="#3c5560" fill="none"/>
+  <circle cx="370" cy="994" r="10" fill="#ff985d"/>
+  <text x="389" y="999" class="micro" fill="#d4e0df">Unitree Go2 • unverified</text>
+  <rect x="590" y="923" width="412" height="164" fill="#172630" stroke="#435966"/>
+  <text x="606" y="946" class="micro mono" fill="#ff985d">TASK AUTHORITY</text>
+  <text x="606" y="978" class="small" fill="#edf2ef">Site operator: not assigned</text>
+  <text x="606" y="1006" class="small" fill="#edf2ef">Firmware: unknown</text>
+  <text x="606" y="1034" class="small" fill="#edf2ef">Physical stop: not verified</text>
+  <rect x="606" y="1051" width="380" height="26" fill="#49302b"/>
+  <text x="619" y="1069" class="micro" fill="#ffbd96">DISPATCH HELD / READ-ONLY RECORD</text>
+  <rect x="1044" y="824" width="240" height="288" rx="17" fill="#111c24" stroke="#435966"/>
+  <text x="1060" y="850" class="micro" fill="#ff985d">ESTATE   MENU</text>
+  <text x="1060" y="889" class="label" fill="#edf2ef">Site boundary</text>
+  <rect x="1060" y="908" width="208" height="92" fill="#172630" stroke="#435966"/>
+  <text x="1073" y="933" class="micro mono" fill="#ff985d">UNITREE GO2</text>
+  <text x="1073" y="959" class="small" fill="#edf2ef">No operator assigned</text>
+  <text x="1073" y="982" class="micro" fill="#c0d0d2">Capability unverified</text>
+  <rect x="1060" y="1015" width="208" height="67" fill="#49302b"/>
+  <text x="1073" y="1040" class="micro" fill="#ffbd96">DISPATCH HELD</text>
+  <text x="1073" y="1061" class="micro" fill="#ffbd96">Local safety path missing</text>
+
+  <line x1="30" y1="1151" x2="1330" y2="1151" stroke="#aeb6ac"/>
+  <text x="40" y="1174" class="micro" fill="#525b55">REFERENCE PRINCIPLES: Framework configuration • Apple context • Boston Dynamics operations • 1X task boundary</text>
+  <text x="1050" y="1174" class="micro" fill="#525b55">Original composition / reference-only research</text>
+</svg>
