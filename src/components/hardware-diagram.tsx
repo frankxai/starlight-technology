@@ -1,0 +1,15 @@
+import type { HardwareShape } from "@/lib/shop";
+
+// Original category schematics. These are not product photographs or model-
+// accurate renders; the nearby caption deliberately identifies them as such.
+export function HardwareDiagram({ shape }: { shape: HardwareShape }) {
+  return <svg viewBox="0 0 320 180" fill="none" aria-hidden="true" focusable="false">
+    <path d="M20 150H300M40 160H280" stroke="currentColor" opacity=".13" />
+    {shape === "workstation" && <g stroke="currentColor" strokeWidth="1.8"><path d="m66 61 143-24 49 28-140 25z" fill="currentColor" fillOpacity=".06" /><path d="M66 61v59l52 30V90m140-25v59l-140 26" /><path d="m66 120 143-24 49 28M130 100l112-20M130 108l112-20M130 116l112-20" opacity=".35" /><path d="M78 86v20M87 91v20M96 96v20" /><circle cx="230" cy="120" r="3" fill="currentColor" /><path d="m147 58 38-6 15 8-38 7z" opacity=".5" /></g>}
+    {shape === "gpu" && <g stroke="currentColor" strokeWidth="1.8"><path d="M42 57h226v72H42z" fill="currentColor" fillOpacity=".04" /><circle cx="100" cy="93" r="27" /><circle cx="209" cy="93" r="27" /><circle cx="100" cy="93" r="8" /><circle cx="209" cy="93" r="8" /><path d="m100 66 6 17 18-4m-51 14 17-6-4-17m14 50-6-17-18 4m51-14-17 6 4 17m95-50 6 17 18-4m-51 14 17-6-4-17m14 50-6-17-18 4m51-14-17 6 4 17M32 47v92h10M76 129v10h126v-10M221 49h24v8" /><path d="M137 69h34m-34 9h34m-34 9h34m-34 9h34m-34 9h34m-34 9h34" opacity=".35" /></g>}
+    {shape === "nas" && <g stroke="currentColor" strokeWidth="1.8"><path d="M96 39h139v102H96z" fill="currentColor" fillOpacity=".04" /><path d="m96 39-21 16v102l21-16m-21 16h139l21-16" /><path d="M108 52h23v72h-23zm30 0h23v72h-23zm30 0h23v72h-23zm30 0h23v72h-23z" /><path d="M115 65v45m30-45v45m30-45v45m30-45v45" opacity=".35" /><circle cx="218" cy="132" r="2" fill="currentColor" /></g>}
+    {shape === "ssd" && <g stroke="currentColor" strokeWidth="1.8"><rect x="42" y="62" width="222" height="62" rx="5" fill="currentColor" fillOpacity=".04" /><circle cx="52" cy="92" r="5" /><path d="M76 74h38v38H76zm52 0h38v38h-38zm52 0h38v38h-38zM250 62v62M256 68h16m-16 8h16m-16 8h16m-16 16h16m-16 8h16m-16 8h16" /><path d="M83 81h24m28 0h24m28 0h24" opacity=".35" /></g>}
+    {shape === "controller" && <g stroke="currentColor" strokeWidth="1.8"><path d="m73 38 175 8 13 107-197-9z" fill="currentColor" fillOpacity=".04" /><path d="m85 51 30 1-1 21-31-1zm40 2 30 1 1 21-31-1zm40 2 30 1 2 21-31-1zm40 2 30 1 3 21-31-1zM81 79l157 8 2 21-162-8z" /><circle cx="98" cy="120" r="10" /><circle cx="141" cy="122" r="10" /><circle cx="184" cy="124" r="10" /><circle cx="227" cy="126" r="10" /><path d="m98 111 1 6m42-4 1 6m42-4 1 6m42-4 1 6" /></g>}
+    {shape === "microphone" && <g stroke="currentColor" strokeWidth="1.8"><rect x="130" y="25" width="62" height="99" rx="26" fill="currentColor" fillOpacity=".04" /><path d="M136 42h49m-52 8h55m-56 8h57m-57 8h57m-57 8h57m-57 8h57m-54 8h51M118 77v25c0 43 86 43 86 0V77M161 136v19m-27 0h54" /><path d="M161 98v16" opacity=".4" /></g>}
+  </svg>;
+}

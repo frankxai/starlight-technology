@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import styles from "@/components/shop.module.css";
+
+export const metadata: Metadata = { title: "Hardware and supply partners", description: "Starlight Technology's path from transparent hardware referrals to fulfilled studio equipment and configured AI systems.", alternates: { canonical: "/partners" }, openGraph: { title: "Hardware with a purpose. Partners with a standard.", description: "The Starlight Technology partner approach.", url: "/partners" } };
+
+const routes = [
+  { name: "MINISFORUM", copy: "Compact AMD-based workstations. Evaluate the brand's affiliate route first; regional supply, support and reseller terms require separate agreement.", href: "https://store.minisforum.com/pages/brand-ambassador", label: "Affiliate programme ↗" },
+  { name: "UGREEN", copy: "NAS and studio connectivity. Evaluate its EU affiliate route, then validate selected products, fulfilment and regional support.", href: "https://ai-eu.ugreen.com/pages/affiliate", label: "EU affiliate route ↗" },
+  { name: "NVIDIA", copy: "A future solution-provider route for validated NVIDIA-based systems, deployment and support. Vendor authorisation is a separate milestone.", href: "https://www.nvidia.com/en-us/about-nvidia/partners/", label: "Partner network ↗" },
+  { name: "AMD", copy: "Evaluate the AMD Partner Network Sell track for retail, systems and value-added resale as our hardware practice develops.", href: "https://www.amd.com/en/partner/partner-network.html", label: "Partner network ↗" },
+  { name: "TD SYNNEX", copy: "A prospective Netherlands distribution relationship. Confirm vendor access, account terms and the operational model for each product line.", href: "https://www.tdsynnex.com/eu/nl/nl/partnerfirst.html", label: "Distribution route ↗" }
+];
+
+export default function PartnersPage() {
+  return <div className={`${styles.shop} shell`}><header className={styles.partnerHero}><p className="eyebrow">Starlight Technology / Supply & systems</p><h1>Hardware with a purpose.<br />Partners with a standard.</h1><p className={styles.lede}>We are building a route from a considered recommendation to a complete working studio: equipment, software, deployment and support.</p></header>
+    <section className={styles.partnerStages} aria-label="Commercial development stages"><article><span className={styles.partnerStatus}>01 / FIRST RELEASE</span><h2>Curated equipment.</h2><p>A public buying library with direct manufacturer destinations and clearly disclosed affiliate links when approved.</p><Link href="/shop">Explore the shop →</Link></article><article><span className={styles.partnerStatus}>02 / PLANNED</span><h2>Fulfilled essentials.</h2><p>A small range of studio accessories with confirmed stock, delivery, return handling and support before Starlight accepts an order.</p></article><article><span className={styles.partnerStatus}>03 / PLANNED</span><h2>Configured AI systems.</h2><p>Workstations and local AI nodes delivered with a validated software stack, acceptance criteria and a defined support relationship.</p></article></section>
+    <section><div className={styles.sectionHead}><div><p className="eyebrow">Routes we are evaluating</p><h2>Build the relationship around the work.</h2></div><span>Prospective partners · no authorisation claimed</span></div><div className={styles.partnerRows}>{routes.map((route) => <article className={styles.partnerRow} key={route.name}><h3>{route.name}</h3><p>{route.copy}</p><a href={route.href} target="_blank" rel="noopener">{route.label}</a></article>)}</div></section>
+    <section className={styles.bottomCallout}><div><p className="eyebrow">For manufacturers & distributors</p><h2>A useful system,<br />not another catalogue.</h2><p>Discuss product evaluation, EU supply, creator education and supported AI studio configurations with Starlight.</p></div><a className="button button-primary" href="mailto:hello@frankx.ai?subject=Starlight%20Technology%20supply%20partnership">Discuss a partnership ↗</a></section><p className={styles.disclosure}>Programme pages checked 7 October 2026. Listings identify prospective routes and do not imply an active commercial relationship, endorsement or permission to use partner badges.</p>
+  </div>;
+}

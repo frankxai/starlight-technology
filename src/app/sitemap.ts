@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
 import { builds, comparisons, guides } from "@/lib/content";
 
+import { shopProducts } from "@/lib/shop";
+
 const base = "https://starlight.technology";
-const updated = new Date("2026-08-31");
+const updated = new Date("2026-10-07");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: "", priority: 1 },
+    { path: "/shop", priority: 0.95 },
+    { path: "/partners", priority: 0.7 },
     { path: "/builds", priority: 0.8 },
     { path: "/compare", priority: 0.8 },
     { path: "/guides", priority: 0.75 },
@@ -31,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: updated,
       changeFrequency: "weekly" as const,
       priority
+    })),
+    ...shopProducts.map(({ slug }) => ({
+      url: `${base}/shop/${slug}`,
+      lastModified: updated,
+      changeFrequency: "weekly" as const,
+      priority: 0.8
     })),
     ...builds.map(({ slug }) => ({
       url: `${base}/builds/${slug}`,
