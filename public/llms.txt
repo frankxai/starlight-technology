@@ -13,6 +13,14 @@ Every analysis declares whether evidence is owned-and-tested, hands-on, source-b
 
 ## Main collections
 
+- /shop — curated hardware, category filters, planning shortlists and constraints comparison
+- /shop/[slug] — product identity, buying fit, complete-system checks and labelled merchant destination
+- /partners — prospective supply and vendor relationships; no authorisation claimed
+
 - /builds — complete systems by objective and planning budget
 - /compare — constraint-led comparisons
 - /guides — decision frameworks
+
+## Commerce boundary
+
+Hardware links lead directly to the official source until an approved, unexpired partner destination is configured. Affiliate links disclose commission beside the link and use rel=sponsored. No hardware checkout, customer orders, reseller authorisation or live merchant prices are active in this release. Never infer approval from a brand appearing in the shop.

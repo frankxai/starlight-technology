@@ -1,0 +1,9 @@
+{
+  "feature": "Starlight Studio Shop",
+  "branch": "feat/affiliate-shop-20261007",
+  "verificationDate": "2026-10-07",
+  "localVerification": {"toolchain": "passed", "lint": "passed", "typecheck": "passed", "vitest": "35 passed", "editorialPlanner": "11 passed", "build": "passed"},
+  "browserVerification": "pending preview",
+  "commercialState": "Eight ordinary manufacturer destinations. No approved affiliate records, live hardware prices, checkout or vendor authorization.",
+  "temporaryQaHarness": "public/qa-responsive.html is preview-only and will be removed before production."
+}
