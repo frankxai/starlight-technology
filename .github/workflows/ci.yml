@@ -37,5 +37,10 @@ jobs:
         run: pnpm test
       - name: Verify hardware editorial planner
         run: node --test scripts/editorial/plan.test.mjs
+      - name: Verify compute data and generated graph
+        run: |
+          node --test scripts/compute/compute.test.mjs
+          node scripts/compute/build.mjs --check
       - name: Build
         run: pnpm build
+
