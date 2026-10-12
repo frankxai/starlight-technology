@@ -2,9 +2,7 @@
   "selected": [
     "hw-994deff273639b4fb27d"
   ],
-  "pending": [
-    "hw-994deff273639b4fb27d"
-  ],
+  "pending": [],
   "deferred": [],
   "rejected": [],
   "budget": {
@@ -172,7 +170,7 @@
         "eventIds": [
           "a0239fa9ca45a52511182819af5fc40ff58fa165092170685d39a094b8de58e2"
         ],
-        "status": "reserved",
+        "status": "held",
         "reservedAt": "2026-10-12T06:57:39Z",
         "period": "2026-10",
         "reservedTokens": 8000,
@@ -208,7 +206,11 @@
           "publication-authority"
         ],
         "evidenceLevel": "manufacturer-source; no hands-on testing claimed",
-        "publishable": false
+        "publishable": false,
+        "heldAt": "2026-10-12T06:57:39Z",
+        "researchPacket": "data/editorial/packets/lenovo-googlebook-15-nl-20261012.json",
+        "holdReason": "Research brief delivered. Exact Dutch saleable SKU, Googlebook OS application fit, workload evidence and image permission remain unresolved.",
+        "releaseCondition": "An orderable Dutch model code with configuration, keyboard, warranty, price and stock; application-by-application Googlebook OS verification; exact-device workload evidence; and an original or individually permitted visual."
       }
     ],
     "note": "Bootstrap once. Every subsequent run must read nextState from the newest saved plan bundle. Never reset this file to renew a budget."
@@ -288,19 +290,51 @@
       "kind": "partial-text-extraction",
       "checkedAt": "2026-09-24T06:50:01Z",
       "detail": "Specification headings loaded without values; no complete-spec watermark advanced."
+    },
+    {
+      "url": "https://psref.lenovo.com/Detail/Lenovo_GB_15IPH12?M=83W60000US",
+      "kind": "empty-text-extraction",
+      "checkedAt": "2026-10-12T06:57:39Z",
+      "detail": "Official PSREF detail returned zero extracted text; no specification watermark advanced."
     }
   ],
   "research": {
     "jobId": "hw-994deff273639b4fb27d",
-    "status": "commissioned",
-    "packet": null,
-    "rounds": 0,
-    "uniqueSourcePages": 0,
+    "status": "completed-held",
+    "packet": "data/editorial/packets/lenovo-googlebook-15-nl-20261012.json",
+    "rounds": 2,
+    "uniqueSourcePages": 4,
     "newReservations": 1,
     "actualModelTokens": null,
     "actualCost": null,
     "plannerBudgetScope": "budget.modelCalls and budget.actualModelTokens describe the deterministic planner only.",
-    "sourceObservations": [],
-    "nextJob": "hw-994deff273639b4fb27d"
+    "sourceObservations": [
+      {
+        "id": "lenovo-storyhub-googlebook-20260928",
+        "url": "https://news.lenovo.com/pressroom/press-releases/first-googlebook-premium-ai-experiences-sleek-lightweight-design/",
+        "checkedAt": "2026-10-12T06:57:39Z",
+        "status": "observed"
+      },
+      {
+        "id": "lenovo-nl-googlebook-family-20261012",
+        "url": "https://www.lenovo.com/nl/nl/p/laptops/googlebook/googlebook-series/lenovo-googlebook-15/len101o0001",
+        "checkedAt": "2026-10-12T06:57:39Z",
+        "status": "incomplete-regional-offer"
+      },
+      {
+        "id": "lenovo-psref-83w60000us-20261012",
+        "url": "https://psref.lenovo.com/Detail/Lenovo_GB_15IPH12?M=83W60000US",
+        "checkedAt": "2026-10-12T06:57:39Z",
+        "status": "empty-text-extraction"
+      },
+      {
+        "id": "lenovo-terms-20261012",
+        "url": "https://www.lenovo.com/us/en/legal/",
+        "checkedAt": "2026-10-12T06:57:39Z",
+        "status": "no-image-permission-receipt"
+      }
+    ],
+    "sourceDelta": "Lenovo announced Googlebook 15 on 28 September and exposes a Dutch family page, but this run did not establish an orderable Dutch SKU. The launch offer country list excludes the Netherlands, creator application fit is untested, and image permission is unresolved.",
+    "nextJob": null
   }
 }
