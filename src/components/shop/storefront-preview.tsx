@@ -11,12 +11,12 @@ export function StorefrontPreview() {
     <div className={styles.stageBar}><span>source-to-brief · live preview</span><span>meeting-0923.md → brief.md</span></div>
     <div className={styles.stageBody}>
       <div className={styles.stagePane}>
-        <h3>Source · <b>S01</b> {exampleSources[0].label}</h3>
+        <p className={styles.paneLabel}>Source · <b>S01</b> {exampleSources[0].label}</p>
         <ul className={styles.stageLines}>{shown.map((line) => <li key={line.id}>{line.text}</li>)}</ul>
       </div>
       <div className={styles.stageArrow} aria-hidden="true">→</div>
       <div className={styles.stagePane}>
-        <h3>Brief · <b>cited</b> and reviewed</h3>
+        <p className={styles.paneLabel}>Brief · <b>cited</b> and reviewed</p>
         <ul className={styles.stageLines}>{shown.map((line) => <li key={line.id} className={line.status === "pending" ? styles.held : styles.out}><span className={styles.tag} data-kind={line.section}>{sectionTitles[line.section].replace("Open questions", "Question").replace(/s$/, "")}</span>{line.text} <span className={styles.cite}>[{line.sourceId}]</span>{line.status === "pending" ? <span className={styles.muted}> · held for review</span> : null}</li>)}</ul>
       </div>
     </div>

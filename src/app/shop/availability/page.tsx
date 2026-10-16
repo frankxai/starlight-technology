@@ -24,6 +24,7 @@ export default async function AvailabilityPage({ searchParams }: { searchParams:
         <div style={{ marginTop: 28 }}><AvailabilityForm products={digitalProducts.map((item) => ({ slug: item.slug, name: `${item.name} ${item.edition}` }))} defaultProduct={defaultProduct} interests={interests} /></div>
       </div>
       <div>
+        <h2 className="sr-only">Checkout readiness</h2>
         <ReadinessBoard compact />
         <p className={styles.heroNote} style={{ marginTop: 16 }}>While you wait: <Link href="/shop/free/source-to-brief-lab">the free lab</Link> produces the same artifact format now, and the <Link href="/shop/products/source-to-brief-workflow-edition">edition page</Link> lists everything the download contains.</p>
       </div>

@@ -1,0 +1,102 @@
+{
+  "feature": "Starlight Technology Shop v2 — native digital products, flagship Workflow Edition, free Source-to-Brief Lab, fail-closed checkout",
+  "branch": "claude/starlight-shop-production-wl99xc",
+  "verifiedCodeCommit": "a44d1cad841e2d6343d68e831d1e9aeb67c8ba6c (evidence commit follows; QA ran on the identical working tree)",
+  "previewDeployment": "pending — Vercel preview is created by the draft PR",
+  "previewUrl": null,
+  "verifiedAt": "2026-10-16T18:09:08.068Z",
+  "routes": [
+    "/shop",
+    "/shop/agent-workflow-kits",
+    "/shop/mcp-and-agent-skills",
+    "/shop/research-and-decision-intelligence",
+    "/shop/creative-production",
+    "/shop/local-ai-hardware",
+    "/shop/products/source-to-brief-workflow-edition",
+    "/shop/free/source-to-brief-lab",
+    "/shop/how-it-works",
+    "/shop/licensing-and-support",
+    "/shop/updates",
+    "/shop/availability",
+    "/api/shop/availability",
+    "/api/shop/webhooks/payment"
+  ],
+  "verification": {
+    "toolchain": "passed (node 24.22.0, next 16.4.1)",
+    "lint": "passed",
+    "typecheck": "passed",
+    "tests": "94 passed across 11 files (59 new: catalog integrity, fail-closed checkout permutations, entitlement state machine and HMAC verification, brief core, measurement contract, sitemap); 11 editorial planner tests passed",
+    "build": "passed; 53 static pages; shop routes static except local-ai-hardware (request-rendered link approvals), availability (query param) and the two API routes",
+    "desktop": "Playwright Chromium at 1349px: hero with live preview, five collections, flagship spotlight, free-lab artifact excerpt, hardware criteria table, trust grid, FAQ and readiness board inspected; product page sticky pricing module; lab review and export flow.",
+    "mobile": "Playwright at 360, 390 and 768px across 15 routes: scrollWidth equals clientWidth on every route and width (no horizontal overflow); single h1 per page; no heading-level skips; every form field labelled; every external link carries noopener.",
+    "interactions": [
+      "Free lab: load worked example → extract (13 lines, 5 held) → approve held → evaluation 12/12 → downloaded q4-tooling-decision-note-sync-vendor.brief.md and .brief.json",
+      "Availability form without endpoint: 503 from /api/shop/availability, form shows the explanation and a pre-filled mailto fallback; invalid product returns 400",
+      "Payment webhook without secret: 503, nothing processed",
+      "Keyboard: skip link first, then header, then hero CTAs; 3px solid focus outline on every stop",
+      "prefers-reduced-motion: reveal elements report animation none and opacity 1; reveals are transform-only in any case"
+    ],
+    "lighthouse": {
+      "mode": "Lighthouse 12.8.2, mobile form factor, simulated throttling, local next start",
+      "/shop": {
+        "performance": 89,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "3.7 s",
+        "cls": 0,
+        "tbt": "100 ms"
+      },
+      "/shop/local-ai-hardware": {
+        "performance": 87,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "3.7 s",
+        "cls": 0,
+        "tbt": "170 ms"
+      },
+      "/shop/products/source-to-brief-workflow-edition": {
+        "performance": 92,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "3.3 s",
+        "cls": 0,
+        "tbt": "90 ms"
+      },
+      "/shop/free/source-to-brief-lab": {
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "2.7 s",
+        "cls": 0,
+        "tbt": "110 ms"
+      },
+      "note": "LCP is text; remaining time is the five next/font families inherited from the root layout and one render-blocking stylesheet. Best-practices deduction is the locally unavailable Vercel analytics scripts (404) and source maps."
+    },
+    "metadata": "Per-route title, description, canonical and Open Graph; /shop and product OG images; JSON-LD Organization + ItemList + FAQPage on /shop, Product (no Offer while checkout is closed) + BreadcrumbList + FAQPage on the product page, WebApplication on the lab, ItemList on collections; sitemap covers all twelve routes (tested).",
+    "accessibility": "Semantic landmarks and headings, labelled controls, aria-pressed states, role=status for live counts, native details/summary FAQ, focus-visible outlines, transform-only reveals, reduced-motion respected. Lighthouse accessibility 100 on the four audited pages.",
+    "commerceBoundary": "Ten fulfilment gates open with no evidence; resolveCheckoutState returns availability-list for every edition; no Buy button rendered anywhere; price labelled proposed; Product JSON-LD carries no Offer; every third-party link labelled independent or official source; zero affiliate approvals; no testimonials, rankings, scarcity, revenue or partner claims (tested)."
+  },
+  "designReview": {
+    "reviewer": "Implementation self-review from Playwright screenshots at 1349 and 390px plus interaction checks",
+    "decisionObject": 5,
+    "hierarchy": 5,
+    "craft": 4,
+    "responsive": 5,
+    "accessibility": 5,
+    "restraint": 4,
+    "total": 28,
+    "scale": 30
+  },
+  "knownLimitations": [
+    "Paid checkout, delivery, entitlement store, transactional email, portal and reconciliation are designed (docs/shop/FULFILMENT_ARCHITECTURE.md) and gated, not provisioned.",
+    "The availability endpoint is not configured; the form falls back to a pre-filled email until SHOP_AVAILABILITY_ENDPOINT points at a reviewed receiver.",
+    "Shop analytics are off until NEXT_PUBLIC_SHOP_ANALYTICS=v1; the measurement contract is documented in docs/shop/MEASUREMENT_CONTRACT.md.",
+    "The Workflow Edition download bundle is specified by manifest and shared core; the packaged zip and signed delivery are gate work before checkout opens.",
+    "Hardware power, noise and expansion are marked not measured; only SKU facts present in the existing source records are shown.",
+    "Lighthouse figures come from a local production server, not the Vercel preview; re-measure on the preview URL before promotion."
+  ]
+}
