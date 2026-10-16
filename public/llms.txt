@@ -11,10 +11,20 @@ Sitemap: https://starlight.technology/sitemap.xml
 
 Every analysis declares whether evidence is owned-and-tested, hands-on, source-backed research, or decision-model inference. Research-only pages must not be represented as hands-on testing. Prices require a merchant/source, region, currency and verification timestamp.
 
+## Shop
+
+- /shop — storefront: native digital products first, independent hardware and tooling recommendations second
+- /shop/agent-workflow-kits, /shop/mcp-and-agent-skills, /shop/research-and-decision-intelligence, /shop/creative-production, /shop/local-ai-hardware — collections; planned items are never priced or sold
+- /shop/products/source-to-brief-workflow-edition — flagship edition: outcome, manifest, licence, version, support, limitations, refund terms, recovery guidance; price marked proposed until verified
+- /shop/free/source-to-brief-lab — free browser tool; exports brief.md and starlight.brief/v1 JSON; nothing uploaded
+- /shop/how-it-works — journey, delivery, fulfilment architecture and the public checkout readiness board
+- /shop/licensing-and-support, /shop/updates, /shop/availability
+- /shop/[slug] — hardware decision pages: product identity, buying fit, complete-system checks and labelled destination
+
+Paid checkout is disabled until every fulfilment gate carries dated evidence. An availability request is not a sale, a pre-order or demand.
+
 ## Main collections
 
-- /shop — curated hardware, category filters, planning shortlists and constraints comparison
-- /shop/[slug] — product identity, buying fit, complete-system checks and labelled merchant destination
 - /partners — prospective supply and vendor relationships; no authorisation claimed
 
 - /builds — complete systems by objective and planning budget

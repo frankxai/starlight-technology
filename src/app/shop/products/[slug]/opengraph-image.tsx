@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
-import { getDigitalProduct } from "@/lib/catalog";
+import { digitalProducts, getDigitalProduct } from "@/lib/catalog";
+
+export function generateStaticParams() { return digitalProducts.map(({ slug }) => ({ slug })); }
 
 export const alt = "Starlight Technology shop — workflow edition";
 export const size = { width: 1200, height: 630 };
