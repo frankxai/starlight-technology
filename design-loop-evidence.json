@@ -1,100 +1,202 @@
 {
-  "feature": "Starlight Studio Shop",
-  "branch": "feat/affiliate-shop-20261007",
-  "verifiedCodeCommit": "2c1fb76782c26637b4be770a182b04b7b23a0314",
-  "previewDeployment": "dpl_7yEJhooQvBNfW6ULv7espGSN6MBa",
-  "previewUrl": "https://starlight-technology-5ig68inqb-starlight-intelligence.vercel.app",
-  "verifiedAt": "2026-10-07T21:23:15.873425+00:00",
+  "feature": "Starlight Technology Shop v2 — native digital products, flagship Workflow Edition, free Source-to-Brief Lab, fail-closed checkout",
+  "branch": "claude/starlight-shop-production-wl99xc",
+  "verifiedCodeCommit": "a44d1cad841e2d6343d68e831d1e9aeb67c8ba6c (evidence commit follows; QA ran on the identical working tree)",
+  "previewDeployment": "pending — Vercel preview is created by the draft PR",
+  "previewUrl": null,
+  "verifiedAt": "2026-10-16T18:09:08.068Z",
   "routes": [
-    "/",
     "/shop",
-    "/shop/minisforum-ms-s1-max",
-    "/partners",
-    "/disclosure"
+    "/shop/agent-workflow-kits",
+    "/shop/mcp-and-agent-skills",
+    "/shop/research-and-decision-intelligence",
+    "/shop/creative-production",
+    "/shop/local-ai-hardware",
+    "/shop/products/source-to-brief-workflow-edition",
+    "/shop/free/source-to-brief-lab",
+    "/shop/how-it-works",
+    "/shop/licensing-and-support",
+    "/shop/updates",
+    "/shop/availability",
+    "/api/shop/availability",
+    "/api/shop/webhooks/payment"
   ],
   "verification": {
-    "toolchain": "passed",
+    "toolchain": "passed (node 24.22.0, next 16.4.1)",
     "lint": "passed",
     "typecheck": "passed",
-    "tests": "35 passed across 5 files; 11 editorial planner tests passed",
-    "build": "passed; 38 prerendered routes plus request-rendered shop and product decisions",
-    "ci": "GitHub verify and Vercel Preview Comments succeeded on verifiedCodeCommit; Vercel READY",
-    "desktop": "Inspected rendered shop hero, category/search controls, studio shortlists, three-component board and product decision at 1349px browser viewport.",
-    "mobile": "Inspected a 390 x 844 iframe viewport (375px content width after scrollbar). Menu closes after route changes; catalogue stacks; comparison scrolls inside its container; document clientWidth and scrollWidth both 375px.",
+    "tests": "94 passed across 11 files (59 new: catalog integrity, fail-closed checkout permutations, entitlement state machine and HMAC verification, brief core, measurement contract, sitemap); 11 editorial planner tests passed",
+    "build": "passed; 53 static pages; shop routes static except local-ai-hardware (request-rendered link approvals), availability (query param) and the two API routes",
+    "desktop": "Playwright Chromium at 1349px: hero with live preview, five collections, flagship spotlight, free-lab artifact excerpt, hardware criteria table, trust grid, FAQ and readiness board inspected; product page sticky pricing module; lab review and export flow.",
+    "mobile": "Playwright at 360, 390 and 768px across 15 routes: scrollWidth equals clientWidth on every route and width (no horizontal overflow); single h1 per page; no heading-level skips; every form field labelled; every external link carries noopener.",
     "interactions": [
-      "Storage + Samsung search returned 1 of 8; unmatched search exposed Reset filters",
-      "Creator studio shortlist returned 3 of 8",
-      "Three selected products disabled a fourth selection; clear comparison reset the board",
-      "Compare selected anchor settled 100px below the sticky header on mobile",
-      "Mobile Menu -> Partners changed route and removed the open attribute"
+      "Free lab: load worked example → extract (13 lines, 5 held) → approve held → evaluation 12/12 → downloaded q4-tooling-decision-note-sync-vendor.brief.md and .brief.json",
+      "Availability form without endpoint: 503 from /api/shop/availability, form shows the explanation and a pre-filled mailto fallback; invalid product returns 400",
+      "Payment webhook without secret: 503, nothing processed",
+      "Keyboard: skip link first, then header, then hero CTAs; 3px solid focus outline on every stop",
+      "prefers-reduced-motion: reveal elements report animation none and opacity 1; reveals are transform-only in any case"
     ],
-    "metadata": "MINISFORUM canonical resolves to production product route; official destination matches the exact 64 GB source SKU.",
-    "accessibility": "Semantic headings and table scopes, labelled search, pressed filter/selection states, status counts, skip link, focus styles and reduced-motion support inspected.",
-    "commerceBoundary": "Empty approvals. All eight destinations are ordinary manufacturer links with no commission. No live price, inventory, hands-on benchmark or vendor appointment claimed."
+    "lighthouse": {
+      "mode": "Lighthouse 12.8.2, mobile form factor, simulated throttling, local next start",
+      "/shop": {
+        "performance": 89,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "3.7 s",
+        "cls": 0,
+        "tbt": "100 ms"
+      },
+      "/shop/local-ai-hardware": {
+        "performance": 87,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "3.7 s",
+        "cls": 0,
+        "tbt": "170 ms"
+      },
+      "/shop/products/source-to-brief-workflow-edition": {
+        "performance": 92,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "3.3 s",
+        "cls": 0,
+        "tbt": "90 ms"
+      },
+      "/shop/free/source-to-brief-lab": {
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 100,
+        "lcp": "2.7 s",
+        "cls": 0,
+        "tbt": "110 ms"
+      },
+      "note": "LCP is text; remaining time is the five next/font families inherited from the root layout and one render-blocking stylesheet. Best-practices deduction is the locally unavailable Vercel analytics scripts (404) and source maps."
+    },
+    "metadata": "Per-route title, description, canonical and Open Graph; /shop and product OG images; JSON-LD Organization + ItemList + FAQPage on /shop, Product (no Offer while checkout is closed) + BreadcrumbList + FAQPage on the product page, WebApplication on the lab, ItemList on collections; sitemap covers all twelve routes (tested).",
+    "accessibility": "Semantic landmarks and headings, labelled controls, aria-pressed states, role=status for live counts, native details/summary FAQ, focus-visible outlines, transform-only reveals, reduced-motion respected. Lighthouse accessibility 100 on the four audited pages.",
+    "commerceBoundary": "Ten fulfilment gates open with no evidence; resolveCheckoutState returns availability-list for every edition; no Buy button rendered anywhere; price labelled proposed; Product JSON-LD carries no Offer; every third-party link labelled independent or official source; zero affiliate approvals; no testimonials, rankings, scarcity, revenue or partner claims (tested)."
   },
   "designReview": {
-    "reviewer": "Implementation self-review informed by browser screenshots and interaction checks",
+    "reviewer": "Implementation self-review from Playwright screenshots at 1349 and 390px plus interaction checks",
     "decisionObject": 5,
     "hierarchy": 5,
     "craft": 4,
     "responsive": 5,
-    "accessibility": 4,
+    "accessibility": 5,
     "restraint": 4,
-    "total": 27,
+    "total": 28,
     "scale": 30
   },
   "knownLimitations": [
-    "Publisher approval and programme-issued attribution URLs are still required to activate commissions.",
-    "Category drawings are schematics, not model-accurate product photographs.",
-    "No hardware checkout, inventory feed, supplier integration or reseller appointment is active.",
-    "The preview-only mobile QA harness is removed in the evidence commit; its screenshots and DOM observations describe the unchanged production UI code."
+    "Paid checkout, delivery, entitlement store, transactional email, portal and reconciliation are designed (docs/shop/FULFILMENT_ARCHITECTURE.md) and gated, not provisioned.",
+    "The availability endpoint is not configured; the form falls back to a pre-filled email until SHOP_AVAILABILITY_ENDPOINT points at a reviewed receiver.",
+    "Shop analytics are off until NEXT_PUBLIC_SHOP_ANALYTICS=v1; the measurement contract is documented in docs/shop/MEASUREMENT_CONTRACT.md.",
+    "The Workflow Edition download bundle is specified by manifest and shared core; the packaged zip and signed delivery are gate work before checkout opens.",
+    "Hardware power, noise and expansion are marked not measured; only SKU facts present in the existing source records are shown.",
+    "Lighthouse figures come from a local production server, not the Vercel preview; re-measure on the preview URL before promotion."
   ],
   "previousRelease": {
-    "feature": "Starlight Infrastructure Partnership OS",
-    "branch": "feat/infrastructure-exchange-20260831",
-    "verifiedCodeCommit": "40893bb41fa6841740b4d3211e9aca6c75a7afbb",
-    "previewDeployment": "dpl_EzEgQkHPGkzjubteYaDy2KdiPuus",
-    "previewUrl": "https://starlight-technology-juo1zh9hd-starlight-intelligence.vercel.app",
-    "verifiedAt": "2026-08-31T01:30:00Z",
+    "feature": "Starlight Studio Shop",
+    "branch": "feat/affiliate-shop-20261007",
+    "verifiedCodeCommit": "2c1fb76782c26637b4be770a182b04b7b23a0314",
+    "previewDeployment": "dpl_7yEJhooQvBNfW6ULv7espGSN6MBa",
+    "previewUrl": "https://starlight-technology-5ig68inqb-starlight-intelligence.vercel.app",
+    "verifiedAt": "2026-10-07T21:23:15.873425+00:00",
     "routes": [
-      "/infrastructure",
-      "/infrastructure/compose",
-      "/infrastructure/system",
-      "/infrastructure/contracts",
-      "/infrastructure/operator",
-      "/infrastructure/workspace",
-      "/api/infrastructure/manifest",
-      "/checkout/infrastructure-blueprint",
-      "/pricing"
+      "/",
+      "/shop",
+      "/shop/minisforum-ms-s1-max",
+      "/partners",
+      "/disclosure"
     ],
     "verification": {
+      "toolchain": "passed",
       "lint": "passed",
       "typecheck": "passed",
-      "tests": "13 passed across 3 files",
-      "build": "38 routes generated",
-      "renderedHtml": "All listed routes returned HTTP 200 during exact-head preview validation; representative metadata and content were inspected.",
-      "canonicalMetadata": "Infrastructure routes, pricing and checkout expose route-specific canonical metadata.",
-      "responsive": "Responsive source was inspected at the declared 1180px, 860px and 560px breakpoints. No remote screenshot-capable browser was available in this release toolchain.",
-      "accessibility": "Semantic headings, skip link, form labels, aria-live output, focus-visible handling and reduced-motion handling are present.",
-      "commerceBoundary": "B2B checkout is invoice-led and contract-first until a reviewed payment URL is configured. It does not imply hardware, finance or production authority."
+      "tests": "35 passed across 5 files; 11 editorial planner tests passed",
+      "build": "passed; 38 prerendered routes plus request-rendered shop and product decisions",
+      "ci": "GitHub verify and Vercel Preview Comments succeeded on verifiedCodeCommit; Vercel READY",
+      "desktop": "Inspected rendered shop hero, category/search controls, studio shortlists, three-component board and product decision at 1349px browser viewport.",
+      "mobile": "Inspected a 390 x 844 iframe viewport (375px content width after scrollbar). Menu closes after route changes; catalogue stacks; comparison scrolls inside its container; document clientWidth and scrollWidth both 375px.",
+      "interactions": [
+        "Storage + Samsung search returned 1 of 8; unmatched search exposed Reset filters",
+        "Creator studio shortlist returned 3 of 8",
+        "Three selected products disabled a fourth selection; clear comparison reset the board",
+        "Compare selected anchor settled 100px below the sticky header on mobile",
+        "Mobile Menu -> Partners changed route and removed the open attribute"
+      ],
+      "metadata": "MINISFORUM canonical resolves to production product route; official destination matches the exact 64 GB source SKU.",
+      "accessibility": "Semantic headings and table scopes, labelled search, pressed filter/selection states, status counts, skip link, focus styles and reduced-motion support inspected.",
+      "commerceBoundary": "Empty approvals. All eight destinations are ordinary manufacturer links with no commission. No live price, inventory, hands-on benchmark or vendor appointment claimed."
     },
     "designReview": {
+      "reviewer": "Implementation self-review informed by browser screenshots and interaction checks",
       "decisionObject": 5,
       "hierarchy": 5,
-      "craft": 5,
-      "responsiveSource": 4,
-      "accessibility": 5,
+      "craft": 4,
+      "responsive": 5,
+      "accessibility": 4,
       "restraint": 4,
-      "total": 28,
+      "total": 27,
       "scale": 30
     },
     "knownLimitations": [
-      "The reference workspace uses explicitly labelled sample data, not client telemetry.",
-      "NEXT_PUBLIC_POLAR_INFRASTRUCTURE_BLUEPRINT_URL is not configured; checkout uses an invoice-led engagement intake.",
-      "No client operational database, ERP connector credentials, energy telemetry, bank facility or production agent tenant is provisioned in this public reference release.",
-      "The public contract structures are issue maps and decision frameworks, not executable legal, tax, credit, insurance or energy-market advice.",
-      "Vercel preview deployments are noindex; production-domain indexing is verified separately after merge.",
-      "No remote screenshot-capable browser was available; rendered HTML, metadata, responsive source and build output were inspected."
-    ]
+      "Publisher approval and programme-issued attribution URLs are still required to activate commissions.",
+      "Category drawings are schematics, not model-accurate product photographs.",
+      "No hardware checkout, inventory feed, supplier integration or reseller appointment is active.",
+      "The preview-only mobile QA harness is removed in the evidence commit; its screenshots and DOM observations describe the unchanged production UI code."
+    ],
+    "previousRelease": {
+      "feature": "Starlight Infrastructure Partnership OS",
+      "branch": "feat/infrastructure-exchange-20260831",
+      "verifiedCodeCommit": "40893bb41fa6841740b4d3211e9aca6c75a7afbb",
+      "previewDeployment": "dpl_EzEgQkHPGkzjubteYaDy2KdiPuus",
+      "previewUrl": "https://starlight-technology-juo1zh9hd-starlight-intelligence.vercel.app",
+      "verifiedAt": "2026-08-31T01:30:00Z",
+      "routes": [
+        "/infrastructure",
+        "/infrastructure/compose",
+        "/infrastructure/system",
+        "/infrastructure/contracts",
+        "/infrastructure/operator",
+        "/infrastructure/workspace",
+        "/api/infrastructure/manifest",
+        "/checkout/infrastructure-blueprint",
+        "/pricing"
+      ],
+      "verification": {
+        "lint": "passed",
+        "typecheck": "passed",
+        "tests": "13 passed across 3 files",
+        "build": "38 routes generated",
+        "renderedHtml": "All listed routes returned HTTP 200 during exact-head preview validation; representative metadata and content were inspected.",
+        "canonicalMetadata": "Infrastructure routes, pricing and checkout expose route-specific canonical metadata.",
+        "responsive": "Responsive source was inspected at the declared 1180px, 860px and 560px breakpoints. No remote screenshot-capable browser was available in this release toolchain.",
+        "accessibility": "Semantic headings, skip link, form labels, aria-live output, focus-visible handling and reduced-motion handling are present.",
+        "commerceBoundary": "B2B checkout is invoice-led and contract-first until a reviewed payment URL is configured. It does not imply hardware, finance or production authority."
+      },
+      "designReview": {
+        "decisionObject": 5,
+        "hierarchy": 5,
+        "craft": 5,
+        "responsiveSource": 4,
+        "accessibility": 5,
+        "restraint": 4,
+        "total": 28,
+        "scale": 30
+      },
+      "knownLimitations": [
+        "The reference workspace uses explicitly labelled sample data, not client telemetry.",
+        "NEXT_PUBLIC_POLAR_INFRASTRUCTURE_BLUEPRINT_URL is not configured; checkout uses an invoice-led engagement intake.",
+        "No client operational database, ERP connector credentials, energy telemetry, bank facility or production agent tenant is provisioned in this public reference release.",
+        "The public contract structures are issue maps and decision frameworks, not executable legal, tax, credit, insurance or energy-market advice.",
+        "Vercel preview deployments are noindex; production-domain indexing is verified separately after merge.",
+        "No remote screenshot-capable browser was available; rendered HTML, metadata, responsive source and build output were inspected."
+      ]
+    }
   }
 }

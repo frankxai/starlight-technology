@@ -2,14 +2,20 @@ import type { MetadataRoute } from "next";
 import { builds, comparisons, guides } from "@/lib/content";
 
 import { shopProducts } from "@/lib/shop";
+import { collections, digitalProducts, freeProducts } from "@/lib/catalog";
 
 const base = "https://starlight.technology";
 const updated = new Date("2026-10-07");
+const shopUpdated = new Date("2026-10-16");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: "", priority: 1 },
     { path: "/shop", priority: 0.95 },
+    { path: "/shop/how-it-works", priority: 0.7 },
+    { path: "/shop/licensing-and-support", priority: 0.6 },
+    { path: "/shop/updates", priority: 0.55 },
+    { path: "/shop/availability", priority: 0.6 },
     { path: "/partners", priority: 0.7 },
     { path: "/builds", priority: 0.8 },
     { path: "/compare", priority: 0.8 },
@@ -35,6 +41,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: updated,
       changeFrequency: "weekly" as const,
       priority
+    })),
+    ...collections.map(({ slug }) => ({
+      url: `${base}/shop/${slug}`,
+      lastModified: shopUpdated,
+      changeFrequency: "weekly" as const,
+      priority: 0.85
+    })),
+    ...digitalProducts.map(({ slug }) => ({
+      url: `${base}/shop/products/${slug}`,
+      lastModified: shopUpdated,
+      changeFrequency: "weekly" as const,
+      priority: 0.9
+    })),
+    ...freeProducts.map(({ slug }) => ({
+      url: `${base}/shop/free/${slug}`,
+      lastModified: shopUpdated,
+      changeFrequency: "weekly" as const,
+      priority: 0.85
     })),
     ...shopProducts.map(({ slug }) => ({
       url: `${base}/shop/${slug}`,

@@ -1,0 +1,1473 @@
+{
+  "routes": {
+    "/shop": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Organization",
+          "ItemList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop",
+        "og": "https://starlight.technology/shop/opengraph-image?6d8f5d4f1056c382",
+        "title": "Shop — Workflow editions, agent skills and research systems | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Organization",
+          "ItemList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop",
+        "og": "https://starlight.technology/shop/opengraph-image?6d8f5d4f1056c382",
+        "title": "Shop — Workflow editions, agent skills and research systems | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Organization",
+          "ItemList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop",
+        "og": "https://starlight.technology/shop/opengraph-image?6d8f5d4f1056c382",
+        "title": "Shop — Workflow editions, agent skills and research systems | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Organization",
+          "ItemList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop",
+        "og": "https://starlight.technology/shop/opengraph-image?6d8f5d4f1056c382",
+        "title": "Shop — Workflow editions, agent skills and research systems | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/agent-workflow-kits": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/agent-workflow-kits",
+        "title": "Agent workflow kits — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/agent-workflow-kits",
+        "title": "Agent workflow kits — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/agent-workflow-kits",
+        "title": "Agent workflow kits — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/agent-workflow-kits",
+        "title": "Agent workflow kits — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/mcp-and-agent-skills": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/mcp-and-agent-skills",
+        "title": "MCP and agent skills — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/mcp-and-agent-skills",
+        "title": "MCP and agent skills — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/mcp-and-agent-skills",
+        "title": "MCP and agent skills — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/mcp-and-agent-skills",
+        "title": "MCP and agent skills — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/research-and-decision-intelligence": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/research-and-decision-intelligence",
+        "title": "Research and decision intelligence — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/research-and-decision-intelligence",
+        "title": "Research and decision intelligence — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/research-and-decision-intelligence",
+        "title": "Research and decision intelligence — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/research-and-decision-intelligence",
+        "title": "Research and decision intelligence — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/creative-production": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/creative-production",
+        "title": "Creative production — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/creative-production",
+        "title": "Creative production — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/creative-production",
+        "title": "Creative production — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/creative-production",
+        "title": "Creative production — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/local-ai-hardware": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/local-ai-hardware",
+        "title": "Local AI hardware — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/local-ai-hardware",
+        "title": "Local AI hardware — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/local-ai-hardware",
+        "title": "Local AI hardware — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "ItemList",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/local-ai-hardware",
+        "title": "Local AI hardware — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/products/source-to-brief-workflow-edition": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "og": "https://starlight.technology/shop/products/source-to-brief-workflow-edition/opengraph-image?83432d2523d0836d",
+        "title": "Source-to-Brief Workflow Edition — €149 proposed | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "og": "https://starlight.technology/shop/products/source-to-brief-workflow-edition/opengraph-image?83432d2523d0836d",
+        "title": "Source-to-Brief Workflow Edition — €149 proposed | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "og": "https://starlight.technology/shop/products/source-to-brief-workflow-edition/opengraph-image?83432d2523d0836d",
+        "title": "Source-to-Brief Workflow Edition — €149 proposed | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "og": "https://starlight.technology/shop/products/source-to-brief-workflow-edition/opengraph-image?83432d2523d0836d",
+        "title": "Source-to-Brief Workflow Edition — €149 proposed | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/free/source-to-brief-lab": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — free | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — free | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — free | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — free | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/how-it-works": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/how-it-works",
+        "title": "How it works — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/how-it-works",
+        "title": "How it works — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/how-it-works",
+        "title": "How it works — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/how-it-works",
+        "title": "How it works — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/licensing-and-support": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/licensing-and-support",
+        "title": "Licensing and support — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/licensing-and-support",
+        "title": "Licensing and support — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/licensing-and-support",
+        "title": "Licensing and support — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "canonical": "https://starlight.technology/shop/licensing-and-support",
+        "title": "Licensing and support — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/updates": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/updates",
+        "title": "Updates — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/updates",
+        "title": "Updates — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/updates",
+        "title": "Updates — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/updates",
+        "title": "Updates — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/availability": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/availability",
+        "title": "Availability list — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/availability",
+        "title": "Availability list — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/availability",
+        "title": "Availability list — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "BreadcrumbList"
+        ],
+        "canonical": "https://starlight.technology/shop/availability",
+        "title": "Availability list — Shop | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/minisforum-ms-s1-max": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/minisforum-ms-s1-max",
+        "title": "MINISFORUM MS-S1 MAX · 64 GB — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/minisforum-ms-s1-max",
+        "title": "MINISFORUM MS-S1 MAX · 64 GB — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/minisforum-ms-s1-max",
+        "title": "MINISFORUM MS-S1 MAX · 64 GB — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/minisforum-ms-s1-max",
+        "title": "MINISFORUM MS-S1 MAX · 64 GB — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/privacy": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Privacy | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Privacy | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Privacy | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Privacy | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/disclosure": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/disclosure",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Commercial disclosure | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/disclosure",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Commercial disclosure | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/disclosure",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Commercial disclosure | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/disclosure",
+        "og": "https://starlight.technology/opengraph-image?80e890270c13c03a",
+        "title": "Commercial disclosure | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    }
+  },
+  "console": {},
+  "issues": [
+    "/shop@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/agent-workflow-kits@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/agent-workflow-kits@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/agent-workflow-kits@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/agent-workflow-kits@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/mcp-and-agent-skills@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/mcp-and-agent-skills@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/mcp-and-agent-skills@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/mcp-and-agent-skills@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/research-and-decision-intelligence@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/research-and-decision-intelligence@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/research-and-decision-intelligence@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/research-and-decision-intelligence@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/creative-production@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/creative-production@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/creative-production@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/creative-production@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/local-ai-hardware@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/local-ai-hardware@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/local-ai-hardware@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/local-ai-hardware@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/products/source-to-brief-workflow-edition@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/products/source-to-brief-workflow-edition@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/products/source-to-brief-workflow-edition@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/products/source-to-brief-workflow-edition@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/free/source-to-brief-lab@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/free/source-to-brief-lab@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/free/source-to-brief-lab@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/free/source-to-brief-lab@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/how-it-works@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/how-it-works@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/how-it-works@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/how-it-works@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/licensing-and-support@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/licensing-and-support@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/licensing-and-support@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/licensing-and-support@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/updates@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/updates@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/updates@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/updates@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/availability@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/availability@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/availability@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/availability@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/minisforum-ms-s1-max@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/minisforum-ms-s1-max@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/minisforum-ms-s1-max@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/minisforum-ms-s1-max@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/privacy@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/privacy@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/privacy@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/privacy@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/disclosure@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/disclosure@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/disclosure@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/disclosure@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "lab": {
+    "status": "8 approved · 5 held · 0 rejected",
+    "heldBefore": 5,
+    "evalText": "12 of 12 checks pass",
+    "mdFile": "q4-tooling-decision-note-sync-vendor.brief.md",
+    "jsonFile": "q4-tooling-decision-note-sync-vendor.brief.json"
+  },
+  "availability": {
+    "text": "The availability endpoint is not configured yet. Use the email option; your request is pre-filled. Send it by email instead; your answers are pre-filled.",
+    "mailtoStartsWith": "mailto:hello@frankx.ai?subject=Availabil"
+  },
+  "keyboard": [
+    "a:Skip to content outline=solid/3px",
+    "a:STARLIGHT/TECHNOLOGY outline=solid/3px",
+    "a:Shop outline=solid/3px",
+    "a:Builds outline=solid/3px",
+    "a:Compare outline=solid/3px",
+    "a:Infrastructure outline=solid/3px",
+    "a:Guides outline=solid/3px",
+    "a:Partners outline=solid/3px",
+    "a:Studio Shop ↗ outline=solid/3px",
+    "a:Inspect the flagship edition outline=solid/3px",
+    "a:Open the free lab outline=solid/3px",
+    "a:01Agent workflow kitsExecuta outline=solid/3px"
+  ],
+  "reducedMotion": [
+    {
+      "opacity": "1",
+      "anim": "none"
+    },
+    {
+      "opacity": "1",
+      "anim": "none"
+    },
+    {
+      "opacity": "1",
+      "anim": "none"
+    },
+    {
+      "opacity": "1",
+      "anim": "none"
+    },
+    {
+      "opacity": "1",
+      "anim": "none"
+    }
+  ],
+  "api": {
+    "availabilityNoEndpoint": 503,
+    "webhookNoSecret": 503,
+    "availabilityBadInput": 400
+  }
+}
