@@ -4,7 +4,7 @@
   "verifiedCodeCommit": "a44d1cad841e2d6343d68e831d1e9aeb67c8ba6c (evidence commit follows; QA ran on the identical working tree)",
   "previewDeployment": "pending — Vercel preview is created by the draft PR",
   "previewUrl": null,
-  "verifiedAt": "2026-10-16T18:09:08.068Z",
+  "verifiedAt": "2026-10-18T00:00:51.024Z",
   "routes": [
     "/shop",
     "/shop/agent-workflow-kits",
@@ -84,11 +84,11 @@
     "reviewer": "Implementation self-review from Playwright screenshots at 1349 and 390px plus interaction checks",
     "decisionObject": 5,
     "hierarchy": 5,
-    "craft": 4,
+    "craft": 5,
     "responsive": 5,
     "accessibility": 5,
     "restraint": 4,
-    "total": 28,
+    "total": 29,
     "scale": 30
   },
   "knownLimitations": [
@@ -98,5 +98,25 @@
     "The Workflow Edition download bundle is specified by manifest and shared core; the packaged zip and signed delivery are gate work before checkout opens.",
     "Hardware power, noise and expansion are marked not measured; only SKU facts present in the existing source records are shown.",
     "Lighthouse figures come from a local production server, not the Vercel preview; re-measure on the preview URL before promotion."
-  ]
+  ],
+  "improvementPass": {
+    "date": "2026-10-17",
+    "changes": [
+      "Hardware criteria: manufacturer-published memory, GPU, power, noise and expansion transcribed from the eight official pages into data/commerce/hardware-specs.json (verified 2026-10-17); unpublished and not-applicable cells stated explicitly; tested.",
+      "Edition comparison module (free lab / Workflow Edition / planned team licence) on /shop and the product page; team licence carries no price or date.",
+      "Artifact preview: CSS-only tabbed brief.md / brief.json / evaluation generated from the shared core at build time; keyboard operable via radio arrow keys.",
+      "Free lab: import starlight.brief/v1 to continue a review (round trip verified), opt-in browser-only draft saving with explicit restore, flagged-contradiction list, reject-all-held.",
+      "Storefront sticky section navigation; header CTA label aligned to the shop."
+    ],
+    "verification": {
+      "tests": "97 passed across 12 files",
+      "playwright": "15 routes × 360/390/768/1349: zero overflow, heading, label or console issues; lab import round trip and draft restore verified; tab panels switch by click and arrow keys; sub-nav anchors land below the sticky bars.",
+      "lighthouse": {
+        "/shop": "91 / 100 / 96 / 100",
+        "/shop/local-ai-hardware": "91 / 100 / 96 / 100",
+        "/shop/products/source-to-brief-workflow-edition": "91 / 100 / 96 / 100",
+        "/shop/free/source-to-brief-lab": "92 / 100 / 96 / 100"
+      }
+    }
+  }
 }

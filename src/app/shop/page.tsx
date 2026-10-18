@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { collections, digitalProducts, freeProducts, organizationSchema, collectionSchema } from "@/lib/catalog";
 import { gateSummary, resolveCheckoutState } from "@/lib/commerce/fulfilment-gates";
-import { buildBrief, exampleSources, exampleSummary, exampleTitle, parseSources, renderMarkdown } from "@/lib/brief";
 import { shopProducts } from "@/lib/shop";
 import { HardwareDiagram } from "@/components/hardware-diagram";
 import { CollectionCard } from "@/components/shop/collection-card";
@@ -15,6 +14,8 @@ import { Transformation } from "@/components/shop/media-module";
 import { ReadinessBoard } from "@/components/shop/readiness-board";
 import { ShopEvent } from "@/components/shop/shop-event";
 import { StorefrontPreview } from "@/components/shop/storefront-preview";
+import { EditionCompare } from "@/components/shop/edition-compare";
+import { ArtifactPreview } from "@/components/shop/artifact-preview";
 import styles from "@/components/shop/storefront.module.css";
 import hw from "@/components/shop.module.css";
 
@@ -46,9 +47,6 @@ export default function ShopPage() {
   const lab = freeProducts[0];
   const checkout = resolveCheckoutState(flagship);
   const gates = gateSummary();
-  const example = parseSources(exampleSources);
-  const exampleBrief = buildBrief({ title: exampleTitle, summary: exampleSummary, sources: example.sources, lines: example.lines.map((line) => ({ ...line, status: "approved" as const })), surface: "lab", now: new Date("2026-10-16T09:00:00Z") });
-  const exampleMarkdown = renderMarkdown(exampleBrief).split("\n").slice(0, 26).join("\n");
   const hardwarePicks = [shopProducts[2], shopProducts[4], shopProducts[0]];
   const itemList = collectionSchema({ ...collections[0], slug: "agent-workflow-kits", name: "Starlight Technology shop collections" }, collections.map((collection) => ({ name: collection.name, path: `/shop/${collection.slug}` })));
   return <div className={`${styles.storefront} shell`}>
@@ -71,12 +69,16 @@ export default function ShopPage() {
       <StorefrontPreview />
     </section>
 
-    <section className={styles.section} aria-labelledby="build-heading">
+    <nav className={styles.subnav} aria-label="Shop sections">
+      <a href="#collections">Collections</a><a href="#flagship">Flagship</a><a href="#free-lab">Free lab</a><a href="#compare">Compare</a><a href="#hardware">Hardware</a><a href="#trust">Trust</a><a href="#faq">FAQ</a>
+    </nav>
+
+    <section className={`${styles.section} ${styles.anchor}`} id="collections" aria-labelledby="build-heading">
       <div className={styles.sectionHead}><div><p className="eyebrow">What you can build</p><h2 id="build-heading">Five collections. One provenance rule.</h2></div><p>Each collection names what you can build with it, what is for sale, what is free and what is only planned. Planned items are never priced.</p></div>
       <div className={styles.collectionGrid}>{collections.map((collection, index) => <CollectionCard key={collection.slug} collection={collection} index={index} productCount={collection.productSlugs.length} freeCount={collection.freeSlugs.length} />)}</div>
     </section>
 
-    <section className={styles.section} aria-labelledby="flagship-heading">
+    <section className={`${styles.section} ${styles.anchor}`} id="flagship" aria-labelledby="flagship-heading">
       <div className={styles.sectionHead}><div><p className="eyebrow">Flagship edition</p><h2 id="flagship-heading">{flagship.name} {flagship.edition}</h2></div><p>{flagship.customerJob}</p></div>
       <div className={styles.spotlight}>
         <div>
@@ -92,13 +94,10 @@ export default function ShopPage() {
       </div>
     </section>
 
-    <section className={styles.section} aria-labelledby="lab-heading">
+    <section className={`${styles.section} ${styles.anchor}`} id="free-lab" aria-labelledby="lab-heading">
       <div className={styles.sectionHead}><div><p className="eyebrow">Free · live now</p><h2 id="lab-heading">{lab.name}: {lab.tagline}</h2></div><p>{lab.outcome}</p></div>
       <div className={styles.spotlight}>
-        <figure className={styles.window} style={{ margin: 0 }}>
-          <figcaption className={styles.windowBar}><i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" /><span>brief.md · generated from the worked example</span></figcaption>
-          <pre className={styles.windowBody} style={{ maxHeight: 460, whiteSpace: "pre-wrap" }} aria-label="Excerpt of the brief the free lab exports from the worked example"><code>{exampleMarkdown}{"\n…"}</code></pre>
-        </figure>
+        <ArtifactPreview id="home-artifact" />
         <div className={styles.prose}>
           <h3>What you leave with</h3>
           <ul className={styles.checkList}>{lab.produces.map((item) => <li key={item}>{item}</li>)}</ul>
@@ -109,7 +108,12 @@ export default function ShopPage() {
       </div>
     </section>
 
-    <section className={styles.section} aria-labelledby="hardware-heading">
+    <section className={`${styles.section} ${styles.anchor}`} id="compare" aria-labelledby="compare-heading">
+      <div className={styles.sectionHead}><div><p className="eyebrow">Which one</p><h2 id="compare-heading">Free lab, Workflow Edition, or wait for the team licence.</h2></div><p>Capabilities side by side. The team licence is listed so you can say you need it; it has no price and no date.</p></div>
+      <EditionCompare compact />
+    </section>
+
+    <section className={`${styles.section} ${styles.anchor}`} id="hardware" aria-labelledby="hardware-heading">
       <div className={styles.sectionHead}><div><p className="eyebrow">Curated hardware and tooling</p><h2 id="hardware-heading">Machines and tools that run the work.</h2></div><p>Recommendations, not listings. No vendor here is a partner; every link states its status. Prices, stock and reviews are absent because the catalogue has no verified source for them.</p></div>
       <div className={hw.productGrid}>{hardwarePicks.map((product) => <article className={hw.productCard} key={product.slug}>
         <div className={hw.cardTop}><span>{product.category}</span><DisclosureTag relationship="official" /></div>
@@ -121,12 +125,12 @@ export default function ShopPage() {
       <div className={styles.actions}><Link className={`${styles.btn} ${styles.btnQuiet}`} href="/shop/local-ai-hardware">All hardware, with criteria table</Link><Link className={`${styles.btn} ${styles.btnQuiet}`} href="/disclosure">How links are labelled</Link></div>
     </section>
 
-    <section className={styles.section} aria-labelledby="trust-heading">
+    <section className={`${styles.section} ${styles.anchor}`} id="trust" aria-labelledby="trust-heading">
       <div className={styles.sectionHead}><div><p className="eyebrow">Trust and delivery</p><h2 id="trust-heading">The boring parts, written down.</h2></div><p>Licence, updates, support, privacy, refunds and limits are product facts, so they sit on the product page and here, not in a footer link nobody opens.</p></div>
       <div className={styles.trustGrid}>{trust.map((item) => <article key={item.title} className={styles.reveal}><h3>{item.title}</h3><p>{item.copy}</p><Link href={item.href}>{item.label} →</Link></article>)}</div>
     </section>
 
-    <section className={styles.section} aria-labelledby="faq-heading">
+    <section className={`${styles.section} ${styles.anchor}`} id="faq" aria-labelledby="faq-heading">
       <div className={styles.twoCol}>
         <div><p className="eyebrow">Questions</p><h2 id="faq-heading" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", marginBottom: 22 }}>Asked before buying.</h2><Faq items={shopFaq} /></div>
         <div><p className="eyebrow">Availability</p><h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", marginBottom: 22 }}>Checkout opens when the board is green.</h2><ReadinessBoard compact /><div className={styles.actions}><Link className={`${styles.btn} ${styles.btnPrimary}`} href="/shop/availability">Join the availability list</Link><Link className={`${styles.btn} ${styles.btnQuiet}`} href="/shop/how-it-works">How it works</Link></div></div>

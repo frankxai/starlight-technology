@@ -1,14 +1,17 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { briefSections, buildBrief, exampleSources, exampleSummary, exampleTitle, parseSources, renderJson, renderMarkdown, sectionTitles, slugify, type BriefSection, type CandidateLine, type LineStatus, type SourceInput } from "@/lib/brief";
+import { BRIEF_SCHEMA, briefSections, buildBrief, exampleSources, exampleSummary, exampleTitle, parseSources, renderJson, renderMarkdown, sectionTitles, slugify, type Brief, type BriefSection, type CandidateLine, type LineStatus, type SourceInput } from "@/lib/brief";
 import { trackShopEvent } from "@/lib/shop/analytics-client";
 import sf from "./storefront.module.css";
 import styles from "./lab.module.css";
 
 type Step = "sources" | "review" | "export";
 const emptySource = (): SourceInput => ({ label: "", url: "", text: "" });
+const DRAFT_KEY = "starlight.shop.lab.draft.v1";
+function subscribeStorage(callback: () => void) { window.addEventListener("storage", callback); return () => window.removeEventListener("storage", callback); }
+function readHasDraft() { try { return Boolean(window.localStorage.getItem(DRAFT_KEY)); } catch { return false; } }
 
 export function SourceToBriefLab() {
   const [title, setTitle] = useState("");
@@ -18,7 +21,33 @@ export function SourceToBriefLab() {
   const [parsedSources, setParsedSources] = useState<ReturnType<typeof parseSources>["sources"]>([]);
   const [pendingOnly, setPendingOnly] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const [saveDraft, setSaveDraft] = useState(false);
+  const [draftNote, setDraftNote] = useState<string | null>(null);
   const started = useRef(false);
+
+  // Opt-in draft persistence. Off by default; lives only in this browser's
+  // localStorage; restored only when the person asks; cleared by Clear or by
+  // switching the toggle off.
+  const hasStoredDraft = useSyncExternalStore(subscribeStorage, readHasDraft, () => false);
+  useEffect(() => {
+    if (!saveDraft) return;
+    try { window.localStorage.setItem(DRAFT_KEY, JSON.stringify({ title, summary, sources, lines, parsedSources })); } catch { /* storage blocked: nothing saved, toggle note already says browser-only */ }
+  }, [saveDraft, title, summary, sources, lines, parsedSources]);
+  function restoreDraft() {
+    try {
+      const raw = window.localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      const draft = JSON.parse(raw) as { title: string; summary: string; sources: SourceInput[]; lines: CandidateLine[] | null; parsedSources: ReturnType<typeof parseSources>["sources"] };
+      markStart();
+      setTitle(draft.title ?? ""); setSummary(draft.summary ?? ""); setSources(draft.sources?.length ? draft.sources : [emptySource()]); setLines(draft.lines ?? null); setParsedSources(draft.parsedSources ?? []); setSaveDraft(true);
+      setDraftNote("Draft restored from this browser.");
+    } catch { setDraftNote("The saved draft could not be read."); }
+  }
+  function toggleDraft(next: boolean) {
+    setSaveDraft(next);
+    if (!next) { try { window.localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ } setDraftNote("Draft removed from this browser."); }
+    else setDraftNote("Draft will be kept in this browser only. Nothing is uploaded.");
+  }
   const step: Step = lines === null ? "sources" : lines.some((line) => line.status === "pending") ? "review" : "export";
 
   function markStart() {
@@ -33,7 +62,28 @@ export function SourceToBriefLab() {
     setSources(exampleSources.map((source) => ({ ...source })));
     setLines(null);
   }
-  function clearAll() { setTitle(""); setSummary(""); setSources([emptySource()]); setLines(null); setParsedSources([]); }
+  function clearAll() { setTitle(""); setSummary(""); setSources([emptySource()]); setLines(null); setParsedSources([]); setCopied(null); try { window.localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ } if (saveDraft) setDraftNote("Cleared. The saved draft was removed too."); }
+  function rejectHeld() { setLines((current) => current?.map((line) => (line.status === "pending" ? { ...line, status: "rejected" } : line)) ?? current); }
+  /** Import a starlight.brief/v1 file. Restores title, summary, the source register and the approved lines as each source's text. */
+  async function importBrief(file: File | undefined) {
+    if (!file) return;
+    try {
+      const parsed = JSON.parse(await file.text()) as Partial<Brief>;
+      if (parsed.schema !== BRIEF_SCHEMA || !parsed.sources || !parsed.sections) { setDraftNote("That file is not a starlight.brief/v1 export."); return; }
+      const bySource = new Map<string, string[]>();
+      for (const section of briefSections) for (const entry of parsed.sections[section] ?? []) bySource.set(entry.sourceId, [...(bySource.get(entry.sourceId) ?? []), entry.text]);
+      const restoredSources: SourceInput[] = parsed.sources.map((source) => ({ label: source.label, url: source.url ?? "", text: (bySource.get(source.id) ?? []).join("\n") }));
+      markStart();
+      setTitle(parsed.title ?? ""); setSummary(parsed.summary ?? ""); setSources(restoredSources.length ? restoredSources : [emptySource()]);
+      const reparsed = parseSources(restoredSources);
+      // Everything imported was already approved; keep the exported section assignment where the text matches.
+      const sectionByText = new Map<string, BriefSection>();
+      for (const section of briefSections) for (const entry of parsed.sections[section] ?? []) sectionByText.set(entry.text.trim(), section);
+      setParsedSources(reparsed.sources);
+      setLines(reparsed.lines.map((line) => ({ ...line, status: "approved" as const, section: sectionByText.get(line.text.trim()) ?? line.section })));
+      setDraftNote(`Imported ${restoredSources.length} source(s) from ${file.name}. Source text is rebuilt from the approved lines; rejected lines were not in the export.`);
+    } catch { setDraftNote("Could not read that file."); }
+  }
   function updateSource(index: number, patch: Partial<SourceInput>) { markStart(); setSources((current) => current.map((source, i) => (i === index ? { ...source, ...patch } : source))); }
   function extract() {
     markStart();
@@ -82,9 +132,13 @@ export function SourceToBriefLab() {
       </ol>
       <div className={styles.toolbarActions}>
         <button type="button" className={`${sf.btn} ${sf.btnSmall} ${sf.btnCyan}`} onClick={loadExample}>Load worked example</button>
+        <label className={`${sf.btn} ${sf.btnSmall} ${sf.btnQuiet}`}><input type="file" accept="application/json,.json" className="sr-only" onChange={(event) => { void importBrief(event.target.files?.[0]); event.target.value = ""; }} />Import brief.json</label>
+        {hasStoredDraft && !saveDraft && <button type="button" className={`${sf.btn} ${sf.btnSmall} ${sf.btnQuiet}`} onClick={restoreDraft}>Restore saved draft</button>}
+        <label className={styles.draftToggle}><input type="checkbox" checked={saveDraft} onChange={(event) => toggleDraft(event.target.checked)} /><span>Keep a draft in this browser</span></label>
         <button type="button" className={`${sf.btn} ${sf.btnSmall} ${sf.btnQuiet}`} onClick={clearAll}>Clear</button>
       </div>
     </div>
+    {draftNote && <p className={styles.status} role="status">{draftNote}</p>}
 
     <div className={styles.grid}>
       <section className={styles.panel} aria-labelledby="lab-sources">
@@ -117,6 +171,7 @@ export function SourceToBriefLab() {
           <div className={styles.lineControls}>
             <button type="button" className={styles.toggle} aria-pressed={pendingOnly} onClick={() => setPendingOnly((value) => !value)}>Show held only</button>
             <button type="button" className={styles.toggle} onClick={approveConfident} disabled={counts.pending === 0}>Approve all held ({counts.pending})</button>
+            <button type="button" className={styles.toggle} onClick={rejectHeld} disabled={counts.pending === 0}>Reject all held</button>
           </div>
           <ul className={styles.lines}>{visibleLines.map((line) => <li className={styles.line} key={line.id} data-status={line.status}>
             <span className={styles.lineId}><b>{line.sourceId}</b>L{String(line.index + 1).padStart(2, "0")}</span>
@@ -141,6 +196,7 @@ export function SourceToBriefLab() {
       <section className={styles.panel} aria-labelledby="lab-eval">
         <div className={styles.panelHead}><h2 id="lab-eval">Evaluation</h2><p role="status">{brief.evaluation.passed} of {brief.evaluation.total} checks pass</p></div>
         <ul className={styles.eval}>{brief.evaluation.checks.map((check) => <li key={check.id} data-pass={check.pass}><span aria-hidden="true">{check.pass ? "✓" : "✕"}</span><span>{check.label}<small>{check.detail}</small></span></li>)}</ul>
+        {brief.contradictions.length > 0 && <div className={styles.flagged} role="note"><strong>Flagged for a reader</strong><ul>{brief.contradictions.map((pair) => <li key={`${pair.a}-${pair.b}`}><span className={sf.mono}>{pair.a}</span> and <span className={sf.mono}>{pair.b}</span> share “{pair.shared.join(", ")}” and one negates. Check which is current.</li>)}</ul></div>}
         <p className={styles.status}>The same twelve checks ship in the Workflow Edition. A failing check does not block export; it is recorded in the artifact so a reader sees it.</p>
       </section>
       <section className={styles.panel} aria-labelledby="lab-export">

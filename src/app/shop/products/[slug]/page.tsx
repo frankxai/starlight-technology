@@ -11,6 +11,8 @@ import { FileTree, Terminal, Transformation, WorkflowPipeline } from "@/componen
 import { PricingModule } from "@/components/shop/pricing-module";
 import { ReadinessBoard } from "@/components/shop/readiness-board";
 import { ShopEvent } from "@/components/shop/shop-event";
+import { EditionCompare } from "@/components/shop/edition-compare";
+import { ArtifactPreview } from "@/components/shop/artifact-preview";
 import styles from "@/components/shop/storefront.module.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -70,7 +72,13 @@ export default async function ProductPage({ params }: Props) {
         <Terminal entries={product.media.terminal} title="terminal · deterministic mode" />
         <Transformation steps={product.media.transformation.slice(1)} />
       </div>
+      <div style={{ marginTop: 18 }}><ArtifactPreview id="artifact" /></div>
       {free && <div className={styles.actions}><Link className={`${styles.btn} ${styles.btnCyan}`} href={`/shop/free/${free.slug}`}>Run the free lab on your own notes</Link></div>}
+    </section>
+
+    <section className={styles.section} aria-labelledby="compare">
+      <div className={styles.sectionHead}><div><p className="eyebrow">Which edition</p><h2 id="compare">Free lab, this edition, or the planned team licence.</h2></div><p>Capability facts side by side. The team licence carries no price and no date; register interest on the availability list if you need it.</p></div>
+      <EditionCompare />
     </section>
 
     <section className={styles.section} aria-labelledby="fit">

@@ -3,6 +3,7 @@ import { collectionSchema, collections, digitalProducts, freeProducts, getRecomm
 import { resolveCheckoutState } from "@/lib/commerce/fulfilment-gates";
 import { shopProducts, type ShopProduct } from "@/lib/shop";
 import { resolveShopOffer, type ShopOffer } from "@/lib/shop-offers";
+import { getHardwareSpec, hardwareSpecs, isUnpublished } from "@/lib/hardware-specs";
 import { ShopExplorer } from "@/components/shop-explorer";
 import { Breadcrumbs } from "./breadcrumbs";
 import { DisclosureTag, disclosureCopy } from "./disclosure-tag";
@@ -26,10 +27,10 @@ export function RecommendationGrid({ ids }: { ids: string[] }) {
   </article>)}</div>;
 }
 
-// Hardware criteria. Facts come from the existing source-backed records; a
-// cell that the record does not establish says so instead of inventing a spec.
-const verify = "Confirm on the manufacturer page";
-const knownMemory: Record<string, string> = { "minisforum-ms-s1-max": "64 GB unified (SKU in the record)", "samsung-990-pro-2tb": "2 TB capacity (SKU in the record)", "ugreen-dxp4800-plus": "Four drive bays · drives sold separately" };
+// Hardware criteria. Workload, total system cost and agent use case are
+// editorial inference. Memory, GPU, power, noise and expansion come from
+// data/commerce/hardware-specs.json, transcribed from the manufacturer page
+// with a verification date; absent values are stated as such, never invented.
 const agentUseCase: Record<string, string> = {
   "nvidia-dgx-spark": "Dedicated node for persistent agents and local model development on the NVIDIA stack.",
   "nvidia-rtx-5090": "CUDA inference inside a workstation that also renders and edits.",
@@ -44,18 +45,15 @@ const agentUseCase: Record<string, string> = {
 function HardwareCriteria({ products, offers }: { products: ShopProduct[]; offers: Record<string, ShopOffer> }) {
   return <div className={styles.tableWrap}>
     <table className={styles.table}>
-      <caption className="sr-only">Hardware comparison criteria. Facts from the source record; cells marked confirm are not established by Starlight.</caption>
-      <thead><tr><th scope="col">Component</th><th scope="col">Workload</th><th scope="col">Memory</th><th scope="col">GPU capability</th><th scope="col">Power</th><th scope="col">Noise</th><th scope="col">Expansion</th><th scope="col">Total system cost</th><th scope="col">Agent use case</th><th scope="col">Link</th></tr></thead>
+      <caption className="sr-only">Hardware comparison criteria. Manufacturer-published specifications with verification date; unpublished values are stated as such.</caption>
+      <thead><tr><th scope="col">Component</th><th scope="col">Workload</th><th scope="col">Memory</th><th scope="col">GPU / accelerator</th><th scope="col">Power</th><th scope="col">Noise</th><th scope="col">Expansion</th><th scope="col">Total system cost</th><th scope="col">Agent use case</th><th scope="col">Link</th></tr></thead>
       <tbody>{products.map((product) => {
         const offer = offers[product.slug];
+        const spec = getHardwareSpec(product.slug);
         return <tr key={product.slug}>
           <th scope="row"><Link href={`/shop/${product.slug}`}>{product.brand} {product.name}</Link><br /><small className={styles.muted}>{product.category}</small></th>
           <td>{product.role}</td>
-          <td className={knownMemory[product.slug] ? undefined : styles.verify}>{knownMemory[product.slug] ?? verify}</td>
-          <td>{product.runtime}</td>
-          <td className={styles.verify}>Not measured by Starlight</td>
-          <td className={styles.verify}>Not measured by Starlight</td>
-          <td className={styles.verify}>{verify}</td>
+          {(["memory", "gpu", "power", "noise", "expansion"] as const).map((key) => { const value = spec?.[key] ?? "Not published"; return <td key={key} className={isUnpublished(value) ? styles.verify : undefined}>{value}</td>; })}
           <td>{product.systemCost}</td>
           <td>{agentUseCase[product.slug]}</td>
           <td><TrackedLink href={offer.href} relationship={offer.relationship} destination={new URL(offer.href).hostname}>{offer.relationship === "affiliate" ? "Merchant ↗" : "Official ↗"}</TrackedLink><br /><DisclosureTag relationship={offer.relationship} /></td>
@@ -112,7 +110,7 @@ export function CollectionPage({ collection }: { collection: Collection }) {
       <section className={styles.section} aria-labelledby="hardware-criteria">
         <div className={styles.sectionHead}><div><p className="eyebrow">Independent recommendations</p><h2 id="hardware-criteria">Compare by criteria, not by badge.</h2></div><p>No vendor listed here is a Starlight partner. Links go to official pages unless an approved, unexpired affiliate record exists; the label beside each link states which. No prices, stock or reviews are shown because the catalogue has no verified source for them.</p></div>
         <HardwareCriteria products={hardware} offers={offers} />
-        <p className={styles.heroNote} style={{ marginTop: 14 }}>Workload, total system cost and agent use case are Starlight editorial inference. Memory is stated only where the SKU in the source record establishes it. Power, noise and expansion are not measured by Starlight; the manufacturer page is the source.</p>
+        <p className={styles.heroNote} style={{ marginTop: 14 }}>{`Memory, GPU capability, power, noise and expansion are transcribed from each manufacturer page, checked ${hardwareSpecs.verifiedOn}. Cells marked not published or not applicable are stated as such rather than filled in. Workload, total system cost and agent use case are Starlight editorial inference. Nothing is measured by Starlight.`}</p>
       </section>
       <ShopExplorer products={hardware} offers={offers} />
     </>}

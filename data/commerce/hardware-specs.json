@@ -1,0 +1,70 @@
+{
+  "verifiedOn": "2026-10-17",
+  "method": "Values transcribed from the manufacturer page named in sourceUrl. 'Not published' means the page states no value; 'Not applicable' means the criterion does not apply to the component class. Nothing here is measured by Starlight.",
+  "specs": {
+    "nvidia-dgx-spark": {
+      "sourceUrl": "https://www.nvidia.com/en-us/products/workstations/dgx-spark/",
+      "memory": "128 GB LPDDR5X coherent unified system memory (a 64 GB configuration is also listed)",
+      "gpu": "NVIDIA GB10 Grace Blackwell: Blackwell GPU with 5th-generation Tensor Cores; 1 petaFLOP FP4 (manufacturer figure)",
+      "power": "240 W (GB10 TDP including CPU and GPU)",
+      "noise": "Declared sound power 35 dB operating, 19 dB idle (LWA,m, manufacturer)",
+      "expansion": "4× USB-C, 1× 10 GbE RJ-45, ConnectX-7 200 Gbps, Wi-Fi 7, Bluetooth 5.4, HDMI 2.1a, up to 3 DisplayPort over USB-C; up to 4 TB NVMe M.2"
+    },
+    "nvidia-rtx-5090": {
+      "sourceUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+      "memory": "32 GB GDDR7, 512-bit interface",
+      "gpu": "Blackwell architecture, 21,760 CUDA cores, 5th-generation Tensor Cores, boost 2.41 GHz",
+      "power": "575 W total graphics power; 1000 W required system power",
+      "noise": "Not published (depends on the partner card's cooler)",
+      "expansion": "Slot width, length and power connectors are partner-card specific; confirm on the exact card's page"
+    },
+    "minisforum-ms-s1-max": {
+      "sourceUrl": "https://store.minisforum.com/products/minisforum-ms-s1-max-64gb",
+      "memory": "64 GB LPDDR5x-8000 in this SKU; platform listed up to 128 GB",
+      "gpu": "Integrated Radeon 8060S (Ryzen AI Max+ 395, 16 cores / 32 threads)",
+      "power": "130 W performance mode, 95 W balanced, 60 W quiet (manufacturer modes)",
+      "noise": "Not published",
+      "expansion": "PCIe x16 expansion slot, 2U rack support, 2 TB SSD in this SKU; dual 10 GbE per the listing description"
+    },
+    "apple-mac-studio": {
+      "sourceUrl": "https://www.apple.com/nl/mac-studio/",
+      "memory": "Up to 128 GB unified memory (M5 Max) or up to 512 GB (M5 Ultra); configured at purchase",
+      "gpu": "Up to 40-core GPU (M5 Max) or up to 80-core GPU (M5 Ultra); 16- or 32-core Neural Engine",
+      "power": "Not published on the overview page",
+      "noise": "Not published on the overview page",
+      "expansion": "Thunderbolt 5 up to 120 Gb/s, PCIe expansion system support, Wi-Fi 7, Bluetooth 6; 512 GB to 16 TB storage at purchase"
+    },
+    "ugreen-dxp4800-plus": {
+      "sourceUrl": "https://ai-eu.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+      "memory": "8 GB DDR5, expandable to 64 GB",
+      "gpu": "Intel UHD graphics (Pentium Gold 8505) with Quick Sync transcoding",
+      "power": "42.36 W drive access, 18.12 W drive hibernation (manufacturer)",
+      "noise": "29 to 34 dB in quiet mode (manufacturer)",
+      "expansion": "4× SATA bays up to 32 TB each, 2× M.2 NVMe up to 8 TB each, 1× 10 GbE + 1× 2.5 GbE"
+    },
+    "samsung-990-pro-2tb": {
+      "sourceUrl": "https://www.samsung.com/nl/memory-storage/nvme-ssd/990-pro-2tb-nvme-pcie-gen-4-mz-v9p2t0bw/",
+      "memory": "2 TB capacity (2,000 GB, IDEMA)",
+      "gpu": "Not applicable",
+      "power": "6.1 W average, 8.5 W maximum burst, 55 mW idle (manufacturer)",
+      "noise": "Not applicable",
+      "expansion": "M.2 2280, PCIe 4.0 x4, NVMe 2.0; up to 7,450 MB/s read, 6,900 MB/s write; 5-year or 1200 TBW limited warranty"
+    },
+    "elgato-stream-deck-plus": {
+      "sourceUrl": "https://www.elgato.com/eu/en/p/stream-deck-plus",
+      "memory": "Not applicable",
+      "gpu": "Not applicable",
+      "power": "USB-powered; wattage not published",
+      "noise": "Not applicable",
+      "expansion": "8 LCD keys, 4 push encoders, 108 × 14 mm touch strip; USB-C cable, interface listed as USB 2.0"
+    },
+    "rode-podmic-usb": {
+      "sourceUrl": "https://rode.com/en-us/products/podmic-usb",
+      "memory": "Not applicable",
+      "gpu": "Not applicable",
+      "power": "USB bus-powered over USB-C or passive XLR; wattage not published",
+      "noise": "Self-noise 26 dBA analogue, 19 dBA digital (microphone specification, not room noise)",
+      "expansion": "XLR and USB-C outputs, 3.5 mm headphone jack; dynamic cardioid, 20 Hz to 20 kHz, 148 dB SPL max"
+    }
+  }
+}

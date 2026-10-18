@@ -311,3 +311,35 @@
   .section { padding-block: 48px; }
   .metaRail { gap: 6px 16px; }
 }
+
+/* Edition comparison */
+.compareTable { min-width: 680px; }
+.compareTable thead th { vertical-align: bottom; }
+.compareName { display: block; font: 600 .95rem/1.2 var(--font-display), sans-serif; letter-spacing: -.02em; text-transform: none; color: var(--paper); }
+.compareStatus { display: block; margin-top: 4px; color: var(--muted); font: .6rem var(--font-mono), monospace; letter-spacing: .06em; }
+.comparePrice { display: block; margin-top: 4px; color: var(--signal); font: 600 .72rem var(--font-mono), monospace; letter-spacing: 0; text-transform: none; }
+.compareTable thead th:nth-child(3) { background: color-mix(in srgb, var(--signal) 7%, var(--surface-2)); }
+.compareTable tbody td:nth-child(3) { background: color-mix(in srgb, var(--signal) 4%, transparent); }
+.compareTable tfoot td { border-bottom: 0; padding-top: 14px; }
+.compareActions { display: flex; flex-wrap: wrap; gap: 8px; }
+.yes { color: var(--signal); font-weight: 700; }
+.no { color: var(--muted); }
+
+/* CSS-only tabs for artifact preview (radios are siblings before the bar and panels) */
+.tabBar { gap: 12px; }
+.tabs { display: flex; gap: 2px; margin-left: 6px; }
+.tabInput { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.tabLabel { display: inline-block; padding: 5px 10px; border-radius: 3px; color: var(--muted); cursor: pointer; font: 600 .66rem var(--font-mono), monospace; letter-spacing: .06em; text-transform: none; }
+.tabPanel { display: none; max-height: 480px; overflow: auto; white-space: pre-wrap; }
+.tabInput[value="md"]:checked ~ .tabPanel[data-tab="md"], .tabInput[value="json"]:checked ~ .tabPanel[data-tab="json"], .tabInput[value="eval"]:checked ~ .tabPanel[data-tab="eval"] { display: block; }
+.tabInput[value="md"]:checked ~ .tabBar .tabLabel[data-tab="md"], .tabInput[value="json"]:checked ~ .tabBar .tabLabel[data-tab="json"], .tabInput[value="eval"]:checked ~ .tabBar .tabLabel[data-tab="eval"] { color: var(--ink); background: var(--signal); }
+.tabInput[value="md"]:focus-visible ~ .tabBar .tabLabel[data-tab="md"], .tabInput[value="json"]:focus-visible ~ .tabBar .tabLabel[data-tab="json"], .tabInput[value="eval"]:focus-visible ~ .tabBar .tabLabel[data-tab="eval"] { outline: 3px solid var(--cyan); outline-offset: 2px; }
+
+/* Shop section navigation */
+.subnav { position: sticky; top: 72px; z-index: 10; display: flex; gap: 4px; overflow-x: auto; margin: 0 -20px; padding: 10px 20px; border-block: 1px solid var(--sf-line); background: color-mix(in srgb, var(--ink) 88%, transparent); backdrop-filter: blur(14px); scrollbar-width: none; }
+.subnav::-webkit-scrollbar { display: none; }
+.subnav a { flex: 0 0 auto; padding: 7px 11px; border-radius: 999px; color: var(--muted); text-decoration: none; font: 600 .72rem var(--font-mono), monospace; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; }
+.subnav a:hover, .subnav a:focus-visible { color: var(--paper); background: var(--surface-2); }
+.anchor { scroll-margin-top: 130px; }
+@media (max-width: 900px) { .subnav { top: 62px; } }
+@media (max-width: 620px) { .subnav { margin-inline: -14px; padding-inline: 14px; } }

@@ -1425,6 +1425,18 @@
     "mdFile": "q4-tooling-decision-note-sync-vendor.brief.md",
     "jsonFile": "q4-tooling-decision-note-sync-vendor.brief.json"
   },
+  "labRoundTrip": {
+    "afterImport": "Imported 3 source(s) from lab-export.brief.json. Source text is rebuilt from the approved lines; rejected lines were not in the export.",
+    "importNote": "12 of 12 checks pass",
+    "restoreVisible": true,
+    "titleAfterRestore": "Q4 tooling decision: note sync vendor"
+  },
+  "tabs": {
+    "visibleBefore": true,
+    "jsonVisible": true,
+    "mdHidden": false,
+    "compareTopAfterAnchor": 256.671875
+  },
   "availability": {
     "text": "The availability endpoint is not configured yet. Use the email option; your request is pre-filled. Send it by email instead; your answers are pre-filled.",
     "mailtoStartsWith": "mailto:hello@frankx.ai?subject=Availabil"
@@ -1438,10 +1450,10 @@
     "a:Infrastructure outline=solid/3px",
     "a:Guides outline=solid/3px",
     "a:Partners outline=solid/3px",
-    "a:Studio Shop ↗ outline=solid/3px",
+    "a:Shop ↗ outline=solid/3px",
     "a:Inspect the flagship edition outline=solid/3px",
     "a:Open the free lab outline=solid/3px",
-    "a:01Agent workflow kitsExecuta outline=solid/3px"
+    "a:Collections outline=solid/3px"
   ],
   "reducedMotion": [
     {

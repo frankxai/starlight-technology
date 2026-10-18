@@ -44,3 +44,9 @@
 .status { color: var(--muted); font-size: .8rem; }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 @media (max-width: 620px) { .sourceHead { grid-template-columns: 54px 1fr; } .sourceHead > :nth-child(3) { grid-column: 2; } .line { grid-template-columns: 1fr; } .panel { padding: 16px; } }
+
+.draftToggle { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 10px; border: 1px solid var(--edge-bright); border-radius: var(--radius-s); color: var(--muted); font: .74rem var(--font-body), sans-serif; cursor: pointer; }
+.draftToggle input { width: 16px; height: 16px; accent-color: var(--signal); }
+.flagged { padding: 12px 14px; border: 1px solid color-mix(in srgb, var(--amber) 50%, transparent); border-radius: var(--radius-s); background: color-mix(in srgb, var(--amber) 6%, var(--surface-0)); font-size: .82rem; line-height: 1.5; }
+.flagged strong { display: block; margin-bottom: 6px; color: var(--amber); font: 600 .62rem var(--font-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.flagged ul { margin: 0; padding-left: 1.1rem; color: #c9cfc3; }
