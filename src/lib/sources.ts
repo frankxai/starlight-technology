@@ -11,6 +11,7 @@ export const sources: SourceRecord[] = [
 ];
 
 export function getSources(ids: string[]) {
+  if (!ids) return [];
   return ids.map((id) => {
     const source = sources.find((entry) => entry.id === id);
     if (!source) throw new Error(`Missing source: ${id}`);
