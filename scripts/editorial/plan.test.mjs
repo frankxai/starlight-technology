@@ -4,10 +4,12 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { plan, sourceUrl } from './plan.mjs';
 
 const load = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
-const policy = load('../../data/editorial/policy.json');
+const currentPolicy = load('../../data/editorial/policy.json');
 const intake = load('../../data/editorial/pilot-intake.json');
 const initial = load('../../data/editorial/initial-state.json');
 const date = '2026-09-16T22:00:00Z';
+const policy = structuredClone(currentPolicy);
+for (const source of policy.sources) source.checkedAt = date;
 
 test('pilot reserves three briefs without model calls or publication', () => {
   const result = plan(intake, policy, initial, date);
@@ -63,8 +65,8 @@ test('product packet source indexes include every reciprocal claim reference', (
 });
 
 test('latest durable run replays without a duplicate brief or reservation', () => {
-  const latest = load('../../data/editorial/runs/2026-10-12-lenovo-googlebook-research.json');
-  const replay = plan(latest.normalizedIntake, policy, latest.nextState, '2026-10-15T06:40:57Z');
+  const latest = load('../../data/editorial/runs/2026-10-19-source-registry-recheck.json');
+  const replay = plan(latest.normalizedIntake, currentPolicy, latest.nextState, '2026-10-19T06:15:53Z');
   assert.deepEqual(replay.selected, []);
   assert.equal(replay.budget.reservedThisRun, 0);
   assert.deepEqual(replay.nextState, latest.nextState);
