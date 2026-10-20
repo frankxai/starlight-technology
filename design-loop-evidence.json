@@ -2,7 +2,7 @@
   "feature": "Shop product pages: exact product photography with a liquid-surface decision panel",
   "branch": "agent/claude/liquid-surface",
   "author": "Claude Code (Opus 5.5), side session e5c0bffd of local_59d994d1",
-  "verifiedCodeCommit": "PENDING",
+  "verifiedCodeCommit": "ecc398df62be95dfc8c7ebe7b39cc78ef0e85504",
   "verifiedAt": "2026-10-20T10:47:53.916Z",
   "routes": [
     "/shop/nvidia-dgx-spark",
@@ -27,9 +27,9 @@
     "configuration": "Panel shows manufacturer-listed configuration rows per product, copied from each product sourceUrl on 2026-10-20. Mac Studio names one of Apple standard configurations (M5 Max 18/40-core, 64 GB, 1 TB) as the pick; DGX Spark labels the 128 GB NVIDIA model and notes 64 GB is OEM-only. Variant photos are excluded from Open Graph and Product structured data.",
     "selectNotes": "DGX Spark and Mac Studio panels tell the buyer which variant to choose at the destination, above the action."
   },
-  "crossProviderReview": "PENDING",
+  "crossProviderReview": "Codex (--profile review), prompted as a buyer who declined. FAIL d2b4638 (4 P1/3 P2), FAIL 8e4ea47 (2 P1/4 P2), FAIL 9010d1d (1 P1/1 P2), PASS bc872ad with one P2 fixed in the verified commit. All findings fixed, none declined.",
   "designReview": {
-    "reviewer": "Maker self-score pending cross-provider review",
+    "reviewer": "Maker self-score after four cross-provider rounds; Codex verdict PASS",
     "decisionObject": 5,
     "hierarchy": 5,
     "craft": 4,
@@ -144,5 +144,6 @@
         "No remote screenshot-capable browser was available; rendered HTML, metadata, responsive source and build output were inspected."
       ]
     }
-  }
+  },
+  "pullRequest": "https://github.com/frankxai/starlight-technology/pull/50"
 }
