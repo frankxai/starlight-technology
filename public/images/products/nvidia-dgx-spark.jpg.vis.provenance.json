@@ -21,7 +21,7 @@
     "author": "Daniel Lu",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "changes": "Resized from the 1920 px Commons rendition to 1600 px and re-encoded as JPEG q80.",
+    "changes": "Resized from 1920 px to 1600 px and re-encoded; no other edits.",
     "endorsement": false
   },
   "dimensions": {
@@ -31,5 +31,6 @@
   "schema_validation": {
     "status": "not-validated",
     "reason": "Referenced public schema not fetched in this session; fields follow the estate sidecar shape."
-  }
+  },
+  "title": "Nvidia DGX Spark oblique view dllu"
 }

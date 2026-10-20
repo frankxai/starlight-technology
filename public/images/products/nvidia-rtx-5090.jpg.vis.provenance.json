@@ -21,7 +21,7 @@
     "author": "PantheraLeo1359531",
     "license": "CC BY 4.0",
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
-    "changes": "Resized to 1600 px; transparent PNG background flattened onto #0b0f0d; re-encoded as JPEG q80.",
+    "changes": "Resized to 1600 px; transparent background filled with the page colour (#0b0f0d); re-encoded as JPEG.",
     "endorsement": false
   },
   "dimensions": {
@@ -31,5 +31,6 @@
   "schema_validation": {
     "status": "not-validated",
     "reason": "Referenced public schema not fetched in this session; fields follow the estate sidecar shape."
-  }
+  },
+  "title": "Palit GeForce RTX 5090 Gamerock 20250530 HOF4166 RAW-Export"
 }

@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { shopProducts } from "./shop";
 import { shopPhotos } from "./shop-photos";
+import { shopAlternatives, shopConfigs } from "./shop-configs";
 
 const publicDir = join(process.cwd(), "public");
 
@@ -21,6 +22,8 @@ describe("shop product photographs", () => {
       expect(sidecar.rights.license).toBe(photo.license);
       expect(sidecar.rights.author).toBe(photo.author);
       expect(sidecar.dimensions).toEqual({ width: photo.width, height: photo.height });
+      expect(sidecar.title).toBe(photo.title);
+      expect(sidecar.rights.changes).toBe(photo.changes);
     }
   });
 
@@ -31,6 +34,28 @@ describe("shop product photographs", () => {
       expect(photo.sourceUrl).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
       expect(photo.alt.length).toBeGreaterThan(30);
       expect(photo.pictured.length).toBeGreaterThan(10);
+    }
+  });
+});
+
+describe("shop configurations and alternatives", () => {
+  const slugs = new Set(shopProducts.map((product) => product.slug));
+  it("gives every product a dated manufacturer configuration", () => {
+    for (const slug of slugs) {
+      const config = shopConfigs[slug];
+      expect(config, slug).toBeDefined();
+      expect(config.checkedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(config.rows.length).toBeGreaterThanOrEqual(3);
+    }
+  });
+  it("pairs alternatives by decision, never with itself, always with a trade-off", () => {
+    for (const [slug, alternatives] of Object.entries(shopAlternatives)) {
+      expect(slugs.has(slug)).toBe(true);
+      for (const alternative of alternatives) {
+        expect(slugs.has(alternative.slug), alternative.slug).toBe(true);
+        expect(alternative.slug).not.toBe(slug);
+        expect(alternative.tradeoff.length).toBeGreaterThan(40);
+      }
     }
   });
 });

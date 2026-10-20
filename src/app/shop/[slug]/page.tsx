@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HardwareDiagram } from "@/components/hardware-diagram";
-import { getShopProduct, shopProducts } from "@/lib/shop";
+import { getShopProduct } from "@/lib/shop";
 import { getShopPhoto } from "@/lib/shop-photos";
+import { shopAlternatives, shopConfigs } from "@/lib/shop-configs";
 import { resolveShopOffer } from "@/lib/shop-offers";
 import styles from "@/components/shop.module.css";
 
@@ -24,7 +25,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
   const offer = resolveShopOffer(product);
   const photo = getShopPhoto(slug);
-  const alternatives = shopProducts.filter((item) => item.category === product.category && item.slug !== product.slug).slice(0, 3);
+  const config = shopConfigs[slug];
+  const alternatives = (shopAlternatives[slug] ?? []).flatMap((alt) => { const item = getShopProduct(alt.slug); return item ? [{ item, tradeoff: alt.tradeoff }] : []; });
   const affiliate = offer.relationship === "affiliate";
   const schema = { "@context": "https://schema.org", "@type": "Product", name: `${product.brand} ${product.name}`, description: product.summary, brand: { "@type": "Brand", name: product.brand }, url: `https://starlight.technology/shop/${slug}`, ...(photo ? { image: `https://starlight.technology${photo.src}` } : {}) };
   return <article className={`${styles.shop} shell`}>
@@ -39,12 +41,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <figure className={styles.stageFigure}>
         <div className={styles.stageMedia}>
           {photo
-            ? <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} preload sizes="(max-width: 900px) 100vw, 1240px" style={{ objectPosition: photo.objectPosition }} />
+            ? <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} preload sizes="(max-width: 900px) calc(100vw - 40px), min(calc(100vw - 264px), 1016px)" style={{ objectPosition: photo.objectPosition }} />
             : <HardwareDiagram shape={product.shape} />}
         </div>
         <figcaption>
           {photo
-            ? <>{photo.pictured} Photo: {photo.author}, <a href={photo.licenseUrl} target="_blank" rel="noopener license">{photo.license}</a>, via <a href={photo.sourceUrl} target="_blank" rel="noopener">Wikimedia Commons</a>; resized.</>
+            ? <>{photo.pictured} Photo: <a href={photo.sourceUrl} target="_blank" rel="noopener">“{photo.title}”</a> by {photo.author}, <a href={photo.licenseUrl} target="_blank" rel="noopener license">{photo.license}</a>, via Wikimedia Commons. {photo.changes}</>
             : "Original category schematic. No licensed photograph of this exact model yet, so we show no product image rather than a lookalike."}
         </figcaption>
       </figure>
@@ -52,25 +54,27 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <aside className={`${styles.decisionPanel} ${photo ? "liquid-surface" : ""}`} aria-labelledby="decision-heading">
         <p className="eyebrow">The decision</p>
         <h2 id="decision-heading">{product.role}</h2>
-        <p className={styles.panelFit}><span>Choose it when</span>{product.fit}</p>
+        {photo?.variantNote && <p className={styles.panelNote}>{photo.variantNote}</p>}
+        {config && <dl className={styles.panelConfig} aria-label={`Manufacturer-listed configuration, checked ${config.checkedOn}`}>{config.rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
+        {config && <p className={styles.panelSource}>Manufacturer listing, checked {config.checkedOn}</p>}
         <a className="button button-primary button-lit" href={offer.href} target="_blank" rel={affiliate ? "sponsored noopener" : "noopener"}>{affiliate ? `View at ${offer.merchant} ↗` : `${offer.merchant} official page ↗`}</a>
-        <p className={styles.panelDisclosure}>{affiliate ? "Affiliate link: we may earn a commission. Price and stock are confirmed on the merchant site." : "Manufacturer link, no commission. Price, configuration and stock are confirmed there."}</p>
+        <p className={styles.panelDisclosure}>{affiliate ? "Affiliate link: we may earn a commission. Price and stock are confirmed on the merchant site." : "Manufacturer link, no commission. Price and stock are confirmed there."} <Link href="/disclosure">How we earn →</Link></p>
         <dl className={styles.panelRecord}>
           <div><dt>Destination</dt><dd>{new URL(offer.href).hostname}</dd></div>
+          <div><dt>Relationship</dt><dd>{affiliate ? "Approved affiliate link" : "Ordinary source link"}</dd></div>
           <div><dt>Region</dt><dd>{offer.region}</dd></div>
           <div><dt>Link record</dt><dd>{offer.verifiedAt.slice(0, 10)}</dd></div>
-          <div><dt>Disclosure</dt><dd><Link href="/disclosure">How we earn →</Link></dd></div>
         </dl>
       </aside>
     </section>
 
     {alternatives.length > 0 && <section className={styles.alternatives} aria-labelledby="alternatives-heading">
-      <div className={styles.alternativesHead}><p className="eyebrow">Real alternatives</p><h2 id="alternatives-heading">Other {product.category.toLowerCase()} decisions in the shop</h2></div>
-      <ul>{alternatives.map((item) => {
+      <div className={styles.alternativesHead}><p className="eyebrow">Real alternatives</p><h2 id="alternatives-heading">Other ways to solve the same problem</h2></div>
+      <ul>{alternatives.map(({ item, tradeoff }) => {
         const altPhoto = getShopPhoto(item.slug);
         return <li key={item.slug}><Link href={`/shop/${item.slug}`} className={styles.alternative}>
           <span className={styles.altMedia} data-photo={altPhoto ? "true" : "false"}>{altPhoto ? <Image src={altPhoto.src} alt="" width={altPhoto.width} height={altPhoto.height} sizes="(max-width: 620px) 30vw, 160px" style={{ objectPosition: altPhoto.objectPosition }} /> : <HardwareDiagram shape={item.shape} />}</span>
-          <span className={styles.altBody}><span className={styles.brand}>{item.brand}</span><strong>{item.name}</strong><span>{item.role}</span></span>
+          <span className={styles.altBody}><span className={styles.brand}>{item.brand}</span><strong>{item.name}</strong><span>{tradeoff}</span></span>
         </Link></li>;
       })}</ul>
     </section>}

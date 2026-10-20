@@ -125,25 +125,30 @@
 .productHead h1 { font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: 1; letter-spacing: -.06em; font-weight: 500; margin: 0; }
 .productHead .lede { margin-top: 0; }
 .productHead .evidence { margin-bottom: 0; }
-.stage { --stage-h: clamp(440px, 62svh, 620px); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 168px minmax(200px, 224px); grid-template-rows: var(--stage-h) auto; }
+.stage { --stage-h: clamp(440px, 62svh, 620px); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 168px minmax(200px, 224px); grid-template-rows: minmax(var(--stage-h), auto) auto; }
 .stageFigure { display: contents; margin: 0; }
 .stageMedia { grid-column: 1 / 3; grid-row: 1; position: relative; overflow: hidden; background: #10160f; border: 1px solid var(--shop-line); }
-.stageMedia img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.stageMedia img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .stage[data-photo="false"] .stageMedia { display: grid; place-items: center; padding: 40px clamp(24px, 6vw, 72px); color: var(--signal); }
 .stage[data-photo="false"] .stageMedia svg { width: min(100%, 560px); display: block; }
 .stageFigure figcaption { grid-column: 1 / 3; grid-row: 2; padding: 12px 0 0; color: var(--muted); font: .64rem/1.6 var(--font-mono), monospace; max-width: 720px; }
 .stageFigure figcaption a { color: var(--paper); }
-.decisionPanel { grid-column: 2 / 4; grid-row: 1; align-self: center; z-index: 1; margin: 0; padding: 26px; border-width: 1px; border-style: solid; min-width: 0; }
+.decisionPanel { grid-column: 2 / 4; grid-row: 1; align-self: center; z-index: 1; margin: 24px 0; padding: 22px 24px; border-width: 1px; border-style: solid; min-width: 0; }
 .stage[data-photo="false"] .decisionPanel { border-color: #46543a; background: #111713; }
 .decisionPanel h2 { margin: 0 0 14px; font-size: 1.6rem; line-height: 1.12; letter-spacing: -.035em; font-weight: 500; }
-.panelFit { margin: 0 0 20px; font-size: .9rem; line-height: 1.55; }
-.panelFit span { display: block; margin-bottom: 4px; color: var(--signal); font: .62rem var(--font-mono), monospace; letter-spacing: .06em; text-transform: uppercase; }
+.panelNote { margin: -4px 0 14px; padding: 8px 10px; border-left: 2px solid var(--amber); background: rgb(255 191 105 / .1); color: var(--paper); font-size: .76rem; line-height: 1.45; }
+.panelConfig { display: grid; gap: 0; margin: 0 0 6px; }
+.panelConfig div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 7px 0; border-top: 1px solid rgb(255 255 255 / .12); }
+.panelConfig dt { color: #b9c0b4; font: .62rem/1.7 var(--font-mono), monospace; }
+.panelConfig dd { margin: 0; font-size: .82rem; line-height: 1.4; }
+.panelSource { margin: 0 0 14px; color: #b9c0b4; font: .6rem var(--font-mono), monospace; }
+.panelDisclosure a { white-space: nowrap; }
 .decisionPanel .button { width: 100%; }
 .panelDisclosure { margin: 12px 0 0; color: #b9c0b4; font-size: .74rem; line-height: 1.5; }
-.panelRecord { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; margin: 18px 0 0; }
-.panelRecord div { padding: 10px 0 0; border-top: 1px solid rgb(255 255 255 / .12); margin-top: 10px; min-width: 0; }
+.panelRecord { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; margin: 12px 0 0; }
+.panelRecord div { padding: 6px 0 0; border-top: 1px solid rgb(255 255 255 / .12); margin-top: 6px; min-width: 0; }
 .panelRecord dt { color: #b9c0b4; font: .6rem var(--font-mono), monospace; }
-.panelRecord dd { margin: 4px 0 0; font-size: .78rem; overflow-wrap: anywhere; }
+.panelRecord dd { margin: 2px 0 0; font-size: .74rem; overflow-wrap: anywhere; }
 .alternatives { margin-top: 64px; }
 .alternativesHead h2 { margin: 0 0 22px; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.12; letter-spacing: -.04em; font-weight: 500; }
 .alternatives ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }

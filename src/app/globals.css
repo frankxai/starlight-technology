@@ -240,6 +240,7 @@ button, select { font: inherit; }
   .liquid-surface { border-color: var(--line-bright); }
 }
 @media (forced-colors: active) {
-  .liquid-surface { background: Canvas; border-color: CanvasText; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .liquid-surface { background: Canvas; border-color: CanvasText; }
+  .liquid-surface, .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; }
   .button-lit { box-shadow: none; }
 }
