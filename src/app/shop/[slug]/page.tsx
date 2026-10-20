@@ -56,6 +56,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <p className="eyebrow">The decision</p>
         <h2 id="decision-heading">{product.role}</h2>
         {photo?.variantNote && <p className={styles.panelNote}>{photo.variantNote}</p>}
+        {config?.select && <p className={styles.panelSelect}><span>Before you buy</span>{config.select}</p>}
         <a className="button button-primary button-lit" href={offer.href} target="_blank" rel={affiliate ? "sponsored noopener" : "noopener"}>{affiliate ? `View at ${offer.merchant} ↗` : `${offer.merchant} official page ↗`}</a>
         <p className={styles.panelDisclosure}>{affiliate ? "Affiliate link: we may earn a commission. Price and stock are confirmed on the merchant site." : "Manufacturer link, no commission. Price and stock are confirmed there."} <Link href="/disclosure">How we earn →</Link></p>
         {config?.pick && <p className={styles.panelPick}>{config.pick}</p>}

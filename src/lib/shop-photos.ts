@@ -50,7 +50,7 @@ export const shopPhotos: Record<string, ShopPhoto> = {
     title: "Mac Studio (2022) front",
     pictured: "A 2022 Mac Studio. Chip, memory and storage cannot be identified from a photograph.",
     changes: "Resized from 1920 px to 1600 px and re-encoded; no other edits.",
-    variantNote: "2022 model pictured. The current Mac Studio is listed below; chip and memory are not visible in a photo.",
+    variantNote: "2022 model pictured. Chip and memory are not visible in a photo.",
     author: "Yasu", license: "CC BY-SA 3.0", licenseUrl: CC_BY_SA_3,
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mac_Studio_(2022)_front.jpg",
     objectPosition: "50% 62%"

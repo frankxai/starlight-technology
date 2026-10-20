@@ -137,6 +137,8 @@
 .stage[data-photo="false"] .decisionPanel { border-color: #46543a; background: #111713; }
 .decisionPanel h2 { margin: 0 0 14px; font-size: 1.6rem; line-height: 1.12; letter-spacing: -.035em; font-weight: 500; }
 .panelNote { margin: -4px 0 14px; padding: 8px 10px; border-left: 2px solid var(--amber); background: rgb(255 191 105 / .1); color: var(--paper); font-size: .76rem; line-height: 1.45; }
+.panelSelect { margin: 0 0 14px; font-size: .82rem; line-height: 1.45; }
+.panelSelect span { display: block; margin-bottom: 3px; color: var(--signal); font: .62rem var(--font-mono), monospace; letter-spacing: .06em; text-transform: uppercase; }
 .panelPick { margin: 18px 0 6px; color: var(--signal); font: .62rem var(--font-mono), monospace; letter-spacing: .04em; }
 .panelConfig { display: grid; gap: 0; margin: 18px 0 6px; }
 .panelPick + .panelConfig { margin-top: 0; }
@@ -179,7 +181,7 @@
   .productHead { padding-block: 18px 20px; gap: 10px; }
   .productHead .lede { font-size: 1rem; line-height: 1.55; }
   .stageMedia { aspect-ratio: 16 / 10; }
-  .decisionPanel { margin-inline: 8px; padding: 22px 18px; }
+  .decisionPanel { margin: -96px 8px 0; padding: 20px 18px; }
   .decisionPanel h2 { font-size: 1.4rem; }
   .alternative { grid-template-columns: 92px minmax(0, 1fr); }
 }
