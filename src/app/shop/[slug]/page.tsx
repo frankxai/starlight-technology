@@ -39,18 +39,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     </header>
 
     <section className={styles.stage} data-photo={photo ? "true" : "false"} aria-label={`${product.name} and the buying decision`}>
-      <figure className={styles.stageFigure}>
-        <div className={styles.stageMedia}>
-          {photo
-            ? <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} preload sizes="(max-width: 900px) calc(100vw - 40px), min(calc(100vw - 264px), 1016px)" style={{ objectPosition: photo.objectPosition }} />
-            : <HardwareDiagram shape={product.shape} />}
-        </div>
-        <figcaption>
-          {photo
-            ? <>{photo.pictured} Photo: <a href={photo.sourceUrl} target="_blank" rel="noopener">“{photo.title}”</a> by {photo.author}, <a href={photo.licenseUrl} target="_blank" rel="noopener license">{photo.license}</a>, via Wikimedia Commons. {photo.changes}</>
-            : "Original category schematic. No licensed photograph of this exact model yet, so we show no product image rather than a lookalike."}
-        </figcaption>
-      </figure>
+      <div className={styles.stageMedia}>
+        {photo
+          ? <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} preload sizes="(max-width: 900px) calc(100vw - 40px), min(calc(100vw - 264px), 1016px)" style={{ objectPosition: photo.objectPosition }} />
+          : <HardwareDiagram shape={product.shape} />}
+      </div>
 
       <aside className={`${styles.decisionPanel} ${photo ? "liquid-surface" : ""}`} aria-labelledby="decision-heading">
         <p className="eyebrow">The decision</p>
@@ -69,6 +62,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div><dt>Link record</dt><dd>{offer.verifiedAt.slice(0, 10)}</dd></div>
         </dl>
       </aside>
+
+      {/* Credits follow the panel in the DOM so keyboard order matches the stacked mobile layout. */}
+      <p className={styles.stageCredit}>
+        {photo
+          ? <>{photo.pictured} Photo: <a href={photo.sourceUrl} target="_blank" rel="noopener">“{photo.title}”</a> by {photo.author}, <a href={photo.licenseUrl} target="_blank" rel="noopener license">{photo.license}</a>, via Wikimedia Commons. {photo.changes}</>
+          : "Original category schematic. No licensed photograph of this exact model yet, so we show no product image rather than a lookalike."}
+      </p>
     </section>
 
     {alternatives.length > 0 && <section className={styles.alternatives} aria-labelledby="alternatives-heading">
