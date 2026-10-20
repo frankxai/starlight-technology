@@ -74,7 +74,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     {alternatives.length > 0 && <section className={styles.alternatives} aria-labelledby="alternatives-heading">
       <div className={styles.alternativesHead}><p className="eyebrow">Real alternatives</p><h2 id="alternatives-heading">Other ways to solve the same problem</h2></div>
       <ul>{alternatives.map(({ item, tradeoff }) => {
-        const altPhoto = getShopPhoto(item.slug);
+        const candidate = getShopPhoto(item.slug);
+        const altPhoto = candidate && !candidate.variantNote ? candidate : undefined;
         return <li key={item.slug}><Link href={`/shop/${item.slug}`} className={styles.alternative}>
           <span className={styles.altMedia} data-photo={altPhoto ? "true" : "false"}>{altPhoto ? <Image src={altPhoto.src} alt="" width={altPhoto.width} height={altPhoto.height} sizes="(max-width: 620px) 30vw, 160px" style={{ objectPosition: altPhoto.objectPosition }} /> : <HardwareDiagram shape={item.shape} />}</span>
           <span className={styles.altBody}><span className={styles.brand}>{item.brand}</span><strong>{item.name}</strong><span>{tradeoff}</span></span>
