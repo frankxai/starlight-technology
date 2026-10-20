@@ -137,14 +137,16 @@
 .stage[data-photo="false"] .decisionPanel { border-color: #46543a; background: #111713; }
 .decisionPanel h2 { margin: 0 0 14px; font-size: 1.6rem; line-height: 1.12; letter-spacing: -.035em; font-weight: 500; }
 .panelNote { margin: -4px 0 14px; padding: 8px 10px; border-left: 2px solid var(--amber); background: rgb(255 191 105 / .1); color: var(--paper); font-size: .76rem; line-height: 1.45; }
-.panelConfig { display: grid; gap: 0; margin: 0 0 6px; }
+.panelPick { margin: 18px 0 6px; color: var(--signal); font: .62rem var(--font-mono), monospace; letter-spacing: .04em; }
+.panelConfig { display: grid; gap: 0; margin: 18px 0 6px; }
+.panelPick + .panelConfig { margin-top: 0; }
 .panelConfig div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 7px 0; border-top: 1px solid rgb(255 255 255 / .12); }
 .panelConfig dt { color: #b9c0b4; font: .62rem/1.7 var(--font-mono), monospace; }
 .panelConfig dd { margin: 0; font-size: .82rem; line-height: 1.4; }
-.panelSource { margin: 0 0 14px; color: #b9c0b4; font: .6rem var(--font-mono), monospace; }
+.panelSource { margin: 0 0 4px; color: #b9c0b4; font: .6rem var(--font-mono), monospace; }
 .panelDisclosure a { white-space: nowrap; }
 .decisionPanel .button { width: 100%; }
-.panelDisclosure { margin: 12px 0 0; color: #b9c0b4; font-size: .74rem; line-height: 1.5; }
+.panelDisclosure { margin: 10px 0 0; color: #b9c0b4; font-size: .74rem; line-height: 1.5; }
 .panelRecord { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; margin: 12px 0 0; }
 .panelRecord div { padding: 6px 0 0; border-top: 1px solid rgb(255 255 255 / .12); margin-top: 6px; min-width: 0; }
 .panelRecord dt { color: #b9c0b4; font: .6rem var(--font-mono), monospace; }
@@ -174,6 +176,9 @@
   .alternatives ul { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
+  .productHead { padding-block: 18px 20px; gap: 10px; }
+  .productHead .lede { font-size: 1rem; line-height: 1.55; }
+  .stageMedia { aspect-ratio: 16 / 10; }
   .decisionPanel { margin-inline: 8px; padding: 22px 18px; }
   .decisionPanel h2 { font-size: 1.4rem; }
   .alternative { grid-template-columns: 92px minmax(0, 1fr); }

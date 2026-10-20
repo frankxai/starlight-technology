@@ -16,7 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = getShopProduct(slug);
   if (!product) return {};
   const photo = getShopPhoto(slug);
-  return { title: `${product.brand} ${product.name} — Buying decision`, description: product.summary, alternates: { canonical: `/shop/${slug}` }, openGraph: { title: `${product.brand} ${product.name}`, description: product.summary, url: `/shop/${slug}`, ...(photo ? { images: [{ url: photo.src, width: photo.width, height: photo.height, alt: photo.alt }] } : {}) } };
+  const shareable = photo && !photo.variantNote ? photo : undefined;
+  return { title: `${product.brand} ${product.name} — Buying decision`, description: product.summary, alternates: { canonical: `/shop/${slug}` }, openGraph: { title: `${product.brand} ${product.name}`, description: product.summary, url: `/shop/${slug}`, ...(shareable ? { images: [{ url: shareable.src, width: shareable.width, height: shareable.height, alt: shareable.alt }] } : {}) } };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -28,7 +29,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const config = shopConfigs[slug];
   const alternatives = (shopAlternatives[slug] ?? []).flatMap((alt) => { const item = getShopProduct(alt.slug); return item ? [{ item, tradeoff: alt.tradeoff }] : []; });
   const affiliate = offer.relationship === "affiliate";
-  const schema = { "@context": "https://schema.org", "@type": "Product", name: `${product.brand} ${product.name}`, description: product.summary, brand: { "@type": "Brand", name: product.brand }, url: `https://starlight.technology/shop/${slug}`, ...(photo ? { image: `https://starlight.technology${photo.src}` } : {}) };
+  const schema = { "@context": "https://schema.org", "@type": "Product", name: `${product.brand} ${product.name}`, description: product.summary, brand: { "@type": "Brand", name: product.brand }, url: `https://starlight.technology/shop/${slug}`, ...(photo && !photo.variantNote ? { image: `https://starlight.technology${photo.src}` } : {}) };
   return <article className={`${styles.shop} shell`}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/shop">Studio Shop</Link><span>/</span><span>{product.category}</span></nav>
@@ -55,10 +56,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <p className="eyebrow">The decision</p>
         <h2 id="decision-heading">{product.role}</h2>
         {photo?.variantNote && <p className={styles.panelNote}>{photo.variantNote}</p>}
-        {config && <dl className={styles.panelConfig} aria-label={`Manufacturer-listed configuration, checked ${config.checkedOn}`}>{config.rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
-        {config && <p className={styles.panelSource}>Manufacturer listing, checked {config.checkedOn}</p>}
         <a className="button button-primary button-lit" href={offer.href} target="_blank" rel={affiliate ? "sponsored noopener" : "noopener"}>{affiliate ? `View at ${offer.merchant} ↗` : `${offer.merchant} official page ↗`}</a>
         <p className={styles.panelDisclosure}>{affiliate ? "Affiliate link: we may earn a commission. Price and stock are confirmed on the merchant site." : "Manufacturer link, no commission. Price and stock are confirmed there."} <Link href="/disclosure">How we earn →</Link></p>
+        {config?.pick && <p className={styles.panelPick}>{config.pick}</p>}
+        {config && <dl className={styles.panelConfig} aria-label={`Manufacturer-listed configuration, checked ${config.checkedOn}`}>{config.rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
+        {config && <p className={styles.panelSource}>Manufacturer listing, checked {config.checkedOn}</p>}
         <dl className={styles.panelRecord}>
           <div><dt>Destination</dt><dd>{new URL(offer.href).hostname}</dd></div>
           <div><dt>Relationship</dt><dd>{affiliate ? "Approved affiliate link" : "Ordinary source link"}</dd></div>

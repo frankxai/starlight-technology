@@ -19,12 +19,12 @@
     "tests": "40 passed across 6 files (adds shop photo, configuration and alternatives contracts)",
     "build": "passed",
     "screenshots": "docs/evidence/liquid-surface: before (production) and after at 375x812, 768x1024, 1440x900 for DGX Spark, Mac Studio, 990 PRO 2 TB (4 TB photo notice) and MS-S1 MAX (no-photo case); Mac Studio under contrast:more, forced-colors and reduced-motion. Headless Chromium via Playwright against the local dev server.",
-    "firstViewport": "Photo visible 258px at 375, 544px at 768, 556px at 1440; before: no product image at any width. Pictured-variant notices (Mac 2022, 990 PRO 4 TB, Palit board) sit inside the decision panel.",
-    "primaryAction": "Primary action top at 1440x900: 615-716px (before 775px). At 375x812: 922-1018px (before 2099-2210px); the configuration rows added after review push it just below the mobile fold, while the photo and the panel heading stay in the first viewport.",
+    "firstViewport": "Photo visible 215px at 375 (16:10), 544px at 768, 556-588px at 1440; before: no product image at any width. Pictured-variant notices (Mac 2022, 990 PRO 4 TB, Palit board) sit inside the decision panel above the action.",
+    "primaryAction": "Primary action top: 433-531px at 1440x900 (before 775px); 617-746px at 375x812, fully inside the first viewport (before 2099-2210px).",
     "contrast": "Panel tint rgb(8 11 10 / .88) over pure white: #f1f4ec 13.3:1, #b9c0b4 7.9:1, #c8f36b 11.6:1 (WCAG relative luminance, computed).",
     "emulation": "contrast:more -> panel and header rgb(11,14,15), backdrop-filter none; forced-colors -> panel Canvas, no filter.",
     "overflow": "scrollWidth equals clientWidth at 375, 768 and 1440.",
-    "configuration": "Panel shows 3-4 manufacturer-listed configuration rows per product, copied from each product sourceUrl on 2026-10-20; DXP4800 Plus CPU/RAM/LAN could not be read from the UGREEN page and are left as a check."
+    "configuration": "Panel shows manufacturer-listed configuration rows per product, copied from each product sourceUrl on 2026-10-20. Mac Studio names one of Apple standard configurations (M5 Max 18/40-core, 64 GB, 1 TB) as the pick; DGX Spark labels the 128 GB NVIDIA model and notes 64 GB is OEM-only. Variant photos are excluded from Open Graph and Product structured data."
   },
   "crossProviderReview": "PENDING",
   "designReview": {
