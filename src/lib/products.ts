@@ -12,9 +12,13 @@ export interface ProductSku {
   cta: string;
   featured?: boolean;
   checkoutEnvKey?: string;
-  // Waitlist-first (starlight AGENTS.md §5c): payment opens only for a SKU with a release-gate PASS receipt.
-  gatePassed?: boolean;
   productPath: string;
+  // A paid release must identify the exact artifact, edition and price the
+  // buyer receives. Missing values fail closed in the commerce release gate.
+  edition?: string;
+  artifactSha256?: string;
+  amountCents?: number;
+  currency?: "EUR";
 }
 
 export const saasTiers: ProductSku[] = [
@@ -117,15 +121,32 @@ export const serviceProducts: ProductSku[] = [
   }
 ];
 
-export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts];
+// Earlier SKU IDs remain resolvable for existing receipts and support links.
+// Their presence is not approval to accept new orders or promise fulfilment.
+export const candidateProducts: ProductSku[] = [
+  {
+    id: "creator-studio-kit",
+    name: "AI Creator Studio kit",
+    kind: "digital",
+    billing: "once",
+    priceLabel: "Price not announced",
+    summary: "A self-service kit in development for planning complete systems and repeatable agent workflows with tools you own.",
+    includes: [
+      "Editable system and capacity plans",
+      "Portable workflow skills and evidence records",
+      "Installation, export and recovery guidance"
+    ],
+    cta: "Prepare a release request",
+    productPath: "/builds",
+    edition: "development"
+  }
+];
+
+export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts, ...candidateProducts];
 export function getProduct(id: string) { return allProducts.find((p) => p.id === id); }
 export function checkoutHref(sku: ProductSku): string {
   if (sku.billing === "free") return sku.productPath;
-  return paymentUrl(sku) ?? `/checkout/${sku.id}`;
-}
-
-export function paymentUrl(sku: ProductSku): string | undefined {
-  if (!sku.gatePassed || !sku.checkoutEnvKey) return undefined;
-  const url = process.env[sku.checkoutEnvKey];
-  return url?.startsWith("http") ? url : undefined;
+  // Every paid CTA passes through the server's release/checkout decision.
+  // A configured public payment URL is not evidence of release or fulfilment.
+  return `/checkout/${sku.id}`;
 }
