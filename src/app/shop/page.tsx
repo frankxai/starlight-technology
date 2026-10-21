@@ -15,7 +15,7 @@ import { ReadinessBoard } from "@/components/shop/readiness-board";
 import { ShopEvent } from "@/components/shop/shop-event";
 import { StorefrontPreview } from "@/components/shop/storefront-preview";
 import { EditionCompare } from "@/components/shop/edition-compare";
-import { ArtifactPreview } from "@/components/shop/artifact-preview";
+import { DeferredLab } from "@/components/shop/deferred-lab";
 import styles from "@/components/shop/storefront.module.css";
 import hw from "@/components/shop.module.css";
 
@@ -96,14 +96,19 @@ export default function ShopPage() {
 
     <section className={`${styles.section} ${styles.anchor}`} id="free-lab" aria-labelledby="lab-heading">
       <div className={styles.sectionHead}><div><p className="eyebrow">Free · live now</p><h2 id="lab-heading">{lab.name}: {lab.tagline}</h2></div><p>{lab.outcome}</p></div>
-      <div className={styles.spotlight}>
-        <ArtifactPreview id="home-artifact" />
+      <div className={styles.labFrame}>
+        <div className={styles.labFrameHead}><span><b>Live</b> · the real lab, running here in your browser</span><span>No account · nothing uploaded · no model call</span></div>
+        <DeferredLab />
+      </div>
+      <div className={styles.twoCol} style={{ marginTop: 32 }}>
         <div className={styles.prose}>
           <h3>What you leave with</h3>
           <ul className={styles.checkList}>{lab.produces.map((item) => <li key={item}>{item}</li>)}</ul>
+        </div>
+        <div className={styles.prose}>
           <h3>What it is not</h3>
           <ul className={styles.checkList} data-tone="warn">{lab.limitations.map((item) => <li key={item}>{item}</li>)}</ul>
-          <div className={styles.actions}><Link className={`${styles.btn} ${styles.btnCyan}`} href={`/shop/free/${lab.slug}`}>Open the lab</Link><Link className={`${styles.btn} ${styles.btnQuiet}`} href={`/shop/products/${flagship.slug}`}>Compare with the edition</Link></div>
+          <div className={styles.actions}><Link className={`${styles.btn} ${styles.btnCyan}`} href={`/shop/free/${lab.slug}`}>Open the full lab page</Link><Link className={`${styles.btn} ${styles.btnQuiet}`} href={`/shop/products/${flagship.slug}`}>Compare with the edition</Link></div>
         </div>
       </div>
     </section>
@@ -117,7 +122,7 @@ export default function ShopPage() {
       <div className={styles.sectionHead}><div><p className="eyebrow">Curated hardware and tooling</p><h2 id="hardware-heading">Machines and tools that run the work.</h2></div><p>Recommendations, not listings. No vendor here is a partner; every link states its status. Prices, stock and reviews are absent because the catalogue has no verified source for them.</p></div>
       <div className={hw.productGrid}>{hardwarePicks.map((product) => <article className={hw.productCard} key={product.slug}>
         <div className={hw.cardTop}><span>{product.category}</span><DisclosureTag relationship="official" /></div>
-        <Link href={`/shop/${product.slug}`} className={hw.diagram} aria-label={`Category schematic, not a product image. Read the buying decision for ${product.name}`}><HardwareDiagram shape={product.shape} /><span>Category schematic · not a product image</span></Link>
+        <Link href={`/shop/${product.slug}`} className={hw.diagram} aria-label={`Original illustration, not a photograph. Read the buying decision for ${product.name}`}><HardwareDiagram shape={product.shape} slug={product.slug} /><span>Original illustration · not a photograph</span></Link>
         <div className={hw.cardBody}><p className={hw.brand}>{product.brand}</p><h3><Link href={`/shop/${product.slug}`}>{product.name}</Link></h3><p>{product.summary}</p><div className={hw.fit}><span>RUNTIME</span><p>{product.runtime}</p></div></div>
         <div className={hw.cardFoot}><Link href={`/shop/${product.slug}`}>Inspect the decision →</Link><Link href="/shop/local-ai-hardware">Compare criteria →</Link><small>Independent recommendation · manufacturer link on the decision page · no commission</small></div>
       </article>)}</div>

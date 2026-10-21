@@ -13,6 +13,7 @@ import { ReadinessBoard } from "@/components/shop/readiness-board";
 import { ShopEvent } from "@/components/shop/shop-event";
 import { EditionCompare } from "@/components/shop/edition-compare";
 import { ArtifactPreview } from "@/components/shop/artifact-preview";
+import { EmbedCode } from "@/components/shop/embed-code";
 import styles from "@/components/shop/storefront.module.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -115,6 +116,11 @@ export default async function ProductPage({ params }: Props) {
         <div><p className="eyebrow">Recovery guidance</p><h2 id="recovery" style={{ fontSize: "1.6rem", marginBottom: 18 }}>When something goes wrong</h2><ul className={styles.checkList}>{product.recovery.map((item) => <li key={item}>{item}</li>)}</ul></div>
         <div><p className="eyebrow">Version and changelog</p><h2 style={{ fontSize: "1.6rem", marginBottom: 18 }}>Current: {product.version}</h2><div className={styles.changelog}>{product.changelog.map((entry) => <article key={entry.version}><div><span className={styles.version}>{entry.version}</span><time dateTime={entry.date}>{entry.date}</time></div><div><strong>{entry.summary}</strong><ul>{entry.changes.map((change) => <li key={change}>{change}</li>)}</ul></div></article>)}</div><p style={{ marginTop: 14 }}><Link href="/shop/updates">All shop updates →</Link></p></div>
       </div>
+    </section>
+
+    <section className={styles.section} aria-labelledby="embed-heading">
+      <div className={styles.sectionHead}><div><p className="eyebrow">Embed it</p><h2 id="embed-heading">Put this edition on your own page.</h2></div><p>A live card you can iframe into a newsletter page, a wiki or a course site. It is the storefront record, not a copy of it, and it inherits the same closed checkout.</p></div>
+      <EmbedCode slug={product.slug} kind="edition" name={`${product.name} ${product.edition}`} />
     </section>
 
     <section className={styles.section} aria-labelledby="readiness-heading">

@@ -19,6 +19,8 @@ Every analysis declares whether evidence is owned-and-tested, hands-on, source-b
 - /shop/free/source-to-brief-lab — free browser tool; exports brief.md and starlight.brief/v1 JSON; nothing uploaded
 - /shop/how-it-works — journey, delivery, fulfilment architecture and the public checkout readiness board
 - /shop/licensing-and-support, /shop/updates, /shop/availability
+- /shop/embed/{slug} — self-contained embeddable card for an edition or the free lab (noindex; links back here; never shows checkout while it is closed)
+- /api/shop/catalog — machine-readable catalogue, schema starlight.shop.catalog/v1, prices carry their basis, checkout URL only when open
 - /shop/[slug] — hardware decision pages: product identity, buying fit, complete-system checks and labelled destination
 
 Paid checkout is disabled until every fulfilment gate carries dated evidence. An availability request is not a sale, a pre-order or demand.

@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 import { JsonLd } from "@/components/shop/json-ld";
 import { ShopEvent } from "@/components/shop/shop-event";
 import { SourceToBriefLab } from "@/components/shop/source-to-brief-lab";
+import { EmbedCode } from "@/components/shop/embed-code";
 import styles from "@/components/shop/storefront.module.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -54,6 +55,11 @@ export default async function FreeProductPage({ params }: Props) {
         <div><p className="eyebrow">Limitations</p><h2 id="lab-limits" style={{ fontSize: "1.6rem", marginBottom: 18 }}>What the free lab does not do</h2><ul className={styles.checkList} data-tone="warn">{product.limitations.map((item) => <li key={item}>{item}</li>)}</ul></div>
         <div><p className="eyebrow">Licence</p><h2 style={{ fontSize: "1.6rem", marginBottom: 18 }}>{product.licence.name}</h2><ul className={styles.checkList}>{product.licence.grants.map((item) => <li key={item}>{item}</li>)}</ul><ul className={styles.checkList} data-tone="warn" style={{ marginTop: 10 }}>{product.licence.restrictions.map((item) => <li key={item}>{item}</li>)}</ul></div>
       </div>
+    </section>
+
+    <section className={styles.section} aria-labelledby="embed-heading">
+      <div className={styles.sectionHead}><div><p className="eyebrow">Embed it</p><h2 id="embed-heading">Share the lab from your own page.</h2></div><p>A live card that links here. The lab itself keeps running in the visitor&apos;s browser on this site; the card carries no script and no tracking.</p></div>
+      <EmbedCode slug={product.slug} kind="free" name={product.name} />
     </section>
 
     {paired && <section className={`${styles.callout} ${styles.reveal}`}>
