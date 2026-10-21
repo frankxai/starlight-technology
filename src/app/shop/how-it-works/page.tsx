@@ -40,7 +40,7 @@ export default function HowItWorksPage() {
         <h1>Try it free. Inspect everything. Pay only when the path is proven.</h1>
         <p className={styles.lede}>The shop sells native digital products first and recommends third-party tools second. Nothing is sold until the fulfilment path below has passed every gate, and the board that says so is public.</p>
       </div>
-      <div className={styles.notice}><span>Current state: paid checkout is closed for every edition. The <Link href="/shop/availability">availability list</Link> is the only commercial action. The <Link href="/shop/free/source-to-brief-lab">free lab</Link> is live.</span></div>
+      <div className={styles.notice}><span>Current state: paid checkout is closed for every edition. The <Link href="/shop/availability">availability list</Link> is the only commercial action. The <Link href="/shop/free/source-to-brief-lab">free lab</Link> is live, on its own page and inside the storefront. Requests are stored in a private store only when one is configured; the form says so when it is not.</span></div>
     </header>
 
     <section className={styles.section} aria-labelledby="journey">

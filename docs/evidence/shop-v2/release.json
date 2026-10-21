@@ -1,10 +1,10 @@
 {
   "feature": "Starlight Technology Shop v2 — native digital products, flagship Workflow Edition, free Source-to-Brief Lab, fail-closed checkout",
   "branch": "claude/starlight-shop-production-wl99xc",
-  "verifiedCodeCommit": "a44d1cad841e2d6343d68e831d1e9aeb67c8ba6c (evidence commit follows; QA ran on the identical working tree)",
+  "verifiedCodeCommit": "working tree of the 2026-10-21 pass (commits follow; QA ran on the identical tree)",
   "previewDeployment": "pending — Vercel preview is created by the draft PR",
   "previewUrl": null,
-  "verifiedAt": "2026-10-18T00:00:51.024Z",
+  "verifiedAt": "2026-10-21T03:45:00Z",
   "routes": [
     "/shop",
     "/shop/agent-workflow-kits",
@@ -19,14 +19,17 @@
     "/shop/updates",
     "/shop/availability",
     "/api/shop/availability",
-    "/api/shop/webhooks/payment"
+    "/api/shop/webhooks/payment",
+    "/shop/embed/[slug]",
+    "/api/shop/catalog",
+    "/api/shop/availability/export"
   ],
   "verification": {
     "toolchain": "passed (node 24.22.0, next 16.4.1)",
     "lint": "passed",
     "typecheck": "passed",
-    "tests": "94 passed across 11 files (59 new: catalog integrity, fail-closed checkout permutations, entitlement state machine and HMAC verification, brief core, measurement contract, sitemap); 11 editorial planner tests passed",
-    "build": "passed; 53 static pages; shop routes static except local-ai-hardware (request-rendered link approvals), availability (query param) and the two API routes",
+    "tests": "106 passed across 14 files (9 new: availability store sinks, admin auth, CSV escaping and dedupe; embed card never renders checkout while gates are open, escapes catalogue strings)",
+    "build": "passed; 54 static pages; new dynamic routes: /shop/embed/[slug] (framable, noindex, cached 5 min), /api/shop/catalog, /api/shop/availability/export",
     "desktop": "Playwright Chromium at 1349px: hero with live preview, five collections, flagship spotlight, free-lab artifact excerpt, hardware criteria table, trust grid, FAQ and readiness board inspected; product page sticky pricing module; lab review and export flow.",
     "mobile": "Playwright at 360, 390 and 768px across 15 routes: scrollWidth equals clientWidth on every route and width (no horizontal overflow); single h1 per page; no heading-level skips; every form field labelled; every external link carries noopener.",
     "interactions": [
@@ -37,48 +40,13 @@
       "prefers-reduced-motion: reveal elements report animation none and opacity 1; reveals are transform-only in any case"
     ],
     "lighthouse": {
-      "mode": "Lighthouse 12.8.2, mobile form factor, simulated throttling, local next start",
-      "/shop": {
-        "performance": 89,
-        "accessibility": 100,
-        "bestPractices": 96,
-        "seo": 100,
-        "lcp": "3.7 s",
-        "cls": 0,
-        "tbt": "100 ms"
-      },
-      "/shop/local-ai-hardware": {
-        "performance": 87,
-        "accessibility": 100,
-        "bestPractices": 96,
-        "seo": 100,
-        "lcp": "3.7 s",
-        "cls": 0,
-        "tbt": "170 ms"
-      },
-      "/shop/products/source-to-brief-workflow-edition": {
-        "performance": 92,
-        "accessibility": 100,
-        "bestPractices": 96,
-        "seo": 100,
-        "lcp": "3.3 s",
-        "cls": 0,
-        "tbt": "90 ms"
-      },
-      "/shop/free/source-to-brief-lab": {
-        "performance": 95,
-        "accessibility": 100,
-        "bestPractices": 96,
-        "seo": 100,
-        "lcp": "2.7 s",
-        "cls": 0,
-        "tbt": "110 ms"
-      },
-      "note": "LCP is text; remaining time is the five next/font families inherited from the root layout and one render-blocking stylesheet. Best-practices deduction is the locally unavailable Vercel analytics scripts (404) and source maps."
+      "/shop": "90 / 100 / 96 / 100 (lab chunk deferred until the section nears the viewport; 82 before deferral)",
+      "/shop/products/source-to-brief-workflow-edition": "91 / 100 / 96 / 100"
     },
     "metadata": "Per-route title, description, canonical and Open Graph; /shop and product OG images; JSON-LD Organization + ItemList + FAQPage on /shop, Product (no Offer while checkout is closed) + BreadcrumbList + FAQPage on the product page, WebApplication on the lab, ItemList on collections; sitemap covers all twelve routes (tested).",
     "accessibility": "Semantic landmarks and headings, labelled controls, aria-pressed states, role=status for live counts, native details/summary FAQ, focus-visible outlines, transform-only reveals, reduced-motion respected. Lighthouse accessibility 100 on the four audited pages.",
-    "commerceBoundary": "Ten fulfilment gates open with no evidence; resolveCheckoutState returns availability-list for every edition; no Buy button rendered anywhere; price labelled proposed; Product JSON-LD carries no Offer; every third-party link labelled independent or official source; zero affiliate approvals; no testimonials, rankings, scarcity, revenue or partner claims (tested)."
+    "commerceBoundary": "Ten fulfilment gates open with no evidence; resolveCheckoutState returns availability-list for every edition; no Buy button rendered anywhere; price labelled proposed; Product JSON-LD carries no Offer; every third-party link labelled independent or official source; zero affiliate approvals; no testimonials, rankings, scarcity, revenue or partner claims (tested).",
+    "playwright": "19 routes × 360/390/768/1349 (adds both embed cards and two hardware decision pages): zero overflow, heading, label, rel or console issues apart from the two /_vercel analytics scripts that 404 off-platform; lab worked example, export, brief.json round trip and draft restore verified on the free page; the storefront's deferred lab mounts on scroll and extracts the worked example; embed iframe links resolve to the product page, availability page and storefront with target=_top; copy-embed-code confirmed."
   },
   "designReview": {
     "reviewer": "Implementation self-review from Playwright screenshots at 1349 and 390px plus interaction checks",

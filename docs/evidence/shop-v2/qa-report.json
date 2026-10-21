@@ -98,6 +98,310 @@
         ]
       }
     },
+    "/shop/embed/source-to-brief-workflow-edition": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "title": "Source-to-Brief — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "title": "Source-to-Brief — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "title": "Source-to-Brief — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/products/source-to-brief-workflow-edition",
+        "title": "Source-to-Brief — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      }
+    },
+    "/shop/embed/source-to-brief-lab": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [],
+        "canonical": "https://starlight.technology/shop/free/source-to-brief-lab",
+        "title": "Source-to-Brief Lab — Starlight Technology",
+        "main": false,
+        "consoleErrors": []
+      }
+    },
+    "/shop/apple-mac-studio": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/apple-mac-studio",
+        "title": "Apple Mac Studio — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/apple-mac-studio",
+        "title": "Apple Mac Studio — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/apple-mac-studio",
+        "title": "Apple Mac Studio — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/apple-mac-studio",
+        "title": "Apple Mac Studio — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
+    "/shop/nvidia-dgx-spark": {
+      "360": {
+        "status": 200,
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/nvidia-dgx-spark",
+        "title": "NVIDIA DGX Spark — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "390": {
+        "status": 200,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/nvidia-dgx-spark",
+        "title": "NVIDIA DGX Spark — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "768": {
+        "status": 200,
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/nvidia-dgx-spark",
+        "title": "NVIDIA DGX Spark — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      },
+      "1349": {
+        "status": 200,
+        "scrollWidth": 1349,
+        "clientWidth": 1349,
+        "h1": 1,
+        "headingSkips": 0,
+        "imgsNoAlt": 0,
+        "unlabeled": 0,
+        "buttonsNoName": 0,
+        "extLinksNoRel": 0,
+        "jsonLd": [
+          "Product"
+        ],
+        "canonical": "https://starlight.technology/shop/nvidia-dgx-spark",
+        "title": "NVIDIA DGX Spark — Buying decision | Starlight Technology",
+        "main": true,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ]
+      }
+    },
     "/shop/agent-workflow-kits": {
       "360": {
         "status": 200,
@@ -1361,6 +1665,14 @@
     "/shop@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
     "/shop@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
     "/shop@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/apple-mac-studio@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/apple-mac-studio@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/apple-mac-studio@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/apple-mac-studio@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/nvidia-dgx-spark@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/nvidia-dgx-spark@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/nvidia-dgx-spark@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "/shop/nvidia-dgx-spark@1349: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
     "/shop/agent-workflow-kits@360: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
     "/shop/agent-workflow-kits@390: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
     "/shop/agent-workflow-kits@768: console Failed to load resource: the server responded with a status of 404 (Not Found) | Failed to load resource: the server responded with a status of 404 (Not Found)",
@@ -1435,10 +1747,10 @@
     "visibleBefore": true,
     "jsonVisible": true,
     "mdHidden": false,
-    "compareTopAfterAnchor": 256.671875
+    "compareTopAfterAnchor": 71.75
   },
   "availability": {
-    "text": "The availability endpoint is not configured yet. Use the email option; your request is pre-filled. Send it by email instead; your answers are pre-filled.",
+    "text": "The availability list is not storing requests yet. Use the email option; your request is pre-filled. Send it by email instead; your answers are pre-filled.",
     "mailtoStartsWith": "mailto:hello@frankx.ai?subject=Availabil"
   },
   "keyboard": [

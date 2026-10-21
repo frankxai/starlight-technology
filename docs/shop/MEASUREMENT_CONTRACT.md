@@ -9,7 +9,7 @@ Emission is disabled until `NEXT_PUBLIC_SHOP_ANALYTICS=v1` is set in the deploym
 | `free_lab_start` | first interaction with the lab (example loaded, text typed, extract pressed) | product | engagement only |
 | `free_artifact_exported` | brief.md / brief.json downloaded or Markdown copied | product, format | engagement only |
 | `availability_request_started` | first focus inside the availability form | product | intent only |
-| `availability_request_completed` | the request endpoint accepted the submission (2xx) | product | a request, never a sale |
+| `availability_request_completed` | at least one configured sink (private Blob store or endpoint) accepted the submission (202) | product | a request, never a sale |
 | `affiliate_link_click` | an external link with relationship `affiliate` is clicked | destination (hostname), relationship, product? | referral click, never revenue |
 
 ## What is never counted

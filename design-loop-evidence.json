@@ -218,5 +218,27 @@
         "/shop/free/source-to-brief-lab": "92 / 100 / 96 / 100"
       }
     }
+  },
+  "improvementPass2": {
+    "date": "2026-10-21",
+    "changes": [
+      "Hardware imagery: eight original shaded vector portraits (DGX Spark, MS-S1 MAX, Mac Studio, RTX 5090, DXP4800 Plus, 990 PRO, Stream Deck +, PodMic USB) drawn from published dimensions, used on the home page, storefront picks, explorer cards and decision pages; captions say 'Original illustration · not a photograph'. Vendor photographs were ruled out: Apple and Samsung press terms exclude promotional/commercial reuse and the vendor hosts are unreachable from the build environment, so no licence could be verified.",
+      "Live lab on /shop: the real Source-to-Brief Lab replaces the static artifact preview in the free-lab section, framed and labelled live; its chunk loads only when the section nears the viewport so storefront performance is unchanged.",
+      "Embeddable product cards at /shop/embed/[slug] (edition and free lab): self-contained HTML, no script, frame-ancestors *, noindex, 5-minute cache; links target the parent window; checkout state comes from the same resolver so a card can never show Checkout while the storefront hides it. Each product page shows the live card in an iframe beside a copy-ready snippet.",
+      "Machine-readable catalogue at /api/shop/catalog (starlight.shop.catalog/v1) with price basis, availability mode and relationship labels; CORS open; no stock or reviews because none are verified.",
+      "Availability list storage: requests are written as one private JSON object each to a Vercel Blob store when BLOB_READ_WRITE_TOKEN is linked, and/or forwarded to the https endpoint; 202 only when a sink accepted; 503 with the email fallback when none is configured. Operator export (JSON/CSV, dedupe by email+product, CSV formula-escaped) behind a ≥24-char SHOP_ADMIN_TOKEN compared in constant time. Privacy page names the store, region (fra1), retention and deletion contact."
+    ],
+    "notShipped": [
+      "The Blob store itself: creating it needs the Vercel dashboard (Storage → Blob → private, fra1) and project linking; the API refused store creation from this session (403). Until linked the form stays on the fail-closed email path.",
+      "Any vendor photograph or model-accurate render."
+    ],
+    "verification": {
+      "tests": "106 passed across 14 files",
+      "playwright": "19 routes × 4 widths clean; deferred lab mount and extraction on /shop; embed iframe link targets; copy embed code",
+      "lighthouse": {
+        "/shop": "90 / 100 / 96 / 100",
+        "/shop/products/source-to-brief-workflow-edition": "91 / 100 / 96 / 100"
+      }
+    }
   }
 }

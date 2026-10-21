@@ -53,3 +53,15 @@ Entitlement derived from order state: `paid → active`, `disputed → suspended
 7. Flip `status` to `live`, set `price.basis` to `verified` with a date, set `SHOP_CHECKOUT_URL_ST_WE_S2B_001`. Each gate change is a reviewed commit with evidence.
 
 No step is skipped by configuration alone; a missing gate keeps checkout closed even if the payment URL is present.
+
+## Availability list storage (added 2026-10-21)
+
+The availability list is lead capture, not an order. `src/lib/shop/availability-store.ts` turns a validated submission into an `availability_request` record (id, receivedAt, product, email, optional role and use case, interests, consent flag and consent text version) and writes it to every configured sink:
+
+| Sink | Env | Behaviour |
+|---|---|---|
+| Private Vercel Blob store | `BLOB_READ_WRITE_TOKEN` | one `availability/YYYY-MM-DD/<id>.json` object per request, `access: "private"`, never overwritten |
+| https endpoint | `SHOP_AVAILABILITY_ENDPOINT` (+ optional bearer `SHOP_AVAILABILITY_TOKEN`) | POST of the same record, 8 s timeout |
+
+With no sink the route answers 503 and the form offers the pre-filled email. If every configured sink fails the route answers 502 and the form offers the same fallback; a request is reported as recorded (202) only when at least one sink accepted it. The store must be created once in the Vercel dashboard (Storage → Blob, private, `fra1`) and linked to the project; the code cannot create it. `GET /api/shop/availability/export` (JSON, or `?format=csv`) reads the store for the operator behind `SHOP_ADMIN_TOKEN` with a constant-time comparison, deduplicates by email and product keeping the latest request, and is never cached. Emails stay out of analytics: the measurement contract only ever carries route and product identifiers.
+

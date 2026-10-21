@@ -30,7 +30,10 @@ Date: 2026-10-16. Branch: `claude/starlight-shop-production-wl99xc`. Base: `main
 /shop/updates                           dated changelog across shop + products
 /shop/availability                      availability list / request access (fail-closed form)
 /shop/[slug]                            existing hardware decision pages (unchanged)
-/api/shop/availability                  POST, forwards only when an endpoint is configured; otherwise 503 + mailto fallback
+/api/shop/availability                  POST, writes to the private Blob store and/or forwards to an https endpoint; with neither configured 503 + mailto fallback
+/api/shop/availability/export           GET, operator export (JSON or CSV) behind SHOP_ADMIN_TOKEN; 503 when unconfigured
+/api/shop/catalog                       GET, machine-readable catalogue (starlight.shop.catalog/v1) for programmatic embeds
+/shop/embed/[slug]                      GET, self-contained embeddable card (frame-ancestors *, noindex) for editions and the free lab
 /api/shop/webhooks/payment              POST, signature-verified, fail-closed until a provider is configured
 ```
 
