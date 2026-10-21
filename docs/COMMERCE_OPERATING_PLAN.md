@@ -16,7 +16,7 @@ The durable offer is a working creator or AI studio: hardware selection, a valid
 - Homepage and navigation entry points; accessible mobile menu; canonical metadata, catalog structured data, sitemap entries and agent-readable site guidance.
 - A commission-link approval boundary: both a reviewed approval record and a valid partner-issued environment URL are required. Missing, malformed, unapproved or expired destinations fall back to the official source.
 
-No affiliate account, attributed revenue, hardware checkout, supplier account or reseller appointment is claimed. The source catalog deliberately has no live price or inventory field. Hardware imagery is original illustration drawn from published dimensions and labelled as such; no vendor-photo licence is assumed.
+No affiliate account, attributed revenue, hardware checkout, supplier account or reseller appointment is claimed. The source catalog deliberately has no live price or inventory field. Hardware cards use original illustrations drawn from published dimensions and labelled as such; decision pages use credited Creative Commons photographs of the exact model where one exists (provenance sidecars in `public/images/products/`). No vendor-photo licence is assumed.
 
 ## Connector decision and actual availability
 
