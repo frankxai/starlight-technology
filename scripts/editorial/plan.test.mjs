@@ -65,8 +65,8 @@ test('product packet source indexes include every reciprocal claim reference', (
 });
 
 test('latest durable run replays without a duplicate brief or reservation', () => {
-  const latest = load('../../data/editorial/runs/2026-10-19-source-registry-recheck.json');
-  const replay = plan(latest.normalizedIntake, currentPolicy, latest.nextState, '2026-10-19T06:15:53Z');
+  const latest = load('../../data/editorial/runs/2026-10-22-held-release-condition-recheck.json');
+  const replay = plan(latest.normalizedIntake, currentPolicy, latest.nextState, '2026-10-22T06:43:49Z');
   assert.deepEqual(replay.selected, []);
   assert.equal(replay.budget.reservedThisRun, 0);
   assert.deepEqual(replay.nextState, latest.nextState);
