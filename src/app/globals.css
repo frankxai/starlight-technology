@@ -10,6 +10,28 @@
   --cyan: #75d8ff;
   --amber: #ffbf69;
   --max: 1240px;
+  /* Storefront tokens (shop surfaces). Same palette, explicit depth and spacing scale. */
+  --surface-0: #07090a;
+  --surface-1: #0c1011;
+  --surface-2: #121718;
+  --surface-3: #181f20;
+  --edge: #1f2724;
+  --edge-bright: #34403a;
+  --signal-ink: #1d2a05;
+  --amber-ink: #3a2a0a;
+  --radius-s: 4px;
+  --radius-m: 10px;
+  --radius-l: 18px;
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 32px;
+  --space-5: 52px;
+  --space-6: 84px;
+  --space-7: 128px;
+  --measure: 62ch;
+  --glow-signal: 0 0 0 1px color-mix(in srgb, var(--signal) 28%, transparent), 0 30px 90px -40px color-mix(in srgb, var(--signal) 55%, transparent);
+  --shadow-panel: 0 28px 70px -40px rgba(0, 0, 0, .9);
 }
 
 * { box-sizing: border-box; }

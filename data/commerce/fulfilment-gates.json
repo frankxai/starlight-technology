@@ -1,0 +1,15 @@
+{
+  "contractVersion": "2026-10-16",
+  "gates": [
+    { "id": "rights", "label": "Inventory and rights", "requirement": "Every deliverable in the manifest exists, is versioned, and Starlight holds the rights to sell it.", "status": "open", "owner": "Product", "evidence": null },
+    { "id": "merchant", "label": "Merchant eligibility", "requirement": "Merchant-of-record account approved for digital goods in the launch regions, with the trading entity verified.", "status": "open", "owner": "Frank", "evidence": null },
+    { "id": "terms", "label": "Tax and consumer terms", "requirement": "VAT handling, consumer withdrawal consent, licence and refund terms published and linked from checkout.", "status": "open", "owner": "Frank / legal review", "evidence": null },
+    { "id": "webhook", "label": "Payment webhook", "requirement": "Provider webhook with signature verification deployed, secret configured, replay test passed.", "status": "open", "owner": "Engineering", "evidence": null },
+    { "id": "entitlement", "label": "Idempotent entitlement", "requirement": "Entitlements created once per payment event, duplicates ignored, audit row written.", "status": "open", "owner": "Engineering", "evidence": null },
+    { "id": "delivery", "label": "Private versioned delivery", "requirement": "Signed, expiring download for the entitled version; transactional email sent and logged.", "status": "open", "owner": "Engineering", "evidence": null },
+    { "id": "recovery", "label": "Recovery paths", "requirement": "Failure, duplicate, delayed, declined, replay, refund and revocation paths exercised end to end in test mode.", "status": "open", "owner": "Engineering", "evidence": null },
+    { "id": "support", "label": "Support flow", "requirement": "Support inbox, response target and escalation owner confirmed; recovery guide published.", "status": "open", "owner": "Frank", "evidence": null },
+    { "id": "reconciliation", "label": "Admin reconciliation and audit", "requirement": "Payments, entitlements, deliveries and refunds reconcile from the provider report to the audit trail.", "status": "open", "owner": "Engineering", "evidence": null },
+    { "id": "portal", "label": "Customer licence portal", "requirement": "Customers can re-download the entitled version and see licence state without emailing support.", "status": "open", "owner": "Engineering", "evidence": null }
+  ]
+}

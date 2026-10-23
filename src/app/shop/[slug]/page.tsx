@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className={styles.stageMedia}>
         {photo
           ? <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} preload sizes="(max-width: 900px) calc(100vw - 40px), min(calc(100vw - 264px), 1016px)" style={{ objectPosition: photo.objectPosition }} />
-          : <HardwareDiagram shape={product.shape} />}
+          : <HardwareDiagram shape={product.shape} slug={product.slug} />}
       </div>
 
       <aside className={`${styles.decisionPanel} ${photo ? "liquid-surface" : ""}`} aria-labelledby="decision-heading">
@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <p className={styles.stageCredit}>
         {photo
           ? <>{photo.pictured} Photo: <a href={photo.sourceUrl} target="_blank" rel="noopener">“{photo.title}”</a> by {photo.author}, <a href={photo.licenseUrl} target="_blank" rel="noopener license">{photo.license}</a>, via Wikimedia Commons. {photo.changes}</>
-          : "Original category schematic. No licensed photograph of this exact model yet, so we show no product image rather than a lookalike."}
+          : "Original illustration drawn from the manufacturer's published dimensions, not a photograph. No licensed photograph of this exact model exists yet, so we show our own drawing rather than a lookalike photo."}
       </p>
     </section>
 
@@ -77,7 +77,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         const candidate = getShopPhoto(item.slug);
         const altPhoto = candidate && !candidate.variantNote ? candidate : undefined;
         return <li key={item.slug}><Link href={`/shop/${item.slug}`} className={styles.alternative}>
-          <span className={styles.altMedia} data-photo={altPhoto ? "true" : "false"}>{altPhoto ? <Image src={altPhoto.src} alt="" width={altPhoto.width} height={altPhoto.height} sizes="(max-width: 620px) 30vw, 160px" style={{ objectPosition: altPhoto.objectPosition }} /> : <HardwareDiagram shape={item.shape} />}</span>
+          <span className={styles.altMedia} data-photo={altPhoto ? "true" : "false"}>{altPhoto ? <Image src={altPhoto.src} alt="" width={altPhoto.width} height={altPhoto.height} sizes="(max-width: 620px) 30vw, 160px" style={{ objectPosition: altPhoto.objectPosition }} /> : <HardwareDiagram shape={item.shape} slug={item.slug} />}</span>
           <span className={styles.altBody}><span className={styles.brand}>{item.brand}</span><strong>{item.name}</strong><span>{tradeoff}</span></span>
         </Link></li>;
       })}</ul>

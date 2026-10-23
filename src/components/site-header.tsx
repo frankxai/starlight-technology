@@ -29,7 +29,7 @@ export function SiteHeader() {
         ))}
       </nav>
       <details className="mobile-nav" ref={mobileMenu}><summary>Menu</summary><div>{links.map(([label, href]) => <Link key={href} href={href} onClick={closeMenu}>{label}</Link>)}<Link href="/pricing" onClick={closeMenu}>Studio pricing</Link><Link href="/methodology" onClick={closeMenu}>Methodology</Link></div></details>
-      <Link className="header-cta" href="/shop" onClick={closeMenu}>Studio Shop ↗</Link>
+      <Link className="header-cta" href="/shop" onClick={closeMenu}>Shop ↗</Link>
     </header>
   );
 }
