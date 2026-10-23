@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { CollectionCard } from "@/components/editorial";
 import { guides } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Buying field guides", description: "Decision frameworks for GPU memory, complete-system cost and evidence-led technology reviews.", alternates: { canonical: "/guides" },
+export const metadata: Metadata = { title: "Buying field guides", description: "Decision frameworks for GPU memory, complete-system cost and evidence-led technology reviews." ,
+  alternates: { canonical: "/guides" },
   openGraph: { title: "Buying field guides", description: "Decision frameworks for GPU memory, complete-system cost and evidence-led technology reviews.", url: "/guides" }
 };
 
