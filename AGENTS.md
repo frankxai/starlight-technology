@@ -35,7 +35,7 @@ Starlight Technology is the buying-intelligence and complete-system design platf
 - Prefer static generation and ISR; do not call merchant APIs during page requests.
 - Do not add databases, paid services, tracking vendors, account systems, or merchant feeds before an explicit product need and cost/privacy decision.
 - No secrets in Git. Never inspect or print `.env` values.
-- Run `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm build` before handoff.
+- Run `pnpm verify` before handoff.
 
 ## Design
 
