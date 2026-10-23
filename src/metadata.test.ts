@@ -1,21 +1,25 @@
 import { test, expect } from "vitest";
 import { builds, comparisons, guides } from "./lib/content";
 import { shopProducts } from "./lib/shop";
+import { generateMetadata as generateGuideMeta } from "./app/guides/[slug]/page";
+import { generateMetadata as generateCompareMeta } from "./app/compare/[slug]/page";
+import { generateMetadata as generateBuildMeta } from "./app/builds/[slug]/page";
+import { generateMetadata as generateShopMeta } from "./app/shop/[slug]/page";
 import * as fs from "fs";
 import * as path from "path";
 
-test("all public routes have unique metadata", () => {
+test("all public routes have unique metadata", async () => {
   const titles = new Set<string>();
   const descriptions = new Set<string>();
   const canonicals = new Set<string>();
 
   const track = (title: string, desc: string, canonical: string, ogUrl: string, ogTitle: string, ogDesc: string, route: string) => {
-    expect(title).toBeTruthy();
-    expect(desc).toBeTruthy();
-    expect(canonical).toBeTruthy();
-    expect(ogUrl).toBeTruthy();
-    expect(ogTitle).toBeTruthy();
-    expect(ogDesc).toBeTruthy();
+    expect(title, `Missing title for ${route}`).toBeTruthy();
+    expect(desc, `Missing description for ${route}`).toBeTruthy();
+    expect(canonical, `Missing canonical for ${route}`).toBeTruthy();
+    expect(ogUrl, `Missing ogUrl for ${route}`).toBeTruthy();
+    expect(ogTitle, `Missing ogTitle for ${route}`).toBeTruthy();
+    expect(ogDesc, `Missing ogDesc for ${route}`).toBeTruthy();
 
     if (titles.has(title)) throw new Error(`Duplicate title: ${title} at ${route}`);
     if (descriptions.has(desc)) throw new Error(`Duplicate description: ${desc} at ${route}`);
@@ -72,15 +76,28 @@ test("all public routes have unique metadata", () => {
 
   // Dynamic routes
   for (const guide of guides) {
-    track(guide.title, guide.summary, `/guides/${guide.slug}`, `/guides/${guide.slug}`, guide.title, guide.summary, `/guides/${guide.slug}`);
+    const meta = await generateGuideMeta({ params: Promise.resolve({ slug: guide.slug }) });
+    expect(meta).toBeDefined();
+    // Use ts-expect-error as metadata typing is slightly ambiguous without casting here
+
+    track(meta.title as string, meta.description as string, meta.alternates?.canonical as string, meta.openGraph?.url as string, meta.openGraph?.title as string, meta.openGraph?.description as string, `/guides/${guide.slug}`);
   }
   for (const comp of comparisons) {
-    track(comp.title, comp.summary, `/compare/${comp.slug}`, `/compare/${comp.slug}`, comp.title, comp.summary, `/compare/${comp.slug}`);
+    const meta = await generateCompareMeta({ params: Promise.resolve({ slug: comp.slug }) });
+    expect(meta).toBeDefined();
+
+    track(meta.title as string, meta.description as string, meta.alternates?.canonical as string, meta.openGraph?.url as string, meta.openGraph?.title as string, meta.openGraph?.description as string, `/compare/${comp.slug}`);
   }
   for (const build of builds) {
-    track(build.title, build.summary, `/builds/${build.slug}`, `/builds/${build.slug}`, build.title, build.summary, `/builds/${build.slug}`);
+    const meta = await generateBuildMeta({ params: Promise.resolve({ slug: build.slug }) });
+    expect(meta).toBeDefined();
+
+    track(meta.title as string, meta.description as string, meta.alternates?.canonical as string, meta.openGraph?.url as string, meta.openGraph?.title as string, meta.openGraph?.description as string, `/builds/${build.slug}`);
   }
   for (const product of shopProducts) {
-    track(`${product.brand} ${product.name} — Buying decision`, product.summary, `/shop/${product.slug}`, `/shop/${product.slug}`, `${product.brand} ${product.name}`, product.summary, `/shop/${product.slug}`);
+    const meta = await generateShopMeta({ params: Promise.resolve({ slug: product.slug }) });
+    expect(meta).toBeDefined();
+
+    track(meta.title as string, meta.description as string, meta.alternates?.canonical as string, meta.openGraph?.url as string, meta.openGraph?.title as string, meta.openGraph?.description as string, `/shop/${product.slug}`);
   }
 });
