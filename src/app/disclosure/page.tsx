@@ -4,7 +4,9 @@ import { shopProducts } from "@/lib/shop";
 import { resolveShopOffer } from "@/lib/shop-offers";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Commercial disclosure", description: "How Starlight Technology handles affiliate links, samples, sponsorship and editorial independence.", alternates: { canonical: "/disclosure" } };
+export const metadata: Metadata = { title: "Commercial disclosure", description: "How Starlight Technology handles affiliate links, samples, sponsorship and editorial independence.", alternates: { canonical: "/disclosure" },
+  openGraph: { title: "Commercial disclosure", description: "How Starlight Technology handles affiliate links, samples, sponsorship and editorial independence.", url: "/disclosure" }
+};
 
 export default function DisclosurePage() {
   const affiliateCount = shopProducts.filter((product) => resolveShopOffer(product).relationship === "affiliate").length;

@@ -26,7 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/infrastructure/workspace", priority: 0.7 },
     { path: "/disclosure", priority: 0.45 },
     { path: "/privacy", priority: 0.4 },
-    { path: "/about", priority: 0.5 }
+    { path: "/about", priority: 0.5 },
+    { path: "/llms.txt", priority: 0.5 }
   ];
 
   return [
