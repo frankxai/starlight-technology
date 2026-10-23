@@ -1,5 +1,5 @@
-export type ProductKind = "saas" | "digital" | "service";
-export type Billing = "free" | "month" | "once";
+type ProductKind = "saas" | "digital" | "service";
+type Billing = "free" | "month" | "once";
 
 export interface ProductSku {
   id: string;
@@ -117,7 +117,7 @@ export const serviceProducts: ProductSku[] = [
   }
 ];
 
-export const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts];
+const allProducts = [...saasTiers, ...digitalProducts, ...serviceProducts];
 export function getProduct(id: string) { return allProducts.find((p) => p.id === id); }
 export function checkoutHref(sku: ProductSku): string {
   if (sku.billing === "free") return sku.productPath;
