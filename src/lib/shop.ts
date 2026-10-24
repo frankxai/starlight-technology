@@ -1,5 +1,5 @@
 export const shopCategories = ["All", "Compute", "Storage", "Controls", "Audio"] as const;
-export type ShopCategory = Exclude<(typeof shopCategories)[number], "All">;
+type ShopCategory = Exclude<(typeof shopCategories)[number], "All">;
 export type HardwareShape = "workstation" | "gpu" | "nas" | "ssd" | "controller" | "microphone";
 
 export interface ShopProduct {

@@ -1,19 +1,9 @@
-export type PartnerRole =
-  | "asset-owner"
-  | "ai-operator"
-  | "finance-partner"
-  | "energy-partner"
-  | "technology-partner"
-  | "professional-advisor";
-
-export type DealModelId =
+type DealModelId =
   | "productivity-node"
   | "hosted-capacity"
   | "financed-transformation"
   | "offtake-backed-node"
   | "nodeco";
-
-export type EvidenceState = "declared" | "documented" | "verified" | "accepted";
 
 export interface DealModel {
   id: DealModelId;
@@ -262,7 +252,7 @@ export const proofFields = [
   "retention, access and deletion class"
 ] as const;
 
-export function getDealModel(id: DealModelId): DealModel {
+function getDealModel(id: DealModelId): DealModel {
   const model = dealModels.find((candidate) => candidate.id === id);
   if (!model) throw new Error(`Unknown deal model: ${id}`);
   return model;
