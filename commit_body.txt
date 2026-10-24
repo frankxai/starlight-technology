@@ -1,0 +1,17 @@
+Class: tests-gap-3
+
+**What changed**
+Added unit tests for the pure module `src/lib/sources.ts`, verifying that `getSources` properly returns source arrays for valid IDs and throws an expected error for missing IDs.
+
+**Verification command**
+`pnpm verify`
+Pass line: `Tests   58 passed (58)` and `Compiled successfully in 5.0s`. Tests pass via standard Vitest runner.
+
+**What I left alone**
+All source code in `src/lib/sources.ts` and `src/lib/products.ts`, billing/payment/checkout logic, auth logic, and build/environment configurations were completely untouched.
+
+**Risks**
+None. Test-only addition targeting a pure, fully static utility function without external dependencies.
+
+**Pre-existing failures**
+None observed on current main iteration (`pnpm verify` exited 0).
