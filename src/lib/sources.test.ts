@@ -7,8 +7,15 @@ describe("getSources", () => {
     const result = getSources(ids);
 
     expect(result).toHaveLength(2);
-    expect(result[0]).toEqual(sources.find(s => s.id === "nvidia-rtx-5090"));
-    expect(result[1]).toEqual(sources.find(s => s.id === "google-review-guidance"));
+
+    const expected1 = sources.find(s => s.id === "nvidia-rtx-5090");
+    const expected2 = sources.find(s => s.id === "google-review-guidance");
+
+    expect(expected1).toBeDefined();
+    expect(expected2).toBeDefined();
+
+    expect(result[0]).toEqual(expected1);
+    expect(result[1]).toEqual(expected2);
   });
 
   it("should throw an error if a source id is missing", () => {
