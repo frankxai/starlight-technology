@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { SourceList } from "@/components/evidence";
 import { getSources } from "@/lib/sources";
 
-export const metadata: Metadata = { title: "Evidence methodology", description: "How Starlight Technology separates testing, research, inference, prices and commercial relationships." };
+export const metadata: Metadata = { title: "Evidence methodology", description: "How Starlight Technology separates testing, research, inference, prices and commercial relationships.", alternates: { canonical: "/methodology" },
+  openGraph: { title: "Evidence methodology", description: "How Starlight Technology separates testing, research, inference, prices and commercial relationships.", url: "/methodology" }
+};
 const states = [["Owned & tested", "Repeated use in a named real workflow. We publish setup, duration, limitations and relevant evidence."], ["Hands-on", "Direct testing with limited time or scope. We never imply long-term ownership."], ["Source-backed research", "A conclusion grounded in cited primary or credible independent evidence, with source dates."], ["Decision-model inference", "A disclosed framework derived from constraints. It does not claim hands-on product proof."]];
 
 export default function MethodologyPage() {

@@ -4,7 +4,7 @@ import { ArticleNav, ArticleSources, EditorialSections, EvidenceBar } from "@/co
 import { comparisons } from "@/lib/content";
 
 export function generateStaticParams() { return comparisons.map(({ slug }) => ({ slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const item = comparisons.find((entry) => entry.slug === slug); return item ? { title: item.title, description: item.summary, alternates: { canonical: `/compare/${slug}` } } : {}; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const item = comparisons.find((entry) => entry.slug === slug); return item ? { title: item.title, description: item.summary, alternates: { canonical: `/compare/${slug}` }, openGraph: { title: item.title, description: item.summary, url: `/compare/${slug}` } } : {}; }
 
 export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = comparisons.find((entry) => entry.slug === slug); if (!item) notFound();

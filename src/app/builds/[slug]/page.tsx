@@ -4,7 +4,7 @@ import { ArticleNav, ArticleSources, EditorialSections, EvidenceBar } from "@/co
 import { builds } from "@/lib/content";
 
 export function generateStaticParams() { return builds.map(({ slug }) => ({ slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const item = builds.find((entry) => entry.slug === slug); return item ? { title: item.title, description: item.summary, alternates: { canonical: `/builds/${slug}` } } : {}; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const item = builds.find((entry) => entry.slug === slug); return item ? { title: item.title, description: item.summary, alternates: { canonical: `/builds/${slug}` }, openGraph: { title: item.title, description: item.summary, url: `/builds/${slug}` } } : {}; }
 
 export default async function BuildPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = builds.find((entry) => entry.slug === slug); if (!item) notFound();

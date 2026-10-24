@@ -6,6 +6,15 @@ import { shopProducts } from "@/lib/shop";
 import shopStyles from "@/components/shop.module.css";
 import { builds, comparisons, guides } from "@/lib/content";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Starlight Technology — Buying intelligence for AI-native studios",
+  description: "Evidence-led comparisons, complete system builds and infrastructure operating architectures for AI-native creators, teams and operating companies.",
+  alternates: { canonical: "/" },
+  openGraph: { title: "Starlight Technology — Buying intelligence for AI-native studios", description: "Evidence-led comparisons, complete system builds and infrastructure operating architectures for AI-native creators, teams and operating companies.", url: "/" }
+};
+
 export default function HomePage() {
   return <>
     <section className="hero shell"><div className="hero-copy"><p className="eyebrow">Buying intelligence for AI-native studios</p><h1>Build the right system.<br /><em>Not the most expensive one.</em></h1><p className="hero-lede">Decisive comparisons, complete-system blueprints and transparent evidence for creators combining local AI, music, video and mobile work.</p><div className="hero-actions"><Link className="button button-primary" href="/shop">Explore the Studio Shop</Link><Link className="button button-quiet" href="/builds">Plan a complete system</Link></div><dl className="hero-proof"><div><dt>09</dt><dd>launch analyses</dd></div><div><dt>04</dt><dd>evidence states</dd></div><div><dt>NL / EU</dt><dd>regional starting point</dd></div></dl></div><RigFinder /></section>

@@ -4,7 +4,8 @@ import { checkoutHref, digitalProducts, saasTiers } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Offers",
-  description: "SaaS membership and digital products for Starlight Technology."
+  description: "SaaS membership and digital products for Starlight Technology.", alternates: { canonical: "/offers" },
+  openGraph: { title: "Offers", description: "SaaS membership and digital products for Starlight Technology.", url: "/offers" }
 };
 
 export default function OffersPage() {
